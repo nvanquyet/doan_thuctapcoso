@@ -8,7 +8,8 @@ namespace Server
     {
         [SerializeField] private float moveSpeed = 5f;
         [SerializeField] private float accelerationTime = 0.1f;
-        [SerializeField] private Rigidbody2D rb;
+        
+        private Rigidbody2D rb;
 
         private Vector2 movementInput;
         private Vector2 currentVelocity;
@@ -34,7 +35,7 @@ namespace Server
         [Client]
         void Update()
         {
-            if (!isLocalPlayer || !authority) return;
+            if (!isLocalPlayer) return;
             movementInput.x = Input.GetAxisRaw("Horizontal");
             movementInput.y = Input.GetAxisRaw("Vertical");
         }
@@ -48,19 +49,17 @@ namespace Server
         [Command]
         private void CmdMove()
         {
-            Vector2 targetVelocity = movementInput.normalized * moveSpeed;
-            currentVelocity = Vector2.Lerp(currentVelocity, targetVelocity, accelerationTime / Time.fixedDeltaTime);
-            Rigid.MovePosition(rb.position + currentVelocity * Time.fixedDeltaTime);
-
             // Sync the movement across all clients
-            RpcMove(rb.position);
+            RpcMove();
         }
 
         [ClientRpc]
-        private void RpcMove(Vector2 newPosition)
+        private void RpcMove()
         {
             // Update position on all clients
-            if (!isLocalPlayer) Rigid.MovePosition(newPosition);
+            Vector2 targetVelocity = movementInput.normalized * moveSpeed;
+            currentVelocity = Vector2.Lerp(currentVelocity, targetVelocity, accelerationTime / Time.fixedDeltaTime);
+            Rigid.MovePosition(rb.position + currentVelocity * Time.fixedDeltaTime);
         }
     }
 
