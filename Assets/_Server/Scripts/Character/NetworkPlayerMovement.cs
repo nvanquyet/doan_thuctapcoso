@@ -1,14 +1,16 @@
 using System;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 namespace Server
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class CharacterMovement : NetworkBehaviour
+    public class NetworkPlayerMovement : NetworkBehaviour
     {
         [SerializeField] private float moveSpeed = 5f;
         [SerializeField] private float accelerationTime = 0.1f;
+        [SerializeField] private SpriteRenderer characterSR;
 
         private Rigidbody2D rb;
 
@@ -41,6 +43,19 @@ namespace Server
                 movementInput.x = Input.GetAxisRaw("Horizontal");
                 movementInput.y = Input.GetAxisRaw("Vertical");
                 SendMovementInputServerRpc(movementInput);
+
+
+                //Sent to Server 
+                if (movementInput.x != 0)
+                {
+                    Vector3 newScale = characterSR.transform.localScale;
+                    if (movementInput.x < 0)
+                        newScale.x = -1 * Mathf.Abs(newScale.x);
+                    else
+                        newScale.x = Mathf.Abs(newScale.x);
+
+                    SendScaleChangeServerRpc(newScale);
+                }
             }
             else
             {
@@ -48,6 +63,7 @@ namespace Server
                 Rigid.position = networkedPosition.Value;
             }
         }
+       
 
         void FixedUpdate()
         {
@@ -72,6 +88,18 @@ namespace Server
         private void SendMovementInputServerRpc(Vector2 movementInput, ServerRpcParams rpcParams = default)
         {
             this.movementInput = movementInput;
+        }
+
+        [ServerRpc]
+        private void SendScaleChangeServerRpc(Vector3 newScale)
+        {
+            characterSR.transform.localScale = newScale;
+            UpdateScaleClientRpc(newScale);
+        }
+        [ClientRpc]
+        private void UpdateScaleClientRpc(Vector3 newScale)
+        {
+            characterSR.transform.localScale = newScale;
         }
     }
 }
