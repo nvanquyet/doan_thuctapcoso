@@ -1,7 +1,7 @@
-
 using System;
 using Unity.Netcode;
 using UnityEngine;
+
 namespace Server
 {
     [RequireComponent(typeof(Rigidbody2D))]
@@ -9,12 +9,13 @@ namespace Server
     {
         [SerializeField] private float moveSpeed = 5f;
         [SerializeField] private float accelerationTime = 0.1f;
-        
+
         private Rigidbody2D rb;
 
         private Vector2 movementInput;
         private Vector2 currentVelocity;
 
+        private NetworkVariable<Vector2> networkedPosition = new NetworkVariable<Vector2>();
 
         private Rigidbody2D Rigid
         {
@@ -25,34 +26,52 @@ namespace Server
             }
         }
 
-
         private void Start()
         {
-            if (!IsLocalPlayer) return;
-            if (Rigid != null) Rigid.simulated = true;
+            if (IsServer)
+            {
+                networkedPosition.Value = Rigid.position;
+            }
         }
 
         void Update()
         {
-            if (!IsLocalPlayer) return;
-            movementInput.x = Input.GetAxisRaw("Horizontal");
-            movementInput.y = Input.GetAxisRaw("Vertical");
+            if (IsLocalPlayer)
+            {
+                movementInput.x = Input.GetAxisRaw("Horizontal");
+                movementInput.y = Input.GetAxisRaw("Vertical");
+                SendMovementInputServerRpc(movementInput);
+            }
+            else
+            {
+                // Update the client's position from the server
+                Rigid.position = networkedPosition.Value;
+            }
         }
 
         void FixedUpdate()
         {
-            if (!IsLocalPlayer) return;
-            Movement();
+            if (IsServer)
+            {
+                Movement();
+            }
         }
-
 
         private void Movement()
         {
-            // Update position on all clients
             Vector2 targetVelocity = movementInput.normalized * moveSpeed;
             currentVelocity = Vector2.Lerp(currentVelocity, targetVelocity, accelerationTime / Time.fixedDeltaTime);
-            Rigid.MovePosition(rb.position + currentVelocity * Time.fixedDeltaTime);
+            Vector2 newPosition = Rigid.position + currentVelocity * Time.fixedDeltaTime;
+            Rigid.MovePosition(newPosition);
+
+            // Sync position with all clients
+            networkedPosition.Value = newPosition;
+        }
+
+        [ServerRpc]
+        private void SendMovementInputServerRpc(Vector2 movementInput, ServerRpcParams rpcParams = default)
+        {
+            this.movementInput = movementInput;
         }
     }
-
 }
