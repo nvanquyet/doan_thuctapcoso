@@ -1,5 +1,6 @@
-using Mirror;
+
 using System;
+using Unity.Netcode;
 using UnityEngine;
 namespace Server
 {
@@ -24,37 +25,28 @@ namespace Server
             }
         }
 
-        [Client]
 
         private void Start()
         {
-            if (!isLocalPlayer) return;
+            if (!IsLocalPlayer) return;
             if (Rigid != null) Rigid.simulated = true;
         }
 
-        [Client]
         void Update()
         {
-            if (!isLocalPlayer) return;
+            if (!IsLocalPlayer) return;
             movementInput.x = Input.GetAxisRaw("Horizontal");
             movementInput.y = Input.GetAxisRaw("Vertical");
         }
-        [Client]
+
         void FixedUpdate()
         {
-            if (!isLocalPlayer) return;
-            CmdMove();
+            if (!IsLocalPlayer) return;
+            Movement();
         }
 
-        [Command]
-        private void CmdMove()
-        {
-            // Sync the movement across all clients
-            RpcMove();
-        }
 
-        [ClientRpc]
-        private void RpcMove()
+        private void Movement()
         {
             // Update position on all clients
             Vector2 targetVelocity = movementInput.normalized * moveSpeed;
