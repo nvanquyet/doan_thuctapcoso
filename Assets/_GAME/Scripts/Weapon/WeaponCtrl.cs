@@ -70,11 +70,9 @@ namespace ShootingGame
             return nearestEnemy;
         }
 
-         public void AddEnemyToFireRange(Transform transform)
+        public void AddEnemyToFireRange(Transform transform)
         {
-            Health enemyHealth = transform.GetComponent<Health>();
-            if (!enemyHealth.isDead)
-                Enemies.Add(transform);
+            Enemies.Add(transform);
         }
 
         public void RemoveEnemyToFireRange(Transform transform)

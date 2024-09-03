@@ -8,13 +8,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5306273014566085266, guid: 109a9be53ee648c4aaba0feaa7614be4, type: 3}
+      propertyPath: m_Size.x
+      value: 0.488157
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306273014566085266, guid: 109a9be53ee648c4aaba0feaa7614be4, type: 3}
+      propertyPath: m_Size.y
+      value: 0.30374318
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306273014566085266, guid: 109a9be53ee648c4aaba0feaa7614be4, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.11667012
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306273014566085266, guid: 109a9be53ee648c4aaba0feaa7614be4, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.069625705
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306273014566085266, guid: 109a9be53ee648c4aaba0feaa7614be4, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9163475137752130091, guid: 109a9be53ee648c4aaba0feaa7614be4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9163475137752130091, guid: 109a9be53ee648c4aaba0feaa7614be4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9163475137752130091, guid: 109a9be53ee648c4aaba0feaa7614be4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -50,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163475137752130100, guid: 109a9be53ee648c4aaba0feaa7614be4, type: 3}
       propertyPath: m_Name
-      value: BaseGun Variant
+      value: Gun_001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

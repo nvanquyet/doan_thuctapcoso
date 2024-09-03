@@ -64,6 +64,10 @@ namespace ShootingGame
             else transform.localScale = new Vector3(1, 1, 0);
         }
 
+        public override void ExitInteract(Interact target) { }
+
+        public override void Interact(Interact target) { }
+
         public override int Damage => 0;
     }
 

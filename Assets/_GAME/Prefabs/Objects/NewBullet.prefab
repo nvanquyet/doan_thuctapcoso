@@ -272,10 +272,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c8ac47d4ca8a24abc327cff0e3b010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collider: {fileID: 0}
   bulletStat:
-    minDamage: 10
-    maxDamage: 20
+    damage: 10
     speed: 20
   trailEffect: {fileID: 0}
 --- !u!61 &411114611003256357

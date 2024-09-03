@@ -14,7 +14,7 @@ namespace ShootingGame
     {
         #region Properties
         [SerializeField] private float accelerationTime = 0.1f;
-        [SerializeField] private float _speed;
+        [SerializeField] private float _speed = 5;
         private Transform _characterGraphic;
         private Rigidbody2D _rigid;
         private PlayerLocoMotionState _locomotionState;

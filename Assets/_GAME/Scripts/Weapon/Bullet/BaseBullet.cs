@@ -1,35 +1,25 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using static ShootingGame.Interface;
 
 namespace ShootingGame
 {
     [System.Serializable]
-    public struct BulletStat
+    public struct AttackStat
     {
-        public int minDamage;
-        public int maxDamage;
+        public int damage;
         public int speed;
 
-        public BulletStat(int minDamage, int maxDamage, int speed)
+        public AttackStat(int damage, int speed)
         {
-            this.minDamage = minDamage;
-            this.maxDamage = maxDamage;
+            this.damage = damage;
             this.speed = speed;
-        }
-        public int Damage
-        {
-            get
-            {
-                return Random.Range(minDamage, maxDamage);
-            }
         }
     }
 
     [RequireComponent(typeof(Rigidbody2D))]
     public class BaseBullet : AAttacker, Interface.IMoveable, ISpawner
     {
-        [SerializeField] private BulletStat bulletStat;
+        [SerializeField] private AttackStat bulletStat;
         [SerializeField] private ParticleSystem trailEffect;
 
         private Rigidbody2D _rigid;
@@ -44,8 +34,8 @@ namespace ShootingGame
         }
 
         #region  Attack
-        public override int Damage => bulletStat.Damage;
-        public override void SetDamage(int damage) { }
+        public override int Damage => (int) Random.Range(bulletStat.damage * 0.5f, bulletStat.damage * 1.5f);
+        public override void SetDamage(int damage) => bulletStat.damage = damage;
         public override bool Attack(Interface.IDefender target)
         {
             if (base.Attack(target))
@@ -67,15 +57,9 @@ namespace ShootingGame
             if (trailEffect) trailEffect.Play();
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if (collision.CompareTag("Enemy"))
-            {
-                collision.GetComponent<Health>().TakeDam((int)bulletStat.Damage);
-                collision.GetComponent<EnemyController>().TakeDamEffect((int)bulletStat.Damage);
-                Destroy(gameObject);
-            }
-        }
+        public override void ExitInteract(Interact target) { }
+
+        public override void Interact(Interact target) { }
         #endregion
 
 

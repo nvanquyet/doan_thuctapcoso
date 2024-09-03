@@ -6,12 +6,12 @@ namespace ShootingGame
 {
     public partial interface Interface
     {
-
         public interface Interact
         {
             Collider2D Collider { get; }
 
             void Interact(Interface.Interact target);
+            void ExitInteract(Interface.Interact target);
         }
 
         public interface IAttacker : Interact
@@ -54,6 +54,8 @@ namespace ShootingGame
         public abstract void Interact(Interface.Interact target);
 
         public virtual void EnableInteract(bool value) => _collider.enabled = value;
+
+        public abstract void ExitInteract(Interface.Interact target);
     }
 
     [RequireComponent(typeof(BoxCollider2D))]
@@ -64,12 +66,26 @@ namespace ShootingGame
             target.Interact(this);
         }
 
-        void OnTriggerEnter2D(Collider2D other)
+        public override void ExitInteract(Interface.Interact target)
+        {
+            target.ExitInteract(this);
+        }
+
+        protected virtual void OnTriggerEnter2D(Collider2D other)
         {
             if (other == null) return;
             if (other.TryGetComponent(out Interface.Interact interactable))
             {
                 Interact(interactable);
+            }
+        }
+
+        protected virtual void OnTriggerExit2D(Collider2D other)
+        {
+            if (other == null) return;
+            if (other.TryGetComponent(out Interface.Interact interactable))
+            {
+                ExitInteract(interactable);
             }
         }
     }
@@ -150,7 +166,7 @@ namespace ShootingGame
     [RequireComponent(typeof(BoxCollider2D))]
     public abstract class AAttacker : AInteractable<BoxCollider2D>, Interface.IAttacker
     {
-        protected int _damage;
+        [SerializeField] protected int _damage;
         protected bool _canAttack = true;
         public virtual int Damage => _damage;
         public bool CanAttack => _canAttack;
@@ -161,7 +177,24 @@ namespace ShootingGame
             target.Defend(Damage);
             return true;
         }
-        public override void Interact(Interface.Interact target) { }
+
+        protected virtual void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other == null) return;
+            if (other.TryGetComponent(out Interface.IDefender defender))
+            {
+                Attack(defender);
+            }
+        }
+
+        protected virtual void OnTriggerExit2D(Collider2D other)
+        {
+            if (other == null) return;
+            if (other.TryGetComponent(out Interface.IDefender defender))
+            {
+                ExitInteract(defender);
+            }
+        }
 
         public virtual void SetDamage(int damage) => _damage = damage;
 
@@ -171,19 +204,17 @@ namespace ShootingGame
     [RequireComponent(typeof(BoxCollider2D))]
     public abstract class ADefender : AInteractable<BoxCollider2D>, Interface.IDefender
     {
-        private int _health;
+        [SerializeField] private int _health;
         public int Health => _health;
         public bool IsDead => Health <= 0;
-        public void Defend(int damage) {
+
+        public virtual void Defend(int damage) {
             if (IsDead) return;
             _health -= damage;
             if (IsDead) OnDead();
         }
         public abstract void OnDead();
-        public override void Interact(Interface.Interact target)
-        {
 
-        }
         public void SetHealth(int health) => _health = health;
     }
 

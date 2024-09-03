@@ -23,7 +23,7 @@ public class ColoredFlash : MonoBehaviour
         {
             StopCoroutine(flashRoutine);
         }
-
+        if(!gameObject.activeInHierarchy) return;
         flashRoutine = StartCoroutine(FlashRoutine(color));
     }
 
