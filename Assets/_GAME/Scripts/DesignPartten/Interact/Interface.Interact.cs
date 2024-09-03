@@ -222,6 +222,10 @@ namespace ShootingGame
         public abstract void OnDead();
 
         public void SetHealth(int health) => _health = health;
+
+        public override void ExitInteract(Interface.Interact target) { }
+
+        public override void Interact(Interface.Interact target) { }
     }
 
 }

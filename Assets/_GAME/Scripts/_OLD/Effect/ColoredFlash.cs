@@ -11,12 +11,22 @@ public class ColoredFlash : MonoBehaviour
     private Material originalMaterial;
     private Coroutine flashRoutine;
 
-    void Start()
-    {
-        originalMaterial = spriteRenderer.material;
-        flashMaterial = new Material(flashMaterial);
+    public void SetSpriteRenderer(SpriteRenderer spriteRenderer) {
+        this.spriteRenderer = spriteRenderer;
+        InitMaterial();
     }
 
+    void Start()
+    {
+        flashMaterial = new Material(flashMaterial);
+        InitMaterial();
+    }
+
+    private void InitMaterial()
+    {
+        if(spriteRenderer != null) originalMaterial = spriteRenderer.material;
+        
+    }
     public void Flash(Color color)
     {
         if (flashRoutine != null)

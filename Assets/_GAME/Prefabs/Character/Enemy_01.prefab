@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
+  _oneHitOnly: 0
 --- !u!114 &724029092634259062
 MonoBehaviour:
   m_ObjectHideFlags: 0

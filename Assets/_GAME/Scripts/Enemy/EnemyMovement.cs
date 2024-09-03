@@ -32,19 +32,21 @@ namespace ShootingGame
             _seeker = GetComponent<Seeker>();
             _rb = GetComponent<Rigidbody2D>();
             _characterSR = GetComponentInChildren<SpriteRenderer>();
-            _target = FindObjectOfType<Player>().transform;
+            
+            if(_target == null) GetTarget();
 
             InvokeRepeating(nameof(CalculatePath), 0f, _repeatTimeUpdatePath);
         }
 
         private Transform GetTarget()
         {
-            if (_target == null) _target = FindObjectOfType<Player>().transform;
+            if (_target == null) _target = GameCtrl.Instance.GetRandomTransformPlayer();
             return _target;
         }
 
         void CalculatePath()
         {
+            if (_target == null) return;
             if (_seeker.IsDone())
                 _seeker.StartPath(_rb.position, _target.position, OnPathCompleted);
         }
@@ -62,9 +64,11 @@ namespace ShootingGame
         IEnumerator MoveToTargetCoroutine()
         {
             int currentWP = 0;
-
             while (currentWP < _path.vectorPath.Count)
             {
+
+                if(_target == null) GetTarget();
+
                 Vector2 direction = ((Vector2)_path.vectorPath[currentWP] - _rb.position).normalized;
                 Vector2 force = direction * _moveSpeed * Time.deltaTime;
                 transform.position += (Vector3)force;

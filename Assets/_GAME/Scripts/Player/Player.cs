@@ -6,12 +6,14 @@ namespace ShootingGame
     {
         [SerializeField] private PlayerMovement _playerMovement;
         [SerializeField] private PlayerSpawner _playerSpawner;
+        [SerializeField] private PlayerDefender _playerDefender;
 
 
         private void OnValidate()
         {
             _playerSpawner = GetComponentInChildren<PlayerSpawner>();
             _playerMovement = GetComponent<PlayerMovement>();
+            _playerDefender = GetComponent<PlayerDefender>();
         }
 
         void Start()
@@ -21,6 +23,11 @@ namespace ShootingGame
                 _playerMovement.Init(_playerSpawner.transform);
                 _playerSpawner.Init(_playerMovement);
             }
+
+            _playerDefender.Init();
+
+
+            GameCtrl.Instance.AddPlayer(this);
         }
     }
 

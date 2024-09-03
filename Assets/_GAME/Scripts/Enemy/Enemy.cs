@@ -15,15 +15,19 @@ namespace ShootingGame
             _enemyDefender = GetComponentInChildren<EnemyDefender>();
             _enemyMovement = GetComponentInChildren<EnemyMovement>();
         }
-        
+
         private void Start(){
             if(_enemyMovement != null && _enemyDefender != null) {
                 _enemyDefender.OnDefend += () => _enemyMovement.PauseMovement(true);
                 _enemyDefender.OnDefendSuccess += () => _enemyMovement.PauseMovement(false);
             }
         }
-        public override void Interact(Interface.Interact target) => target.Interact(this);
+        public override void Interact(Interface.Interact target) {
+            if(target is FireRangePlayer) target.Interact(this);
+        } 
         
-        public override void ExitInteract(Interface.Interact target) => target.ExitInteract(this);
+        public override void ExitInteract(Interface.Interact target) {
+            if(target is FireRangePlayer) target.Interact(this);
+        }
     }
 }

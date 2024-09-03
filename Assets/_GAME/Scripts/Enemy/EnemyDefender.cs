@@ -9,14 +9,9 @@ namespace ShootingGame
 
         public Action OnDefend;
         public Action OnDefendSuccess;
-        public override void ExitInteract(Interface.Interact target) { }
+        
+        public override void OnDead() { }
 
-        public override void Interact(Interface.Interact target) { }
-
-        public override void OnDead()
-        {
-            
-        }
         public override void Defend(int damage)
         {
             base.Defend(damage);
