@@ -22,6 +22,8 @@ namespace ShootingGame
         [SerializeField] private AttackStat bulletStat;
         [SerializeField] private ParticleSystem trailEffect;
 
+        [SerializeField] private bool _oneHitOnly = true;
+
         private Rigidbody2D _rigid;
 
         public Rigidbody2D Rigid
@@ -38,8 +40,9 @@ namespace ShootingGame
         public override void SetDamage(int damage) => bulletStat.damage = damage;
         public override bool Attack(Interface.IDefender target)
         {
-            if (base.Attack(target))
+            if (base.Attack(target) && _oneHitOnly)
             {
+                _oneHitOnly = false;
                 Destroy(gameObject);
                 return true;
             }

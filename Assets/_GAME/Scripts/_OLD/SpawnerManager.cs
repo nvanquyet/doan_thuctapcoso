@@ -57,8 +57,6 @@ public class SpawnerManager : MonoBehaviour
         if (timeBtwSpawn <= 0)
         {
             int randEnemyCount = UnityEngine.Random.Range(2, maxEnemy);
-            if (WeaponCtrl.Instance.Enemies.Count <= 5)
-                randEnemyCount = UnityEngine.Random.Range(maxEnemy - 2, maxEnemy);
 
             List<int> randomIndex = GetRandomIndices(maxEnemy, randEnemyCount);
 

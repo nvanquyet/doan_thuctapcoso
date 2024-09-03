@@ -101,7 +101,7 @@ public class EnemyAI : MonoBehaviour
         }
         if (collision.CompareTag("FireRange"))
         {
-            WeaponCtrl.Instance.AddEnemyToFireRange(this.transform);
+            //WeaponCtrl.Instance.AddEnemyToFireRange(this.transform);
         }
     }
 
@@ -114,7 +114,7 @@ public class EnemyAI : MonoBehaviour
         }
         if (collision.CompareTag("FireRange"))
         {
-            WeaponCtrl.Instance.RemoveEnemyToFireRange(this.transform);
+            //WeaponCtrl.Instance.RemoveEnemyToFireRange(this.transform);
         }
     }
 

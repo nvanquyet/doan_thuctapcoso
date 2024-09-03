@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 namespace ShootingGame
 {
-    public class WeaponCtrl : Singleton<WeaponCtrl>
+    public class WeaponCtrl : MonoBehaviour
     {
         [SerializeField] private List<Transform> _allPositionSpawnWeapon;
         [SerializeField] private List<BaseWeapon> _weapons;

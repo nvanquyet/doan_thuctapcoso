@@ -167,9 +167,11 @@ namespace ShootingGame
     public abstract class AAttacker : AInteractable<BoxCollider2D>, Interface.IAttacker
     {
         [SerializeField] protected int _damage;
+        [SerializeField] private bool _oneHitOnly = true;
         protected bool _canAttack = true;
         public virtual int Damage => _damage;
         public bool CanAttack => _canAttack;
+        
 
         public virtual bool Attack(Interface.IDefender target)
         {
@@ -184,6 +186,7 @@ namespace ShootingGame
             if (other.TryGetComponent(out Interface.IDefender defender))
             {
                 Attack(defender);
+                if(_oneHitOnly) _canAttack = false;
             }
         }
 
@@ -199,6 +202,9 @@ namespace ShootingGame
         public virtual void SetDamage(int damage) => _damage = damage;
 
         public virtual void SetCanAttack(bool value) => _canAttack = value;
+
+        public override void Interact(Interface.Interact target) { }
+        public override void ExitInteract(Interface.Interact target) { }
     }
 
     [RequireComponent(typeof(BoxCollider2D))]
