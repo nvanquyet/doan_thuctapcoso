@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 using UnityEngine.TextCore.Text;
+using ShootingGame;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -102,7 +103,7 @@ public class EnemyAI : MonoBehaviour
         }
         if (collision.CompareTag("FireRange"))
         {
-            FindObjectOfType<WeaponManager>().AddEnemyToFireRange(this.transform);
+            WeaponCtrl.Instance.AddEnemyToFireRange(this.transform);
         }
     }
 
@@ -115,7 +116,7 @@ public class EnemyAI : MonoBehaviour
         }
         if (collision.CompareTag("FireRange"))
         {
-            FindObjectOfType<WeaponManager>().RemoveEnemyToFireRange(this.transform);
+            WeaponCtrl.Instance.RemoveEnemyToFireRange(this.transform);
         }
     }
 

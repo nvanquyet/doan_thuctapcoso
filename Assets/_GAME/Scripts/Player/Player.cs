@@ -2,13 +2,13 @@ using UnityEngine;
 namespace ShootingGame
 {
     [RequireComponent(typeof(PlayerMovement))]
-    public class Player : MonoBehaviour
+    public class Player : AInteractor
     {
         [SerializeField] private PlayerMovement _playerMovement;
         [SerializeField] private PlayerSpawner _playerSpawner;
 
 
-        private void Awake()
+        private void OnValidate()
         {
             _playerSpawner = GetComponentInChildren<PlayerSpawner>();
             _playerMovement = GetComponent<PlayerMovement>();

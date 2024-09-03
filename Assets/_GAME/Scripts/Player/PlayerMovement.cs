@@ -7,22 +7,10 @@ namespace ShootingGame
         Idle,
         Run
     }
-    public interface IPlayerMovement
-    {
-        PlayerLocoMotionState LocomotionState { get; }
-        void Move(Vector3 direction);
-        void Stop();
-        void Continue();
-        void PauseMovement(bool pauseMovement);
-        bool IsMoving { get; }
-        float Speed { get; }
-        float CurrentSpeed { get; }
-        void SetSpeed (float speed);
-    }
 
 
     [RequireComponent(typeof(RigidbodyType2D))]
-    public class PlayerMovement : MonoBehaviour, IPlayerMovement
+    public class PlayerMovement : MonoBehaviour, Interface.IPlayerMovement
     {
         #region Properties
         [SerializeField] private float accelerationTime = 0.1f;

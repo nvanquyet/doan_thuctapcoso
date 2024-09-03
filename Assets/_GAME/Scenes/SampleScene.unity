@@ -2797,7 +2797,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1199280083}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: WeaponManager, Assembly-CSharp
         m_MethodName: AddWeapon
         m_Mode: 2
@@ -3942,7 +3942,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1199280083}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: WeaponManager, Assembly-CSharp
         m_MethodName: AddWeapon
         m_Mode: 2
@@ -4416,17 +4416,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1483145115703445930, guid: be7a55b89ea82cf4a8470987bbd82634, type: 3}
   m_PrefabInstance: {fileID: 235177621579619626}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1199280083 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6307058818956444238, guid: be7a55b89ea82cf4a8470987bbd82634, type: 3}
-  m_PrefabInstance: {fileID: 235177621579619626}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fc76cd6f46184b1ca440200f0f8df36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1214079766
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5058,7 +5047,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1199280083}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: WeaponManager, Assembly-CSharp
         m_MethodName: AddWeapon
         m_Mode: 2
@@ -7404,6 +7393,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 476460604}
     m_Modifications:
+    - target: {fileID: 75539873049486964, guid: be7a55b89ea82cf4a8470987bbd82634, type: 3}
+      propertyPath: _weapons.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 75539873049486964, guid: be7a55b89ea82cf4a8470987bbd82634, type: 3}
+      propertyPath: _weapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 235177621579619627}
     - target: {fileID: 1483145115703445930, guid: be7a55b89ea82cf4a8470987bbd82634, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5804475
@@ -7444,6 +7441,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1842319733547544727, guid: be7a55b89ea82cf4a8470987bbd82634, type: 3}
+      propertyPath: weaponManager
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3218921224085830027, guid: be7a55b89ea82cf4a8470987bbd82634, type: 3}
       propertyPath: healthBar
       value: 
@@ -7461,6 +7462,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be7a55b89ea82cf4a8470987bbd82634, type: 3}
+--- !u!114 &235177621579619627 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5424747739761340129, guid: be7a55b89ea82cf4a8470987bbd82634, type: 3}
+  m_PrefabInstance: {fileID: 235177621579619626}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbeb4b870bcd28a47a03ec0d11d530be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -2,18 +2,7 @@ using System;
 using UnityEngine;
 namespace ShootingGame
 {
-    public interface ISpawner
-    {
-        void Spawn();
-    }
-
-    public interface IPlayerSpawner : ISpawner
-    {
-        PlayerGraphic PlayerGraphic { get; }
-    }
-
-
-    public class PlayerSpawner : MonoBehaviour, IPlayerSpawner
+    public class PlayerSpawner : MonoBehaviour, Interface.IPlayerSpawner
     {
 
         #region Properties
@@ -38,7 +27,7 @@ namespace ShootingGame
             return "Player1";
         }
 
-        internal void Init(IPlayerMovement playerMovement)
+        internal void Init(Interface.IPlayerMovement playerMovement)
         {
             if(PlayerGraphic != null) PlayerGraphic.Init(playerMovement);
         }

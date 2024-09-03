@@ -1,30 +1,16 @@
 using UnityEngine;
 namespace ShootingGame
 {
-    public interface IPlayerGraphic
-    {
-        Animator Animator { get; }
-
-        float Speed { get; }
-
-        void SetAnimation(RuntimeAnimatorController runtimeAnimatorController);
-
-        void SetLocoMotionState(PlayerLocoMotionState state);
-
-        void HashString();
-    }
-
-
 
     [RequireComponent(typeof(Animator))]
-    public class PlayerGraphic : MonoBehaviour, IPlayerGraphic
+    public class PlayerGraphic : MonoBehaviour, Interface.IPlayerGraphic
     {
         #region Properties
         private Animator _animator;
 
         private int _locomotionAnimation;
 
-        private IPlayerMovement playerMovement;
+        private Interface.IPlayerMovement playerMovement;
 
         #endregion  
 
@@ -63,7 +49,7 @@ namespace ShootingGame
         }
         #endregion
        
-       public void Init(IPlayerMovement playerMovement){
+       public void Init(Interface.IPlayerMovement playerMovement){
             this.playerMovement = playerMovement;
             HashString();
        }
