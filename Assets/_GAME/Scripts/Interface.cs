@@ -16,5 +16,12 @@ namespace ShootingGame
             void Move(Vector3 direction);
         }
     }
+
+
+    public interface ICoroutineBehaviour
+    {
+        Coroutine StartRoutine(IEnumerator routine);
+        void StopRoutine(Coroutine coroutine);
+    }
 }
 

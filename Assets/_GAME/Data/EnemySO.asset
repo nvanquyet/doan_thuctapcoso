@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90f4e96600f9058418b89e9a9ca9826a, type: 3}
+  m_Name: EnemySO
+  m_EditorClassIdentifier: 
+  _data:
+  - key: 0
+    value: {fileID: 1926085311155766288, guid: 64bd57cf57b4c45b0a6a1a1e5b6c29ff, type: 3}
+  - key: 1
+    value: {fileID: 1926085311155766288, guid: bc181db4cb4e04d88afe0fe4b6a48bd5, type: 3}
+  - key: 2
+    value: {fileID: 1926085311155766288, guid: 55534d12d6ce548699a14baf37917cae, type: 3}
+  - key: 3
+    value: {fileID: 1926085311155766288, guid: 1d5312fde27424a4c8852f2d9e25c32e, type: 3}
+  path: Assets/_GAME/Prefabs/Character/Enemies
