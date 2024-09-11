@@ -1,33 +1,40 @@
-using System.Collections;
 using UnityEngine;
 namespace ShootingGame
 {
-
-    public class LevelSpawner : Singleton<LevelSpawner>, ICoroutineBehaviour
+    public class LevelSpawner : Singleton<LevelSpawner>
     {
-        private Coroutine spawnRoutine;
+        /// <summary>
+        /// Scaling Factor
+        /// </summary>
+        [SerializeField] private float scalingFactor = 1.1f;
 
-#region  Implement
-        public Coroutine StartRoutine(IEnumerator routine) => StartCoroutine(routine);
+        /// <summary>
+        /// Wave Prefab
+        /// </summary>
+        [SerializeField] private Wave wave;
+    
+        private int _currentWave;
 
-        public void StopRoutine(Coroutine coroutine)
-        {
-            if (coroutine != null) StopCoroutine(coroutine);
+        protected virtual void OnValidate() => wave = GetComponentInChildren<Wave>();
+
+        void Start() =>  _currentWave = 0;
+
+        /// <summary>
+        /// Start Wave
+        /// </summary>
+        private void NextWave() {
+            _currentWave++;
+            if(wave == null) return;
+            wave.Init(GetScalingFactor(), _currentWave);
         }
-#endregion
 
-        public void StartSpawning() =>  spawnRoutine = StartRoutine(Spawn());
+        private float GetScalingFactor() => Mathf.Pow(scalingFactor, _currentWave);
 
-        public void StopSpawning() => StopRoutine(spawnRoutine);
+        /// <summary>
+        /// Call Event Start Wave
+        /// </summary>
+        public void OnStartWave() => NextWave();
 
-        private IEnumerator Spawn()
-        {
-            while (true)
-            {
-                yield return new WaitForSeconds(1f);
-                Debug.Log("Spawning");
-            }
-        }
     }
 
 }
