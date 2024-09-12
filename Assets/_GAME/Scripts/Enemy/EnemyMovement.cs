@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections;
 using Pathfinding;
 using UnityEngine;
@@ -32,9 +33,6 @@ namespace ShootingGame
             _seeker = GetComponent<Seeker>();
             _rb = GetComponent<Rigidbody2D>();
             _characterSR = GetComponentInChildren<SpriteRenderer>();
-            
-            if(_target == null) GetTarget();
-
             InvokeRepeating(nameof(CalculatePath), 0f, _repeatTimeUpdatePath);
         }
 
@@ -46,7 +44,11 @@ namespace ShootingGame
 
         void CalculatePath()
         {
-            if (_target == null) return;
+            if (_target == null)
+            {
+                GetTarget();
+                return;
+            }
             if (_seeker.IsDone())
                 _seeker.StartPath(_rb.position, _target.position, OnPathCompleted);
         }
@@ -107,5 +109,10 @@ namespace ShootingGame
         public void SetSpeed(float speed) => _moveSpeed = Mathf.Max(speed, 1);
 
         public void Move(Vector3 direction) => Continue();
+
+        internal void Init(float scaleFactor)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

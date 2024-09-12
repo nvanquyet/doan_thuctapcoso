@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace ShootingGame
@@ -8,6 +9,8 @@ namespace ShootingGame
         [SerializeField] private EnemyDefender _enemyDefender;
         [SerializeField] private EnemyMovement _enemyMovement;
         public bool IsDead => _enemyDefender.IsDead;
+
+        public Action<Transform> OnDeadAction;
 
         private void OnValidate()
         {
@@ -20,8 +23,21 @@ namespace ShootingGame
             if(_enemyMovement != null && _enemyDefender != null) {
                 _enemyDefender.OnDefend += () => _enemyMovement.PauseMovement(true);
                 _enemyDefender.OnDefendSuccess += () => _enemyMovement.PauseMovement(false);
+                _enemyDefender.OnDeath += () =>
+                {
+                    OnDeadAction?.Invoke(this.transform);
+                    Destroy(gameObject);
+                };
             }
         }
+
+        public void Init(float scaleFactor){
+            _enemyDefender.Init(scaleFactor);
+            _enemyAttacker.Init(scaleFactor);
+            //_enemyMovement.Init(scaleFactor);
+        }
+
+
         public override void Interact(Interface.Interact target) {
             if(target is FireRangePlayer) target.Interact(this);
         } 

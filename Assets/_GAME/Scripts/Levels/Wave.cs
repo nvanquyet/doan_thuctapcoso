@@ -1,4 +1,7 @@
+using Mono.CSharp;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using VawnWuyest;
 namespace ShootingGame
@@ -18,6 +21,13 @@ namespace ShootingGame
 
     public class Wave : MonoBehaviour, ICoroutineBehaviour
     {
+
+        [Header("All Position Spawn")]
+        [SerializeField] private List<Transform> spawnPositions = new();
+
+        [Header("Config")]
+        [SerializeField] private float spawnRadius = 10f;
+        [SerializeField] private float timeDelaySpawn = 2f;
         //This properties is base data of first wave
         [SerializeField] private WaveProperties baseWaveProperties;
 
@@ -37,6 +47,20 @@ namespace ShootingGame
             private set;
         } 
 
+
+        protected virtual void OnValidate(){
+            spawnPositions = GetComponentsInChildren<Transform>().ToList();
+            spawnPositions.RemoveAt(0);
+            foreach (Transform spawn in spawnPositions)
+            {
+                // Generate a random point within the radius
+                Vector2 randomPoint = Random.insideUnitCircle * spawnRadius;
+
+                // Apply the random position to the spawn point (keeping original z-axis)
+                spawn.position = new Vector3(spawn.position.x + randomPoint.x, spawn.position.y + randomPoint.y, spawn.position.z);
+            }
+        }
+
         //This method to set data wave
         public void Init(float scalingFactor, int currentWave)
         {
@@ -51,7 +75,7 @@ namespace ShootingGame
                 spawnThreshold = Mathf.RoundToInt(baseWaveProperties.spawnThreshold * Mathf.Pow(scalingFactor, currentWave)),
             };
 
-            StartSpawning();
+            Invoke(nameof(StartSpawning), timeDelaySpawn);
         }
 
 #region  Implement
@@ -78,13 +102,25 @@ namespace ShootingGame
         private IEnumerator Spawn()
         {
             var curEnemyCount = 0;
+            var allEnimies = GameData.Instance.Enemies.GetAllValue();
             while (true)
             {
                 //Spawn Enemy from data
-
-                curEnemyCount++;
+                var enemy = allEnimies[Random.Range(0, Mathf.Min(currentWave, allEnimies.Length))];
+                //Init data enemy
+                if(enemy != null) {
+                    var randomPos = spawnPositions[Random.Range(0, spawnPositions.Count)];
+                    var enemyInstance = Instantiate(enemy, randomPos);
+                    Debug.Log("Spawn Enemy");
+                    //Init data enemy
+                    if(enemyInstance) {
+                        enemyInstance.transform.localPosition = Vector3.zero;
+                        enemyInstance.Init(scalingFactor);
+                        curEnemyCount++;
+                    }
+                }
                 if(curEnemyCount >= waveProperties.enemyCount){
-                    break;
+                    yield break;
                 } else if (curEnemyCount % waveProperties.spawnThreshold == 0)
                 {
                     yield return new WaitForSeconds(waveProperties.timeThreshold);

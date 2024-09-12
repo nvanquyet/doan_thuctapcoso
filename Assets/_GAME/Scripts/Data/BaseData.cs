@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 namespace VawnWuyest.Data
 {
@@ -23,8 +24,6 @@ namespace VawnWuyest.Data
     {
         [SerializeField] protected BaseDataStruct<K, V>[] _data;
 
-        protected V[] _values;
-
         protected Dictionary<K, V> _dataDict;
 
         public Dictionary<K, V> DataDict
@@ -45,10 +44,7 @@ namespace VawnWuyest.Data
 
         public V[] GetAllValue()
         {
-            if (_values != null && _values.Length > 0) return _values;
-            _values = new V[_data.Length];
-            for (int i = 0; i < _data.Length; i++) _values[i] = _data[i].value;
-            return _values;
+            return DataDict.Values.ToArray();
         }
         public abstract void OnValidateKey();
         public abstract void OnValidateValue();
@@ -75,6 +71,8 @@ namespace VawnWuyest.Data
                 }
             }
             Debug.Log("Validate Data Success");
+            //Set Dirty 
+            UnityEditor.EditorUtility.SetDirty(this);
 #endif
         }
 
@@ -82,6 +80,7 @@ namespace VawnWuyest.Data
         {
             if (_data == null || _data.Length == 0) return;
             for (int i = 0; i < _data.Length; i++) _data[i].key = i;
+            UnityEditor.EditorUtility.SetDirty(this);
             Debug.Log("Validate Key Success");
         }
 
@@ -102,6 +101,7 @@ namespace VawnWuyest.Data
                 }
             }
             Debug.Log("Validate Data Success");
+            UnityEditor.EditorUtility.SetDirty(this);
 #endif
         }
     }

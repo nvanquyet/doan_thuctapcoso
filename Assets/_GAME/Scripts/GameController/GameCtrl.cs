@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace ShootingGame
 {
-    public class GameCtrl : Singleton<GameCtrl>
+    public class GameCtrl : VawnWuyest.Singleton<GameCtrl>
     {
         private List<Player> _players;
 

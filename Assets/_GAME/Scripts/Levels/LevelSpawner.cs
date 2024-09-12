@@ -1,7 +1,7 @@
 using UnityEngine;
 namespace ShootingGame
 {
-    public class LevelSpawner : Singleton<LevelSpawner>
+    public class LevelSpawner : VawnWuyest.Singleton<LevelSpawner>
     {
         /// <summary>
         /// Scaling Factor
@@ -17,15 +17,17 @@ namespace ShootingGame
 
         protected virtual void OnValidate() => wave = GetComponentInChildren<Wave>();
 
-        void Start() =>  _currentWave = 0;
+        void Start() {
+            _currentWave = 0;
+            OnStartWave();
+        }
 
         /// <summary>
         /// Start Wave
         /// </summary>
-        private void NextWave() {
+        public void NextWave() {
             _currentWave++;
-            if(wave == null) return;
-            wave.Init(GetScalingFactor(), _currentWave);
+            OnStartWave();
         }
 
         private float GetScalingFactor() => Mathf.Pow(scalingFactor, _currentWave);
@@ -33,7 +35,10 @@ namespace ShootingGame
         /// <summary>
         /// Call Event Start Wave
         /// </summary>
-        public void OnStartWave() => NextWave();
+        public void OnStartWave() {
+            if(wave == null) return;
+            wave.Init(GetScalingFactor(), _currentWave);
+        }
 
     }
 

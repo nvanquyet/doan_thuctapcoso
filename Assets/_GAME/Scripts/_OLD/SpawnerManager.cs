@@ -15,16 +15,9 @@ public class SpawnerManager : MonoBehaviour
     public WeaponManager weaponManager;
 
     public List<Spawner> spawners;
-
-    private Player player;
     int maxEnemy = 5;
     int roundCount = 0;
-
-    private void Start()
-    {
-        player = FindObjectOfType<Player>();
-    }
-
+    
     public List<int> GetRandomIndices(int n, int k)
     {
 

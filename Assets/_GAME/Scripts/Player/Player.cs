@@ -18,6 +18,7 @@ namespace ShootingGame
 
         void Start()
         {
+            GameCtrl.Instance.AddPlayer(this);
             if(_playerSpawner != null && _playerMovement != null) {
                 _playerSpawner.Spawn();
                 _playerMovement.Init(_playerSpawner.transform);
@@ -27,7 +28,6 @@ namespace ShootingGame
             _playerDefender.Init();
 
 
-            GameCtrl.Instance.AddPlayer(this);
         }
     }
 
