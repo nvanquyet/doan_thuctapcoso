@@ -44,7 +44,13 @@ namespace ShootingGame
         /// <summary>
         /// Show Merge and Upgrade UI
         /// </summary>
-        public void OnWaveClear() => LevelSpawner.Instance.OnStartWave();
+        private void OnWaveClear() => LevelSpawner.Instance.OnStartWave();
+
+        internal void OnCheckWaveClear()
+        {
+            Debug.Log($"Wave Clear {LevelSpawner.Instance.IsWaveClear}");
+            if(LevelSpawner.Instance.IsWaveClear) OnWaveClear();
+        }
     }
 
 }

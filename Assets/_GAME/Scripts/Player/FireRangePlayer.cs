@@ -20,10 +20,13 @@ namespace ShootingGame
         public override void Interact(Interface.Interact target) { 
             if(target == null) return;
             if(target is Enemy) {
-                Debug.Log("Enemies Entry");
                 var enemy = target as Enemy;
                 if(enemy.IsDead) return;
-                (target as Enemy).OnDeadAction += (value) =>_weaponCtrl.RemoveEnemyToFireRange(value);
+                enemy.OnDeadAction += () =>
+                {
+                    _weaponCtrl.RemoveEnemyToFireRange(enemy.transform);
+                    LevelSpawner.Instance.OnEnemyDeath(enemy);
+                };
                 _weaponCtrl.AddEnemyToFireRange((target as Enemy).transform);
             }
         }

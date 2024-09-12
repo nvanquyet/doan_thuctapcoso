@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using static ShootingGame.Interface;
 
@@ -22,6 +23,8 @@ namespace ShootingGame
         [SerializeField] private AttackStat bulletStat;
         [SerializeField] private ParticleSystem trailEffect;
 
+        public Action RecycleAction;
+
         private Rigidbody2D _rigid;
 
         public Rigidbody2D Rigid
@@ -34,13 +37,13 @@ namespace ShootingGame
         }
 
         #region  Attack
-        public override int Damage => (int) Random.Range(bulletStat.damage * 0.5f, bulletStat.damage * 1.5f);
+        public override int Damage => (int) UnityEngine.Random.Range(bulletStat.damage * 0.5f, bulletStat.damage * 1.5f);
         public override void SetDamage(int damage) => bulletStat.damage = damage;
         public override bool Attack(Interface.IDefender target)
         {
             if (base.Attack(target))
             {
-                Destroy(gameObject);
+                RecycleAction?.Invoke();
                 return true;
             }
             return false;
@@ -53,7 +56,9 @@ namespace ShootingGame
         public void Move(Vector3 direction) => Rigid?.AddForce(direction, ForceMode2D.Impulse);
         public void Spawn()
         {
+            transform.rotation = Quaternion.identity;
             Move(transform.right * bulletStat.speed);
+            transform.SetParent(null);
             if (trailEffect) trailEffect.Play();
         }
         #endregion

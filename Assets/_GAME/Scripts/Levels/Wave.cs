@@ -1,4 +1,3 @@
-using Mono.CSharp;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +32,11 @@ namespace ShootingGame
 
         //This properties is distance wave to spawn boss
         [SerializeField] private int bossWaveDistance = 5;
+
+
+
+        public bool IsWaveClear => !isSpawning && enemies.Count <= 0;
+
         private Coroutine spawnRoutine;
         //This properties to spawn and set data enemy
         private float scalingFactor;
@@ -42,11 +46,9 @@ namespace ShootingGame
         private bool isBossWave;
         private WaveProperties waveProperties;
         //This properties is flag to check spawn done
-        public bool IsSpawnDone {
-            get;
-            private set;
-        } 
+        private bool isSpawning;
 
+        private List<Enemy> enemies = new();
 
         protected virtual void OnValidate(){
             spawnPositions = GetComponentsInChildren<Transform>().ToList();
@@ -90,7 +92,6 @@ namespace ShootingGame
         /// Start Spawning
         /// </summary>
         public void StartSpawning() {
-            IsSpawnDone = false;
             spawnRoutine = StartRoutine(Spawn());
         }
         public void StopSpawning() => StopRoutine(spawnRoutine);
@@ -101,6 +102,11 @@ namespace ShootingGame
         /// <returns></returns>
         private IEnumerator Spawn()
         {
+            isSpawning = true;
+
+            if(enemies == null) enemies = new List<Enemy>();
+            else enemies.Clear();
+
             var curEnemyCount = 0;
             var allEnimies = GameData.Instance.Enemies.GetAllValue();
             while (true)
@@ -111,16 +117,16 @@ namespace ShootingGame
                 if(enemy != null) {
                     var randomPos = spawnPositions[Random.Range(0, spawnPositions.Count)];
                     var enemyInstance = Instantiate(enemy, randomPos);
-                    Debug.Log("Spawn Enemy");
                     //Init data enemy
                     if(enemyInstance) {
                         enemyInstance.transform.localPosition = Vector3.zero;
                         enemyInstance.Init(scalingFactor);
+                        enemies.Add(enemyInstance);
                         curEnemyCount++;
                     }
                 }
                 if(curEnemyCount >= waveProperties.enemyCount){
-                    yield break;
+                    break;
                 } else if (curEnemyCount % waveProperties.spawnThreshold == 0)
                 {
                     yield return new WaitForSeconds(waveProperties.timeThreshold);
@@ -132,8 +138,17 @@ namespace ShootingGame
             if(isBossWave){
                 //Spawn Boss
             }
+
+            isSpawning = false;
         }
 
+
+        public bool OnEnemyDeath(Enemy enemy)
+        {
+            if(enemy == null || !enemies.Contains(enemy)) return false;
+            enemies.Remove(enemy);
+            return true;
+        }
     }
 
 }

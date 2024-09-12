@@ -10,7 +10,7 @@ namespace ShootingGame
         [SerializeField] private EnemyMovement _enemyMovement;
         public bool IsDead => _enemyDefender.IsDead;
 
-        public Action<Transform> OnDeadAction;
+        public Action OnDeadAction;
 
         private void OnValidate()
         {
@@ -25,7 +25,7 @@ namespace ShootingGame
                 _enemyDefender.OnDefendSuccess += () => _enemyMovement.PauseMovement(false);
                 _enemyDefender.OnDeath += () =>
                 {
-                    OnDeadAction?.Invoke(this.transform);
+                    OnDeadAction?.Invoke();
                     Destroy(gameObject);
                 };
             }

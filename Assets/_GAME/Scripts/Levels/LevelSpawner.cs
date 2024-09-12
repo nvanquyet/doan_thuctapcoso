@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 namespace ShootingGame
 {
@@ -40,6 +41,24 @@ namespace ShootingGame
             wave.Init(GetScalingFactor(), _currentWave);
         }
 
+
+        public bool OnEnemyDeath(Enemy enemy)
+        {
+            var isDeath = wave.OnEnemyDeath(enemy);
+
+            GameCtrl.Instance.OnCheckWaveClear();
+
+            return isDeath;
+        }
+
+        internal bool IsWaveClear
+        {
+            get
+            {
+                if (wave == null) return false;
+                return wave.IsWaveClear;
+            }
+        }
     }
 
 }

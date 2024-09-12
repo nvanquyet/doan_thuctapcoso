@@ -40,7 +40,7 @@ namespace ShootingGame
                 var bulletClone = _bulletPool.Get();
                 bulletClone.transform.position = spanw.position;
                 bulletClone.transform.rotation = Quaternion.identity;
-                bulletClone.transform.SetParent(null);
+                bulletClone.RecycleAction = Recycle;
 
                 Invoke(nameof(Recycle), 1f);
                 void Recycle()
