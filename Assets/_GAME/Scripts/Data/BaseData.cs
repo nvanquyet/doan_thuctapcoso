@@ -46,6 +46,13 @@ namespace VawnWuyest.Data
         {
             return DataDict.Values.ToArray();
         }
+
+        public V GetValue(K key)
+        {
+            if (DataDict.ContainsKey(key)) return DataDict[key];
+            return default;
+        }
+
         public abstract void OnValidateKey();
         public abstract void OnValidateValue();
         public abstract void OnValidateData();
