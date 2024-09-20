@@ -20,7 +20,9 @@ namespace ShootingGame
 
         private void ResetInvulnerability() => _invulnerability = false;
 
-        public override void OnDead() { }
+        public override void OnDead() {
+            FindObjectOfType<LosePanel>().Show();
+        }
 
         internal void Init()
         {
