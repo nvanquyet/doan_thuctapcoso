@@ -59,7 +59,7 @@ namespace ShootingGame
                 Vector2 randomPoint = Random.insideUnitCircle * spawnRadius;
 
                 // Apply the random position to the spawn point (keeping original z-axis)
-                spawn.position = new Vector3(spawn.position.x + randomPoint.x, spawn.position.y + randomPoint.y, spawn.position.z);
+                spawn.position = new Vector3( randomPoint.x, randomPoint.y, spawn.position.z);
             }
         }
 

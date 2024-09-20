@@ -49,7 +49,7 @@ namespace ShootingGame
         internal void OnCheckWaveClear()
         {
             Debug.Log($"Wave Clear {LevelSpawner.Instance.IsWaveClear}");
-            if(LevelSpawner.Instance.IsWaveClear) OnWaveClear();
+            //if(LevelSpawner.Instance.IsWaveClear) OnWaveClear();
         }
     }
 

@@ -175,7 +175,7 @@ namespace ShootingGame
 
         public virtual bool Attack(Interface.IDefender target)
         {
-            if (!CanAttack && _damage <= 0) return false;
+            if (!CanAttack && Damage <= 0) return false;
             target.Defend(Damage);
             return true;
         }

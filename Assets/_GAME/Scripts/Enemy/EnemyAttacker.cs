@@ -10,12 +10,14 @@ namespace ShootingGame
         {
             if(target == null || target is EnemyDefender) return false;
             _isAttacking = base.Attack(target);
-            if(_isAttacking) Invoke(nameof(Attack), 1f);
+            _currentTarget = target;
+            if (_isAttacking) Invoke(nameof(Attack), UnityEngine.Random.Range(0.25f, 0.5f));
             return true;
         }
         
         private void Attack(){
-            if(_currentTarget == null || !_isAttacking) return;
+           Debug.Log($"attack repeat {_isAttacking} currrentTarget {_currentTarget}");
+            if (_currentTarget == null || !_isAttacking) return;
             Attack(_currentTarget);
         }
 

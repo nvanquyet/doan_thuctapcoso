@@ -10,17 +10,18 @@ namespace ShootingGame
         [SerializeField] private Transform[] _bulletSpawnPoint;
         [SerializeField] private int _amountBulletPooling = 10;
 
-        [SerializeField] private float _fireRate = 0.45f;
+        [SerializeField] private float _fireRate = 0.5f;
 
         private ObjectPooling<BaseBullet> _bulletPool;
         private ObjectPooling<Transform> _muzzlePool;
 
         private float mFireRate = 0;
-
+        private BaseBullet _bullet;
+        private Transform _muzzle;
         private void Start()
         {
-            _bulletPool = new ObjectPooling<BaseBullet>(_bulletPrefab, _amountBulletPooling, transform);
             _muzzlePool = new ObjectPooling<Transform>(_muzzlePrefab, _amountBulletPooling, transform);
+            _bulletPool = new ObjectPooling<BaseBullet>(_bulletPrefab, _amountBulletPooling, transform);
         }
 
         public void Attack()
@@ -36,22 +37,24 @@ namespace ShootingGame
                 var muzzleClone = _muzzlePool.Get();
                 muzzleClone.position = spanw.position;
                 muzzleClone.rotation = transform.rotation;
-
+                _muzzle = muzzleClone;
                 var bulletClone = _bulletPool.Get();
                 bulletClone.transform.position = spanw.position;
-                bulletClone.transform.rotation = Quaternion.identity;
-                bulletClone.RecycleAction = Recycle;
-
-                Invoke(nameof(Recycle), 1f);
-                void Recycle()
-                {
-                    _bulletPool.Recycle(bulletClone);
-                    bulletClone.transform.SetParent(transform);
-                    _muzzlePool.Recycle(muzzleClone);
-                }
+                bulletClone.RecycleAction = RecycleBullet;
+                bulletClone.Spawn(spanw.right);
+                _bullet = bulletClone;
+                Invoke(nameof(RecycleBullet), _fireRate);
+                Invoke(nameof(RecycleMuzzle), 0.1f);
+                
+                
             }
         }
-
+        void RecycleBullet()
+        {
+            _bulletPool.Recycle(_bullet);
+            _bullet.transform.SetParent(transform);
+        }
+        void RecycleMuzzle() => _muzzlePool.Recycle(_muzzle);
         public void Rotate(Vector3 pos)
         {
             Vector2 lookDir = pos - transform.position;

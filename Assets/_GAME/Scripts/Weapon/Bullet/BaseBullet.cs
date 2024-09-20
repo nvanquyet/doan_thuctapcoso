@@ -43,24 +43,38 @@ namespace ShootingGame
         {
             if (base.Attack(target))
             {
-                RecycleAction?.Invoke();
+                Recycle();
                 return true;
             }
             return false;
         }
 
+        private void Recycle()
+        {
+            if(gameObject.activeInHierarchy) RecycleAction?.Invoke();
+        }
+
         #endregion
 
         #region Spawn and Move
-        private void OnEnable() => Spawn();
         public void Move(Vector3 direction) => Rigid?.AddForce(direction, ForceMode2D.Impulse);
         public void Spawn()
         {
             transform.rotation = Quaternion.identity;
             Move(transform.right * bulletStat.speed);
-            transform.SetParent(null);
             if (trailEffect) trailEffect.Play();
+            transform.SetParent(null);
+            Invoke(nameof(Recycle), 2f);
         }
+
+        public void Spawn(Vector3 direction)
+        {
+            Move(direction.normalized * bulletStat.speed);
+            if (trailEffect) trailEffect.Play();
+            transform.SetParent(null);
+            Invoke(nameof(Recycle), 2f);
+        }
+
         #endregion
 
 

@@ -18,7 +18,7 @@ namespace ShootingGame
         public override void Defend(int damage)
         {
             base.Defend(damage);
-             // Flash
+            // Flash
             if (flash != null)  flash.Flash(Color.white);
             OnDefend?.Invoke();
             Invoke(nameof(DefendSuccess), 1f);

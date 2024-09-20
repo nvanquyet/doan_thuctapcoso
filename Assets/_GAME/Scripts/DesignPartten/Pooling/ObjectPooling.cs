@@ -13,7 +13,7 @@ namespace ShootingGame
         {
             _prefab = prefab;
             _parentTransform = parentTransform;
-
+            Debug.Log($"Parent Ts {_parentTransform}");
             for (int i = 0; i < initialSize; i++)
             {
                 T newObject = GameObject.Instantiate(_prefab, _parentTransform);
@@ -32,13 +32,13 @@ namespace ShootingGame
             }
 
             T objectToGet = _objects.Dequeue();
-            objectToGet.gameObject.SetActive(true);
+            if (objectToGet && !objectToGet.gameObject.activeInHierarchy) objectToGet?.gameObject.SetActive(true);
             return objectToGet;
         }
 
         public void Recycle(T objectToReturn)
         {
-            objectToReturn.gameObject.SetActive(false);
+            if(objectToReturn != null && objectToReturn.gameObject.activeInHierarchy) objectToReturn?.gameObject.SetActive(false);
             _objects.Enqueue(objectToReturn);
         }
     }
