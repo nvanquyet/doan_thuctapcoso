@@ -795,6 +795,7 @@ MonoBehaviour:
   _playerMovement: {fileID: 6964917628213487537}
   _playerSpawner: {fileID: 7142928403529715919}
   _playerDefender: {fileID: 5252302722478017633}
+  _statData: {fileID: 11400000, guid: 44515c370d535a544a82e75a143b94ca, type: 2}
 --- !u!114 &5252302722478017633
 MonoBehaviour:
   m_ObjectHideFlags: 0

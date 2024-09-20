@@ -1,4 +1,6 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using VawnWuyest.Data;
 namespace ShootingGame
 {
     [RequireComponent(typeof(PlayerMovement))]
@@ -8,6 +10,14 @@ namespace ShootingGame
         [SerializeField] private PlayerSpawner _playerSpawner;
         [SerializeField] private PlayerDefender _playerDefender;
 
+        /// <summary>
+        /// You must have StatData in the Player
+        /// </summary>
+        [SerializeField] private PlayerStatData _statData;
+
+        //public PlayerStatData StatData => _statData;
+
+        public PlayerStat Stat => _statData.GetAllValue()[0];
 
         private void OnValidate()
         {
@@ -26,8 +36,6 @@ namespace ShootingGame
             }
 
             _playerDefender.Init();
-
-
         }
     }
 
