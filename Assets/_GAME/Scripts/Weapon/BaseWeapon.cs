@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using VawnWuyest.Data;
 using static ShootingGame.Interface;
 namespace ShootingGame
 {
@@ -18,6 +20,7 @@ namespace ShootingGame
         private float mFireRate = 0;
         private BaseBullet _bullet;
         private Transform _muzzle;
+
         private void Start()
         {
             _muzzlePool = new ObjectPooling<Transform>(_muzzlePrefab, _amountBulletPooling, transform);
@@ -72,6 +75,52 @@ namespace ShootingGame
         public override void Interact(Interact target) { }
 
         public override int Damage => 0;
+
+
+
+
+        #region Stat
+        [SerializeField] private WeaponStat equiqment;
+        private BaseStat totalStat;
+
+        internal void ApplyStat(IStats stat)
+        {
+            var baseData = equiqment.Data;
+            var allStat = baseData.AllStats;
+
+            totalStat = new BaseStat(baseData.AllStats, true);
+
+            foreach (var s in allStat)
+            {
+                var target = stat.Data.GetStat(s.TypeStat);
+                var baseValue = baseData.GetStat(s.TypeStat).Value;
+
+                var totalValue = totalStat.GetStat(s.TypeStat);
+                switch(s.TypeValueStat)
+                {
+                    case TypeValueStat.FixedValue:
+                        totalValue.SetValue(baseValue + target.GetValue(baseValue));
+                        break;
+                    case TypeValueStat.Percentage:
+                        switch(target.TypeValueStat)
+                        {
+                            case TypeValueStat.FixedValue:
+                                totalValue.SetValue(target.Value + s.GetValue(target.Value));
+                                break;
+                            case TypeValueStat.Percentage:
+                                totalValue.SetValue(baseValue + target.Value);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        #endregion
     }
 
 }

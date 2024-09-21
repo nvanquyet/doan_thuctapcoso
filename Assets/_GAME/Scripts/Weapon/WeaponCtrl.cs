@@ -1,21 +1,38 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using VawnWuyest.Data;
 namespace ShootingGame
 {
     public class WeaponCtrl : MonoBehaviour
     {
         [SerializeField] private List<Transform> _allPositionSpawnWeapon;
         [SerializeField] private List<BaseWeapon> _weapons;
+        [SerializeField] private List<BaseWeapon> _showWeapons;
 
         public List<Transform> Enemies = new List<Transform>();
 
         private int MaxWeapon => _allPositionSpawnWeapon.Count;
-
+#if UNITY_EDITOR
         private void OnValidate()
         {
             _allPositionSpawnWeapon = GetComponentsInChildren<Transform>().ToList();
             _allPositionSpawnWeapon.RemoveAt(0);
+        }
+
+#endif
+
+        private void Start()
+        {
+            var index = 0;
+            foreach (var weapon in _showWeapons)
+            {
+                var clone = Instantiate(weapon, _allPositionSpawnWeapon[index++]);
+                clone.gameObject.SetActive(true);
+                //weapon.gameObject.SetActive(false);
+                _weapons.Add(clone);
+            }
+            
         }
 
         private void Update()
@@ -78,6 +95,16 @@ namespace ShootingGame
         public void RemoveEnemyToFireRange(Transform transform)
         {
             Enemies.Remove(transform);
+        }
+
+        public void ApplyStat(IStats stat)
+        {
+            if (_weapons == null || _weapons.Count <= 0) return;
+
+            foreach (var weapon in _weapons)
+            {
+                weapon.ApplyStat(stat);
+            }
         }
     }
 

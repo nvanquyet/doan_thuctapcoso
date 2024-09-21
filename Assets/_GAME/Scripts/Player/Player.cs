@@ -10,15 +10,6 @@ namespace ShootingGame
         [SerializeField] private PlayerSpawner _playerSpawner;
         [SerializeField] private PlayerDefender _playerDefender;
 
-        /// <summary>
-        /// You must have StatData in the Player
-        /// </summary>
-        [SerializeField] private PlayerStatData _statData;
-
-        //public PlayerStatData StatData => _statData;
-
-        public PlayerStat Stat => _statData.GetAllValue()[0];
-
         private void OnValidate()
         {
             _playerSpawner = GetComponentInChildren<PlayerSpawner>();

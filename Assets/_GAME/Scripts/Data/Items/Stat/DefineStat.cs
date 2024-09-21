@@ -5,16 +5,16 @@ using UnityEngine;
 
 namespace VawnWuyest.Data
 {
-#region Struct Stat
+    #region Struct Stat
     [System.Serializable]
-    public enum StatType
+    public enum TypeValueStat
     {
-        FixedValue, 
-        Percentage  
+        FixedValue,
+        Percentage
     }
 
     [System.Serializable]
-    public enum StatDefine
+    public enum TypeStat
     {
         Damage,
         Hp,
@@ -30,122 +30,119 @@ namespace VawnWuyest.Data
         DamageToArmor
     }
     [System.Serializable]
-    public struct Stat{
-        [SerializeField] private StatDefine statDefine;
-        public StatDefine StatDefine => statDefine;
-        [SerializeField] private StatType statType;
-        public StatType StatType => statType;
+    public struct Stat
+    {
+        [SerializeField] private TypeStat typeStat;
+        public TypeStat TypeStat => typeStat;
+        [SerializeField] private TypeValueStat typeValueStat;
+        public TypeValueStat TypeValueStat => typeValueStat;
+
         [SerializeField] private float value;
         public float Value => value;
+        public void SetValue(float value) =>  this.value = value;
 
-        public void SetValue(float value){
-            this.value = value;
-        } 
-        public void SetStatDefine(StatDefine statType){
-            this.statDefine = statType;
-        }
-        
+        public void SetTypeStat(TypeStat statType) => this.typeStat = statType;
+
         public float GetValue(float baseValue)
         {
-            if (statType == StatType.FixedValue)
+            if (typeValueStat == TypeValueStat.FixedValue)
             {
-                return value; 
+                return value;
             }
-            else if (statType == StatType.Percentage)
+            else if (typeValueStat == TypeValueStat.Percentage)
             {
-                return baseValue * (value / 100f); 
+                return baseValue * (value / 100f);
             }
             return 0;
         }
 
     }
-#endregion
+    #endregion
 
-#region Class Equiqment
-[System.Serializable]
-public class StatData
-{
-    [SerializeField] private Stat[] allProperties;
-    private Dictionary<StatDefine, Stat> dictProperties = new Dictionary<StatDefine, Stat>();
-    
-    public StatData(Stat[] allProperties)
+    #region Class Equiqment
+
+
+    #region Base
+    /// <summary>
+    /// This is base stat that hold all Data Stat
+    /// </summary>
+    [System.Serializable]
+    public class BaseStat
     {
-        this.allProperties = allProperties;
-        InitDict();
-    }
+        [SerializeField] private Stat[] datas;
+        private Dictionary<TypeStat, Stat> dictDatas = new Dictionary<TypeStat, Stat>();
 
-    public Stat[] AllProperties => allProperties;
-
-    public Stat GetStat(StatDefine type){
-        if(dictProperties == null || dictProperties.Count <= 0){
+        public BaseStat(Stat[] datas)
+        {
+            this.datas = datas;
             InitDict();
         }
-        if(dictProperties.ContainsKey(type)){
-            return dictProperties[type];
-        }
-        var stat = new Stat();
-        stat.SetStatDefine(type);
-        return stat;
-    }
 
-    private void InitDict(){
-        if(dictProperties == null || dictProperties.Count <= 0){
-            dictProperties = new Dictionary<StatDefine, Stat>();
-        }
-        foreach (var property in allProperties)
+        public BaseStat(Stat[] datas, bool resetValue)
         {
-            dictProperties.Add(property.StatDefine, property);
+            this.datas = datas;
+            InitDict();
+            if (!resetValue) return;
+            foreach (Stat stat in datas) stat.SetValue(0);
         }
-    }
 
-}
+        public Stat[] AllStats => datas;
 
-
-[System.Serializable]
-public struct Equiqment
-{
-    public string itemName;
-    public StatData allStats;
-}
-[System.Serializable]
-public struct PlayerStat
-{
-    [SerializeField] private StatData allStats;
-
-    private StatData bonousStats;
-
-    public StatData AllStats => allStats;
-
-    public StatData BonousStats {
-        get {
-            if(bonousStats == null || bonousStats.AllProperties.Length <= 0){
-                var newStats = new Stat[AllStats.AllProperties.Length];
-                for(int i = 0; i < AllStats.AllProperties.Length; i++){
-                    newStats[i] = AllStats.AllProperties[i];
-                }
-                bonousStats = new StatData(newStats);
-            }
-            return bonousStats;
-        }
-    }
-    
-    public StatData TotalStats {
-        get {
-            Stat[] totalStat = new Stat[allStats.AllProperties.Length];
-            for (int i = 0; i < AllStats.AllProperties.Length; i++)
+        public Stat GetStat(TypeStat type)
+        {
+            if (dictDatas == null || dictDatas.Count <= 0)
             {
-                var type = allStats.AllProperties[i].StatDefine;
-                totalStat[i] = AllStats.AllProperties[i];
-                var stat = AllStats.GetStat(type);
-                var value = stat.Value + BonousStats.GetStat(type).GetValue(stat.Value);
-                totalStat[i].SetValue(value);
+                InitDict();
             }
-            return new StatData(totalStat);
+            if (dictDatas.ContainsKey(type))
+            {
+                return dictDatas[type];
+            }
+            var stat = new Stat();
+            stat.SetTypeStat(type);
+            return stat;
         }
+
+        private void InitDict()
+        {
+            if (dictDatas == null || dictDatas.Count <= 0)
+            {
+                dictDatas = new Dictionary<TypeStat, Stat>();
+            }
+            foreach (var property in datas)
+            {
+                dictDatas.Add(property.TypeStat, property);
+            }
+        }
+
     }
-}
+    #endregion
 
+    #region Struct Design Stat
+    public interface IStats
+    {
+        public BaseStat Data { get; }
+    }
+    #endregion
 
-#endregion
+    #region Stat Data
+    [System.Serializable]
+    public struct EquiqmentStat : IStats
+    {
+        [SerializeField] private BaseStat data;
+        public BaseStat Data { get => data; }
+    }
+
+    [System.Serializable]
+    public struct WeaponStat : IStats
+    {
+        public string itemName;
+
+        [SerializeField] private BaseStat data;
+        public BaseStat Data { get => data; }
+    }
+    #endregion
+
+    #endregion
 
 }
