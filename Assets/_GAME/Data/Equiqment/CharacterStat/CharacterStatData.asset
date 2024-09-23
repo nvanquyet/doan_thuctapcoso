@@ -15,20 +15,35 @@ MonoBehaviour:
   _data:
   - key: 0
     value:
-      allStats:
-        allProperties:
-        - statDefine: 0
-          statType: 0
-          value: 3245
-        - statDefine: 4
-          statType: 1
-          value: 50
-        - statDefine: 1
-          statType: 0
-          value: 234
-        - statDefine: 2
-          statType: 0
-          value: 234
-        - statDefine: 7
-          statType: 0
-          value: 324
+      data:
+        datas:
+        - typeStat: 0
+          typeValueStat: 0
+          value: 100
+        - typeStat: 1
+          typeValueStat: 1
+          value: 5
+        - typeStat: 2
+          typeValueStat: 1
+          value: 5
+        - typeStat: 3
+          typeValueStat: 1
+          value: 0
+        - typeStat: 4
+          typeValueStat: 1
+          value: 5
+        - typeStat: 5
+          typeValueStat: 1
+          value: 100
+        - typeStat: 6
+          typeValueStat: 0
+          value: 100
+        - typeStat: 7
+          typeValueStat: 0
+          value: 5
+        - typeStat: 8
+          typeValueStat: 1
+          value: 1
+        - typeStat: 9
+          typeValueStat: 1
+          value: 1

@@ -28,7 +28,7 @@ namespace ShootingGame
 
         internal void Init(float scaleFactor)
         {
-            SetHealth((int)(scaleFactor * Health));
+            SetHealth((int)(scaleFactor * MaxHealth));
         }
     }
 }

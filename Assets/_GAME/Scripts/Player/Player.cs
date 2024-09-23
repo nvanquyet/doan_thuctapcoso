@@ -1,6 +1,6 @@
-using Unity.VisualScripting;
+using System;
 using UnityEngine;
-using VawnWuyest.Data;
+using VawnWuyest;
 namespace ShootingGame
 {
     [RequireComponent(typeof(PlayerMovement))]
@@ -9,25 +9,60 @@ namespace ShootingGame
         [SerializeField] private PlayerMovement _playerMovement;
         [SerializeField] private PlayerSpawner _playerSpawner;
         [SerializeField] private PlayerDefender _playerDefender;
+        [SerializeField] private PlayerStat _playerStat;
 
-        private void OnValidate()
+        public PlayerStat Stat => _playerStat;
+
+#if UNITY_EDITOR
+        protected override void OnValidate()
         {
+            base.OnValidate();
             _playerSpawner = GetComponentInChildren<PlayerSpawner>();
             _playerMovement = GetComponent<PlayerMovement>();
             _playerDefender = GetComponent<PlayerDefender>();
+            _playerStat = GetComponent<PlayerStat>();
         }
+#endif
+
 
         void Start()
         {
             GameCtrl.Instance.AddPlayer(this);
-            if(_playerSpawner != null && _playerMovement != null) {
+            SetStatForPlayer();
+            InitData();
+
+            RegisterEventListener();
+        }
+
+        private void RegisterEventListener()
+        {
+            this.AddListener<GameEvent.OnStatChange>(OnStatChange, false);
+        }
+
+        private void OnStatChange(GameEvent.OnStatChange param)
+        {
+            SetStatForPlayer();
+        }
+
+        private void SetStatForPlayer()
+        {
+            if (_playerStat == null) return;
+            var currentData = _playerStat.CurrentStat.Data;
+            _playerDefender.SetHealth((int) currentData.GetStat(VawnWuyest.Data.TypeStat.Hp).Value, false);
+            _playerMovement.SetSpeed(currentData.GetStat(VawnWuyest.Data.TypeStat.MoveSpeed).Value);
+        }
+
+        private void InitData()
+        {
+            if (_playerSpawner != null && _playerMovement != null)
+            {
                 _playerSpawner.Spawn();
                 _playerMovement.Init(_playerSpawner.transform);
                 _playerSpawner.Init(_playerMovement);
             }
-
             _playerDefender.Init();
         }
     }
+
 
 }

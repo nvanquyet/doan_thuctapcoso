@@ -1,7 +1,7 @@
+using System;
 using UnityEngine;
 namespace ShootingGame
 {
-    
     public enum PlayerLocoMotionState
     {
         Idle,
@@ -14,20 +14,20 @@ namespace ShootingGame
     {
         #region Properties
         [SerializeField] private float accelerationTime = 0.1f;
-        [SerializeField] private float _speed = 5;
+
+        private float _speed;
         private Transform _characterGraphic;
         private Rigidbody2D _rigid;
         private PlayerLocoMotionState _locomotionState;
         private bool _paused;
         private Vector3 movementInput;
-         private Vector2 currentVelocity;
+        private Vector2 currentVelocity;
         #endregion
 
         public void Init(Transform characterGraphic)
         {
             _characterGraphic = characterGraphic;
         }
-
 
         #region  Implement  
 
@@ -54,50 +54,54 @@ namespace ShootingGame
         public void Continue() => PauseMovement(false);
 
         #endregion
-        
-        #region  Movement Update
-            private void Update()
-            {
-                if (IsMoving)
-                {
-                    movementInput = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
-                    if (movementInput.x != 0)
-                    {
-                        Vector3 newScale = _characterGraphic.localScale;
-                        if (movementInput.x < 0)
-                            newScale.x = -1 * Mathf.Abs(newScale.x);
-                        else
-                            newScale.x = Mathf.Abs(newScale.x);
-                        _characterGraphic.localScale = newScale;
-                    }
 
-                    if (movementInput.magnitude > 0)
-                    {
-                        _locomotionState = PlayerLocoMotionState.Run;
-                    }
+        #region  Movement Update
+        private void Update()
+        {
+            if (IsMoving)
+            {
+                movementInput = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
+                if (movementInput.x != 0)
+                {
+                    Vector3 newScale = _characterGraphic.localScale;
+                    if (movementInput.x < 0)
+                        newScale.x = -1 * Mathf.Abs(newScale.x);
                     else
-                    {
-                        _locomotionState = PlayerLocoMotionState.Idle;
-                    }
-                }else {
+                        newScale.x = Mathf.Abs(newScale.x);
+                    _characterGraphic.localScale = newScale;
+                }
+
+                if (movementInput.magnitude > 0)
+                {
+                    _locomotionState = PlayerLocoMotionState.Run;
+                }
+                else
+                {
                     _locomotionState = PlayerLocoMotionState.Idle;
                 }
             }
-
-            private void FixedUpdate()
+            else
             {
-                if (IsMoving)
-                {
-                    Move(movementInput);
-                }
+                _locomotionState = PlayerLocoMotionState.Idle;
             }
+        }
 
-            public void Move(Vector3 direction)
+        private void FixedUpdate()
+        {
+            if (IsMoving)
             {
-                Vector2 targetVelocity = direction.normalized * Speed;
-                currentVelocity = Vector2.Lerp(currentVelocity, targetVelocity, accelerationTime / Time.fixedDeltaTime);
-                Rigid.velocity = currentVelocity;
+                Move(movementInput);
             }
+        }
+
+        public void Move(Vector3 direction)
+        {
+            Vector2 targetVelocity = direction.normalized * Speed;
+            currentVelocity = Vector2.Lerp(currentVelocity, targetVelocity, accelerationTime / Time.fixedDeltaTime);
+            Rigid.velocity = currentVelocity;
+        }
+
+
 
         #endregion
     }

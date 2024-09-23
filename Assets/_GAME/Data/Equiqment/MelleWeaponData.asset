@@ -16,7 +16,5 @@ MonoBehaviour:
   - key: 0
     value:
       itemName: Knife
-      stats:
-      - statDefine: 0
-        statType: 0
-        value: 0
+      data:
+        datas: []

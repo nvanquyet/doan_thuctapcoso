@@ -25,11 +25,11 @@ namespace ShootingGame
 
         public interface IDefender : Interact
         {
-            int Health { get; }
+            int CurrentHealth { get; }
             bool IsDead { get; }
             void Defend(int damage);
             void OnDead();
-            void SetHealth(int health);
+            void SetHealth(int health, bool resetHealth  = true);
         }
 
     }
@@ -56,6 +56,13 @@ namespace ShootingGame
         public virtual void EnableInteract(bool value) => _collider.enabled = value;
 
         public abstract void ExitInteract(Interface.Interact target);
+
+#if UNITY_EDITOR
+        protected virtual void OnValidate()
+        {
+            
+        }
+#endif
     }
 
     [RequireComponent(typeof(BoxCollider2D))]
@@ -210,9 +217,21 @@ namespace ShootingGame
     [RequireComponent(typeof(BoxCollider2D))]
     public abstract class ADefender : AInteractable<BoxCollider2D>, Interface.IDefender
     {
+        [SerializeField] private int maxHealth;
         [SerializeField] private int _health;
-        public int Health => _health;
-        public bool IsDead => Health <= 0;
+
+        public virtual int MaxHealth => maxHealth;
+
+        public int CurrentHealth => _health;
+        public bool IsDead => CurrentHealth <= 0;
+
+#if UNITY_EDITOR
+        protected override void OnValidate()
+        {
+            base.OnValidate();
+            _health = maxHealth;
+        }
+#endif
 
         public virtual void Defend(int damage) {
             if (IsDead) return;
@@ -221,7 +240,10 @@ namespace ShootingGame
         }
         public abstract void OnDead();
 
-        public void SetHealth(int health) => _health = health;
+        public void SetHealth(int health, bool resetHealth = true) {
+            maxHealth = health;
+            if(resetHealth)  _health = health;
+        }
 
         public override void ExitInteract(Interface.Interact target) { }
 

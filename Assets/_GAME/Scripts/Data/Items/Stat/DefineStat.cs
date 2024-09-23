@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -16,8 +17,8 @@ namespace VawnWuyest.Data
     [System.Serializable]
     public enum TypeStat
     {
-        Damage,
         Hp,
+        Damage,
         AttackSpeed,
         Dodge,
         CritRate,
@@ -25,9 +26,7 @@ namespace VawnWuyest.Data
         Range,
         MoveSpeed,
         Luck,
-        HpRegen,
         DamageToHp,
-        DamageToArmor
     }
     [System.Serializable]
     public struct Stat
@@ -42,6 +41,7 @@ namespace VawnWuyest.Data
         public void SetValue(float value) =>  this.value = value;
 
         public void SetTypeStat(TypeStat statType) => this.typeStat = statType;
+        public void SetTypeValueStat(TypeValueStat type) => this.typeValueStat = type;
 
         public float GetValue(float baseValue)
         {
@@ -56,6 +56,12 @@ namespace VawnWuyest.Data
             return 0;
         }
 
+        public Stat(Stat target)
+        {
+            this.typeStat = target.typeStat;
+            this.value = target.value;
+            this.typeValueStat = target.TypeValueStat;
+        }
     }
     #endregion
 
@@ -74,7 +80,7 @@ namespace VawnWuyest.Data
 
         public BaseStat(Stat[] datas)
         {
-            this.datas = datas;
+            this.datas = datas.Select(stat => new Stat(stat)).ToArray();
             InitDict();
         }
 
@@ -101,6 +107,31 @@ namespace VawnWuyest.Data
             var stat = new Stat();
             stat.SetTypeStat(type);
             return stat;
+        }
+
+        public void UpdateStat(Stat updatedStat)
+        {
+            if (dictDatas == null || dictDatas.Count <= 0)
+            {
+                InitDict();
+            }
+            if (dictDatas.ContainsKey(updatedStat.TypeStat))
+            {
+                dictDatas[updatedStat.TypeStat] = updatedStat;
+            }
+            else
+            {
+                dictDatas.Add(updatedStat.TypeStat, updatedStat);
+            }
+
+            for (int i = 0; i < datas.Length; i++)
+            {
+                if (datas[i].TypeStat == updatedStat.TypeStat)
+                {
+                    datas[i] = updatedStat;
+                    return;
+                }
+            }
         }
 
         private void InitDict()
@@ -131,10 +162,15 @@ namespace VawnWuyest.Data
     {
         [SerializeField] private BaseStat data;
         public BaseStat Data { get => data; }
+
+        public EquiqmentStat(Stat[] data)
+        {
+            this.data = new BaseStat(data);
+        }
     }
 
     [System.Serializable]
-    public struct WeaponStat : IStats
+    public struct ItemStat : IStats
     {
         public string itemName;
 

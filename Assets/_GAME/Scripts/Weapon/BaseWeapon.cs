@@ -80,7 +80,7 @@ namespace ShootingGame
 
 
         #region Stat
-        [SerializeField] private WeaponStat equiqment;
+        [SerializeField] private ItemStat equiqment;
         private BaseStat totalStat;
 
         internal void ApplyStat(IStats stat)
