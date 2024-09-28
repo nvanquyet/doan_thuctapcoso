@@ -48,8 +48,6 @@ namespace ShootingGame
                 _bullet = bulletClone;
                 Invoke(nameof(RecycleBullet), _fireRate);
                 Invoke(nameof(RecycleMuzzle), 0.1f);
-                
-                
             }
         }
         void RecycleBullet()
@@ -72,52 +70,16 @@ namespace ShootingGame
 
         public override void ExitInteract(Interact target) { }
 
-        public override void Interact(Interact target) { }
+        public override void OnInteract(Interact target) { }
 
         public override int Damage => 0;
 
-
-
-
         #region Stat
-        [SerializeField] private ItemStat equiqment;
-        private BaseStat totalStat;
+        [SerializeField] private ItemAttributes equiqment;
 
-        internal void ApplyStat(IStats stat)
+        internal void ApplyStat(IStatProvider stat)
         {
-            var baseData = equiqment.Data;
-            var allStat = baseData.AllStats;
-
-            totalStat = new BaseStat(baseData.AllStats, true);
-
-            foreach (var s in allStat)
-            {
-                var target = stat.Data.GetStat(s.TypeStat);
-                var baseValue = baseData.GetStat(s.TypeStat).Value;
-
-                var totalValue = totalStat.GetStat(s.TypeStat);
-                switch(s.TypeValueStat)
-                {
-                    case TypeValueStat.FixedValue:
-                        totalValue.SetValue(baseValue + target.GetValue(baseValue));
-                        break;
-                    case TypeValueStat.Percentage:
-                        switch(target.TypeValueStat)
-                        {
-                            case TypeValueStat.FixedValue:
-                                totalValue.SetValue(target.Value + s.GetValue(target.Value));
-                                break;
-                            case TypeValueStat.Percentage:
-                                totalValue.SetValue(baseValue + target.Value);
-                                break;
-                            default:
-                                break;
-                        }
-                        break;
-                    default:
-                        break;
-                }
-            }
+            //Aply stat to equiqment
         }
 
         #endregion

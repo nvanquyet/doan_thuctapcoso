@@ -49,8 +49,11 @@ namespace ShootingGame
         private bool isSpawning;
 
         private List<Enemy> enemies = new();
+        private List<Transform> tsEnemies = new();
 
-        protected virtual void OnValidate(){
+        public List<Transform> TransformEnemies => tsEnemies;
+
+        protected virtual void OnValidate() {
             spawnPositions = GetComponentsInChildren<Transform>().ToList();
             spawnPositions.RemoveAt(0);
             foreach (Transform spawn in spawnPositions)
@@ -59,7 +62,7 @@ namespace ShootingGame
                 Vector2 randomPoint = Random.insideUnitCircle * spawnRadius;
 
                 // Apply the random position to the spawn point (keeping original z-axis)
-                spawn.position = new Vector3( randomPoint.x, randomPoint.y, spawn.position.z);
+                spawn.position = new Vector3(randomPoint.x, randomPoint.y, spawn.position.z);
             }
         }
 
@@ -73,21 +76,21 @@ namespace ShootingGame
             {
                 enemyCount = Mathf.RoundToInt(baseWaveProperties.enemyCount * Mathf.Pow(scalingFactor, currentWave)),
                 timeWave = Mathf.RoundToInt(baseWaveProperties.timeWave * Mathf.Pow(scalingFactor, currentWave)),
-                timeThreshold = Mathf.RoundToInt(baseWaveProperties.timeThreshold * Mathf.Pow(scalingFactor, currentWave)),                
+                timeThreshold = Mathf.RoundToInt(baseWaveProperties.timeThreshold * Mathf.Pow(scalingFactor, currentWave)),
                 spawnThreshold = Mathf.RoundToInt(baseWaveProperties.spawnThreshold * Mathf.Pow(scalingFactor, currentWave)),
             };
 
             Invoke(nameof(StartSpawning), timeDelaySpawn);
         }
 
-#region  Implement
+        #region  Implement
         public Coroutine StartRoutine(IEnumerator routine) => StartCoroutine(routine);
 
         public void StopRoutine(Coroutine coroutine)
         {
             if (coroutine != null) StopCoroutine(coroutine);
         }
-#endregion
+        #endregion
         /// <summary>
         /// Start Spawning
         /// </summary>
@@ -103,9 +106,8 @@ namespace ShootingGame
         private IEnumerator Spawn()
         {
             isSpawning = true;
-
-            if(enemies == null) enemies = new List<Enemy>();
-            else enemies.Clear();
+            ClearList(ref enemies);
+            ClearList(ref tsEnemies);
 
             var curEnemyCount = 0;
             var allEnimies = GameData.Instance.Enemies.GetAllValue();
@@ -114,28 +116,28 @@ namespace ShootingGame
                 //Spawn Enemy from data
                 var enemy = allEnimies[Random.Range(0, Mathf.Min(currentWave, allEnimies.Length))];
                 //Init data enemy
-                if(enemy != null) {
+                if (enemy != null) {
                     var randomPos = spawnPositions[Random.Range(0, spawnPositions.Count)];
                     var enemyInstance = Instantiate(enemy, randomPos);
                     //Init data enemy
-                    if(enemyInstance) {
+                    if (enemyInstance) {
                         enemyInstance.transform.localPosition = Vector3.zero;
                         enemyInstance.Init(scalingFactor);
-                        enemies.Add(enemyInstance);
+                        AddEnemy(enemyInstance);
                         curEnemyCount++;
                     }
                 }
-                if(curEnemyCount >= waveProperties.enemyCount){
+                if (curEnemyCount >= waveProperties.enemyCount) {
                     break;
                 } else if (curEnemyCount % waveProperties.spawnThreshold == 0)
                 {
                     yield return new WaitForSeconds(waveProperties.timeThreshold);
-                }else {
+                } else {
                     yield return new WaitForSeconds(waveProperties.timeBtwSpawn);
                 }
             }
 
-            if(isBossWave){
+            if (isBossWave) {
                 //Spawn Boss
             }
 
@@ -145,10 +147,24 @@ namespace ShootingGame
 
         public bool OnEnemyDeath(Enemy enemy)
         {
-            if(enemy == null || !enemies.Contains(enemy)) return false;
+            if (enemy == null || !enemies.Contains(enemy)) return false;
             enemies.Remove(enemy);
+            if (tsEnemies.Contains(enemy.transform)) tsEnemies.Remove(enemy.transform);
             return true;
         }
+
+
+        private void AddEnemy(Enemy target)
+        {
+            if(!enemies.Contains(target)) enemies.Add(target);
+            if(!tsEnemies.Contains(target.transform)) tsEnemies.Add(target.transform);
+        }
+
+        private void ClearList<T>(ref List<T> list)
+        {
+            if (list == null) list = new();
+            else list.Clear();
+        }    
     }
 
 }

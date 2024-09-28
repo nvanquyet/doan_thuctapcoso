@@ -2,8 +2,10 @@ using UnityEngine;
 
 namespace ShootingGame
 {
+    [RequireComponent(typeof(PlayerStat))]
     public class PlayerDefender : ADefender
     {
+        #region Base
         [SerializeField] private ColoredFlash _flash;
         [SerializeField] private float _timeInvulnerability = 1f;
         private bool _invulnerability;
@@ -27,10 +29,27 @@ namespace ShootingGame
         internal void Init()
         {
             var sprite = GetComponentInChildren<SpriteRenderer>();
-            if (sprite != null) _flash.SetSpriteRenderer(sprite);
+            if (sprite != null && _flash != null) _flash.SetSpriteRenderer(sprite);
             SetHealth(MaxHealth, true);
         }
-        
+        #endregion
+
+
+#if UNITY_EDITOR
+
+        protected override void OnValidate()
+        {
+            base.OnValidate();
+            playerStat = GetComponent<PlayerStat>();
+        }
+#endif
+
+        #region Player Stat
+
+        [SerializeField] private PlayerStat playerStat;
+        #endregion
+
+
     }
 
 }

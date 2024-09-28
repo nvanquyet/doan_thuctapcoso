@@ -29,3 +29,19 @@ MonoBehaviour:
         - typeStat: 0
           typeValueStat: 1
           value: 5
+  - key: 1
+    value:
+      itemName: "Qu\u1EA7n"
+      data:
+        datas:
+        - typeStat: 0
+          typeValueStat: 1
+          value: 2
+  - key: 1
+    value:
+      itemName: "Qu\u1EA7n"
+      data:
+        datas:
+        - typeStat: 0
+          typeValueStat: 1
+          value: 3

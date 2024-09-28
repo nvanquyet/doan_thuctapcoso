@@ -11,13 +11,15 @@ namespace ShootingGame
         public bool IsDead => _enemyDefender.IsDead;
 
         public Action OnDeadAction;
-
-        private void OnValidate()
+#if UNITY_EDITOR
+        protected override void OnValidate()
         {
+            base.OnValidate();
             _enemyAttacker = GetComponentInChildren<EnemyAttacker>();
             _enemyDefender = GetComponentInChildren<EnemyDefender>();
             _enemyMovement = GetComponentInChildren<EnemyMovement>();
         }
+#endif
 
         private void Start(){
             if(_enemyMovement != null && _enemyDefender != null) {
@@ -26,6 +28,7 @@ namespace ShootingGame
                 _enemyDefender.OnDeath += () =>
                 {
                     OnDeadAction?.Invoke();
+                    LevelSpawner.Instance.OnEnemyDeath(this);
                     Destroy(gameObject);
                 };
             }
@@ -38,12 +41,12 @@ namespace ShootingGame
         }
 
 
-        public override void Interact(Interface.Interact target) {
-            if(target is FireRangePlayer) target.Interact(this);
+        public override void OnInteract(Interface.Interact target) {
+            if(target is FireRangePlayer) target.OnInteract(this);
         } 
         
         public override void ExitInteract(Interface.Interact target) {
-            if(target is FireRangePlayer) target.Interact(this);
+            if(target is FireRangePlayer) target.OnInteract(this);
         }
     }
 }

@@ -7,7 +7,7 @@ namespace VawnWuyest.Data
     {
         protected override string Path => throw new System.NotImplementedException();
     }
-    public abstract class BaseWeaponData : BaseIntKeyData<ItemStat>
+    public abstract class BaseWeaponData : BaseIntKeyData<ItemAttributes>
     {
 
     }

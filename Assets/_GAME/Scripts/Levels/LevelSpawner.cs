@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 namespace ShootingGame
 {
@@ -41,6 +42,11 @@ namespace ShootingGame
             wave.Init(GetScalingFactor(), _currentWave);
         }
 
+        public List<Transform> GetActiveEnemies()
+        {
+            if(wave == null) return null;
+            return wave.TransformEnemies;
+        }
 
         public bool OnEnemyDeath(Enemy enemy)
         {

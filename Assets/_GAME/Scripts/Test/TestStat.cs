@@ -24,6 +24,7 @@ public class TestStat : MonoBehaviour
     {
         items.text = "";
         player.Stat.BuffStat(item.GetValue(0));
+        player.Stat.BuffStat(item.GetValue(1));
         Debug.Log(item.GetValue(0).Data.AllStats[0].Value);
 
         foreach (var item in player.Stat.CurrentStat.Data.AllStats)

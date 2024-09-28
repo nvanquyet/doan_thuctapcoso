@@ -10,7 +10,7 @@ namespace ShootingGame
         [SerializeField] private List<BaseWeapon> _weapons;
         [SerializeField] private List<BaseWeapon> _showWeapons;
 
-        public List<Transform> Enemies = new List<Transform>();
+        //public List<Transform> Enemies = new List<Transform>();
 
         private int MaxWeapon => _allPositionSpawnWeapon.Count;
 #if UNITY_EDITOR
@@ -63,41 +63,44 @@ namespace ShootingGame
 
         public void Rotate()
         {
-            if (_weapons == null || _weapons.Count <= 0 || Enemies == null || Enemies.Count <= 0) return;
-
+            if (_weapons == null || _weapons.Count <= 0) return;
+            var enemies = LevelSpawner.Instance.GetActiveEnemies();
             foreach (var weapon in _weapons)
             {
-                weapon.Rotate(GetNearestEnemy(weapon.transform.position, Enemies));
+                Debug.Log("Get Nearest Enemies");
+                weapon.Rotate(GetNearestEnemy(weapon.transform.position, enemies));
             }
         }
 
         public Vector3 GetNearestEnemy(Vector3 weaponPos, List<Transform> enemies)
         {
             if (_weapons == null || _weapons.Count <= 0) return Vector3.zero;
-
+            // FireRange At Here
+            float distance = 80;
             Vector3 nearestEnemy = enemies[0].transform.position;
             foreach (var e in enemies)
             {
-                if (Vector3.Distance(e.transform.position, weaponPos) < Vector3.Distance(nearestEnemy, weaponPos))
+                if (Vector3.Distance(e.transform.position, weaponPos) <= distance)
                 {
                     nearestEnemy = e.transform.position;
+                    distance = Vector3.Distance(nearestEnemy, weaponPos);
                 }
             }
 
             return nearestEnemy;
         }
 
-        public void AddEnemyToFireRange(Transform transform)
-        {
-            Enemies.Add(transform);
-        }
+        //public void AddEnemyToFireRange(Transform transform)
+        //{
+        //    Enemies.Add(transform);
+        //}
 
-        public void RemoveEnemyToFireRange(Transform transform)
-        {
-            Enemies.Remove(transform);
-        }
+        //public void RemoveEnemyToFireRange(Transform transform)
+        //{
+        //    Enemies.Remove(transform);
+        //}
 
-        public void ApplyStat(IStats stat)
+        public void ApplyStat(IStatProvider stat)
         {
             if (_weapons == null || _weapons.Count <= 0) return;
 

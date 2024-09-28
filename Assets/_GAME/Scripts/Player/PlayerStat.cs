@@ -44,7 +44,7 @@ namespace ShootingGame
 
 
         #region Stat Ctrl
-        public void BuffStat(IStats statBuff)
+        public void BuffStat(IStatProvider statBuff)
         {
             if (statBuff == null) return;
             var allStats = statBuff.Data.AllStats;

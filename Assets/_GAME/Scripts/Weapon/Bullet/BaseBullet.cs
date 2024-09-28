@@ -75,6 +75,14 @@ namespace ShootingGame
             Invoke(nameof(Recycle), 2f);
         }
 
+        public void Spawn(Vector3 direction, bool isCritRate, int damage)
+        {
+            Move(direction.normalized * bulletStat.speed);
+            if (trailEffect) trailEffect.Play();
+            transform.SetParent(null);
+            Invoke(nameof(Recycle), 2f);
+        }
+
         #endregion
 
 

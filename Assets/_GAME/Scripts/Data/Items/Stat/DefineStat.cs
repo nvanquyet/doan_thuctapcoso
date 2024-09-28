@@ -73,18 +73,18 @@ namespace VawnWuyest.Data
     /// This is base stat that hold all Data Stat
     /// </summary>
     [System.Serializable]
-    public class BaseStat
+    public class StatContainer
     {
         [SerializeField] private Stat[] datas;
         private Dictionary<TypeStat, Stat> dictDatas = new Dictionary<TypeStat, Stat>();
 
-        public BaseStat(Stat[] datas)
+        public StatContainer(Stat[] datas)
         {
             this.datas = datas.Select(stat => new Stat(stat)).ToArray();
             InitDict();
         }
 
-        public BaseStat(Stat[] datas, bool resetValue)
+        public StatContainer(Stat[] datas, bool resetValue)
         {
             this.datas = datas;
             InitDict();
@@ -150,32 +150,32 @@ namespace VawnWuyest.Data
     #endregion
 
     #region Struct Design Stat
-    public interface IStats
+    public interface IStatProvider
     {
-        public BaseStat Data { get; }
+        public StatContainer Data { get; }
     }
     #endregion
 
     #region Stat Data
     [System.Serializable]
-    public struct EquiqmentStat : IStats
+    public struct EquiqmentStat : IStatProvider
     {
-        [SerializeField] private BaseStat data;
-        public BaseStat Data { get => data; }
+        [SerializeField] private StatContainer data;
+        public StatContainer Data { get => data; }
 
         public EquiqmentStat(Stat[] data)
         {
-            this.data = new BaseStat(data);
+            this.data = new StatContainer(data);
         }
     }
 
     [System.Serializable]
-    public struct ItemStat : IStats
+    public struct ItemAttributes : IStatProvider
     {
         public string itemName;
 
-        [SerializeField] private BaseStat data;
-        public BaseStat Data { get => data; }
+        [SerializeField] private StatContainer data;
+        public StatContainer Data { get => data; }
     }
     #endregion
 

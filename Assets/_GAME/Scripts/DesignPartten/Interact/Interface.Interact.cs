@@ -10,7 +10,7 @@ namespace ShootingGame
         {
             Collider2D Collider { get; }
 
-            void Interact(Interface.Interact target);
+            void OnInteract(Interface.Interact target);
             void ExitInteract(Interface.Interact target);
         }
 
@@ -51,7 +51,7 @@ namespace ShootingGame
         }
         //public bool CanInteract => _canInteract;
 
-        public abstract void Interact(Interface.Interact target);
+        public abstract void OnInteract(Interface.Interact target);
 
         public virtual void EnableInteract(bool value) => _collider.enabled = value;
 
@@ -68,9 +68,9 @@ namespace ShootingGame
     [RequireComponent(typeof(BoxCollider2D))]
     public abstract class AInteractor : AInteractable<BoxCollider2D>
     {
-        public override void Interact(Interface.Interact target)
+        public override void OnInteract(Interface.Interact target)
         {
-            target.Interact(this);
+            target.OnInteract(this);
         }
 
         public override void ExitInteract(Interface.Interact target)
@@ -83,7 +83,7 @@ namespace ShootingGame
             if (other == null) return;
             if (other.TryGetComponent(out Interface.Interact interactable))
             {
-                Interact(interactable);
+                OnInteract(interactable);
             }
         }
 
@@ -123,15 +123,15 @@ namespace ShootingGame
             {
                 foreach (var interactable in _interactables)
                 {
-                    Interact(interactable);
+                    OnInteract(interactable);
                 }
                 yield return null;
             }
         }
 
-        public override void Interact(Interface.Interact target)
+        public override void OnInteract(Interface.Interact target)
         {
-            target.Interact(this);
+            target.OnInteract(this);
         }
 
         void OnTriggerEnter2D(Collider2D other)
@@ -210,7 +210,7 @@ namespace ShootingGame
 
         public virtual void SetCanAttack(bool value) => _canAttack = value;
 
-        public override void Interact(Interface.Interact target) { }
+        public override void OnInteract(Interface.Interact target) { }
         public override void ExitInteract(Interface.Interact target) { }
     }
 
@@ -247,7 +247,7 @@ namespace ShootingGame
 
         public override void ExitInteract(Interface.Interact target) { }
 
-        public override void Interact(Interface.Interact target) { }
+        public override void OnInteract(Interface.Interact target) { }
     }
 
 }
