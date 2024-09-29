@@ -25,7 +25,7 @@ namespace ShootingGame
         internal void Init()
         {
             var sprite = GetComponentInChildren<SpriteRenderer>();
-            if(sprite != null) _flash.SetSpriteRenderer(sprite);
+            if(sprite != null && _flash != null) _flash.SetSpriteRenderer(sprite);
         }
     }
 

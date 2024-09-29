@@ -3,7 +3,7 @@ using UnityEngine;
 using VawnWuyest;
 namespace ShootingGame
 {
-    [RequireComponent(typeof(PlayerMovement))]
+    [RequireComponent(typeof(PlayerMovement), typeof(PlayerStat))]
     public class Player : AInteractor
     {
         [SerializeField] private PlayerMovement _playerMovement;

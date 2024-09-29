@@ -7,8 +7,8 @@ namespace ShootingGame
     public class WeaponCtrl : MonoBehaviour
     {
         [SerializeField] private List<Transform> _allPositionSpawnWeapon;
-        [SerializeField] private List<BaseWeapon> _weapons;
-        [SerializeField] private List<BaseWeapon> _showWeapons;
+        [SerializeField] private List<AWeapon> _weapons;
+        [SerializeField] private List<AWeapon> _showWeapons;
 
         //public List<Transform> Enemies = new List<Transform>();
 
@@ -51,7 +51,7 @@ namespace ShootingGame
             }
         }
 
-        public void AddWeapon(BaseWeapon newWeapon)
+        public void AddWeapon(AWeapon newWeapon)
         {
             if (newWeapon == null) return;
             if (_weapons.Count < MaxWeapon && !_weapons.Contains(newWeapon))
@@ -77,6 +77,7 @@ namespace ShootingGame
             if (_weapons == null || _weapons.Count <= 0) return Vector3.zero;
             // FireRange At Here
             float distance = 80;
+            if(enemies == null || enemies.Count <= 0) return Vector3.zero; 
             Vector3 nearestEnemy = enemies[0].transform.position;
             foreach (var e in enemies)
             {

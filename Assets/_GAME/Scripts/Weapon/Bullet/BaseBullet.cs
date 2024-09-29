@@ -58,6 +58,7 @@ namespace ShootingGame
 
         #region Spawn and Move
         public void Move(Vector3 direction) => Rigid?.AddForce(direction, ForceMode2D.Impulse);
+        public void Move(Vector2 direction) => Rigid?.AddForce(direction, ForceMode2D.Impulse);
         public void Spawn()
         {
             transform.rotation = Quaternion.identity;
@@ -67,7 +68,7 @@ namespace ShootingGame
             Invoke(nameof(Recycle), 2f);
         }
 
-        public void Spawn(Vector3 direction)
+        public void Spawn(Vector2 direction)
         {
             Move(direction.normalized * bulletStat.speed);
             if (trailEffect) trailEffect.Play();
