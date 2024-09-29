@@ -35,12 +35,12 @@ namespace ShootingGame
         //                _weaponCtrl.AddEnemyToFireRange(enemy.transform);
         //            }
         //        }
-        public override void ExitInteract(Interface.Interact target)
+        public override void ExitInteract(Interface.IInteract target)
         {
            
         }
 
-        public override void OnInteract(Interface.Interact target)
+        public override void OnInteract(Interface.IInteract target)
         {
             //throw new System.NotImplementedException();
             //throw new System.NotImplementedException();

@@ -41,11 +41,11 @@ namespace ShootingGame
         }
 
 
-        public override void OnInteract(Interface.Interact target) {
+        public override void OnInteract(Interface.IInteract target) {
             if(target is FireRangePlayer) target.OnInteract(this);
         } 
         
-        public override void ExitInteract(Interface.Interact target) {
+        public override void ExitInteract(Interface.IInteract target) {
             if(target is FireRangePlayer) target.OnInteract(this);
         }
     }

@@ -6,15 +6,15 @@ namespace ShootingGame
 {
     public partial interface Interface
     {
-        public interface Interact
+        public interface IInteract
         {
             Collider2D Collider { get; }
 
-            void OnInteract(Interface.Interact target);
-            void ExitInteract(Interface.Interact target);
+            void OnInteract(Interface.IInteract target);
+            void ExitInteract(Interface.IInteract target);
         }
 
-        public interface IAttacker : Interact
+        public interface IAttacker : IInteract
         {
             int Damage { get; }
             bool CanAttack { get; }
@@ -23,7 +23,7 @@ namespace ShootingGame
             void SetCanAttack(bool value);
         }
 
-        public interface IDefender : Interact
+        public interface IDefender : IInteract
         {
             int CurrentHealth { get; }
             bool IsDead { get; }
@@ -34,7 +34,7 @@ namespace ShootingGame
 
     }
 
-    public abstract class AInteractable<T> : MonoBehaviour, Interface.Interact where T : Collider2D
+    public abstract class AInteractable<T> : MonoBehaviour, Interface.IInteract where T : Collider2D
     {
         protected Collider2D _collider;
 
@@ -51,11 +51,11 @@ namespace ShootingGame
         }
         //public bool CanInteract => _canInteract;
 
-        public abstract void OnInteract(Interface.Interact target);
+        public abstract void OnInteract(Interface.IInteract target);
 
         public virtual void EnableInteract(bool value) => _collider.enabled = value;
 
-        public abstract void ExitInteract(Interface.Interact target);
+        public abstract void ExitInteract(Interface.IInteract target);
 
 #if UNITY_EDITOR
         protected virtual void OnValidate()
@@ -68,12 +68,12 @@ namespace ShootingGame
     [RequireComponent(typeof(BoxCollider2D))]
     public abstract class AInteractor : AInteractable<BoxCollider2D>
     {
-        public override void OnInteract(Interface.Interact target)
+        public override void OnInteract(Interface.IInteract target)
         {
             target.OnInteract(this);
         }
 
-        public override void ExitInteract(Interface.Interact target)
+        public override void ExitInteract(Interface.IInteract target)
         {
             target.ExitInteract(this);
         }
@@ -81,7 +81,7 @@ namespace ShootingGame
         protected virtual void OnTriggerEnter2D(Collider2D other)
         {
             if (other == null) return;
-            if (other.TryGetComponent(out Interface.Interact interactable))
+            if (other.TryGetComponent(out Interface.IInteract interactable))
             {
                 OnInteract(interactable);
             }
@@ -90,7 +90,7 @@ namespace ShootingGame
         protected virtual void OnTriggerExit2D(Collider2D other)
         {
             if (other == null) return;
-            if (other.TryGetComponent(out Interface.Interact interactable))
+            if (other.TryGetComponent(out Interface.IInteract interactable))
             {
                 ExitInteract(interactable);
             }
@@ -99,7 +99,7 @@ namespace ShootingGame
 
     public abstract class AStayInteractor<T> : AInteractable<T> where T : Collider2D
     {
-        private HashSet<Interface.Interact> _interactables = new HashSet<Interface.Interact>();
+        private HashSet<Interface.IInteract> _interactables = new HashSet<Interface.IInteract>();
         [SerializeField] private int _maxInteractAtSameTime = 20;
         private bool _canInteract = true;
 
@@ -129,7 +129,7 @@ namespace ShootingGame
             }
         }
 
-        public override void OnInteract(Interface.Interact target)
+        public override void OnInteract(Interface.IInteract target)
         {
             target.OnInteract(this);
         }
@@ -137,13 +137,13 @@ namespace ShootingGame
         void OnTriggerEnter2D(Collider2D other)
         {
             if (other == null || !_canInteract) return;
-            if (other.TryGetComponent(out Interface.Interact interactable)) _canInteract = InteractChecking(interactable);
+            if (other.TryGetComponent(out Interface.IInteract interactable)) _canInteract = InteractChecking(interactable);
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
             if (other == null || !_canInteract) return;
-            if (other.TryGetComponent(out Interface.Interact interactable))
+            if (other.TryGetComponent(out Interface.IInteract interactable))
             {
                 if (_interactables.Contains(interactable)) _interactables.Remove(interactable);
                 if (_interactables.Count <= 0) StopCoroutineInteractChecking();
@@ -154,14 +154,14 @@ namespace ShootingGame
         void OnTriggerStay2D(Collider2D other)
         {
             if (other == null || !_canInteract) return;
-            if (other.TryGetComponent(out Interface.Interact interactable)) _canInteract = InteractChecking(interactable);
+            if (other.TryGetComponent(out Interface.IInteract interactable)) _canInteract = InteractChecking(interactable);
         }
 
 
 
-        private bool InteractChecking(Interface.Interact target)
+        private bool InteractChecking(Interface.IInteract target)
         {
-            if (_interactables == null) _interactables = new HashSet<Interface.Interact>();
+            if (_interactables == null) _interactables = new HashSet<Interface.IInteract>();
             if (_interactables.Count >= _maxInteractAtSameTime) return false;
             if (!_interactables.Contains(target)) _interactables.Add(target);
 
@@ -210,8 +210,8 @@ namespace ShootingGame
 
         public virtual void SetCanAttack(bool value) => _canAttack = value;
 
-        public override void OnInteract(Interface.Interact target) { }
-        public override void ExitInteract(Interface.Interact target) { }
+        public override void OnInteract(Interface.IInteract target) { }
+        public override void ExitInteract(Interface.IInteract target) { }
     }
 
     [RequireComponent(typeof(BoxCollider2D))]
@@ -245,9 +245,9 @@ namespace ShootingGame
             if(resetHealth)  _health = health;
         }
 
-        public override void ExitInteract(Interface.Interact target) { }
+        public override void ExitInteract(Interface.IInteract target) { }
 
-        public override void OnInteract(Interface.Interact target) { }
+        public override void OnInteract(Interface.IInteract target) { }
     }
 
 }

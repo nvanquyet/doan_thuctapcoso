@@ -21,8 +21,8 @@ namespace ShootingGame
             Attack(_currentTarget);
         }
 
-        public override void ExitInteract(Interface.Interact target) => _isAttacking = false;
-        public override void OnInteract(Interface.Interact target) { }
+        public override void ExitInteract(Interface.IInteract target) => _isAttacking = false;
+        public override void OnInteract(Interface.IInteract target) { }
 
         internal void Init(float scaleFactor)
         {

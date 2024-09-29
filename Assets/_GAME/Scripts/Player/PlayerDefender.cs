@@ -1,55 +1,32 @@
+using System;
 using UnityEngine;
 
 namespace ShootingGame
 {
-    [RequireComponent(typeof(PlayerStat))]
     public class PlayerDefender : ADefender
     {
-        #region Base
         [SerializeField] private ColoredFlash _flash;
         [SerializeField] private float _timeInvulnerability = 1f;
-        private bool _invulnerability;
+        private bool _invulnerability; 
 
         public override void Defend(int damage)
         {
-            if (_invulnerability) return;
+            if(_invulnerability) return;
             _invulnerability = true;
             Invoke(nameof(ResetInvulnerability), _timeInvulnerability);
-            if (_flash != null) _flash.Flash(Color.white);
+            if (_flash != null)  _flash.Flash(Color.white);
             base.Defend(damage);
         }
 
         private void ResetInvulnerability() => _invulnerability = false;
 
-        public override void OnDead()
-        {
-            FindObjectOfType<LosePanel>().Show();
-        }
+        public override void OnDead() { }
 
         internal void Init()
         {
             var sprite = GetComponentInChildren<SpriteRenderer>();
-            if (sprite != null && _flash != null) _flash.SetSpriteRenderer(sprite);
-            SetHealth(MaxHealth, true);
+            if(sprite != null) _flash.SetSpriteRenderer(sprite);
         }
-        #endregion
-
-
-#if UNITY_EDITOR
-
-        protected override void OnValidate()
-        {
-            base.OnValidate();
-            playerStat = GetComponent<PlayerStat>();
-        }
-#endif
-
-        #region Player Stat
-
-        [SerializeField] private PlayerStat playerStat;
-        #endregion
-
-
     }
 
 }
