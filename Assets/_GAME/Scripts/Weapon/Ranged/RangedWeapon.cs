@@ -42,7 +42,7 @@ namespace ShootingGame
                         bulletClone.transform.SetParent(transform);
                         _bulletPool.Recycle(bulletClone);
                     }
-                    Invoke(nameof(RecycleBullet), fireRate);
+                    Invoke(nameof(RecycleBullet), attackSpeed);
                 }
                 Invoke(nameof(RecycleMuzzle), 0.1f);
                 return true;
@@ -50,6 +50,11 @@ namespace ShootingGame
             return false;
         }
         void RecycleMuzzle() => _muzzlePool.Recycle(_muzzle);
+
+        protected override void OnAttackSpeedChange()
+        {
+            
+        }
 
         public override int Damage => 0;
     }

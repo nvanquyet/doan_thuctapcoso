@@ -5,12 +5,12 @@ namespace ShootingGame
 
     public abstract class AWeapon : AAttacker
     {
-        [SerializeField] protected float fireRate = 0.5f;
+        [SerializeField] protected float attackSpeed = 0.5f;
         private bool isAttacking = false;
         public virtual bool Attack(){
             if(isAttacking) return false;
             isAttacking = true;
-            Invoke(nameof(ResetAttack), fireRate);
+            Invoke(nameof(ResetAttack), attackSpeed);
             return true;
         }
         private void ResetAttack() => isAttacking = false;
@@ -34,7 +34,10 @@ namespace ShootingGame
         internal void ApplyStat(IStatProvider stat)
         {
             //Aply stat to equiqment
+            OnAttackSpeedChange();
         }
+
+        protected abstract void OnAttackSpeedChange();
 
         #endregion
     }

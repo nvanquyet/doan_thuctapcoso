@@ -1,9 +1,13 @@
+using DG.Tweening;
 using UnityEngine;
 
 namespace ShootingGame
 {
-    public class MelleeWeapon : AWeapon
+    public abstract class MelleeWeapon : AWeapon
     {
-        //[SerializeField] private DOTweenAnimation attackAnimation;
+        public override void Rotate(Vector3 pos)
+        {
+            
+        }
     }
 }

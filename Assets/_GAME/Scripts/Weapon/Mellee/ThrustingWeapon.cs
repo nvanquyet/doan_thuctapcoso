@@ -6,5 +6,10 @@ namespace ShootingGame
         {
             return base.Attack();
         }
+
+        protected override void OnAttackSpeedChange()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
