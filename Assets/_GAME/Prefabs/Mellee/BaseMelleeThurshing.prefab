@@ -156,9 +156,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9163475137752130091}
   - component: {fileID: 5078115456816291185}
-  - component: {fileID: 890306653094463171}
+  - component: {fileID: 6098454974081046693}
   m_Layer: 0
-  m_Name: BaseMellee
+  m_Name: BaseMelleeThurshing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -227,7 +227,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8647909, y: 0.16575345}
   m_EdgeRadius: 0
---- !u!114 &890306653094463171
+--- !u!114 &6098454974081046693
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -236,7 +236,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9163475137752130100}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9733338e6e4072b42a3cd836b980d1bd, type: 3}
+  m_Script: {fileID: 11500000, guid: c387da95bd5046d458c3239317575945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 10
@@ -248,10 +248,3 @@ MonoBehaviour:
       datas: []
   weaponTransform: {fileID: 9163475137752130091}
   weaponTsRotate: {fileID: 0}
-  tweenRotationStruct:
-    windUpRatio: 0.15
-    slashRatio: 0.4
-    recoverRatio: 0.05
-    windUpAngle: {x: 0, y: 0, z: 90}
-    slashAngle: {x: 0, y: 0, z: -90}
-    recoverAngle: {x: 0, y: 0, z: 0}

@@ -29,7 +29,7 @@ namespace ShootingGame
 
 
         #region Stat
-        [SerializeField] private ItemAttributes equiqment;
+        [SerializeField] protected ItemAttributes equiqment;
 
         internal void ApplyStat(IStatProvider stat)
         {

@@ -53,7 +53,7 @@ namespace ShootingGame
 
         public abstract void OnInteract(Interface.IInteract target);
 
-        public virtual void EnableInteract(bool value) => _collider.enabled = value;
+        public virtual void EnableInteract(bool value) => Collider.enabled = value;
 
         public abstract void ExitInteract(Interface.IInteract target);
 
