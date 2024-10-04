@@ -145,10 +145,15 @@ namespace ShootingGame
             if (other == null || !_canInteract) return;
             if (other.TryGetComponent(out Interface.IInteract interactable))
             {
-                if (_interactables.Contains(interactable)) _interactables.Remove(interactable);
-                if (_interactables.Count <= 0) StopCoroutineInteractChecking();
-                _canInteract = _interactables.Count < _maxInteractAtSameTime;
+                ExitInteract(interactable);
             }
+        }
+
+        public override void ExitInteract(Interface.IInteract interactable)
+        {
+            if (_interactables.Contains(interactable)) _interactables.Remove(interactable);
+            if (_interactables.Count <= 0) StopCoroutineInteractChecking();
+            _canInteract = _interactables.Count < _maxInteractAtSameTime;
         }
 
         void OnTriggerStay2D(Collider2D other)
