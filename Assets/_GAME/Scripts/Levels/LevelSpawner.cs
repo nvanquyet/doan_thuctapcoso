@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace ShootingGame
 {
-    public class LevelSpawner : VawnWuyest.Singleton<LevelSpawner>
+    public class LevelSpawner : VawnWuyest.SingletonBehaviour<LevelSpawner>
     {
         /// <summary>
         /// Scaling Factor
@@ -21,7 +21,6 @@ namespace ShootingGame
 
         void Start() {
             _currentWave = 0;
-            OnStartWave();
         }
 
         /// <summary>
