@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using ShootingGame;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using VawnWuyest;
 
-public class TetrisSlot : Singleton<TetrisSlot>
+
+public class TetrisSlot : SingletonBehaviour<TetrisSlot>
 {
 
     public int[,] grid;//2 dimensions

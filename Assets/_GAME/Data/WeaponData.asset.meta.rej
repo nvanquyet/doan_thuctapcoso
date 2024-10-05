@@ -1,0 +1,8 @@
+diff a/Assets/_GAME/Data/WeaponData.asset.meta b/Assets/_GAME/Data/WeaponData.asset.meta	(rejected hunks)
+@@ -0,5 +0,6 @@
+ fileFormatVersion: 2
+ guid: fd91076fabfe2ea42bcbc106c8f819f6
++NativeFormatImporter:
+   externalObjects: {}
+   mainObjectFileID: 11400000
+   userData: 
