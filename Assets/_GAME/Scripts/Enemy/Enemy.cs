@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ShootingGame
 {
-    public class Enemy : AInteractor
+    public class Enemy : AInteractable<BoxCollider2D>
     {
         [SerializeField] private EnemyAttacker _enemyAttacker;
         [SerializeField] private EnemyDefender _enemyDefender;
