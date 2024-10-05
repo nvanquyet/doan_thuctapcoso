@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace VawnWuyest
+namespace ShootingGame
 {
     internal class EventDisableListener : EventListenerBase
     {

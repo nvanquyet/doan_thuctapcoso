@@ -1,10 +1,10 @@
 
 using System.Collections.Generic;
 using UnityEngine;
-using VawnWuyest;
+using ShootingGame;
 namespace ShootingGame
 {
-    public class GameCtrl : VawnWuyest.SingletonBehaviour<GameCtrl>
+    public class GameCtrl : ShootingGame.SingletonBehaviour<GameCtrl>
     {
         private List<Player> _players;
 

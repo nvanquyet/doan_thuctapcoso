@@ -1,8 +1,5 @@
-using System;
-using System.Linq;
 using UnityEngine;
-using VawnWuyest;
-using VawnWuyest.Data;
+using ShootingGame.Data;
 namespace ShootingGame
 {
     public class PlayerStat : MonoBehaviour
@@ -27,9 +24,9 @@ namespace ShootingGame
         {
             get
             {
-                if(currentStat.Data == null || currentStat.Data.AllStats == null || currentStat.Data.AllStats.Length <= 0)
+                if(currentStat.Data == null || currentStat.Data.Stats == null || currentStat.Data.Stats.Length <= 0)
                 {
-                    currentStat = new EquiqmentStat(BaseData.Data.AllStats);
+                    currentStat = BaseData.Clone();
                     ApplyStat();
                 }
                 return currentStat;
@@ -47,12 +44,13 @@ namespace ShootingGame
         public void BuffStat(IStatProvider statBuff)
         {
             if (statBuff == null) return;
-            var allStats = statBuff.Data.AllStats;
+            var allStats = statBuff.Data.Stats;
             if (allStats == null || allStats.Length <= 0) return;
             foreach (var stat in allStats)
             {
                 var current = CurrentStat.Data.GetStat(stat.TypeStat);
-                if (current.TypeValueStat == TypeValueStat.FixedValue) current.SetValue(current.Value + stat.GetValue(current.Value));
+                var b = BaseData.Data.GetStat(stat.TypeStat);
+                if (current.TypeValueStat == TypeValueStat.FixedValue) current.SetValue(current.Value + stat.GetValue(b.Value));
                 else if (stat.TypeValueStat == TypeValueStat.FixedValue)
                 {
                     current.SetValue(stat.Value + current.GetValue(stat.Value));

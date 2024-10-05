@@ -9,15 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f4e4304cd95fa94bb83cb19d9c3312b, type: 3}
-  m_Name: MelleWeaponData
+  m_Script: {fileID: 11500000, guid: cd6a82016162f404da986f9d043ef88b, type: 3}
+  m_Name: StatContainerData_02
   m_EditorClassIdentifier: 
-  _data:
-  - key: 0
-    value:
-      itemName: Knife
-      data:
-        datas:
-        - typeStat: 0
-          typeValueStat: 0
-          value: 0
+  stats:
+  - typeStat: 0
+    typeValueStat: 1
+    value: 10
+  - typeStat: 8
+    typeValueStat: 0
+    value: 12

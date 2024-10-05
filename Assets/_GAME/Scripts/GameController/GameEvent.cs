@@ -1,5 +1,5 @@
-using VawnWuyest;
-using VawnWuyest.Data;
+using ShootingGame;
+using ShootingGame.Data;
 
 public sealed class GameEvent
 {

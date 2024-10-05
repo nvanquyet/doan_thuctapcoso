@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using VawnWuyest.Data;
+using ShootingGame.Data;
 namespace ShootingGame
 {
     public class WeaponCtrl : MonoBehaviour
@@ -67,7 +67,6 @@ namespace ShootingGame
             var enemies = LevelSpawner.Instance.GetActiveEnemies();
             foreach (var weapon in _weapons)
             {
-                Debug.Log("Get Nearest Enemies");
                 weapon.Rotate(GetNearestEnemy(weapon.transform.position, enemies));
             }
         }

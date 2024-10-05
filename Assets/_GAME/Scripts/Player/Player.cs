@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-using VawnWuyest;
+using ShootingGame;
 namespace ShootingGame
 {
     [RequireComponent(typeof(PlayerMovement), typeof(PlayerStat))]
@@ -48,8 +48,8 @@ namespace ShootingGame
         {
             if (_playerStat == null) return;
             var currentData = _playerStat.CurrentStat.Data;
-            _playerDefender.SetHealth((int) currentData.GetStat(VawnWuyest.Data.TypeStat.Hp).Value, false);
-            _playerMovement.SetSpeed(currentData.GetStat(VawnWuyest.Data.TypeStat.MoveSpeed).Value);
+            _playerDefender.SetHealth((int) currentData.GetStat(ShootingGame.Data.TypeStat.Hp).Value, false);
+            _playerMovement.SetSpeed(currentData.GetStat(ShootingGame.Data.TypeStat.MoveSpeed).Value);
         }
 
         private void InitData()

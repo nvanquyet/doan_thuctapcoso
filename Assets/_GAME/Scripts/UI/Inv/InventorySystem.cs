@@ -2,7 +2,7 @@
 using ShootingGame;
 using UnityEngine;
 using UnityEngine.UI;
-using VawnWuyest;
+using ShootingGame;
 
 public class InventorySystem : Frame
 {

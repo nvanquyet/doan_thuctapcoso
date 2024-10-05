@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace ShootingGame
 {
-    public class LevelSpawner : VawnWuyest.SingletonBehaviour<LevelSpawner>
+    public class LevelSpawner : ShootingGame.SingletonBehaviour<LevelSpawner>
     {
         /// <summary>
         /// Scaling Factor

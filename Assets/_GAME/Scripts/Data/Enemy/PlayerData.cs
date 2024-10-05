@@ -1,6 +1,6 @@
 
 using UnityEngine;
-namespace VawnWuyest.Data
+namespace ShootingGame.Data
 {
     [CreateAssetMenu(fileName = "PlayerSO", menuName = "_GAME/PlayerData")]
     public class PlayerData : BaseIntKeyData<ShootingGame.Player>

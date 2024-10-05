@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace VawnWuyest {
+namespace ShootingGame {
     public abstract class HUD<K> : SingletonBehaviour<K> where K : MonoBehaviour {
 
         [Tooltip("The master background also a button, this allow user click to background to hide popup")]
