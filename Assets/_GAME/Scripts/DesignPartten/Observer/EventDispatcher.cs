@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace VawnWuyest
+namespace ShootingGame
 {
     public interface IEventParam
     {

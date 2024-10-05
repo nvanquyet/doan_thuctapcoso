@@ -1,5 +1,5 @@
 using UnityEngine;
-using VawnWuyest.Data;
+using ShootingGame.Data;
 namespace ShootingGame
 {
 
@@ -29,7 +29,7 @@ namespace ShootingGame
 
 
         #region Stat
-        [SerializeField] protected ItemAttributes equiqment;
+        [SerializeField] protected EquiqmentStat equiqment;
 
         internal void ApplyStat(IStatProvider stat)
         {

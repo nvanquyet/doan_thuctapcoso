@@ -56,7 +56,7 @@ namespace ShootingGame
 
         private void LateUpdate()
         {
-            SetLocoMotionState(playerMovement.LocomotionState);
+            if(playerMovement != null) SetLocoMotionState(playerMovement.LocomotionState);
         }
 
     }

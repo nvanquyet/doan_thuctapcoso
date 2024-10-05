@@ -1,6 +1,6 @@
 using UnityEditor;
 using UnityEngine;
-namespace VawnWuyest.Editor
+namespace ShootingGame.Editor
 {
     [CustomEditor(typeof(ScriptableObject), true)]
     public class BaseDataEditor : UnityEditor.Editor

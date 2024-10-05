@@ -1,6 +1,6 @@
 using UnityEngine;
-using VawnWuyest.Data;
-namespace VawnWuyest {
+using ShootingGame.Data;
+namespace ShootingGame {
     [CreateAssetMenu(fileName = "GameData", menuName = "_GAME/GameData")]
     public sealed class GameData : SingletonResourcesScriptable<GameData> {
 

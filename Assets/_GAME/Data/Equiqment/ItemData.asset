@@ -15,33 +15,7 @@ MonoBehaviour:
   _data:
   - key: 0
     value:
-      itemName: AoGiap
-      data:
-        datas:
-        - typeStat: 5
-          typeValueStat: 0
-          value: 10
+      data: {fileID: 11400000, guid: bf39dec04c0ec9f46af007bccea7df49, type: 2}
   - key: 1
     value:
-      itemName: BinhMau
-      data:
-        datas:
-        - typeStat: 0
-          typeValueStat: 1
-          value: 5
-  - key: 1
-    value:
-      itemName: "Qu\u1EA7n"
-      data:
-        datas:
-        - typeStat: 0
-          typeValueStat: 1
-          value: 2
-  - key: 1
-    value:
-      itemName: "Qu\u1EA7n"
-      data:
-        datas:
-        - typeStat: 0
-          typeValueStat: 1
-          value: 3
+      data: {fileID: 11400000, guid: d9f1a571b421ca04b9222b544eae05be, type: 2}

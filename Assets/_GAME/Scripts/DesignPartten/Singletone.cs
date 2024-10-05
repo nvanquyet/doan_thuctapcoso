@@ -1,7 +1,7 @@
 using UnityEngine;
-namespace VawnWuyest
+namespace ShootingGame
 {
-    public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+    public abstract class SingletonBehaviour<T> : MonoBehaviour where T : MonoBehaviour
     {
         private static T instance;
 
@@ -50,7 +50,7 @@ namespace VawnWuyest
         }
     }
 
-    public abstract class SingletonDontDestroy<T> : Singleton<T> where T : MonoBehaviour
+    public abstract class SingletonBehaviourDontDestroy<T> : SingletonBehaviour<T> where T : MonoBehaviour
     {
         protected override bool GetDontDestroyOnLoad()
         {

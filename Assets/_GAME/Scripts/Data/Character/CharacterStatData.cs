@@ -1,6 +1,6 @@
 
 using UnityEngine;
-namespace VawnWuyest.Data
+namespace ShootingGame.Data
 {
     [CreateAssetMenu(fileName = "CharacterStatData", menuName = "Items/CharacterStatData")]
     public class PlayerStatData : BaseIntKeyData<EquiqmentStat>

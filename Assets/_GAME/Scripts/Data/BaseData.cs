@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-namespace VawnWuyest.Data
+namespace ShootingGame.Data
 {
 
     [System.Serializable]

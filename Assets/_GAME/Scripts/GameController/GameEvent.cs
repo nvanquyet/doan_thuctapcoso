@@ -1,7 +1,9 @@
-using VawnWuyest;
-using VawnWuyest.Data;
+using ShootingGame;
+using ShootingGame.Data;
 
 public sealed class GameEvent
 {
     public struct OnStatChange : IEventParam { }
+
+    public struct OnWaveClear : IEventParam { }
 }

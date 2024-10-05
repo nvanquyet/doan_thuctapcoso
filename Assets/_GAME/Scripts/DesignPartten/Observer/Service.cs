@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace VawnWuyest
+namespace ShootingGame
 {
 
     public interface IDisposable

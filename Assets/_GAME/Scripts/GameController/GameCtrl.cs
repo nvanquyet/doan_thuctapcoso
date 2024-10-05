@@ -1,9 +1,10 @@
 
 using System.Collections.Generic;
 using UnityEngine;
+using ShootingGame;
 namespace ShootingGame
 {
-    public class GameCtrl : VawnWuyest.Singleton<GameCtrl>
+    public class GameCtrl : ShootingGame.SingletonBehaviour<GameCtrl>
     {
         private List<Player> _players;
 
@@ -39,17 +40,28 @@ namespace ShootingGame
         /// <summary>
         /// Start Game
         /// </summary>
-        public void OnStartGame() => LevelSpawner.Instance.OnStartWave();
+        public void OnStartGame() => this.Dispatch<GameEvent.OnWaveClear>(); 
 
         /// <summary>
         /// Show Merge and Upgrade UI
         /// </summary>
-        private void OnWaveClear() => LevelSpawner.Instance.OnStartWave();
+        private void OnWaveClear() => this.Dispatch<GameEvent.OnWaveClear>(); 
 
         internal void OnCheckWaveClear()
         {
             Debug.Log($"Wave Clear {LevelSpawner.Instance.IsWaveClear}");
-            //if(LevelSpawner.Instance.IsWaveClear) OnWaveClear();
+            if(LevelSpawner.Instance.IsWaveClear){
+                OnWaveClear();
+            }
+        }
+        internal void NextWave()
+        {
+            LevelSpawner.Instance.NextWave();
+        }
+
+        internal void SpawnItem()
+        {
+            Debug.Log("Spawn Item");
         }
     }
 
