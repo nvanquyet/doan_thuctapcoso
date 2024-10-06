@@ -31,12 +31,11 @@ namespace ShootingGame
                 _muzzle = muzzleClone;
                 foreach (Transform spanw in _bulletSpawnPoint)
                 {
-                    Debug.Log("Fire");
                     var bulletClone = _bulletPool.Get();
                     bulletClone.transform.position = spanw.position;
                     bulletClone.RecycleAction = RecycleBullet;
                     Vector2 direction = (spanw.position - muzzleClone.position).normalized;
-                    bulletClone.Spawn(direction);
+                    bulletClone.Spawn(direction, (int)CurrentEquiqmentStat.Data.GetStat(ShootingGame.Data.TypeStat.Damage).Value);
                     void RecycleBullet()
                     {
                         bulletClone.transform.SetParent(transform);
@@ -51,10 +50,6 @@ namespace ShootingGame
         }
         void RecycleMuzzle() => _muzzlePool.Recycle(_muzzle);
 
-        protected override void OnAttackSpeedChange()
-        {
-            
-        }
 
         public override int Damage => 0;
     }

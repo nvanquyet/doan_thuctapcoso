@@ -1,6 +1,6 @@
-using System;
 using UnityEngine;
 using ShootingGame.Data;
+using Unity.VisualScripting;
 namespace ShootingGame
 {   
     public class PlayerDefender : ADefender
@@ -12,36 +12,36 @@ namespace ShootingGame
         private float dodgeChance;
         private int armor;
 
-        [SerializeField] private PlayerStat playerStat;
+        private PlayerStat playerStat;
 
         public override void Defend(int damage)
         {
             if (_invulnerability) return;
             UpdateStatsFromEquipment();
-
-            if (UnityEngine.Random.value < dodgeChance)
-            {
-                Debug.Log("Attack dodged!");
-                return;
-            }
+            if (UnityEngine.Random.value < dodgeChance) return;
 
             _invulnerability = true;
             Invoke(nameof(ResetInvulnerability), _timeInvulnerability);
             if (_flash != null) _flash.Flash(Color.white);
 
-
             int damageAfterArmor = Mathf.Max(damage - armor, 0);
             base.Defend(damageAfterArmor);
+
+            Test();
         }
 
         private void ResetInvulnerability() => _invulnerability = false;
 
-        public override void OnDead() { }
+        public override void OnDead() { 
+            this.Dispatch<GameEvent.OnPlayerDead>();
+        }
 
-        internal void Init()
+        internal void Init(PlayerStat playerStat)
         {
             var sprite = GetComponentInChildren<SpriteRenderer>();
             if (sprite != null && _flash != null) _flash.SetSpriteRenderer(sprite);
+            this.playerStat = playerStat;
+            SetHealth((int)playerStat.CurrentStat.Data.GetStat(TypeStat.Hp).Value, true);
         }
 
 
@@ -57,8 +57,21 @@ namespace ShootingGame
 
                 var armorStats = currentStat.Data.GetStat(TypeStat.Armor);
                 armor = (armorStats.TypeStat == TypeStat.Armor) ? (int)armorStats.GetValue(armor) : 0;
+
+                Debug.Log($"PlayerDefender: UpdateStatsFromEquipment dodgeChance: {dodgeChance} armor: {armor}");
             }
         }
 
+
+        /// <summary>
+        /// Remove this method after testing
+        /// </summary>
+        private void Test(){
+            var healthBar = FindObjectOfType<HealthBar>();
+            if (healthBar != null)
+            {
+                healthBar.UpdateHealth(CurrentHealth, MaxHealth);
+            }
+        }
     }
 }

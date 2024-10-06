@@ -109,6 +109,12 @@ namespace ShootingGame
                 weapon.ApplyStat(stat);
             }
         }
+
+
+
+        #region  Test
+        public List<AWeapon> AllWeapons => _weapons;
+        #endregion
     }
 
 }

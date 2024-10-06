@@ -2,8 +2,6 @@
 using ShootingGame;
 using UnityEngine;
 using UnityEngine.UI;
-using ShootingGame;
-
 public class InventorySystem : Frame
 {
     [SerializeField] private Button buttonPlayGame;

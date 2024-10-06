@@ -10,12 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd6a82016162f404da986f9d043ef88b, type: 3}
-  m_Name: StatContainerData_02
+  m_Name: CritRate Buff
   m_EditorClassIdentifier: 
   stats:
-  - typeStat: 0
+  - typeStat: 4
     typeValueStat: 1
     value: 10
-  - typeStat: 8
-    typeValueStat: 0
-    value: 12

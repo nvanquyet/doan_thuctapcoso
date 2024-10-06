@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using ShootingGame.Data;
 namespace ShootingGame.Data
 {
     [CreateAssetMenu(fileName = "StatContainerData", menuName = "Items/Stat/StatContainerData")]

@@ -1,5 +1,4 @@
-using System;
-using UnityEngine;
+
 namespace ShootingGame
 {
     public class EnemyAttacker : AAttacker
@@ -16,7 +15,6 @@ namespace ShootingGame
         }
         
         private void Attack(){
-           Debug.Log($"attack repeat {_isAttacking} currrentTarget {_currentTarget}");
             if (_currentTarget == null || !_isAttacking) return;
             Attack(_currentTarget);
         }

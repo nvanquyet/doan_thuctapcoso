@@ -15,11 +15,11 @@ namespace ShootingGame.Data
     {
         Hp,
         Damage,
-        AttackSpeed,
+        AttackRate,
         Dodge,
         CritRate,
         Armor,
-        Range,
+        DetectRange,
         MoveSpeed,
         Luck,
         DamageToHp,
