@@ -1,6 +1,5 @@
 using UnityEngine;
 using ShootingGame.Data;
-using Unity.VisualScripting;
 namespace ShootingGame
 {   
     public class PlayerDefender : ADefender
@@ -14,7 +13,7 @@ namespace ShootingGame
 
         private PlayerStat playerStat;
 
-        public override void Defend(int damage)
+        public override void Defend(int damage, bool isSuper = false,  (float, Transform) forceProp = default)
         {
             if (_invulnerability) return;
             UpdateStatsFromEquipment();
@@ -25,7 +24,7 @@ namespace ShootingGame
             if (_flash != null) _flash.Flash(Color.white);
 
             int damageAfterArmor = Mathf.Max(damage - armor, 0);
-            base.Defend(damageAfterArmor);
+            base.Defend(damageAfterArmor, isSuper, forceProp);
 
             Test();
         }
@@ -53,7 +52,7 @@ namespace ShootingGame
                 var currentStat = playerStat.CurrentStat;
 
                 var dodgeStats = currentStat.Data.GetStat(TypeStat.Dodge);
-                dodgeChance = (dodgeStats.TypeStat == TypeStat.Dodge) ? dodgeStats.GetValue(1f) : 0f;
+                dodgeChance = (dodgeStats.TypeStat == TypeStat.Dodge) ? dodgeStats.GetValue() : 0f;
 
                 var armorStats = currentStat.Data.GetStat(TypeStat.Armor);
                 armor = (armorStats.TypeStat == TypeStat.Armor) ? (int)armorStats.GetValue(armor) : 0;
@@ -73,5 +72,6 @@ namespace ShootingGame
                 healthBar.UpdateHealth(CurrentHealth, MaxHealth);
             }
         }
+
     }
 }

@@ -13,7 +13,8 @@ namespace ShootingGame
         [SerializeField] private byte speedBullet = 20;
 
         public Action RecycleAction;
-
+        private bool isSuper;
+        private float forcePushBack;
         private Rigidbody2D _rigid;
 
         public Rigidbody2D Rigid
@@ -26,9 +27,11 @@ namespace ShootingGame
         }
 
         #region  Attack
-        public override bool Attack(Interface.IDefender target)
+        public override bool Attack(Interface.IDefender target, bool isSuper = false,  float forcePushBack = 0)
         {
-            if (base.Attack(target))
+            isSuper = this.isSuper;
+            forcePushBack = this.forcePushBack;
+            if (base.Attack(target, isSuper, forcePushBack))
             {
                 Recycle();
                 return true;
@@ -48,24 +51,34 @@ namespace ShootingGame
         public void Move(Vector2 direction) => Rigid?.AddForce(direction, ForceMode2D.Impulse);
         public void Spawn()
         {
+            this.isSuper = false;
             transform.rotation = Quaternion.identity;
             Move(transform.right * speedBullet);
             if (trailEffect) trailEffect.Play();
             transform.SetParent(null);
             Invoke(nameof(Recycle), 2f);
         }
-
-        public void Spawn(Vector2 direction, int damage)
+        /// <summary>
+        /// Item 1: Damage
+        /// Item 2: CritRate
+        /// Item 3: Force PushBack
+        /// </summary>
+        /// <param name="direction"></param>
+        /// <param name="bulletProperties"></param>
+        public void Spawn(Vector2 direction, (int, bool, float) bulletProperties)
         {
+            this.isSuper = bulletProperties.Item2;
+            this.forcePushBack = bulletProperties.Item3;
             Move(direction.normalized * speedBullet);
-            SetDamage(damage);
+            SetDamage(bulletProperties.Item1);
             if (trailEffect) trailEffect.Play();
             transform.SetParent(null);
             Invoke(nameof(Recycle), 2f);
         }
 
-        public void Spawn(Vector3 direction, bool isCritRate, int damage)
+        public void Spawn(Vector3 direction, bool isCritRate, int damage, bool isSuper = false)
         {
+            this.isSuper = isSuper;
             Move(direction.normalized * speedBullet);
             if (trailEffect) trailEffect.Play();
             transform.SetParent(null);

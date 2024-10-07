@@ -198,6 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   _health: 10
+  rigid: {fileID: 1926085311155766293}
   flash: {fileID: 1926085311155766297}
 --- !u!114 &3737105127655994885
 MonoBehaviour:

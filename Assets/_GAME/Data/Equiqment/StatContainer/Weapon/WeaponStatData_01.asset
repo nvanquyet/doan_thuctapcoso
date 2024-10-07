@@ -15,7 +15,7 @@ MonoBehaviour:
   stats:
   - typeStat: 1
     typeValueStat: 0
-    value: 10
+    value: 1
   - typeStat: 2
     typeValueStat: 0
     value: 2
@@ -25,3 +25,6 @@ MonoBehaviour:
   - typeStat: 6
     typeValueStat: 0
     value: 70
+  - typeStat: 10
+    typeValueStat: 0
+    value: 2

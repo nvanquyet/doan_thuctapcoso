@@ -68,7 +68,8 @@ namespace ShootingGame.Data
             }
             foreach (var property in stats)
             {
-                dictDatas.Add(property.TypeStat, property);
+                if(!dictDatas.ContainsKey(property.TypeStat)) dictDatas.Add(property.TypeStat, property);
+                else dictDatas[property.TypeStat] = property;
             }
         }
 

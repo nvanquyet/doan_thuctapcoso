@@ -13,6 +13,20 @@ namespace ShootingGame
             Invoke(nameof(ResetAttack), attackSpeed);
             return true;
         }
+
+        public override bool Attack(Interface.IDefender target, bool isSuper = false, float forcePushBack = 0)
+        {
+            if (!CanAttack && Damage <= 0) return false;
+            //Multiple Damage if is critrate
+            isSuper = IsCritRate();
+            forcePushBack = CurrentEquiqmentStat.Data.GetStat(TypeStat.WeaponForce).GetValue();
+            target.Defend(Damage * (isSuper ? 2 : 1), isSuper, (forcePushBack, this.transform));
+            return true;
+        }
+
+        protected bool IsCritRate() => UnityEngine.Random.value <= CurrentEquiqmentStat.Data.GetStat(TypeStat.CritRate).GetValue();
+
+
         private void ResetAttack() => isAttacking = false;
 
         public virtual void Rotate(Vector3 pos)
