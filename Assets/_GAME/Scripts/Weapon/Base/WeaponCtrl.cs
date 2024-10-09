@@ -2,13 +2,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using ShootingGame.Data;
+using System;
 namespace ShootingGame
 {
     public class WeaponCtrl : MonoBehaviour
     {
         [SerializeField] private List<WeaponSpawnPos> _allPositionSpawnWeapon;
         [SerializeField] private List<AWeapon> _weapons;
-        [SerializeField] private List<int> _showWeapons;
 
         //public List<Transform> Enemies = new List<Transform>();
 
@@ -24,10 +24,20 @@ namespace ShootingGame
 
         private void Start()
         {
+            this.AddListener<GameEvent.OnNextWave>(OnNextWave);   
+        }
+
+        private void OnNextWave(GameEvent.OnNextWave param)
+        {
             var index = 0;
             var weaponData = GameData.Instance.WeaponData;
             var weaponPrefab = GameData.Instance.WeaponPrefabData;
-            foreach (var weapon in _showWeapons)
+            //Remove all old weapon
+            foreach(var w in _weapons){
+                Destroy(w.gameObject);
+            }
+            GameService.ClearList(ref _weapons);
+            foreach (var weapon in param.allWeaponIds)
             {
                 var dataWepon = weaponData.GetValue(weapon);
                 var prefab = weaponPrefab.GetValue((int) dataWepon.WeaponType);

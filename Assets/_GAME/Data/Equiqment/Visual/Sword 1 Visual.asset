@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ec2b6a35c6c8374686e044ee3e0230a, type: 3}
-  m_Name: WeaponData
+  m_Script: {fileID: 11500000, guid: 44c552b65a76e0943b66cdc9d0894fd2, type: 3}
+  m_Name: Sword 1 Visual
   m_EditorClassIdentifier: 
-  _data:
-  - key: 0
-    value: {fileID: 11400000, guid: d2e5a8b3f87cf67419edd6774882e2b3, type: 2}
-  - key: 1
-    value: {fileID: 11400000, guid: ccc42f6d947558c4a8a83552ee8d2803, type: 2}
+  itemVisual:
+    itemName: Sword
+    icon: {fileID: 21300000, guid: 6f2e6b717ffcec944afbaae68341e552, type: 3}
+    description: Sword 1

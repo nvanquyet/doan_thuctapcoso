@@ -1,5 +1,6 @@
 using UnityEngine;
 using ShootingGame.Data;
+using DG.Tweening;
 namespace ShootingGame
 {
     public abstract class AWeapon : AAttacker
@@ -80,7 +81,7 @@ namespace ShootingGame
 
         protected virtual void OnAttackSpeedChange()
         {
-            var rate = currentEquiqmentStat.Data.GetStat(TypeStat.AttackRate).Value;
+            var rate = CurrentEquiqmentStat.Data.GetStat(TypeStat.AttackRate).Value;
             attackSpeed = 1 / (rate == 0 ? 1 : rate);
         }
 

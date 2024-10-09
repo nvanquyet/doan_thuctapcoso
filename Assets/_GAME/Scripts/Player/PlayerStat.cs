@@ -1,5 +1,7 @@
 using UnityEngine;
 using ShootingGame.Data;
+using Mono.CSharp;
+using System;
 namespace ShootingGame
 {
     public class PlayerStat : MonoBehaviour
@@ -39,6 +41,15 @@ namespace ShootingGame
         }
 #endif
 
+
+        void Start() {
+            this.AddListener<GameEvent.OnNextWave>(OnNextWave);
+        }
+
+        private void OnNextWave(GameEvent.OnNextWave wave)
+        {
+            Invoke(nameof(ApplyStat), 0.1f);
+        }
 
         #region Stat Ctrl
         public void BuffStat(IStatProvider statBuff)

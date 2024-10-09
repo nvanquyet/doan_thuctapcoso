@@ -1,4 +1,5 @@
 
+using System.Linq;
 using ShootingGame;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,7 +20,10 @@ public class InventorySystem : Frame
     private void OnButtonPlayGameClick()
     {
         //Call next wave
-        UICtrl.Instance.Get<InventorySystem>().Hide(true, () => GameCtrl.Instance.NextWave());
+        UICtrl.Instance.Get<InventorySystem>().Hide(true, () => {
+            GameCtrl.Instance.NextWave();
+            this.Dispatch<GameEvent.OnNextWave>(new GameEvent.OnNextWave { allWeaponIds = new int[] { Random.Range(0, 10) % 2 }.ToList() });
+        });
     }
 
     private void OnWaveClear()
