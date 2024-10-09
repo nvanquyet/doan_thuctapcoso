@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using ShootingGame.Data;
 using UnityEngine;
 namespace ShootingGame
@@ -22,6 +23,13 @@ namespace ShootingGame
             }
             return currentStat;
         }
+
+
+        public static void ClearList<T>(ref List<T> list)
+        {
+            if (list == null) list = new();
+            else list.Clear();
+        } 
     }
 
 }

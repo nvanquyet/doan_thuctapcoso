@@ -8,7 +8,7 @@ namespace ShootingGame
     {
         [SerializeField] private List<Transform> _allPositionSpawnWeapon;
         [SerializeField] private List<AWeapon> _weapons;
-        [SerializeField] private List<AWeapon> _showWeapons;
+        [SerializeField] private List<int> _showWeapons;
 
         //public List<Transform> Enemies = new List<Transform>();
 
@@ -25,14 +25,17 @@ namespace ShootingGame
         private void Start()
         {
             var index = 0;
+            var weaponData = GameData.Instance.WeaponData;
+            var weaponPrefab = GameData.Instance.WeaponPrefabData;
             foreach (var weapon in _showWeapons)
             {
-                var clone = Instantiate(weapon, _allPositionSpawnWeapon[index++]);
+                var dataWepon = weaponData.GetValue(weapon);
+                var prefab = weaponPrefab.GetValue((int) dataWepon.WeaponType);
+                var clone = Instantiate(prefab, _allPositionSpawnWeapon[index++]);
+                clone.InitWeapon(dataWepon);
                 clone.gameObject.SetActive(true);
-                //weapon.gameObject.SetActive(false);
                 _weapons.Add(clone);
             }
-            
         }
 
         private void Update()

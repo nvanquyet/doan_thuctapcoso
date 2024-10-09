@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 3955777113353719918}
   - component: {fileID: 3537812215717957531}
   m_Layer: 0
-  m_Name: BaseGun
+  m_Name: PistolGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -241,11 +241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 0
   _oneHitOnly: 1
-  fireRate: 0.5
-  equiqment:
-    itemName: 
-    data:
-      datas: []
+  weaponSprite: {fileID: 9163475136738846238}
   _bulletPrefab: {fileID: -6031142928564043692, guid: fea7cf601e56a4a46b8a554854776927, type: 3}
   _muzzlePrefab: {fileID: 6987829488301963158, guid: 4cddeea29ee8f4675b5af572c76d3215, type: 3}
   _bulletSpawnPoint:

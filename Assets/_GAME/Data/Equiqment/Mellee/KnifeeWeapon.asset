@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21da5e5ddb4740449949f2d2b39c78db, type: 3}
   m_Name: KnifeeWeapon
   m_EditorClassIdentifier: 
+  weaponType: 1
   itemAttributes:
     data: {fileID: 11400000, guid: bf39dec04c0ec9f46af007bccea7df49, type: 2}
+  visualAttribute: {fileID: 11400000, guid: cb9e1229bc60ef64993fa3f623ae82a9, type: 2}

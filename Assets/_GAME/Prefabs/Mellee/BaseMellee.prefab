@@ -241,11 +241,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 10
   _oneHitOnly: 0
-  attackSpeed: 1
-  equiqment:
-    itemName: 
-    data:
-      datas: []
+  weaponSprite: {fileID: 6996159494452088301}
+  idWeapon: 0
   weaponTransform: {fileID: 9163475137752130091}
   weaponTsRotate: {fileID: 0}
   tweenRotationStruct:

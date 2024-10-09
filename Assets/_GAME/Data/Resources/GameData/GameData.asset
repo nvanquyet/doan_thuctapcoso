@@ -16,3 +16,4 @@ MonoBehaviour:
   Enemies: {fileID: 11400000, guid: 5aceaa6d732dc8743bf94e3436d05c3f, type: 2}
   PlayerStatData: {fileID: 11400000, guid: acbdb440b2a8f4c40944bcccc1fbd5f2, type: 2}
   WeaponData: {fileID: 11400000, guid: fd91076fabfe2ea42bcbc106c8f819f6, type: 2}
+  WeaponPrefabData: {fileID: 11400000, guid: b27320abf24ee9148a13e0ac1e9e5521, type: 2}
