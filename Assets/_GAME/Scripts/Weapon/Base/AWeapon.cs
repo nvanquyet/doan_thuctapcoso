@@ -5,8 +5,11 @@ namespace ShootingGame
     public abstract class AWeapon : AAttacker
     {
         protected float attackSpeed;
-
         private bool isAttacking = false;
+
+        [SerializeField] protected SpriteRenderer weaponSprite;
+
+
         public virtual bool Attack(){
             if(isAttacking) return false;
             isAttacking = true;
@@ -41,19 +44,12 @@ namespace ShootingGame
             else transform.localScale = new Vector3(1, 1, 0);
         }
 
+        private void SetSprite(Sprite sprite) => weaponSprite.sprite = sprite;
 
         #region Stat
-        [SerializeField] protected int idWeapon;
         protected EquiqmentStat equiqment;
         protected EquiqmentStat currentEquiqmentStat;
-        public EquiqmentStat EquiqmentStat
-        {
-            get
-            {
-                if (equiqment.Data == null) equiqment = GameData.Instance.WeaponData.GetValue(idWeapon).ItemAttributes;
-                return equiqment;
-            }
-        }
+        public EquiqmentStat EquiqmentStat => equiqment;
 
         public EquiqmentStat CurrentEquiqmentStat
         {
@@ -62,15 +58,18 @@ namespace ShootingGame
                 return currentEquiqmentStat;
             }
         }
+
+        public void InitWeapon(WeaponAttributeData data)
+        {
+            equiqment = data.ItemAttributes;
+            SetSprite(data.VisualAttribute.GetVisual<WeaponVisualStruct>().Icon);
+        }
+
         internal void ApplyStat(IStatProvider stat)
         {
             //Aply stat to equiqment
             var data = stat.Data;
             if (data == null) return;
-            //foreach (var statData in data.Stats)
-            //{
-            //    CurrentEquiqmentStat.Data.UpdateStat(GameService.CaculateStat(CurrentEquiqmentStat.Data.GetStat(statData.TypeStat), statData, EquiqmentStat.Data.GetStat(statData.TypeStat)));
-            //}
             foreach (var statData in CurrentEquiqmentStat.Data.Stats)
             {
                 CurrentEquiqmentStat.Data.UpdateStat(GameService.CaculateStat(statData, data.GetStat(statData.TypeStat), EquiqmentStat.Data.GetStat(statData.TypeStat)));

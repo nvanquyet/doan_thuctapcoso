@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using ShootingGame;
 namespace ShootingGame
 {
     /// <summary>
@@ -106,8 +105,8 @@ namespace ShootingGame
         private IEnumerator Spawn()
         {
             isSpawning = true;
-            ClearList(ref enemies);
-            ClearList(ref tsEnemies);
+            GameService.ClearList(ref enemies);
+            GameService.ClearList(ref tsEnemies);
 
             var curEnemyCount = 0;
             var allEnimies = GameData.Instance.Enemies.GetAllValue();
@@ -160,11 +159,7 @@ namespace ShootingGame
             if(!tsEnemies.Contains(target.transform)) tsEnemies.Add(target.transform);
         }
 
-        private void ClearList<T>(ref List<T> list)
-        {
-            if (list == null) list = new();
-            else list.Clear();
-        }    
+           
     }
 
 }
