@@ -6,7 +6,7 @@ namespace ShootingGame
 {
     public class WeaponCtrl : MonoBehaviour
     {
-        [SerializeField] private List<Transform> _allPositionSpawnWeapon;
+        [SerializeField] private List<WeaponSpawnPos> _allPositionSpawnWeapon;
         [SerializeField] private List<AWeapon> _weapons;
         [SerializeField] private List<int> _showWeapons;
 
@@ -16,7 +16,7 @@ namespace ShootingGame
 #if UNITY_EDITOR
         private void OnValidate()
         {
-            _allPositionSpawnWeapon = GetComponentsInChildren<Transform>().ToList();
+            _allPositionSpawnWeapon = GetComponentsInChildren<WeaponSpawnPos>().ToList();
             _allPositionSpawnWeapon.RemoveAt(0);
         }
 
@@ -31,7 +31,7 @@ namespace ShootingGame
             {
                 var dataWepon = weaponData.GetValue(weapon);
                 var prefab = weaponPrefab.GetValue((int) dataWepon.WeaponType);
-                var clone = Instantiate(prefab, _allPositionSpawnWeapon[index++]);
+                var clone = Instantiate(prefab, _allPositionSpawnWeapon[index++].transform);
                 clone.InitWeapon(dataWepon);
                 clone.gameObject.SetActive(true);
                 _weapons.Add(clone);
@@ -60,7 +60,7 @@ namespace ShootingGame
             if (_weapons.Count < MaxWeapon && !_weapons.Contains(newWeapon))
             {
                 _weapons.Add(newWeapon);
-                newWeapon.transform.SetParent(_allPositionSpawnWeapon[_weapons.Count]);
+                newWeapon.transform.SetParent(_allPositionSpawnWeapon[_weapons.Count].transform);
             }
         }
 
