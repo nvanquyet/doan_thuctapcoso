@@ -15,13 +15,22 @@ MonoBehaviour:
   stats:
   - typeStat: 0
     typeValueStat: 0
-    value: 180
+    value: 10
   - typeStat: 7
     typeValueStat: 0
     value: 5
   - typeStat: 2
-    typeValueStat: 0
-    value: 5
+    typeValueStat: 1
+    value: 10
   - typeStat: 8
     typeValueStat: 0
     value: 5
+  - typeStat: 3
+    typeValueStat: 1
+    value: 50
+  - typeStat: 5
+    typeValueStat: 0
+    value: 2
+  - typeStat: 1
+    typeValueStat: 1
+    value: 10

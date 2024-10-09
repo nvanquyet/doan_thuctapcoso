@@ -85,10 +85,12 @@ namespace ShootingGame.Data
 
         public override void OnValidateKey()
         {
+#if UNITY_EDITOR
             if (_data == null || _data.Length == 0) return;
             for (int i = 0; i < _data.Length; i++) _data[i].key = i;
             UnityEditor.EditorUtility.SetDirty(this);
             Debug.Log("Validate Key Success");
+#endif
         }
 
         public override void OnValidateValue()

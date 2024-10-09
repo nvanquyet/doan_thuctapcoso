@@ -48,20 +48,9 @@ namespace ShootingGame
             if (allStats == null || allStats.Length <= 0) return;
             foreach (var stat in allStats)
             {
-                var current = CurrentStat.Data.GetStat(stat.TypeStat);
-                var b = BaseData.Data.GetStat(stat.TypeStat);
-                if (current.TypeValueStat == TypeValueStat.FixedValue) current.SetValue(current.Value + stat.GetValue(b.Value));
-                else if (stat.TypeValueStat == TypeValueStat.FixedValue)
-                {
-                    current.SetValue(stat.Value + current.GetValue(stat.Value));
-                    current.SetTypeValueStat(stat.TypeValueStat);
-                }
-                else
-                {
-                    current.SetValue(current.Value + stat.Value);
-                }
                 //Apply Value to Data
-                CurrentStat.Data.UpdateStat(current);
+                CurrentStat.Data.UpdateStat(GameService.CaculateStat(CurrentStat.Data.GetStat(stat.TypeStat), stat,
+                                            BaseData.Data.GetStat(stat.TypeStat)));
             }
             ApplyStat();
             this.Dispatch<GameEvent.OnStatChange>(new GameEvent.OnStatChange());    

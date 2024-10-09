@@ -242,9 +242,8 @@ MonoBehaviour:
   _damage: 10
   _oneHitOnly: 0
   attackSpeed: 1
+  weaponAttributeData: {fileID: 11400000, guid: d2e5a8b3f87cf67419edd6774882e2b3, type: 2}
   equiqment:
-    itemName: 
-    data:
-      datas: []
+    data: {fileID: 0}
   weaponTransform: {fileID: 9163475137752130091}
   weaponTsRotate: {fileID: 0}

@@ -15,14 +15,15 @@ namespace ShootingGame.Data
     {
         Hp,
         Damage,
-        AttackSpeed,
+        AttackRate,
         Dodge,
         CritRate,
         Armor,
-        Range,
+        DetectRange,
         MoveSpeed,
         Luck,
         DamageToHp,
+        WeaponForce
     }
     [System.Serializable]
     public struct Stat
@@ -39,7 +40,7 @@ namespace ShootingGame.Data
         public void SetTypeStat(TypeStat statType) => this.typeStat = statType;
         public void SetTypeValueStat(TypeValueStat type) => this.typeValueStat = type;
 
-        public float GetValue(float baseValue)
+        public float GetValue(float baseValue = 1f)
         {
             if (typeValueStat == TypeValueStat.FixedValue)
             {

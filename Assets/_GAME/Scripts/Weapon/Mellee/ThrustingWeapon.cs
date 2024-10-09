@@ -15,9 +15,5 @@ namespace ShootingGame
             attackSequence.Play();
         }
 
-        protected override void OnAttackSpeedChange()
-        {
-            
-        }
     }
 }

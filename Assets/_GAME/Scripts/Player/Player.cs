@@ -60,7 +60,7 @@ namespace ShootingGame
                 _playerMovement.Init(_playerSpawner.transform);
                 _playerSpawner.Init(_playerMovement);
             }
-            _playerDefender.Init();
+            _playerDefender.Init(_playerStat);
         }
     }
 

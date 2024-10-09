@@ -21,7 +21,10 @@ namespace ShootingGame
             _muzzlePool = new ObjectPooling<Transform>(_muzzlePrefab, _amountBulletPooling, transform);
             _bulletPool = new ObjectPooling<BaseBullet>(_bulletPrefab, _amountBulletPooling, transform);
         }
-
+        public override bool Attack(Interface.IDefender target, bool isSuper = false, float forcePushBack = 0)
+        {
+            return false;
+        }
         public override bool Attack()
         {
             if(base.Attack()) {
@@ -31,12 +34,12 @@ namespace ShootingGame
                 _muzzle = muzzleClone;
                 foreach (Transform spanw in _bulletSpawnPoint)
                 {
-                    Debug.Log("Fire");
                     var bulletClone = _bulletPool.Get();
                     bulletClone.transform.position = spanw.position;
                     bulletClone.RecycleAction = RecycleBullet;
                     Vector2 direction = (spanw.position - muzzleClone.position).normalized;
-                    bulletClone.Spawn(direction);
+                    var statData = CurrentEquiqmentStat.Data;
+                    bulletClone.Spawn(direction, ((int)statData.GetStat(Data.TypeStat.Damage).Value, IsCritRate(), statData.GetStat(Data.TypeStat.WeaponForce).GetValue()));
                     void RecycleBullet()
                     {
                         bulletClone.transform.SetParent(transform);
@@ -51,10 +54,6 @@ namespace ShootingGame
         }
         void RecycleMuzzle() => _muzzlePool.Recycle(_muzzle);
 
-        protected override void OnAttackSpeedChange()
-        {
-            
-        }
 
         public override int Damage => 0;
     }

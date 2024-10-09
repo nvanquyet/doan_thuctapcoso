@@ -18,7 +18,7 @@ namespace ShootingGame
         {
             int Damage { get; }
             bool CanAttack { get; }
-            bool Attack(Interface.IDefender target);
+            bool Attack(Interface.IDefender target, bool isSuper = false, float forcePushBack = 0);
             void SetDamage(int damage);
             void SetCanAttack(bool value);
         }
@@ -27,9 +27,11 @@ namespace ShootingGame
         {
             int CurrentHealth { get; }
             bool IsDead { get; }
-            void Defend(int damage);
+            void Defend(int damage, bool isSuper = false, (float, Transform) forceProp = default);
             void OnDead();
             void SetHealth(int health, bool resetHealth  = true);
+
+            void PushBack(float force, Transform target);
         }
 
     }
@@ -185,10 +187,10 @@ namespace ShootingGame
         public bool CanAttack => _canAttack;
         
 
-        public virtual bool Attack(Interface.IDefender target)
+        public virtual bool Attack(Interface.IDefender target, bool isSuper = false, float forcePushBack = 0)
         {
             if (!CanAttack && Damage <= 0) return false;
-            target.Defend(Damage);
+            target.Defend(Damage * (isSuper ? 2 : 1), isSuper, (forcePushBack, this.transform));
             return true;
         }
 
@@ -219,11 +221,20 @@ namespace ShootingGame
         public override void ExitInteract(Interface.IInteract target) { }
     }
 
-    [RequireComponent(typeof(BoxCollider2D))]
+    [RequireComponent(typeof(BoxCollider2D), typeof(Rigidbody2D))]
     public abstract class ADefender : AInteractable<BoxCollider2D>, Interface.IDefender
     {
         [SerializeField] private int maxHealth;
         [SerializeField] private int _health;
+
+        [SerializeField] private Rigidbody2D rigid;
+
+        public Rigidbody2D Rigid {
+            get {
+                if(!rigid) rigid = GetComponent<Rigidbody2D>();
+                return rigid;
+            }
+        }
 
         public virtual int MaxHealth => maxHealth;
 
@@ -234,14 +245,16 @@ namespace ShootingGame
         protected override void OnValidate()
         {
             base.OnValidate();
+            rigid =  GetComponent<Rigidbody2D>();
             _health = maxHealth;
         }
 #endif
 
-        public virtual void Defend(int damage) {
+        public virtual void Defend(int damage, bool isSuper = false, (float, Transform) forceProp = default) {
             if (IsDead) return;
             _health -= damage;
             if (IsDead) OnDead();
+            else if(forceProp != default) PushBack(forceProp.Item1, forceProp.Item2);
         }
         public abstract void OnDead();
 
@@ -253,6 +266,13 @@ namespace ShootingGame
         public override void ExitInteract(Interface.IInteract target) { }
 
         public override void OnInteract(Interface.IInteract target) { }
+
+        public void PushBack(float force, Transform target)
+        {
+            if(Rigid == null) return;
+            var direction = this.transform.position - target.position;
+            Rigid.AddForce(direction.normalized * force, ForceMode2D.Impulse);
+        }
     }
 
 }

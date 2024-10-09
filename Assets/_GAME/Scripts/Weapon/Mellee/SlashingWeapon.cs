@@ -27,6 +27,7 @@ namespace ShootingGame
 
         protected override void OnAttackSpeedChange()
         {
+            base.OnAttackSpeedChange();
             slashingTime.Item1 = attackSpeed * tweenRotationStruct.windUpRatio;
             slashingTime.Item2 = attackSpeed * tweenRotationStruct.slashRatio;
             slashingTime.Item3 = attackSpeed * tweenRotationStruct.recoverRatio;

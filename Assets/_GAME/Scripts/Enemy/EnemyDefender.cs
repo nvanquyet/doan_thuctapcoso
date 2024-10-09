@@ -15,13 +15,13 @@ namespace ShootingGame
             OnDeath?.Invoke();
         }
 
-        public override void Defend(int damage)
+        public override void Defend(int damage, bool isSuper = false, (float, Transform) forceProp = default)
         {
-            base.Defend(damage);
+            base.Defend(damage, isSuper, forceProp);
             // Flash
             if (flash != null)  flash.Flash(Color.white);
             OnDefend?.Invoke();
-            Invoke(nameof(DefendSuccess), 1f);
+            Invoke(nameof(DefendSuccess), .25f);
         }
 
         private void DefendSuccess() => OnDefendSuccess?.Invoke();
