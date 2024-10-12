@@ -8,14 +8,17 @@ namespace ShootingGame.Data {
         ShotGun = 3,
     }
     [CreateAssetMenu(fileName = "WeaponAttributeData", menuName = "Items/Weapon/WeaponAttributeData")]
-    public class WeaponAttributeData : ScriptableObject
+    public class WeaponAttributeData : ScriptableObject, IStatProvider
     {
         [SerializeField] private WeaponType weaponType;
         public WeaponType WeaponType => weaponType;
-        [SerializeField] private EquiqmentStat itemAttributes;
-        public EquiqmentStat ItemAttributes => itemAttributes;
+        [SerializeField] private StatContainerData itemAttributes;
+        public StatContainerData StatData => itemAttributes;
+        //[SerializeField] private EquiqmentStat itemAttributes;
+        //public EquiqmentStat ItemAttributes => itemAttributes;
 
         [SerializeField] private WeaponVisualData visualAttribute;
         public WeaponVisualData VisualAttribute => visualAttribute;
+
     }
 }

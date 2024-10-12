@@ -25,8 +25,8 @@ public class TestStat : MonoBehaviour
     private void ApplyStatForWeapon()
     {
         var weapon = weaponCtrl.AllWeapons[0];
-        var baseStat = weapon.EquiqmentStat.Data.Stats;
-        var currentStat = weapon.CurrentEquiqmentStat.Data.Stats;
+        var baseStat = weapon.EquiqmentStat.Stats;
+        var currentStat = weapon.CurrentEquiqmentStat.Stats;
         foreach (var item in baseStat)
         {
             var newItem = Instantiate(items, allTs[2]);
@@ -49,13 +49,13 @@ public class TestStat : MonoBehaviour
         items.text = "";
         player.Stat.BuffStat(item.GetValue(0));
         player.Stat.BuffStat(item.GetValue(1));
-        foreach (var item in player.Stat.BaseData.Data.Stats)
+        foreach (var item in player.Stat.BaseData.Stats)
         {
             var newItem = Instantiate(items, allTs[1]);
             newItem.text += item.TypeStat + " : " + item.Value + (item.TypeValueStat == ShootingGame.Data.TypeValueStat.Percentage ? "%" : "") + "\n";
             newItem.gameObject.SetActive(true);
         }
-        foreach (var item in player.Stat.CurrentStat.Data.Stats)
+        foreach (var item in player.Stat.CurrentStat.Stats)
         {
             var newItem = Instantiate(items, allTs[0]);
             newItem.text += item.TypeStat + " : " + item.Value + (item.TypeValueStat == ShootingGame.Data.TypeValueStat.Percentage ? "%" : "") + "\n";

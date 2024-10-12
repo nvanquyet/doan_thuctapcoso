@@ -113,7 +113,7 @@ namespace ShootingGame
         //    Enemies.Remove(transform);
         //}
 
-        public void ApplyStat(IStatProvider stat)
+        public void ApplyStat(StatContainerData stat)
         {
             if (_weapons == null || _weapons.Count <= 0) return;
 

@@ -67,30 +67,30 @@ namespace ShootingGame.Data
     #region Struct Design Stat
     public interface IStatProvider
     {
-        public StatContainerData Data { get; }
+        public StatContainerData StatData { get; }
     }
     #endregion
 
     #region Stat Data
-    [System.Serializable]
-    public struct EquiqmentStat : IStatProvider
-    {
-        [SerializeField] private StatContainerData data;
-        public StatContainerData Data { get => data; }
+    // [System.Serializable]
+    // public struct EquiqmentStat : IStatProvider
+    // {
+    //     [SerializeField] private StatContainerData data;
+    //     public StatContainerData Data { get => data; }
 
-        public EquiqmentStat(StatContainerData data)
-        {
-            this.data = new StatContainerData(data);
-        }
+    //     public EquiqmentStat(StatContainerData data)
+    //     {
+    //         this.data = new StatContainerData(data);
+    //     }
 
-        public EquiqmentStat Clone()
-        {
-            return new EquiqmentStat()
-            {
-                data = new StatContainerData(data)
-            };
-        }
-    }
+    //     public EquiqmentStat Clone()
+    //     {
+    //         return new EquiqmentStat()
+    //         {
+    //             data = new StatContainerData(data)
+    //         };
+    //     }
+    // }
     #endregion
 
     #endregion

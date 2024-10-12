@@ -38,7 +38,7 @@ namespace ShootingGame
                     bulletClone.transform.position = spanw.position;
                     bulletClone.RecycleAction = RecycleBullet;
                     Vector2 direction = (spanw.position - muzzleClone.position).normalized;
-                    var statData = CurrentEquiqmentStat.Data;
+                    var statData = CurrentEquiqmentStat;
                     bulletClone.Spawn(direction, ((int)statData.GetStat(Data.TypeStat.Damage).Value, IsCritRate(), statData.GetStat(Data.TypeStat.WeaponForce).GetValue()));
                     void RecycleBullet()
                     {

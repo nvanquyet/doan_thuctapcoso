@@ -47,7 +47,7 @@ namespace ShootingGame
         private void SetStatForPlayer()
         {
             if (_playerStat == null) return;
-            var currentData = _playerStat.CurrentStat.Data;
+            var currentData = _playerStat.CurrentStat;
             _playerDefender.SetHealth((int) currentData.GetStat(ShootingGame.Data.TypeStat.Hp).Value, false);
             _playerMovement.SetSpeed(currentData.GetStat(ShootingGame.Data.TypeStat.MoveSpeed).Value);
         }

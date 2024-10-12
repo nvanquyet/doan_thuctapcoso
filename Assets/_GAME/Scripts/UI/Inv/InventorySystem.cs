@@ -22,7 +22,7 @@ public class InventorySystem : Frame
         //Call next wave
         UICtrl.Instance.Get<InventorySystem>().Hide(true, () => {
             GameCtrl.Instance.NextWave();
-            this.Dispatch<GameEvent.OnNextWave>(new GameEvent.OnNextWave { allWeaponIds = new int[] { Random.Range(0, 10) % 2 }.ToList() });
+            this.Dispatch<GameEvent.OnNextWave>(new GameEvent.OnNextWave { allWeaponIds = new int[] { 0, 1, 2 }.ToList() });
         });
     }
 

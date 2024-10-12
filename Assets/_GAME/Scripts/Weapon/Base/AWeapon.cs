@@ -23,12 +23,12 @@ namespace ShootingGame
             if (!CanAttack && Damage <= 0) return false;
             //Multiple Damage if is critrate
             isSuper = IsCritRate();
-            forcePushBack = CurrentEquiqmentStat.Data.GetStat(TypeStat.WeaponForce).GetValue();
+            forcePushBack = CurrentEquiqmentStat.GetStat(TypeStat.WeaponForce).GetValue();
             target.Defend(Damage * (isSuper ? 2 : 1), isSuper, (forcePushBack, this.transform));
             return true;
         }
 
-        protected bool IsCritRate() => UnityEngine.Random.value <= CurrentEquiqmentStat.Data.GetStat(TypeStat.CritRate).GetValue();
+        protected bool IsCritRate() => UnityEngine.Random.value <= CurrentEquiqmentStat.GetStat(TypeStat.CritRate).GetValue();
 
 
         private void ResetAttack() => isAttacking = false;
@@ -48,32 +48,31 @@ namespace ShootingGame
         private void SetSprite(Sprite sprite) => weaponSprite.sprite = sprite;
 
         #region Stat
-        protected EquiqmentStat equiqment;
-        protected EquiqmentStat currentEquiqmentStat;
-        public EquiqmentStat EquiqmentStat => equiqment;
+        protected StatContainerData equiqment;
+        protected StatContainerData currentEquiqmentStat;
+        public StatContainerData EquiqmentStat => equiqment;
 
-        public EquiqmentStat CurrentEquiqmentStat
+        public StatContainerData CurrentEquiqmentStat
         {
             get {
-                if(currentEquiqmentStat.Data == null) currentEquiqmentStat = EquiqmentStat.Clone();
+                if(currentEquiqmentStat == null) currentEquiqmentStat = new StatContainerData(EquiqmentStat);
                 return currentEquiqmentStat;
             }
         }
 
         public void InitWeapon(WeaponAttributeData data)
         {
-            equiqment = data.ItemAttributes;
+            equiqment = data.StatData;
             SetSprite(data.VisualAttribute.GetVisual<WeaponVisualStruct>().Icon);
         }
 
-        internal void ApplyStat(IStatProvider stat)
+        internal void ApplyStat(StatContainerData stat)
         {
             //Aply stat to equiqment
-            var data = stat.Data;
-            if (data == null) return;
-            foreach (var statData in CurrentEquiqmentStat.Data.Stats)
+            if (stat == null) return;
+            foreach (var statData in CurrentEquiqmentStat.Stats)
             {
-                CurrentEquiqmentStat.Data.UpdateStat(GameService.CaculateStat(statData, data.GetStat(statData.TypeStat), EquiqmentStat.Data.GetStat(statData.TypeStat)));
+                CurrentEquiqmentStat.UpdateStat(GameService.CaculateStat(statData, stat.GetStat(statData.TypeStat), EquiqmentStat.GetStat(statData.TypeStat)));
             }
 
             OnAttackSpeedChange();
@@ -81,7 +80,7 @@ namespace ShootingGame
 
         protected virtual void OnAttackSpeedChange()
         {
-            var rate = CurrentEquiqmentStat.Data.GetStat(TypeStat.AttackRate).Value;
+            var rate = CurrentEquiqmentStat.GetStat(TypeStat.AttackRate).Value;
             attackSpeed = 1 / (rate == 0 ? 1 : rate);
         }
 
