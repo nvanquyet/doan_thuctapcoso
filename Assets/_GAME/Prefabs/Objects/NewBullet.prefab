@@ -411,10 +411,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 0
   _oneHitOnly: 1
-  bulletStat:
-    damage: 10
-    speed: 20
   trailEffect: {fileID: 0}
+  speedBullet: 20
 --- !u!61 &411114611003256357
 BoxCollider2D:
   m_ObjectHideFlags: 0

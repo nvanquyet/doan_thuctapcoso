@@ -16,6 +16,9 @@ MonoBehaviour:
   - typeStat: 0
     typeValueStat: 1
     value: 10
+  - typeStat: 1
+    typeValueStat: 0
+    value: 1
   - typeStat: 8
     typeValueStat: 0
     value: 12

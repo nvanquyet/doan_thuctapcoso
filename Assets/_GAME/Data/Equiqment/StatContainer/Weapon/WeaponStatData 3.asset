@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: WeaponStatData 3
   m_EditorClassIdentifier: 
   stats:
+  - typeStat: 1
+    typeValueStat: 0
+    value: 5
   - typeStat: 0
     typeValueStat: 1
     value: 10

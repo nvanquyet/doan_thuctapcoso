@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: PistolGun
   m_EditorClassIdentifier: 
   weaponType: 2
-  itemAttributes:
-    data: {fileID: 11400000, guid: a0ded39eb4915ea42b9aaacd1cf207a7, type: 2}
+  itemAttributes: {fileID: 11400000, guid: a0ded39eb4915ea42b9aaacd1cf207a7, type: 2}
   visualAttribute: {fileID: 11400000, guid: b06be8bd382568c4697cb9b0fbaa9c7f, type: 2}

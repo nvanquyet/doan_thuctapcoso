@@ -181,7 +181,7 @@ namespace ShootingGame
     public abstract class AAttacker : AInteractable<BoxCollider2D>, Interface.IAttacker
     {
         [SerializeField] protected int _damage;
-        [SerializeField] private bool _oneHitOnly = true;
+        [SerializeField] protected bool _oneHitOnly = true;
         protected bool _canAttack = true;
         public virtual int Damage => _damage;
         public bool CanAttack => _canAttack;

@@ -17,7 +17,6 @@ namespace ShootingGame
         private void OnValidate()
         {
             _allPositionSpawnWeapon = GetComponentsInChildren<WeaponSpawnPos>().ToList();
-            _allPositionSpawnWeapon.RemoveAt(0);
         }
 
 #endif
