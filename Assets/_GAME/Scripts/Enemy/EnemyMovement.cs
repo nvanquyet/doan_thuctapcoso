@@ -81,9 +81,9 @@ namespace ShootingGame
 
                 if (force.x != 0)
                     if (force.x < 0)
-                        _characterSR.transform.localScale = new Vector3(-1, 1, 0);
-                    else
                         _characterSR.transform.localScale = new Vector3(1, 1, 0);
+                    else
+                        _characterSR.transform.localScale = new Vector3(-1, 1, 0);
 
                 yield return null;
             }

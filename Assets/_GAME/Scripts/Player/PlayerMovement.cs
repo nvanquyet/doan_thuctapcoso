@@ -65,9 +65,9 @@ namespace ShootingGame
                 {
                     Vector3 newScale = _characterGraphic.localScale;
                     if (movementInput.x < 0)
-                        newScale.x = -1 * Mathf.Abs(newScale.x);
-                    else
                         newScale.x = Mathf.Abs(newScale.x);
+                    else
+                        newScale.x = -1 * Mathf.Abs(newScale.x);
                     _characterGraphic.localScale = newScale;
                 }
 
