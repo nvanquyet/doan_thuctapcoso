@@ -79,12 +79,13 @@ namespace ShootingGame
                 if (distance < _nextWayPointDistance)
                     currentWP++;
 
-                if (force.x != 0)
+                if (force.x != 0){
+                    var scaleSprite = Mathf.Abs(_characterSR.transform.localScale.x);
                     if (force.x < 0)
-                        _characterSR.transform.localScale = new Vector3(1, 1, 0);
+                        _characterSR.transform.localScale = new Vector3(1, 1, 0) * scaleSprite;
                     else
-                        _characterSR.transform.localScale = new Vector3(-1, 1, 0);
-
+                        _characterSR.transform.localScale = new Vector3(-1, 1, 0) * scaleSprite;
+                }
                 yield return null;
             }
         }

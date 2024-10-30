@@ -4,11 +4,13 @@ using static ShootingGame.Interface;
 
 namespace ShootingGame
 {
-  
+
 
     [RequireComponent(typeof(Rigidbody2D))]
     public class BaseBullet : AAttacker, Interface.IMoveable, ISpawner
     {
+        [SerializeField] private ParticleSystem hitEffect;
+        [SerializeField] private ParticleSystem bulletEffect;
         [SerializeField] private ParticleSystem trailEffect;
         [SerializeField] private byte speedBullet = 20;
 
@@ -17,6 +19,8 @@ namespace ShootingGame
         private float forcePushBack;
         private Rigidbody2D _rigid;
         private IDefender owner;
+
+
         public Rigidbody2D Rigid
         {
             get
@@ -32,20 +36,27 @@ namespace ShootingGame
             if (other == null) return;
             if (other.TryGetComponent(out Interface.IDefender defender))
             {
-                if(owner != null && defender == owner){
+                if (owner != null && defender == owner)
+                {
                     return;
                 }
                 Attack(defender);
-                if(_oneHitOnly) _canAttack = false;
+                ActiveEffect(hitEffect);
+                Rigid.velocity = Vector2.zero;
+                if (_oneHitOnly)
+                {
+                    _canAttack = false;
+                    EnableInteract(false);
+                }
             }
         }
-        public override bool Attack(Interface.IDefender target, bool isSuper = false,  float forcePushBack = 0)
+        public override bool Attack(Interface.IDefender target, bool isSuper = false, float forcePushBack = 0)
         {
             isSuper = this.isSuper;
             forcePushBack = this.forcePushBack;
             if (base.Attack(target, isSuper, forcePushBack))
             {
-                Recycle();
+                Invoke(nameof(Recycle), 0.5f);
                 return true;
             }
             return false;
@@ -53,7 +64,8 @@ namespace ShootingGame
 
         private void Recycle()
         {
-            if(gameObject.activeInHierarchy) RecycleAction?.Invoke();
+            if (gameObject.activeInHierarchy) RecycleAction?.Invoke();
+            DisactiveAllEffect();
         }
 
         #endregion
@@ -68,6 +80,7 @@ namespace ShootingGame
             Move(transform.right * speedBullet);
             if (trailEffect) trailEffect.Play();
             transform.SetParent(null);
+            ActiveBulletEffect(transform.right.normalized);
             Invoke(nameof(Recycle), 2f);
         }
         /// <summary>
@@ -86,19 +99,31 @@ namespace ShootingGame
             SetDamage(bulletProperties.Item1);
             if (trailEffect) trailEffect.Play();
             transform.SetParent(null);
+            ActiveBulletEffect(direction.normalized);
             Invoke(nameof(Recycle), 2f);
         }
-
-        public void Spawn(Vector3 direction, bool isCritRate, int damage, bool isSuper = false)
-        {
-            this.isSuper = isSuper;
-            Move(direction.normalized * speedBullet);
-            if (trailEffect) trailEffect.Play();
-            transform.SetParent(null);
-            Invoke(nameof(Recycle), 2f);
-        }
-
         #endregion
+
+        private void ActiveBulletEffect(Vector3 direction)
+        {
+            ActiveEffect(bulletEffect);
+            if (bulletEffect) bulletEffect.transform.right = direction;
+        }
+
+        private void ActiveEffect(ParticleSystem effect)
+        {
+            DisactiveAllEffect();
+            if (!effect) return;
+            effect.gameObject.SetActive(true);
+        }
+        private void DisactiveAllEffect()
+        {
+            if (hitEffect) DisactiveEffect(hitEffect);
+            if (bulletEffect) DisactiveEffect(bulletEffect);
+            if (trailEffect) DisactiveEffect(trailEffect);
+        }
+        private void DisactiveEffect(ParticleSystem effect) => effect?.gameObject.SetActive(false);
+
 
 
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using ShootingGame.Data;
 using UnityEngine;
@@ -29,7 +30,12 @@ namespace ShootingGame
         {
             if (list == null) list = new();
             else list.Clear();
-        } 
+        }
+
+        internal static void LogColor(string v)
+        {
+            Debug.Log($"<color=yellow>{v}</color>");
+        }
     }
 
 }
