@@ -17,7 +17,6 @@ namespace ShootingGame
         private void OnValidate()
         {
             _allPositionSpawnWeapon = GetComponentsInChildren<WeaponSpawnPos>().ToList();
-            _allPositionSpawnWeapon.RemoveAt(0);
         }
 
 #endif
@@ -113,7 +112,7 @@ namespace ShootingGame
         //    Enemies.Remove(transform);
         //}
 
-        public void ApplyStat(IStatProvider stat)
+        public void ApplyStat(StatContainerData stat)
         {
             if (_weapons == null || _weapons.Count <= 0) return;
 

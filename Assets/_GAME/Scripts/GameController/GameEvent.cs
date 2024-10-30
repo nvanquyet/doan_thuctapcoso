@@ -5,7 +5,7 @@ using ShootingGame.Data;
 public sealed class GameEvent
 {
     public struct OnStatChange : IEventParam { 
-        public EquiqmentStat CurrentStat;
+        public StatContainerData CurrentStat;
     }
 
     public struct OnWaveClear : IEventParam { }

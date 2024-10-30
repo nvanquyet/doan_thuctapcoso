@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ff2a3568dce33f469003994c62336fe, type: 3}
-  m_Name: CharacterStatData
+  m_Script: {fileID: 11500000, guid: 21da5e5ddb4740449949f2d2b39c78db, type: 3}
+  m_Name: PistolGun
   m_EditorClassIdentifier: 
-  _data:
-  - key: 0
-    value: {fileID: 11400000, guid: aeb4dcf144281974189f49783f48755c, type: 2}
+  weaponType: 2
+  itemAttributes: {fileID: 11400000, guid: a0ded39eb4915ea42b9aaacd1cf207a7, type: 2}
+  visualAttribute: {fileID: 11400000, guid: b06be8bd382568c4697cb9b0fbaa9c7f, type: 2}

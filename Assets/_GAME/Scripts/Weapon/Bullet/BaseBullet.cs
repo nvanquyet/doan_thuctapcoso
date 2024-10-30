@@ -16,7 +16,7 @@ namespace ShootingGame
         private bool isSuper;
         private float forcePushBack;
         private Rigidbody2D _rigid;
-
+        private IDefender owner;
         public Rigidbody2D Rigid
         {
             get
@@ -27,6 +27,18 @@ namespace ShootingGame
         }
 
         #region  Attack
+        protected override void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other == null) return;
+            if (other.TryGetComponent(out Interface.IDefender defender))
+            {
+                if(owner != null && defender == owner){
+                    return;
+                }
+                Attack(defender);
+                if(_oneHitOnly) _canAttack = false;
+            }
+        }
         public override bool Attack(Interface.IDefender target, bool isSuper = false,  float forcePushBack = 0)
         {
             isSuper = this.isSuper;
@@ -65,8 +77,9 @@ namespace ShootingGame
         /// </summary>
         /// <param name="direction"></param>
         /// <param name="bulletProperties"></param>
-        public void Spawn(Vector2 direction, (int, bool, float) bulletProperties)
+        public void Spawn(Vector2 direction, (int, bool, float) bulletProperties, IDefender owner = null)
         {
+            this.owner = owner;
             this.isSuper = bulletProperties.Item2;
             this.forcePushBack = bulletProperties.Item3;
             Move(direction.normalized * speedBullet);

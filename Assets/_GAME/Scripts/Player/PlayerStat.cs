@@ -9,26 +9,26 @@ namespace ShootingGame
         [SerializeField] private int id;
         [SerializeField] private WeaponCtrl weaponCtrl;
 
-        private EquiqmentStat baseData;
-        public EquiqmentStat BaseData
+        private StatContainerData baseData;
+        public StatContainerData BaseData
         {
             get
             {
-                if(baseData.Data == null)
+                if(baseData == null)
                 {
                     baseData = GameData.Instance.PlayerStatData.GetValue(id);
                 }
                 return baseData;
             }
         }
-        private EquiqmentStat currentStat;
-        public EquiqmentStat CurrentStat
+        private StatContainerData currentStat;
+        public StatContainerData CurrentStat
         {
             get
             {
-                if(currentStat.Data == null || currentStat.Data.Stats == null || currentStat.Data.Stats.Length <= 0)
+                if(currentStat == null || currentStat.Stats == null || currentStat.Stats.Length <= 0)
                 {
-                    currentStat = BaseData.Clone();
+                    currentStat = new StatContainerData(BaseData);
                     ApplyStat();
                 }
                 return currentStat;
@@ -52,16 +52,16 @@ namespace ShootingGame
         }
 
         #region Stat Ctrl
-        public void BuffStat(IStatProvider statBuff)
+        public void BuffStat(StatContainerData statBuff)
         {
             if (statBuff == null) return;
-            var allStats = statBuff.Data.Stats;
+            var allStats = statBuff.Stats;
             if (allStats == null || allStats.Length <= 0) return;
             foreach (var stat in allStats)
             {
                 //Apply Value to Data
-                CurrentStat.Data.UpdateStat(GameService.CaculateStat(CurrentStat.Data.GetStat(stat.TypeStat), stat,
-                                            BaseData.Data.GetStat(stat.TypeStat)));
+                CurrentStat.UpdateStat(GameService.CaculateStat(CurrentStat.GetStat(stat.TypeStat), stat,
+                                            BaseData.GetStat(stat.TypeStat)));
             }
             ApplyStat();
             this.Dispatch<GameEvent.OnStatChange>(new GameEvent.OnStatChange());    

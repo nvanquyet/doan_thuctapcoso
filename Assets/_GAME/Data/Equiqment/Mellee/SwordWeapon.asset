@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: SwordWeapon
   m_EditorClassIdentifier: 
   weaponType: 0
-  itemAttributes:
-    data: {fileID: 11400000, guid: d9f1a571b421ca04b9222b544eae05be, type: 2}
+  itemAttributes: {fileID: 11400000, guid: d9f1a571b421ca04b9222b544eae05be, type: 2}
   visualAttribute: {fileID: 11400000, guid: 1d11bc586c4b6bc4ea12ab48c49bdb6d, type: 2}

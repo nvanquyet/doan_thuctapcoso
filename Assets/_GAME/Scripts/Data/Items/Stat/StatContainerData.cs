@@ -66,6 +66,7 @@ namespace ShootingGame.Data
             {
                 dictDatas = new Dictionary<TypeStat, Stat>();
             }
+            if(stats == null) return;
             foreach (var property in stats)
             {
                 if(!dictDatas.ContainsKey(property.TypeStat)) dictDatas.Add(property.TypeStat, property);
@@ -75,6 +76,7 @@ namespace ShootingGame.Data
 
         public StatContainerData(StatContainerData clone)
         {
+            if(clone == null) return;
             stats = new Stat[clone.Stats.Length];
             for (int i = 0; i < clone.Stats.Length; i++)
             {

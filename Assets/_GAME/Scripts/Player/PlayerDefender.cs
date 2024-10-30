@@ -40,7 +40,7 @@ namespace ShootingGame
             var sprite = GetComponentInChildren<SpriteRenderer>();
             if (sprite != null && _flash != null) _flash.SetSpriteRenderer(sprite);
             this.playerStat = playerStat;
-            SetHealth((int)playerStat.CurrentStat.Data.GetStat(TypeStat.Hp).Value, true);
+            SetHealth((int)playerStat.CurrentStat.GetStat(TypeStat.Hp).Value, true);
         }
 
 
@@ -51,10 +51,10 @@ namespace ShootingGame
             {
                 var currentStat = playerStat.CurrentStat;
 
-                var dodgeStats = currentStat.Data.GetStat(TypeStat.Dodge);
+                var dodgeStats = currentStat.GetStat(TypeStat.Dodge);
                 dodgeChance = (dodgeStats.TypeStat == TypeStat.Dodge) ? dodgeStats.GetValue() : 0f;
 
-                var armorStats = currentStat.Data.GetStat(TypeStat.Armor);
+                var armorStats = currentStat.GetStat(TypeStat.Armor);
                 armor = (armorStats.TypeStat == TypeStat.Armor) ? (int)armorStats.GetValue(armor) : 0;
 
                 Debug.Log($"PlayerDefender: UpdateStatsFromEquipment dodgeChance: {dodgeChance} armor: {armor}");

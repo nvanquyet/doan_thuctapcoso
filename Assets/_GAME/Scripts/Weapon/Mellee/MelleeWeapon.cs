@@ -21,7 +21,7 @@ namespace ShootingGame
             get
             {
                 if(weaponTsRotate != null) return weaponTsRotate;
-                return this.transform.parent;;
+                return this.transform.parent;
             }
         }
 

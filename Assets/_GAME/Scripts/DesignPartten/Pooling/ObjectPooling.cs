@@ -32,7 +32,7 @@ namespace ShootingGame
             }
 
             T objectToGet = _objects.Dequeue();
-            if (objectToGet && !objectToGet.gameObject.activeInHierarchy) objectToGet?.gameObject.SetActive(true);
+            if (objectToGet && !objectToGet.gameObject.activeInHierarchy) objectToGet.gameObject.SetActive(true);
             return objectToGet;
         }
 
