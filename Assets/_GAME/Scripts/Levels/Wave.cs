@@ -10,11 +10,10 @@ namespace ShootingGame
     [System.Serializable]
     public struct WaveProperties
     {
-        public int enemyCount;
-        public int timeWave;
-        public float timeBtwSpawn;
+        public float timeNormalSpawn;
         public float timeThreshold;
         public int spawnThreshold;
+        public int strengthWave;
     }
 
     public class Wave : MonoBehaviour, ICoroutineBehaviour
@@ -27,12 +26,6 @@ namespace ShootingGame
         [SerializeField] private float spawnRadius = 10f;
         [SerializeField] private float timeDelaySpawn = 2f;
         //This properties is base data of first wave
-        [SerializeField] private WaveProperties baseWaveProperties;
-
-        //This properties is distance wave to spawn boss
-        [SerializeField] private int bossWaveDistance = 5;
-
-
 
         public bool IsWaveClear => !isSpawning && enemies.Count <= 0;
 
@@ -46,13 +39,13 @@ namespace ShootingGame
         private WaveProperties waveProperties;
         //This properties is flag to check spawn done
         private bool isSpawning;
-
         private List<Enemy> enemies = new();
         private List<Transform> tsEnemies = new();
 
         public List<Transform> TransformEnemies => tsEnemies;
 
-        protected virtual void OnValidate() {
+        protected virtual void OnValidate()
+        {
             spawnPositions = GetComponentsInChildren<Transform>().ToList();
             spawnPositions.RemoveAt(0);
             foreach (Transform spawn in spawnPositions)
@@ -68,15 +61,15 @@ namespace ShootingGame
         //This method to set data wave
         public void Init(float scalingFactor, int currentWave)
         {
-            this.scalingFactor = scalingFactor;
-            this.isBossWave = currentWave % bossWaveDistance == 0;
+            this.scalingFactor = GameService.ApplyScaleFactorToValue(scalingFactor, currentWave);
+            this.isBossWave = currentWave % GameConfig.Instance.bossWaveDistance == 0;
 
             this.waveProperties = new WaveProperties
             {
-                enemyCount = Mathf.RoundToInt(baseWaveProperties.enemyCount * Mathf.Pow(scalingFactor, currentWave)),
-                timeWave = Mathf.RoundToInt(baseWaveProperties.timeWave * Mathf.Pow(scalingFactor, currentWave)),
-                timeThreshold = Mathf.RoundToInt(baseWaveProperties.timeThreshold * Mathf.Pow(scalingFactor, currentWave)),
-                spawnThreshold = Mathf.RoundToInt(baseWaveProperties.spawnThreshold * Mathf.Pow(scalingFactor, currentWave)),
+                timeThreshold = GameService.ApplyScaleFactorToValue(GameConfig.Instance.waveProperties.timeThreshold, scalingFactor),
+                spawnThreshold = GameService.ApplyScaleFactorToValue(GameConfig.Instance.waveProperties.spawnThreshold, scalingFactor),
+                strengthWave = GameService.ApplyWeightToValue(GameConfig.Instance.waveProperties.strengthWave , scalingFactor),
+                timeNormalSpawn = GameConfig.Instance.waveProperties.timeNormalSpawn
             };
 
             Invoke(nameof(StartSpawning), timeDelaySpawn);
@@ -93,7 +86,8 @@ namespace ShootingGame
         /// <summary>
         /// Start Spawning
         /// </summary>
-        public void StartSpawning() {
+        public void StartSpawning()
+        {
             spawnRoutine = StartRoutine(Spawn());
         }
         public void StopSpawning() => StopRoutine(spawnRoutine);
@@ -108,35 +102,40 @@ namespace ShootingGame
             GameService.ClearList(ref enemies);
             GameService.ClearList(ref tsEnemies);
 
-            var curEnemyCount = 0;
             var allEnimies = GameData.Instance.Enemies.GetAllValue();
-            while (true)
+            var curEnemyCount = 0;
+            while (waveProperties.strengthWave > 0)
             {
                 //Spawn Enemy from data
                 var enemy = allEnimies[Random.Range(0, Mathf.Min(currentWave, allEnimies.Length))];
                 //Init data enemy
-                if (enemy != null) {
-                    var randomPos = spawnPositions[Random.Range(0, spawnPositions.Count)];
-                    var enemyInstance = Instantiate(enemy, randomPos);
+                if (enemy != null)
+                {
+                    var enemyInstance = Instantiate(enemy,  spawnPositions[Random.Range(0, spawnPositions.Count)]);
                     //Init data enemy
-                    if (enemyInstance) {
+                    if (enemyInstance)
+                    {
                         enemyInstance.transform.localPosition = Vector3.zero;
                         enemyInstance.Init(scalingFactor);
                         AddEnemy(enemyInstance);
+
+                        waveProperties.strengthWave -= enemyInstance.GetStrength();
                         curEnemyCount++;
                     }
                 }
-                if (curEnemyCount >= waveProperties.enemyCount) {
-                    break;
-                } else if (curEnemyCount % waveProperties.spawnThreshold == 0)
+
+                if (curEnemyCount % waveProperties.spawnThreshold == 0)
                 {
                     yield return new WaitForSeconds(waveProperties.timeThreshold);
-                } else {
-                    yield return new WaitForSeconds(waveProperties.timeBtwSpawn);
+                }
+                else
+                {
+                    yield return new WaitForSeconds(waveProperties.timeNormalSpawn);
                 }
             }
 
-            if (isBossWave) {
+            if (isBossWave)
+            {
                 //Spawn Boss
             }
 
@@ -153,13 +152,14 @@ namespace ShootingGame
         }
 
 
+
         private void AddEnemy(Enemy target)
         {
-            if(!enemies.Contains(target)) enemies.Add(target);
-            if(!tsEnemies.Contains(target.transform)) tsEnemies.Add(target.transform);
+            if (!enemies.Contains(target)) enemies.Add(target);
+            if (!tsEnemies.Contains(target.transform)) tsEnemies.Add(target.transform);
         }
 
-           
+
     }
 
 }

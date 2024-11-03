@@ -45,6 +45,7 @@ namespace ShootingGame
                     GameService.LogColor($"Shoot {bulletClone != null} Parent: {bulletClone.transform.parent}");
                     bulletClone.transform.position = spanw.position;
                     bulletClone.RecycleAction = () => {
+                        if(gameObject == null || bulletClone == null) return;
                         bulletClone.transform.SetParent(transform);
                         _bulletPool.Recycle(bulletClone);
                     };

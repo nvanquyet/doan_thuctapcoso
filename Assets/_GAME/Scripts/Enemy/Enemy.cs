@@ -3,6 +3,20 @@ using UnityEngine;
 
 namespace ShootingGame
 {
+    [Serializable]
+    public struct EnemyWeights
+    {
+        public float HpWeight;
+        public float DamageWeight;
+        public float SpeedWeight;
+
+        public EnemyWeights(float hpWeight, float damageWeight, float speedWeight)
+        {
+            HpWeight = hpWeight;
+            DamageWeight = damageWeight;
+            SpeedWeight = speedWeight;
+        }
+    }
     public class Enemy : AInteractable<BoxCollider2D>
     {
         [SerializeField] private EnemyAttacker _enemyAttacker;
@@ -21,8 +35,10 @@ namespace ShootingGame
         }
 #endif
 
-        private void Start(){
-            if(_enemyMovement != null && _enemyDefender != null) {
+        private void Start()
+        {
+            if (_enemyMovement != null && _enemyDefender != null)
+            {
                 _enemyDefender.OnDefend += () => _enemyMovement.PauseMovement(true);
                 _enemyDefender.OnDefendSuccess += () => _enemyMovement.PauseMovement(false);
                 _enemyDefender.OnDeath += () =>
@@ -34,19 +50,30 @@ namespace ShootingGame
             }
         }
 
-        public void Init(float scaleFactor){
+        public void Init(float scaleFactor)
+        {
             _enemyDefender.Init(scaleFactor);
             _enemyAttacker.Init(scaleFactor);
             //_enemyMovement.Init(scaleFactor);
         }
 
+        public int GetStrength()
+        {
+            //Caculate strength of enemy
+            return (int) (GameService.ApplyWeightToValue(_enemyDefender.MaxHealth, GameConfig.Instance.enemyWeights.HpWeight) +
+                GameService.ApplyWeightToValue(_enemyAttacker.Damage, GameConfig.Instance.enemyWeights.DamageWeight) +
+                GameService.ApplyWeightToValue(_enemyMovement.Speed, GameConfig.Instance.enemyWeights.SpeedWeight));
+        }
 
-        public override void OnInteract(Interface.IInteract target) {
-            if(target is FireRangePlayer) target.OnInteract(this);
-        } 
-        
-        public override void ExitInteract(Interface.IInteract target) {
-            if(target is FireRangePlayer) target.OnInteract(this);
+
+        public override void OnInteract(Interface.IInteract target)
+        {
+            if (target is FireRangePlayer) target.OnInteract(this);
+        }
+
+        public override void ExitInteract(Interface.IInteract target)
+        {
+            if (target is FireRangePlayer) target.OnInteract(this);
         }
     }
 }
