@@ -1,5 +1,4 @@
 ﻿using ShootingGame;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -69,15 +68,8 @@ public class TetrisSlot : SingletonBehaviour<TetrisSlot>
         if (posItemNaBag.Count == (contX * contY)) // if item already in bag
         {
             TetrisItemSlot myItem = Instantiate(prefabSlot);
-            myItem.startPosition = new Vector2(posItemNaBag[0].x, posItemNaBag[0].y); //first position
-            myItem.item = item; // get item
-            myItem.icon.sprite = item.itemIcon; //get icon
-            myItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero; //change anchor position
-            myItem.GetComponent<RectTransform>().anchorMax = new Vector2(0f, 1f);
-            myItem.GetComponent<RectTransform>().anchorMin = new Vector2(0f, 1f);
             myItem.transform.SetParent(this.GetComponent<RectTransform>(), false);
-            myItem.gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
-            myItem.GetComponent<RectTransform>().anchoredPosition = new Vector2(myItem.startPosition.x * cellSize.x, -myItem.startPosition.y * cellSize.y);
+            myItem.AddToBag(item, cellSize, posItemNaBag[0]);
             itensInBag.Add(myItem);
 
             for (int k = 0; k < posItemNaBag.Count; k++) //upgrade matrix

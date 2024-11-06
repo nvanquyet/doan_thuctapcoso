@@ -14567,6 +14567,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1166971856}
     m_Modifications:
+    - target: {fileID: 3112437861457087443, guid: 99a783601fbbc9041b1a4fe2e7162d10, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 3112437861457087443, guid: 99a783601fbbc9041b1a4fe2e7162d10, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -225
+      objectReference: {fileID: 0}
     - target: {fileID: 6643547895679668381, guid: 99a783601fbbc9041b1a4fe2e7162d10, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -14650,6 +14658,10 @@ PrefabInstance:
     - target: {fileID: 7562397475983613026, guid: 99a783601fbbc9041b1a4fe2e7162d10, type: 3}
       propertyPath: playerInventory
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7783215119368473144, guid: 99a783601fbbc9041b1a4fe2e7162d10, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8657350193102398123, guid: 99a783601fbbc9041b1a4fe2e7162d10, type: 3}
       propertyPath: m_Name

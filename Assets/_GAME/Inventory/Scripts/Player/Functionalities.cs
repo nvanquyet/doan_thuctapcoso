@@ -35,8 +35,8 @@ public class Functionalities : MonoBehaviour //inventoryTab
         atributte1.text = "";
         itemRarity.text = "";
 
-        startPos = new Vector2(1153f, -275f);
-        finalPos = new Vector2(254f, -275f);
+        startPos = new Vector2(1080f, -225f);
+        finalPos = new Vector2(300f, -225f);
         starPosChangerY = 15f;
         inventoryTab.GetComponent<RectTransform>().anchoredPosition = startPos;
     }
