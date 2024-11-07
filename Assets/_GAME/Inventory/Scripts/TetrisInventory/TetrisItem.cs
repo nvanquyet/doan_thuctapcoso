@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-
+﻿using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Iventory/Tetris/Item")]
@@ -18,7 +14,8 @@ public class TetrisItem : ScriptableObject
     public bool usable;
     public int currentStackSize;
     public int MaxStackSize;
-    public Vector2 itemSize; //x and y
+    //public Vector2 itemSize; //x and y  
+    public MatrixData matrixData;
     public string rarity;
 
     [SerializeField]

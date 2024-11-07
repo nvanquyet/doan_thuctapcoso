@@ -13,18 +13,15 @@ MonoBehaviour:
   m_Name: Brown Potion
   m_EditorClassIdentifier: 
   itemID: _BrownPot01
-  itemIcon: {fileID: -3608573806325120779, guid: 0f26b1804d79e0b84e71ac36f50b2dfb,
-    type: 3}
+  itemIcon: {fileID: -3608573806325120779, guid: 0f26b1804d79e0b84e71ac36f50b2dfb, type: 3}
   itemName: Brown Potion
   itemDescription: Healing potion.
   usable: 1
   currentStackSize: 0
   MaxStackSize: 5
-  itemSize: {x: 1, y: 2}
+  matrixData: {fileID: 11400000, guid: 771f55026c037b94c9687036981e166f, type: 2}
   rarity: Common
   att1: 50
-  att1_icon: {fileID: -3264469525993393665, guid: ee1ba61e9f701624f9a7782e8eeb7289,
-    type: 3}
-  iconAtt1: {fileID: -3264469525993393665, guid: ee1ba61e9f701624f9a7782e8eeb7289,
-    type: 3}
+  att1_icon: {fileID: -3264469525993393665, guid: ee1ba61e9f701624f9a7782e8eeb7289, type: 3}
+  iconAtt1: {fileID: -3264469525993393665, guid: ee1ba61e9f701624f9a7782e8eeb7289, type: 3}
   heal: 50

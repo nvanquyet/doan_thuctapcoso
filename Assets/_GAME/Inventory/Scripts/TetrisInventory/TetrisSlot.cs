@@ -27,17 +27,17 @@ public class TetrisSlot : SingletonBehaviour<TetrisSlot>
         maxGridX = 8;
         maxGridY = Mathf.FloorToInt((playerInventory.numberSlots + 1) / maxGridX);
 
-        grid = new int[maxGridX, maxGridY]; // matrix of bag size
+        grid = new int[maxGridY, maxGridX]; // matrix of bag size
     }
 
     public bool AddInFirstSpace(TetrisItem item)
     {
-        int contX = (int)item.itemSize.x; //size of item in x
-        int contY = (int)item.itemSize.y; //size of item in y
+        int contX = (int)item.matrixData.itemSize.x; //size of item in x
+        int contY = (int)item.matrixData.itemSize.y; //size of item in y
 
-        for (int i = 0; i < maxGridX ; i++)//bag in X
+        for (int i = 0; i < maxGridY ; i++)//bag in Y
         {
-            for (int j = 0; j < maxGridY ; j++) //bag in Y
+            for (int j = 0; j < maxGridX ; j++) //bag in X
             {
                 if (posItemNaBag.Count != (contX * contY)) // if false, the item fit the bag
                 {
@@ -46,11 +46,11 @@ public class TetrisSlot : SingletonBehaviour<TetrisSlot>
                     {
                         for (int sizeX = 0; sizeX < contX; sizeX++)//item size in X
                         {
-                            if ((i + sizeX) < maxGridX && (j + sizeY) < maxGridY && grid[i + sizeX, j + sizeY] != 1)//inside of index
+                            if ((i + sizeY) < maxGridY && (j + sizeX) < maxGridX && grid[i + sizeY, j + sizeX] != 1)//inside of index
                             {
                                 Vector2 pos;
-                                pos.x = i + sizeX;
-                                pos.y = j + sizeY;
+                                pos.y = i + sizeY;
+                                pos.x = j + sizeX;
                                 posItemNaBag.Add(pos);
                             } else {
                                 sizeX = contX;
@@ -72,12 +72,6 @@ public class TetrisSlot : SingletonBehaviour<TetrisSlot>
             myItem.AddToBag(item, cellSize, posItemNaBag[0]);
             itensInBag.Add(myItem);
 
-            for (int k = 0; k < posItemNaBag.Count; k++) //upgrade matrix
-            {
-                int posToAddX = (int)posItemNaBag[k].x;
-                int posToAddY = (int)posItemNaBag[k].y;
-                grid[posToAddX, posToAddY] = 1;
-            }
             posItemNaBag.Clear();
             Debug.Log("COunt: " + itensInBag.Count);
             return true;
