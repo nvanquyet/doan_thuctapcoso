@@ -18,7 +18,15 @@ namespace ShootingGame.Data {
         //public EquiqmentStat ItemAttributes => itemAttributes;
 
         [SerializeField] private WeaponVisualData visualAttribute;
-        public WeaponVisualData VisualAttribute => visualAttribute;
+        private Sprite icon;
 
+        // Correct definition of Icon as a property (not a method)
+        public Sprite Icon => icon;
+
+        public WeaponVisualData VisualAttribute => visualAttribute;
+        public void SetIcon(Sprite newIcon)
+        {
+            icon = newIcon;
+        }
     }
 }
