@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44c552b65a76e0943b66cdc9d0894fd2, type: 3}
+  m_Name: WeaponVisualDatalv2 1
+  m_EditorClassIdentifier: 
+  itemVisual:
+    itemName: lv2
+    icon: {fileID: 21300000, guid: 3d264f0be0985384181d9fa4392b7940, type: 3}
+    description: lv2
