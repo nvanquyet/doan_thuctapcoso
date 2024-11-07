@@ -1,37 +1,59 @@
-﻿using ShootingGame;
-using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
-
-public class TetrisUI : SingletonBehaviour<TetrisUI>
+public class TetrisUI : MonoBehaviour
 {
-    //create the slots background grid based on inventory size
+    [SerializeField]
+    private TetrisItemUI itemUIPrefab;
 
-    TetrisInventory playerInventory;
-    [SerializeField] 
-    TetrisItemUI itemUIPrefab; //item prefab to create the item UI.
+    [SerializeField]
+    private GridLayoutGroup gridLayoutGroup;
 
-    public TetrisItemUI[,] tetrisItemUIs;
-    void Start()
+
+#if UNITY_EDITOR
+    private void OnValidate()
     {
-        playerInventory = TetrisInventory.instanceTetris;
-        // for (int i = 0; i < playerInventory.numberSlots; i++)
-        // {
-        //     //var itemUI = Instantiate(slotPrefab, transform);  //generate the slots grid.
-        //     var item = Instantiate(itemUIPrefab, transform); //generate the item UI.
-        //     tetrisItemUIs[i / 10, i % 10] = item;
-        // }
-        var line = (int) Mathf.Sqrt(playerInventory.numberSlots);
+        itemUIPrefab = GetComponentInChildren<TetrisItemUI>();
+        gridLayoutGroup = GetComponentInChildren<GridLayoutGroup>();
+    }
+#endif
+
+    public TetrisItemUI[,] tetrisItemUIs { get; private set; }
+
+    public void CreateSlot(int numberSlots)
+    {
+        itemUIPrefab.transform.SetParent(transform.parent);
+        foreach (Transform child in transform)
+        {
+            Debug.Log("Destroy: " + child.name);
+            Destroy(child.gameObject);
+        }
+        var line = (int)Mathf.Sqrt(numberSlots);
         tetrisItemUIs = new TetrisItemUI[line, line];
         for (int i = 0; i < line; i++)
         {
-            for(int j = 0; j < line ; j++){
+            for (int j = 0; j < line; j++)
+            {
                 var item = Instantiate(itemUIPrefab, transform); //generate the item UI.
                 tetrisItemUIs[i, j] = item;
                 item.itemText.SetText("0");
+                item.itemText.gameObject.SetActive(false);
                 item.gameObject.SetActive(true);
             }
         }
         itemUIPrefab.gameObject.SetActive(false);
+
+        SetContrains(numberSlots);
+
+        Debug.Log("CreateSlot: " + line + "x" + line);
+    }
+
+    public void SetCellSize(Vector2 cellSize)
+    {
+        gridLayoutGroup.cellSize = cellSize;
+    }
+    private void SetContrains(int numberSlots)
+    {
+        gridLayoutGroup.constraintCount = (int)Mathf.Sqrt(numberSlots);
     }
 }

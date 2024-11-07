@@ -1,81 +1,69 @@
 ﻿using ShootingGame;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 
 public class TetrisSlot : SingletonBehaviour<TetrisSlot>
 {
+    #region  Properties Matrix
+    public int[,] grid { get; private set; }
+    public int maxGridX { get; private set; }
+    public int maxGridY { get; private set; }
 
-    public int[,] grid;//2 dimensions
+    [SerializeField] private Vector2 cellSize;
+    [SerializeField] private TetrisItemSlot prefabSlot;
+    private List<Vector2> posItemNaBag = new List<Vector2>();
+    
+    #endregion
 
-    public TetrisInventory playerInventory; //14 slots for each line
-    public List<TetrisItemSlot> itensInBag = new List<TetrisItemSlot>(); // itens in bag
+    private List<TetrisItemSlot> itemsInBag = new List<TetrisItemSlot>();
 
-    public int maxGridX;
-    public int maxGridY;
+    public List<TetrisItemSlot> ItemsInBag => itemsInBag;
 
-    public TetrisItemSlot prefabSlot; // item prefab
-    Vector2 cellSize = new Vector2(34f, 34f); //slot cell size 
-
-    List<Vector2> posItemNaBag = new List<Vector2>(); // new item pos in bag matrix
-
-    void Start()
+    public void SetGrid(int numberSlots)
     {
-        //Dont find object of type please refer to the local player what contains TetrisInventory
-        playerInventory = FindObjectOfType<TetrisInventory>();
-
-        maxGridX = 8;
-        maxGridY = Mathf.FloorToInt((playerInventory.numberSlots + 1) / maxGridX);
-
-        grid = new int[maxGridY, maxGridX]; // matrix of bag size
-    }
-
-    public bool AddInFirstSpace(TetrisItem item)
-    {
-        int contX = (int)item.matrixData.itemSize.x; //size of item in x
-        int contY = (int)item.matrixData.itemSize.y; //size of item in y
-
-        for (int i = 0; i < maxGridY ; i++)//bag in Y
-        {
-            for (int j = 0; j < maxGridX ; j++) //bag in X
+        if(grid == null) {
+            maxGridX = (int)Mathf.Sqrt(numberSlots);
+            maxGridY = (int)Mathf.Sqrt(numberSlots);
+            grid = new int[maxGridY, maxGridX];
+        }
+        else {
+            if(maxGridX * maxGridY >= numberSlots) return;
+            int[,] newGrid = new int[maxGridY, maxGridX];
+            for (int i = 0; i < maxGridY; i++)
             {
-                if (posItemNaBag.Count != (contX * contY)) // if false, the item fit the bag
+                for (int j = 0; j < maxGridX; j++)
                 {
-                    //for each x,y position (i,j), test if item fits
-                    for (int sizeY = 0; sizeY < contY; sizeY++) // item size in Y
-                    {
-                        for (int sizeX = 0; sizeX < contX; sizeX++)//item size in X
-                        {
-                            if ((i + sizeY) < maxGridY && (j + sizeX) < maxGridX && grid[i + sizeY, j + sizeX] != 1)//inside of index
-                            {
-                                Vector2 pos;
-                                pos.y = i + sizeY;
-                                pos.x = j + sizeX;
-                                posItemNaBag.Add(pos);
-                            } else {
-                                sizeX = contX;
-                                sizeY = contY;
-                                posItemNaBag.Clear();
-                            }
-                        }
-                    }
-                } else {
-                    break;
+                    newGrid[i, j] = grid[i, j];
                 }
             }
-        }
+            maxGridX = (int)Mathf.Sqrt(numberSlots);
+            maxGridY = (int)Mathf.Sqrt(numberSlots);
+            grid = newGrid;
+        } 
+        Debug.Log("SetGrid: " + maxGridX + "x" + maxGridY);
+    }
 
-        if (posItemNaBag.Count == (contX * contY)) // if item already in bag
-        {
-            TetrisItemSlot myItem = Instantiate(prefabSlot);
-            myItem.transform.SetParent(this.GetComponent<RectTransform>(), false);
-            myItem.AddToBag(item, cellSize, posItemNaBag[0]);
-            itensInBag.Add(myItem);
+    public TetrisItemSlot CreateItem(TetrisItem item)
+    {
+        TetrisItemSlot myItem = Instantiate(prefabSlot, transform);
+        myItem.InitItem(this, item, cellSize);
+        return myItem;
+    }
 
-            posItemNaBag.Clear();
-            Debug.Log("COunt: " + itensInBag.Count);
-            return true;
-        }
-        return false;
+    public void RemoveItem(TetrisItemSlot item)
+    {
+        if (itemsInBag.Contains(item)) itemsInBag.Remove(item);
+    }
+
+    public void AddItem(TetrisItemSlot item)
+    {
+        if(!itemsInBag.Contains(item)) itemsInBag.Add(item);
+    }
+
+    public void SetCellSize(Vector2 cellSize)
+    {
+        this.cellSize = cellSize;
     }
 }
