@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using ShootingGame;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class TetrisUI : MonoBehaviour
+//public class TetrisUI : MonoBehaviour
+public class TetrisUI : SingletonBehaviour<TetrisUI>
 {
     [SerializeField]
     private TetrisItemUI itemUIPrefab;
@@ -55,5 +57,10 @@ public class TetrisUI : MonoBehaviour
     private void SetContrains(int numberSlots)
     {
         gridLayoutGroup.constraintCount = (int)Mathf.Sqrt(numberSlots);
+    }
+
+    public void OnMarkItemInGrid(int x, int y, int value)
+    {
+        //tetrisItemUIs[y, x].itemText.SetText(value.ToString());
     }
 }

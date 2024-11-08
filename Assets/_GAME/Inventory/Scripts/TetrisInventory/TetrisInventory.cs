@@ -30,28 +30,29 @@ public class TetrisInventory : MonoBehaviour
         tetrisUI?.CreateSlot(numberSlots);
     }
 
-    public void AddItemToTetrisSlot(TetrisItemSlot item)
+    public void OnAddToTetrisSlot(TetrisItemSlot item)
     {
         waitingSlots.RemoveItem(item);
         tetrisSlot.AddItem(item);
     }
 
-    public void ReturnToWaitingList(TetrisItemSlot item)
+    public void OnReturnToWaitingList(TetrisItemSlot item)
     {
-        Debug.Log("ReturnToWaitingList");
         waitingSlots.AddItem(item);
         tetrisSlot.RemoveItem(item);
     }
 #if UNITY_EDITOR
-    private int index = 0;
     [ContextMenu("AddItem")]
     private void AddItem()
     {
-        var item = tetrisSlot.CreateItem(itemTest[index % itemTest.Length]);
-        ReturnToWaitingList(item);
-        item.ActionReturnWaitingList = ReturnToWaitingList;
-        item.ActionAddToBag = AddItemToTetrisSlot;
-        index++;
+        for(int i = 0; i < itemTest.Length; i++)
+        {
+            var item = tetrisSlot.CreateItem(itemTest[i]);
+            OnReturnToWaitingList(item);
+            item.ActionReturnWaitingList = OnReturnToWaitingList;
+            item.ActionAddToBag = OnAddToTetrisSlot;
+            item.ActionMarkItemInGrid = tetrisUI.OnMarkItemInGrid;    
+        }
     }
 
 #endif

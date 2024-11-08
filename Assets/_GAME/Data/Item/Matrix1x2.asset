@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Matrix1x2
   m_EditorClassIdentifier: 
   itemSize: {x: 1, y: 2}
+  isUniformMatrix: 1
   matrixStruct:
   - values: 01000000
   - values: 01000000

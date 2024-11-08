@@ -7,9 +7,8 @@ using UnityEngine.UI;
 
 public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    public Action<TetrisItemSlot> ActionReturnWaitingList;
-    public Action<TetrisItemSlot> ActionAddToBag;
-
+    public Action<TetrisItemSlot> ActionReturnWaitingList, ActionAddToBag;
+    public Action<int, int, int> ActionMarkItemInGrid;
     [SerializeField] private Image icon;
     private TetrisSlot slots;
     private TetrisItem item;
@@ -41,9 +40,10 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
         distaceToMousePosition = eventData.position - (Vector2)transform.position;
         isHolding = true; // disable registering hit on item
         //Reset the grid to 0
-        var itemSize = GameService.GetItemSize(item.matrixData.itemSize, currentRotation);
+        var itemSize = GameService.GetItemSize(item.matrixData.ItemSize, currentRotation);
         var grid = GameService.GetMatrix(item.matrixData.Matrix, currentRotation);
         ResetGrid(itemSize, grid);
+        ActionAddToBag?.Invoke(this);
     }
 
     private void RotateItem()
@@ -73,16 +73,17 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        var itemSize = GameService.GetItemSize(item.matrixData.itemSize, currentRotation);
+        var itemSize = GameService.GetItemSize(item.matrixData.ItemSize, currentRotation);
         var halfSize = itemSize / 2;
         var grid = GameService.GetMatrix(item.matrixData.Matrix, currentRotation);
         isHolding = false;
-        Debug.Log($"Start Check");
+        Vector2 finalSlot = AnchorGrid(RectTransform.anchoredPosition, halfSize); //position that the item was dropped on canvas
+
+        if(!item.matrixData.IsUniformMatrix) this.transform.SetAsFirstSibling();
+
         if (EventSystem.current.IsPointerOverGameObject())
         {
             //Calculate the final slot of the item
-            Vector2 finalSlot = AnchorGrid(RectTransform.anchoredPosition, halfSize); //position that the item was dropped on canvas
-            Debug.Log($"Checking 1....");
             if (IsValidPosition(finalSlot, itemSize)) // test if item is inside slot area
             {
                 List<Vector2> newPosItem = new List<Vector2>(); //new item position in bag
@@ -90,17 +91,37 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
                 //Caclate the new position of the item
                 if (fit)
                 {
-                    Debug.Log($"Checking 2....");
                     MarkItemInGrid(newPosItem[0], itemSize, grid);
                     startPosition = newPosItem[0];
                     RectTransform.anchoredPosition = new Vector2((newPosItem[0].x + halfSize.x) * cellSize.x, -(newPosItem[0].y + halfSize.y) * cellSize.y);
-                    ActionAddToBag?.Invoke(this);
                     return;
                 }
+                else
+                {
+                    if (IsValidPosition(AnchorGrid(oldPosition, halfSize), itemSize))
+                    {
+                        RectTransform.anchoredPosition = oldPosition;
+                        MarkItemInGrid(AnchorGrid(oldPosition, halfSize), itemSize, grid);
+                    }
+                    else ReturnToWaitingList();
+                }
+            }
+            else
+            {
+                ReturnToWaitingList();
+                return;
             }
         }
-        CheckOldPosValid(itemSize, halfSize, oldPosition, grid);
-        Debug.Log($"End Check");
+        else
+        {
+            if (IsValidPosition(AnchorGrid(oldPosition, halfSize), itemSize))
+            {
+                RectTransform.anchoredPosition = oldPosition;
+                MarkItemInGrid(AnchorGrid(oldPosition, halfSize), itemSize, grid);
+            }
+            else ReturnToWaitingList();
+        }
+        
     }
 
     private Vector2 AnchorGrid(Vector2 anchorPos, Vector2 halfSize)
@@ -122,7 +143,6 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
                 int checkY = (int)finalSlot.y + sizeY;
                 if (slots.grid[checkY, checkX] == 1 && grid[sizeY, sizeX] == 1)
                 {
-                    Debug.Log($"Not Fit: {checkY} {checkX}");
                     newPosItem.Clear();
                     return false;
                 }
@@ -141,7 +161,7 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
                 if (grid[i, j] != 0)
                 {
                     slots.grid[(int)posItem.y + i, (int)posItem.x + j] = grid[i, j];
-                    //TetrisUI.Instance.tetrisItemUIs[(int)posItem.y + i, (int)posItem.x + j].itemText.SetText(grid[i, j].ToString());
+                    ActionMarkItemInGrid?.Invoke((int)posItem.x + j, (int)posItem.y + i, grid[i, j]);
                 }
 
             }
@@ -158,11 +178,6 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
 
     private void ResetGrid(Vector2 itemSize, int[,] grid)
     {
-        if (IsValidPosition(startPosition, itemSize))
-        {
-            ReturnToWaitingList();
-            return;
-        }
         for (int i = 0; i < itemSize.y; i++)
         {
             for (int j = 0; j < itemSize.x; j++)
@@ -170,27 +185,14 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
                 if (slots.grid[(int)startPosition.y + i, (int)startPosition.x + j] == 1 && grid[i, j] == 1)
                 {
                     slots.grid[(int)startPosition.y + i, (int)startPosition.x + j] = 0;
-                    //TetrisUI.Instance.tetrisItemUIs[(int)startPosition.y + i, (int)startPosition.x + j].itemText.SetText("0");
+                    ActionMarkItemInGrid?.Invoke((int)startPosition.x + j, (int)startPosition.y + i, 0);
                 }
             }
         }
     }
 
-    private bool CheckOldPosValid(Vector2 itemSize, Vector2 halfSize, Vector2 oldPos, int[,] grid)
-    {
-        if (!IsValidPosition(oldPos, itemSize))
-        {
-            ReturnToWaitingList();
-            return false;
-        }
-        RectTransform.anchoredPosition = oldPos;
-        MarkItemInGrid(AnchorGrid(oldPos, halfSize), itemSize, grid);
-        return true;
-    }
-
     private void ReturnToWaitingList()
     {
-        Debug.Log("Return to waiting list");
         ActionReturnWaitingList?.Invoke(this);
     }
 
@@ -199,41 +201,31 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
     {
         if (tetrisItem == null) return;
         this.slots = slots;
-        this.cellSize = cellSize; //slot size
-        //this.startPosition = startPosition; //first position
+        this.cellSize = cellSize; 
 
         this.item = tetrisItem;
         this.icon.sprite = tetrisItem.itemIcon;
 
-        //var itemSize = GameService.GetItemSize(item.matrixData.itemSize, currentRotation);
-        //var halfSize = itemSize / 2;
-
-        //Scaling and Set Position
         RescalingItem(RectTransform);
         RectTransform.anchorMin = new Vector2(0f, 1f);
         RectTransform.anchorMax = new Vector2(0f, 1f);
         RectTransform.pivot = new Vector2(0.5f, 0.5f);
-
-        //RectTransform.anchoredPosition = new Vector2((startPosition.x + halfSize.x) * cellSize.x, -(startPosition.y + halfSize.y) * cellSize.y);
-        //var grid = GameService.GetMatrix(item.matrixData.Matrix, currentRotation);
-
-        //MarkItemInGrid(AnchorGrid(RectTransform.anchoredPosition, halfSize), itemSize, grid);
     }
 
     private void RescalingItem(RectTransform rect)
     {
-        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, item.matrixData.itemSize.y * cellSize.y);
-        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, item.matrixData.itemSize.x * cellSize.x);
+        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, item.matrixData.ItemSize.y * cellSize.y);
+        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, item.matrixData.ItemSize.x * cellSize.x);
 
         foreach (RectTransform child in rect.transform)
         {
-            child.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, item.matrixData.itemSize.y * child.rect.height);
-            child.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, item.matrixData.itemSize.x * child.rect.width);
+            child.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, item.matrixData.ItemSize.y * child.rect.height);
+            child.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, item.matrixData.ItemSize.x * child.rect.width);
 
             foreach (RectTransform iconChild in child)
             {
-                iconChild.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, item.matrixData.itemSize.y * iconChild.rect.height);
-                iconChild.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, item.matrixData.itemSize.x * iconChild.rect.width);
+                iconChild.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, item.matrixData.ItemSize.y * iconChild.rect.height);
+                iconChild.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, item.matrixData.ItemSize.x * iconChild.rect.width);
                 iconChild.localPosition = new Vector2(child.localPosition.x + child.rect.width / 2, child.localPosition.y + child.rect.height / 2 * -1f);
             }
         }
