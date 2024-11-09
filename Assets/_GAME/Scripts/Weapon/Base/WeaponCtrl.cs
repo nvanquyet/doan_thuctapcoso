@@ -30,7 +30,6 @@ namespace ShootingGame
         {
             var index = 0;
             var weaponData = GameData.Instance.WeaponData;
-            var weaponPrefab = GameData.Instance.WeaponPrefabData;
             //Remove all old weapon
             foreach(var w in _weapons){
                 Destroy(w.gameObject);
@@ -39,8 +38,7 @@ namespace ShootingGame
             foreach (var weapon in param.allWeaponIds)
             {
                 var dataWepon = weaponData.GetValue(weapon);
-                var prefab = weaponPrefab.GetValue((int) dataWepon.WeaponType);
-                var clone = Instantiate(prefab, _allPositionSpawnWeapon[index++].transform);
+                var clone = Instantiate(dataWepon.Prefab, _allPositionSpawnWeapon[index++].transform);
                 clone.InitWeapon(dataWepon);
                 clone.gameObject.SetActive(true);
                 _weapons.Add(clone);

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21da5e5ddb4740449949f2d2b39c78db, type: 3}
+  m_Name: PistolGun
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 3537812215717957531, guid: 109a9be53ee648c4aaba0feaa7614be4, type: 3}
+  stat: {fileID: 11400000, guid: d9f1a571b421ca04b9222b544eae05be, type: 2}
+  appearance: {fileID: 11400000, guid: b06be8bd382568c4697cb9b0fbaa9c7f, type: 2}
+  matrixData: {fileID: 11400000, guid: ce88d3125cad9ba498308debc3f31d8e, type: 2}

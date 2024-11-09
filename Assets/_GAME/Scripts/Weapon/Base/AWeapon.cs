@@ -62,8 +62,8 @@ namespace ShootingGame
 
         public void InitWeapon(WeaponAttributeData data)
         {
-            equiqment = data.StatData;
-            SetSprite(data.VisualAttribute.GetVisual<WeaponVisualStruct>().Icon);
+            equiqment = data.Stat;
+            SetSprite(data.Appearance.GetVisual().Icon);
         }
 
         internal void ApplyStat(StatContainerData stat)
