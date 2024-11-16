@@ -40,9 +40,9 @@ namespace ShootingGame
 
         public override void Rotate(Vector3 pos)
         {
-            var direction = (pos - WeaponTsRotate.parent.position).normalized;
-            WeaponTsRotate.position = WeaponTsRotate.parent.position + direction;
-            WeaponTsRotate.right = new Vector2(direction.x, direction.y);
+            // var direction = (pos - WeaponTsRotate.parent.position).normalized;
+            // WeaponTsRotate.position = WeaponTsRotate.parent.position + direction;
+            // WeaponTsRotate.right = new Vector2(direction.x, direction.y);
         }
     }
 }

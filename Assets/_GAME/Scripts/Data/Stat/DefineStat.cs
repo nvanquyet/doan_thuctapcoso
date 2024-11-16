@@ -53,6 +53,48 @@ namespace ShootingGame.Data
             return 0;
         }
 
+        public string GetStatString()
+        {
+            string typeStat;
+            switch (TypeStat)
+            {
+                case TypeStat.Damage:
+                    typeStat = "Dmg";
+                    break;
+                case TypeStat.AttackRate:
+                    typeStat = "Atk";
+                    break;
+                case TypeStat.CritRate:
+                    typeStat = "CritRate";
+                    break;
+                case TypeStat.Dodge:
+                    typeStat = "Dodge";
+                    break;
+                case TypeStat.Armor:
+                    typeStat = "Armor";
+                    break;
+                case TypeStat.DetectRange:
+                    typeStat = "DetectRange";
+                    break;
+                case TypeStat.MoveSpeed:
+                    typeStat = "Speed";
+                    break;
+                case TypeStat.Luck:
+                    typeStat = "Luck";
+                    break;
+                case TypeStat.DamageToHp:
+                    typeStat = "DmgToHp";
+                    break;
+                case TypeStat.WeaponForce:
+                    typeStat = "WeaponForce";
+                    break;
+                default:
+                    typeStat = TypeStat.ToString();
+                    break;
+            }
+            return $"{typeStat}: +{value}{(typeValueStat == TypeValueStat.Percentage ? "%" : "")}";
+        }
+
         public Stat(Stat target)
         {
             this.typeStat = target.typeStat;

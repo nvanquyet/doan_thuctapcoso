@@ -15,4 +15,4 @@ MonoBehaviour:
   prefab: {fileID: 3537812215717957531, guid: 109a9be53ee648c4aaba0feaa7614be4, type: 3}
   stat: {fileID: 11400000, guid: d9f1a571b421ca04b9222b544eae05be, type: 2}
   appearance: {fileID: 11400000, guid: b06be8bd382568c4697cb9b0fbaa9c7f, type: 2}
-  matrixData: {fileID: 11400000, guid: ce88d3125cad9ba498308debc3f31d8e, type: 2}
+  matrixData: {fileID: 11400000, guid: 79b119336430ac84e925248b9f81a5a6, type: 2}

@@ -38,9 +38,7 @@ public class TetrisUI : SingletonBehaviour<TetrisUI>
             {
                 var item = Instantiate(itemUIPrefab, transform); //generate the item UI.
                 tetrisItemUIs[i, j] = item;
-                item.itemText.SetText("0");
-                item.itemText.gameObject.SetActive(false);
-                item.gameObject.SetActive(true);
+                item.OnMarkItem(false);
             }
         }
         itemUIPrefab.gameObject.SetActive(false);
@@ -61,6 +59,6 @@ public class TetrisUI : SingletonBehaviour<TetrisUI>
 
     public void OnMarkItemInGrid(int x, int y, int value)
     {
-        //tetrisItemUIs[y, x].itemText.SetText(value.ToString());
+        tetrisItemUIs[y, x].OnMarkItem(value > 0);
     }
 }

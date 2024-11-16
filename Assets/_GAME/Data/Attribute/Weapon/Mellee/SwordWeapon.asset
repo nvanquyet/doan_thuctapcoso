@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 890306653094463171, guid: e53b54648e50a91408d7b3f71ff3c33f, type: 3}
   stat: {fileID: 11400000, guid: bf39dec04c0ec9f46af007bccea7df49, type: 2}
-  appearance: {fileID: 11400000, guid: cb9e1229bc60ef64993fa3f623ae82a9, type: 2}
-  matrixData: {fileID: 11400000, guid: 33d08d87f2d72574ca96670f4361f905, type: 2}
+  appearance: {fileID: 11400000, guid: 1d11bc586c4b6bc4ea12ab48c49bdb6d, type: 2}
+  matrixData: {fileID: 11400000, guid: 0f838fe5b6a743643b8bbe8152b1aa34, type: 2}

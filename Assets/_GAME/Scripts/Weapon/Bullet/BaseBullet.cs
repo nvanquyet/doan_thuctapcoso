@@ -56,7 +56,7 @@ namespace ShootingGame
             forcePushBack = this.forcePushBack;
             if (base.Attack(target, isSuper, forcePushBack))
             {
-                Invoke(nameof(Recycle), 0.5f);
+                Invoke(nameof(Recycle), 0.1f);
                 return true;
             }
             return false;
@@ -64,8 +64,14 @@ namespace ShootingGame
 
         private void Recycle()
         {
-            if (gameObject.activeInHierarchy) RecycleAction?.Invoke();
+            InvokeRecycleAction();
             DisactiveAllEffect();
+        }
+
+
+        public void InvokeRecycleAction()
+        {
+            if(gameObject != null && gameObject.activeInHierarchy) RecycleAction?.Invoke();
         }
 
         #endregion

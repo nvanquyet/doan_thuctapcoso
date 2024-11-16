@@ -38,11 +38,11 @@ namespace ShootingGame
                 foreach (Transform spanw in _bulletSpawnPoint)
                 {
                     var bulletClone = _bulletPool.Get();
-                    while (bulletClone.transform.parent == null)
+                    while (bulletClone.transform.parent == null || !bulletClone.gameObject.activeInHierarchy)
                     {
                         bulletClone = _bulletPool.Get();
                     }
-                    GameService.LogColor($"Shoot {bulletClone != null} Parent: {bulletClone.transform.parent}");
+                    //GameService.LogColor($"Shoot {bulletClone != null} Parent: {bulletClone.transform.parent}");
                     bulletClone.transform.position = spanw.position;
                     bulletClone.RecycleAction = () => {
                         if(gameObject == null || bulletClone == null) return;

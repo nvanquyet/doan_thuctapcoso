@@ -1,11 +1,10 @@
 ﻿using ShootingGame;
 using ShootingGame.Data;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 
-public class TetrisSlot : SingletonBehaviour<TetrisSlot>
+public class TetrisSlot : UIComponent
 {
     #region  Properties Matrix
     public int[,] grid { get; private set; }
@@ -14,7 +13,6 @@ public class TetrisSlot : SingletonBehaviour<TetrisSlot>
 
     [SerializeField] private Vector2 cellSize;
     [SerializeField] private TetrisItemSlot prefabSlot;
-    private List<Vector2> posItemNaBag = new List<Vector2>();
     
     #endregion
 
@@ -46,10 +44,11 @@ public class TetrisSlot : SingletonBehaviour<TetrisSlot>
         Debug.Log("SetGrid: " + maxGridX + "x" + maxGridY);
     }
 
-    public TetrisItemSlot CreateItem(WeaponAttributeData item)
+    public TetrisItemSlot CreateItem(TetrisItemDescription tetrisDescription, WeaponAttributeData item)
     {
         TetrisItemSlot myItem = Instantiate(prefabSlot, transform);
-        myItem.InitItem(this, item, cellSize);
+        myItem.InitItem(this, tetrisDescription, item, cellSize);
+        myItem.gameObject.SetActive(true);
         return myItem;
     }
 

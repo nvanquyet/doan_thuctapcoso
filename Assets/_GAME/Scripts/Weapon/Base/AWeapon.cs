@@ -1,6 +1,5 @@
 using UnityEngine;
 using ShootingGame.Data;
-using DG.Tweening;
 namespace ShootingGame
 {
     public abstract class AWeapon : AAttacker

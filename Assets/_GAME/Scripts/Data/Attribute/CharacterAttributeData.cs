@@ -7,6 +7,7 @@ namespace ShootingGame.Data
         public abstract T Prefab { get; }
         public abstract StatContainerData Stat { get; }
         public abstract K Appearance { get; }
+
     }
 
     [CreateAssetMenu(fileName = "CharacterAttributeData", menuName = "Character/CharacterAttributeData")]

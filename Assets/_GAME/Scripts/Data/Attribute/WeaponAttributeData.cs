@@ -15,9 +15,14 @@ namespace ShootingGame.Data {
         [SerializeField] private StatContainerData stat;
         [SerializeField] private WeaponAppearanceData appearance;
         [SerializeField] private MatrixData matrixData;
+        [SerializeField] private WeaponAttributeData nextLevelAttribute;
+
+
         public override AWeapon Prefab => prefab;
         public override StatContainerData Stat => stat;
         public override WeaponAppearanceData Appearance => appearance;
         public MatrixData MatrixData => matrixData;
+        public WeaponAttributeData NextLevelAttribute => nextLevelAttribute;
+
     }
 }
