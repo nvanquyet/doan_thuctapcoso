@@ -19,7 +19,6 @@ namespace ShootingGame.Data
         Dodge,
         CritRate,
         Armor,
-        DetectRange,
         MoveSpeed,
         Luck,
         DamageToHp,
@@ -72,9 +71,6 @@ namespace ShootingGame.Data
                     break;
                 case TypeStat.Armor:
                     typeStat = "Armor";
-                    break;
-                case TypeStat.DetectRange:
-                    typeStat = "DetectRange";
                     break;
                 case TypeStat.MoveSpeed:
                     typeStat = "Speed";

@@ -1,7 +1,5 @@
 using UnityEngine;
 using ShootingGame.Data;
-using Mono.CSharp;
-using System;
 namespace ShootingGame
 {
     public class PlayerStat : MonoBehaviour
@@ -18,6 +16,7 @@ namespace ShootingGame
                 {
                     baseData = GameData.Instance.Players.GetValue(id).Stat;
                 }
+                Debug.Log("BaseData: " + baseData);
                 return baseData;
             }
         }

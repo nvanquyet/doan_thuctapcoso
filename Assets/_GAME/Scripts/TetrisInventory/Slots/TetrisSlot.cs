@@ -44,7 +44,7 @@ public class TetrisSlot : UIComponent
         Debug.Log("SetGrid: " + maxGridX + "x" + maxGridY);
     }
 
-    public TetrisItemSlot CreateItem(TetrisItemDescription tetrisDescription, WeaponAttributeData item)
+    public TetrisItemSlot CreateItem(TetrisItemDescription tetrisDescription, ItemAttributeData item)
     {
         TetrisItemSlot myItem = Instantiate(prefabSlot, transform);
         myItem.InitItem(this, tetrisDescription, item, cellSize);

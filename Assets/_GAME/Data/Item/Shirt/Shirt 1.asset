@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b338d77a6eb9f344482feaa2651e8235, type: 3}
+  m_Name: Shirt 1
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
+  stat: {fileID: 11400000, guid: 15c8bf38cd33693478a6d3eb7a64f814, type: 2}
+  appearance: {fileID: 11400000, guid: d1d34113fbf23f24bafb6dbb8da5b707, type: 2}
+  matrixData: {fileID: 0}
+  nextLevelAttribute: {fileID: 11400000, guid: 6957fffc8289d94418309bc7b9b6b3d7, type: 2}

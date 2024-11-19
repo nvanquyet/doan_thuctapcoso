@@ -2,13 +2,49 @@ using UnityEngine;
 using ShootingGame.Data;
 namespace ShootingGame
 {
-    public abstract class AWeapon : AAttacker
+    public abstract class AItem : AAttacker
+    {
+        [SerializeField] protected SpriteRenderer weaponSprite;
+
+
+        private void SetSprite(Sprite sprite) => weaponSprite.sprite = sprite;
+
+        #region Stat
+        protected StatContainerData equiqment;
+        protected StatContainerData currentEquiqmentStat;
+        public StatContainerData EquiqmentStat => equiqment;
+
+        public StatContainerData CurrentEquiqmentStat
+        {
+            get
+            {
+                if (currentEquiqmentStat == null) currentEquiqmentStat = new StatContainerData(EquiqmentStat);
+                return currentEquiqmentStat;
+            }
+        }
+
+        public void InitializeItem(ItemAttributeData data)
+        {
+            equiqment = data.Stat;
+            SetSprite(data.Appearance.Icon);
+        }
+
+        public virtual void ApplyStat(StatContainerData stat)
+        {
+            //Aply stat to equiqment
+            if (stat == null) return;
+            foreach (var statData in CurrentEquiqmentStat.Stats)
+            {
+                CurrentEquiqmentStat.UpdateStat(GameService.CaculateStat(statData, stat.GetStat(statData.TypeStat), EquiqmentStat.GetStat(statData.TypeStat)));
+            }
+        }
+
+        #endregion
+    }
+    public abstract class AWeapon : AItem
     {
         protected float attackSpeed;
         private bool isAttacking = false;
-
-        [SerializeField] protected SpriteRenderer weaponSprite;
-
 
         public virtual bool Attack(){
             if(isAttacking) return false;
@@ -44,35 +80,10 @@ namespace ShootingGame
             else transform.localScale = new Vector3(1, 1, 0);
         }
 
-        private void SetSprite(Sprite sprite) => weaponSprite.sprite = sprite;
 
-        #region Stat
-        protected StatContainerData equiqment;
-        protected StatContainerData currentEquiqmentStat;
-        public StatContainerData EquiqmentStat => equiqment;
-
-        public StatContainerData CurrentEquiqmentStat
+        public override void ApplyStat(StatContainerData stat)
         {
-            get {
-                if(currentEquiqmentStat == null) currentEquiqmentStat = new StatContainerData(EquiqmentStat);
-                return currentEquiqmentStat;
-            }
-        }
-
-        public void InitWeapon(WeaponAttributeData data)
-        {
-            equiqment = data.Stat;
-            SetSprite(data.Appearance.GetVisual().Icon);
-        }
-
-        internal void ApplyStat(StatContainerData stat)
-        {
-            //Aply stat to equiqment
-            if (stat == null) return;
-            foreach (var statData in CurrentEquiqmentStat.Stats)
-            {
-                CurrentEquiqmentStat.UpdateStat(GameService.CaculateStat(statData, stat.GetStat(statData.TypeStat), EquiqmentStat.GetStat(statData.TypeStat)));
-            }
+            base.ApplyStat(stat);
 
             OnAttackSpeedChange();
         }
@@ -83,7 +94,6 @@ namespace ShootingGame
             attackSpeed = 1 / (rate == 0 ? 1 : rate);
         }
 
-        #endregion
     }
 
 }

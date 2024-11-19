@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using ShootingGame;
 using ShootingGame.Data;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -10,7 +11,7 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
 {
     [SerializeField] private Image icon;
     [SerializeField] private TetrisUpgradeItem tetrisUpgradeItem;
-    public WeaponAttributeData itemData { get; private set; }
+    public ItemAttributeData itemData { get; private set; }
 #region Properties
     private TetrisSlot slots;
     private TetrisItemDescription tetrisDescription;
@@ -42,7 +43,7 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
 
 
 #region  InitItem
-    public void InitItem(TetrisSlot slots, TetrisItemDescription tetrisDescription, WeaponAttributeData data, Vector2 cellSize)
+    public void InitItem(TetrisSlot slots, TetrisItemDescription tetrisDescription, ItemAttributeData data, Vector2 cellSize)
     {
         if (data == null) return;
         this.slots = slots;
@@ -51,7 +52,7 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
 
 
         this.itemData = data;
-        this.icon.sprite = data.Appearance.GetVisual().Icon;
+        this.icon.sprite = data.Appearance.Icon;
 
         RescalingItem(RectTransform);
         RectTransform.anchorMin = new Vector2(0f, 1f);
@@ -70,7 +71,7 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
         tetrisUpgradeItem.Init(this, actionUpgradeItem);
     }
 
-    private void ShowItemDescription(WeaponAttributeData data, bool show)
+    private void ShowItemDescription(ItemAttributeData data, bool show)
     {
         tetrisDescription.ActiveDescription(show);
         if(show == false) return;
@@ -79,7 +80,7 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
         {
             stringStats += $"{stat.GetStatString()}\n";
         }
-        tetrisDescription.ModifyDescription(data.Appearance.GetVisual().Icon, data.Appearance.name, stringStats);     
+        tetrisDescription.ModifyDescription(data.Appearance.Icon, data.Appearance.name, stringStats);     
     }
 
 #endregion

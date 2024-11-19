@@ -38,9 +38,10 @@ namespace ShootingGame
             {
                 var dataWepon = weaponData.GetValue(weapon);
                 var clone = Instantiate(dataWepon.Prefab, _allPositionSpawnWeapon[index++].transform);
-                clone.InitWeapon(dataWepon);
+                
+                clone.InitializeItem(dataWepon);
                 clone.gameObject.SetActive(true);
-                _weapons.Add(clone);
+                if (clone is AWeapon) _weapons.Add(clone as AWeapon);
             }
         }
 

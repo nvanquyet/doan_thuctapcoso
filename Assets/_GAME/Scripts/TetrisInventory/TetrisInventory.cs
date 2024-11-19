@@ -13,7 +13,7 @@ public class TetrisInventory : MonoBehaviour
     [SerializeField] private WaitingSlots waitingSlots;
     [SerializeField] private TetrisItemDescription tetrisDescription;
     [SerializeField] private TetrisRemoveItem tetrisRemoveItem;
-    [SerializeField] private WeaponAttributeData[] itemTest;
+    [SerializeField] private ItemAttributeData[] itemTest;
 #if UNITY_EDITOR
     private void OnValidate()
     {
@@ -64,7 +64,7 @@ public class TetrisInventory : MonoBehaviour
         }
     }
 
-    public TetrisItemSlot CreateNewItem(WeaponAttributeData item)
+    public TetrisItemSlot CreateNewItem(ItemAttributeData item)
     {
         var itemSlot = tetrisSlot.CreateItem(tetrisDescription, item);
         OnReturnToWaitingList(itemSlot);
