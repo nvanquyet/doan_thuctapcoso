@@ -16,7 +16,7 @@ namespace ShootingGame
             {
                 if(baseData == null)
                 {
-                    baseData = GameData.Instance.PlayerStatData.GetValue(id);
+                    baseData = GameData.Instance.Players.GetValue(id).Stat;
                 }
                 return baseData;
             }

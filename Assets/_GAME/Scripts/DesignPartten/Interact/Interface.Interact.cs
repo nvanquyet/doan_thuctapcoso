@@ -101,7 +101,7 @@ namespace ShootingGame
 
     public abstract class AStayInteractor<T> : AInteractable<T> where T : Collider2D
     {
-        private HashSet<Interface.IInteract> _interactables = new HashSet<Interface.IInteract>();
+        protected HashSet<Interface.IInteract> _interactables { get; private set; } = new HashSet<Interface.IInteract>();
         [SerializeField] private int _maxInteractAtSameTime = 20;
         private bool _canInteract = true;
 

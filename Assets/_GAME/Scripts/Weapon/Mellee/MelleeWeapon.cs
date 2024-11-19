@@ -5,8 +5,10 @@ namespace ShootingGame
 {
     public abstract class MelleeWeapon : AWeapon
     {
+
         [SerializeField] private Transform weaponTransform; 
-        [SerializeField] private Transform weaponTsRotate; 
+        [SerializeField] private Transform weaponTsRotate;
+
         protected Transform WeaponTs
         {
             get
@@ -44,5 +46,7 @@ namespace ShootingGame
             WeaponTsRotate.position = WeaponTsRotate.parent.position + direction;
             WeaponTsRotate.right = new Vector2(direction.x, direction.y);
         }
+
+
     }
 }

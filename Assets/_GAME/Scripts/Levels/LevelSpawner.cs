@@ -31,14 +31,12 @@ namespace ShootingGame
             OnStartWave();
         }
 
-        private float GetScalingFactor() => Mathf.Pow(scalingFactor, _currentWave);
-
         /// <summary>
         /// Call Event Start Wave
         /// </summary>
         public void OnStartWave() {
             if(wave == null) return;
-            wave.Init(GetScalingFactor(), _currentWave);
+            wave.Init(GameConfig.Instance.scalingFactor, _currentWave);
         }
 
         public List<Transform> GetActiveEnemies()

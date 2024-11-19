@@ -13,7 +13,6 @@ namespace ShootingGame
         {
             _prefab = prefab;
             _parentTransform = parentTransform;
-            Debug.Log($"Parent Ts {_parentTransform}");
             for (int i = 0; i < initialSize; i++)
             {
                 T newObject = GameObject.Instantiate(_prefab, _parentTransform);
@@ -24,13 +23,13 @@ namespace ShootingGame
 
         public T Get()
         {
-            if (_objects.Count == 0)
+            
+            if (_objects.Count <= 0)
             {
                 T newObject = Object.Instantiate(_prefab, _parentTransform);
                 newObject.gameObject.SetActive(false);
                 _objects.Enqueue(newObject);
             }
-
             T objectToGet = _objects.Dequeue();
             if (objectToGet && !objectToGet.gameObject.activeInHierarchy) objectToGet.gameObject.SetActive(true);
             return objectToGet;

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "218391058116",
+    "project_id": "basicintershipproject",
+    "storage_bucket": "basicintershipproject.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:218391058116:android:e11a8910bf96b3dc349b91",
+        "android_client_info": {
+          "package_name": "com.vawnwuyest.wasteland"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB53h5WNWQN2rmE7Nhfuv3TSDGfzLI2ouM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
