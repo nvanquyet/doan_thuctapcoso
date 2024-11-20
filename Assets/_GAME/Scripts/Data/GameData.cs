@@ -7,7 +7,7 @@ namespace ShootingGame {
         public Data.PlayerData Players;
         public Data.EnemyData Enemies;
         //public PlayerStatData PlayerStatData;
-        public WeaponData WeaponData;
+        public ItemData ItemData;
 
         protected override void Initialize() {
            

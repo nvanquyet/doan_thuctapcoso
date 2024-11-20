@@ -31,7 +31,7 @@ public class InventorySystem : Frame
         UICtrl.Instance.Get<InventorySystem>().Hide(true, () => {
             GameCtrl.Instance.NextWave();
             var allWeaponIds = tetrisInventory.GetTetrisItemsID();
-            this.Dispatch<GameEvent.OnNextWave>(new GameEvent.OnNextWave { allWeaponIds = allWeaponIds.ToList() });
+            this.Dispatch<GameEvent.OnNextWave>(new GameEvent.OnNextWave { allIDItem = allWeaponIds.ToList() });
         });
     }
 

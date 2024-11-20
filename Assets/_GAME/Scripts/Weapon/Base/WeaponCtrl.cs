@@ -28,18 +28,19 @@ namespace ShootingGame
         private void OnNextWave(GameEvent.OnNextWave param)
         {
             var index = 0;
-            var weaponData = GameData.Instance.WeaponData;
+            var allItem = GameData.Instance.ItemData;
             //Remove all old weapon
-            foreach(var w in _weapons){
+            foreach (var w in _weapons) {
                 Destroy(w.gameObject);
             }
             GameService.ClearList(ref _weapons);
-            foreach (var weapon in param.allWeaponIds)
+            foreach (var i in param.allIDItem)
             {
-                var dataWepon = weaponData.GetValue(weapon);
-                var clone = Instantiate(dataWepon.Prefab, _allPositionSpawnWeapon[index++].transform);
+                var data = allItem.GetValue(i);
+                if (data.Prefab == null || !(data.Prefab is AWeapon)) continue;
+                var clone = Instantiate(data.Prefab, _allPositionSpawnWeapon[index++].transform);
                 
-                clone.InitializeItem(dataWepon);
+                clone.InitializeItem(data);
                 clone.gameObject.SetActive(true);
                 if (clone is AWeapon) _weapons.Add(clone as AWeapon);
             }

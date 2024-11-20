@@ -10,7 +10,7 @@ public sealed class GameEvent
 
     public struct OnWaveClear : IEventParam { }
     public struct OnNextWave : IEventParam {
-        public List<int> allWeaponIds;
+        public List<int> allIDItem;
     }
 
     public struct OnPlayerDead : IEventParam { }

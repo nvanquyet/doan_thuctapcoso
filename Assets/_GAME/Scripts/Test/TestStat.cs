@@ -7,7 +7,7 @@ using ShootingGame;
 
 public class TestStat : MonoBehaviour
 {
-    [SerializeField] private ItemData item;
+    [SerializeField] private ItemTestData item;
     public ShootingGame.Player player;
     public WeaponCtrl weaponCtrl;
     public TextMeshProUGUI items;

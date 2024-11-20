@@ -62,6 +62,8 @@ public class TetrisInventory : MonoBehaviour
         {
             CreateNewItem(itemTest[i]);
         }
+
+        //Random at here
     }
 
     public TetrisItemSlot CreateNewItem(ItemAttributeData item)
@@ -91,7 +93,7 @@ public class TetrisInventory : MonoBehaviour
         int[] allItems = new int[tetrisSlot.ItemsInBag.Count];
         for(int i = 0; i < tetrisSlot.ItemsInBag.Count; i++)
         {
-            allItems[i] = Array.IndexOf(GameData.Instance.WeaponData.GetAllValue(), tetrisSlot.ItemsInBag[i].itemData);
+            allItems[i] = Array.IndexOf(GameData.Instance.ItemData.GetAllValue(), tetrisSlot.ItemsInBag[i].itemData);
         }
         return allItems;
     }

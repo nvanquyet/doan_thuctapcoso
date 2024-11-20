@@ -122,11 +122,11 @@ public class RandomItemSelector : MonoBehaviour
             List<int> keys = new List<int>(weaponData.DataDict.Keys);
             int randomKey = keys[Random.Range(0, keys.Count)];
 
-            WeaponVisualStruct weaponVisual = weaponData.DataDict[randomKey].VisualAttribute.GetVisual<WeaponVisualStruct>();
+            //WeaponVisualStruct weaponVisual = weaponData.DataDict[randomKey].VisualAttribute.GetVisual<WeaponVisualStruct>();
 
             // Set icon and description for the UI
-            image.sprite = weaponVisual.Icon;
-            text.text = weaponVisual.Description;
+            //image.sprite = weaponVisual.Icon;
+            //text.text = weaponVisual.Description;
         }
         else
         {
