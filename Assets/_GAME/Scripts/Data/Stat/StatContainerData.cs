@@ -12,19 +12,16 @@ namespace ShootingGame.Data
         {
             get
             {
-                if(baseStat == null || baseStat.Length <= 0)
+                var result = new Stat[stats.Length];
+                for (int i = 0; i < stats.Length; i++)
                 {
-                    baseStat = new Stat[stats.Length];
-                    for (int i = 0; i < stats.Length; i++)
-                    {
-                        if (stats[i] == null)
-                        {
-                            GameService.LogColor($"Stats is null or empty with index {i}");
-                        }
-                        baseStat[i] = stats[i].Stat;
-                    }
+                    result[i] = stats[i].Stat;
                 }
-                return baseStat;
+                if (baseStat == null || baseStat.Length <= 0)
+                {
+                    baseStat = result;
+                }
+                return result;
             }
         }
 
@@ -75,6 +72,7 @@ namespace ShootingGame.Data
                 if (stats[i].Stat.TypeStat == updatedStat.TypeStat)
                 {
                     stats[i].UpdateStat(updatedStat);
+                    GameService.LogColor($"Update Stat {updatedStat.TypeStat} {stats[i].Stat.Value}");
                     return;
                 }
             }

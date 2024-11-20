@@ -1,67 +1,40 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using ShootingGame.Data;
-using System;
-using ShootingGame;
 
 public class TestStat : MonoBehaviour
 {
-    [SerializeField] private ItemTestData item;
-    public ShootingGame.Player player;
-    public WeaponCtrl weaponCtrl;
     public TextMeshProUGUI items;
-    public Button btn;
-    public Button btnApplyStatForWeapon;
 
-    public Transform[] allTs;
+    public Transform tsBase, tsCurrent;
 
-    private void Start()
+    public void ShowStat(ShootingGame.Player player)
     {
-        btn.onClick.AddListener(TestStatData);
-        btnApplyStatForWeapon.onClick.AddListener(ApplyStatForWeapon);
+        ShowBaseStat(player);
+        ShowCurrentStat(player);
     }
 
-    private void ApplyStatForWeapon()
+    private void ShowCurrentStat(ShootingGame.Player player)
     {
-        var weapon = weaponCtrl.AllWeapons[0];
-        var baseStat = weapon.EquiqmentStat.Stats;
-        var currentStat = weapon.CurrentEquiqmentStat.Stats;
-        foreach (var item in baseStat)
-        {
-            var newItem = Instantiate(items, allTs[2]);
-            newItem.text += item.TypeStat + " : " + item.Value + (item.TypeValueStat == ShootingGame.Data.TypeValueStat.Percentage ? "%" : "") + "\n";
-            newItem.gameObject.SetActive(true);
-        }
-        foreach (var item in currentStat)
-        {
-            var newItem = Instantiate(items, allTs[3]);
-            newItem.text += item.TypeStat + " : " + item.Value + (item.TypeValueStat == ShootingGame.Data.TypeValueStat.Percentage ? "%" : "") + "\n";
-            newItem.gameObject.SetActive(true);
-        }
-        items.gameObject.SetActive(false);
-
-
+        ShowStat(tsCurrent, player.Stat.CurrentStat);
     }
 
-    public void TestStatData()
+    private void ShowBaseStat(ShootingGame.Player player)
     {
-        items.text = "";
-        player.Stat.BuffStat(item.GetValue(0));
-        player.Stat.BuffStat(item.GetValue(1));
-        foreach (var item in player.Stat.BaseData.Stats)
+        ShowStat(tsBase, player.Stat.BaseData);
+    }
+
+    private void ShowStat(Transform parentTs, StatContainerData statContainer)
+    {
+        foreach (Transform ts in parentTs)
         {
-            var newItem = Instantiate(items, allTs[1]);
-            newItem.text += item.TypeStat + " : " + item.Value + (item.TypeValueStat == ShootingGame.Data.TypeValueStat.Percentage ? "%" : "") + "\n";
-            newItem.gameObject.SetActive(true);
+            Destroy(ts.gameObject);
         }
-        foreach (var item in player.Stat.CurrentStat.Stats)
+        foreach (var stat in statContainer.Stats)
         {
-            var newItem = Instantiate(items, allTs[0]);
-            newItem.text += item.TypeStat + " : " + item.Value + (item.TypeValueStat == ShootingGame.Data.TypeValueStat.Percentage ? "%" : "") + "\n";
-            newItem.gameObject.SetActive(true);
+            var newItem = Instantiate(items, parentTs);
+            newItem.text = $"{stat.TypeStat}: {stat.Value}{(stat.TypeValueStat == TypeValueStat.FixedValue ? "" : "%")}";
         }
-        items.gameObject.SetActive(false);
     }
 
 }

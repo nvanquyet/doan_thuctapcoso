@@ -57,7 +57,7 @@ namespace ShootingGame
                 var armorStats = currentStat.GetStat(TypeStat.Armor);
                 armor = (armorStats.TypeStat == TypeStat.Armor) ? (int)armorStats.GetValue(armor) : 0;
 
-                Debug.Log($"PlayerDefender: UpdateStatsFromEquipment dodgeChance: {dodgeChance} armor: {armor}");
+                //Debug.Log($"PlayerDefender: UpdateStatsFromEquipment dodgeChance: {dodgeChance} armor: {armor}");
             }
         }
 

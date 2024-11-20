@@ -35,7 +35,8 @@ namespace ShootingGame
             if (stat == null) return;
             foreach (var statData in CurrentEquiqmentStat.Stats)
             {
-                CurrentEquiqmentStat.UpdateStat(GameService.CaculateStat(statData, stat.GetStat(statData.TypeStat), EquiqmentStat.GetStat(statData.TypeStat)));
+                GameService.LogColor($"Update Stat for weapon");
+                //CurrentEquiqmentStat.UpdateStat(GameService.CaculateStat(statData, stat.GetStat(statData.TypeStat), EquiqmentStat.GetStat(statData.TypeStat)));
             }
         }
 

@@ -16,7 +16,6 @@ namespace ShootingGame
                 {
                     baseData = GameData.Instance.Players.GetValue(id).Stat;
                 }
-                Debug.Log("BaseData: " + baseData);
                 return baseData;
             }
         }
@@ -28,7 +27,6 @@ namespace ShootingGame
                 if(currentStat == null || currentStat.Stats == null || currentStat.Stats.Length <= 0)
                 {
                     currentStat = new StatContainerData(BaseData);
-                    ApplyStat();
                 }
                 return currentStat;
             }
@@ -40,37 +38,32 @@ namespace ShootingGame
         }
 #endif
 
-
-        void Start() {
-            this.AddListener<GameEvent.OnNextWave>(OnNextWave);
-        }
-
-        private void OnNextWave(GameEvent.OnNextWave wave)
-        {
-            Invoke(nameof(ApplyStat), 0.1f);
-        }
-
         #region Stat Ctrl
+        public void ResetStat() => currentStat = new StatContainerData(BaseData);
+
         public void BuffStat(StatContainerData statBuff)
         {
             if (statBuff == null) return;
-            var allStats = statBuff.Stats;
-            if (allStats == null || allStats.Length <= 0) return;
-            foreach (var stat in allStats)
+            if (statBuff.Stats.Length <= 0) return;
+            foreach (var item in statBuff.Stats)
+            {
+                GameService.LogColor($"Buff to Player: {item.TypeStat} {item.Value} {(item.TypeValueStat == TypeValueStat.Percentage ? "%" : "")}");
+            }
+            foreach (var stat in statBuff.Stats)
             {
                 //Apply Value to Data
                 CurrentStat.UpdateStat(GameService.CaculateStat(CurrentStat.GetStat(stat.TypeStat), stat,
                                             BaseData.GetStat(stat.TypeStat)));
             }
             ApplyStat();
+            //foreach (var item in CurrentStat.Stats)
+            //{
+            //    GameService.LogColor($"After Buff to Player: {item.TypeStat} {item.Value} {(item.TypeValueStat == TypeValueStat.Percentage ? "%" : "")}");
+            //}
             this.Dispatch<GameEvent.OnStatChange>(new GameEvent.OnStatChange());    
         }
 
-        private void ApplyStat()
-        {
-            weaponCtrl.ApplyStat(currentStat);
-        }
-
+        private void ApplyStat() => weaponCtrl.ApplyStat(currentStat);
         #endregion
     }
 

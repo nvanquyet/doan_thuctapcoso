@@ -10,8 +10,7 @@ public class InventorySystem : Frame
 
     [SerializeField] private TetrisInventory tetrisInventory;
 
-
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     private void OnValidate()
     {
         tetrisInventory = GetComponentInChildren<TetrisInventory>();
@@ -30,8 +29,8 @@ public class InventorySystem : Frame
         //Call next wave
         UICtrl.Instance.Get<InventorySystem>().Hide(true, () => {
             GameCtrl.Instance.NextWave();
-            var allWeaponIds = tetrisInventory.GetTetrisItemsID();
-            this.Dispatch<GameEvent.OnNextWave>(new GameEvent.OnNextWave { allIDItem = allWeaponIds.ToList() });
+            var allItemsID = tetrisInventory.GetTetrisItemsID();
+            this.Dispatch<GameEvent.OnNextWave>(new GameEvent.OnNextWave { allIDItem = allItemsID.ToList() });
         });
     }
 
