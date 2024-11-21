@@ -31,7 +31,7 @@ MonoBehaviour:
       typeValueStat: 0
       value: 15
   appearance:
-    itemName: 
-    icon: {fileID: 0}
+    itemName: MachineGun Level 3
+    icon: {fileID: 21300000, guid: 969c8ca2ad2774c4ca3ea4c4b69ee967, type: 3}
   matrixData: {fileID: 0}
   nextLevelAttribute: {fileID: 0}

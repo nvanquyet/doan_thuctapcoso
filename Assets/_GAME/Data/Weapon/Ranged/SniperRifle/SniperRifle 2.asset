@@ -31,7 +31,7 @@ MonoBehaviour:
       typeValueStat: 0
       value: 2
   appearance:
-    itemName: 
-    icon: {fileID: 0}
+    itemName: SniperRifle Level 2
+    icon: {fileID: 21300000, guid: dbb81db3ebe4db749a63c4186da0654c, type: 3}
   matrixData: {fileID: 0}
   nextLevelAttribute: {fileID: 0}

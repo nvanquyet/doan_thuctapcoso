@@ -31,7 +31,7 @@ MonoBehaviour:
       typeValueStat: 1
       value: 10
   appearance:
-    itemName: 
-    icon: {fileID: 0}
+    itemName: Glove Level 2
+    icon: {fileID: 21300000, guid: 82d04c4f99c2069439284a6c17229958, type: 3}
   matrixData: {fileID: 0}
   nextLevelAttribute: {fileID: 11400000, guid: 482de667ceea1624eb00892141005945, type: 2}
