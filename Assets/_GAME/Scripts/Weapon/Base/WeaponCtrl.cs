@@ -51,11 +51,13 @@ namespace ShootingGame
                     clone.gameObject.SetActive(true);
                     if (clone is AWeapon) _weapons.Add(clone as AWeapon);
                 }
-
-                var item = allItems.GetValue(i);
-                _player.Stat.BuffStat(item.Stat);
+                else
+                {
+                    var item = allItems.GetValue(i);
+                    _player.Stat.BuffStat(item.Stat);
+                }
             }
-
+            _player.Stat.ApplyStat();
 #if UNITY_EDITOR
             testStat.ShowStat(_player);
 #endif
