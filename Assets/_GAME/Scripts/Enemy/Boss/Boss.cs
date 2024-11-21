@@ -6,7 +6,7 @@ namespace ShootingGame
 
     public enum TypeAttack
     {
-        Mellee,
+        Melee,
         Ranged
     }
     public class Boss : AInteractable<BoxCollider2D>

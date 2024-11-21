@@ -11,7 +11,6 @@ namespace ShootingGame
         [SerializeField] protected float _repeatTimeUpdatePath = 0.5f;
         [SerializeField] protected float _moveSpeed = 2f;
         [SerializeField] protected float _nextWayPointDistance = .2f;
-        [SerializeField] protected float distanceToTarget = 1f;
 
         protected Seeker _seeker;
         protected Rigidbody2D _rb;
@@ -19,6 +18,8 @@ namespace ShootingGame
         protected Transform _target;
         protected Coroutine _moveCoroutine;
         protected SpriteRenderer _characterSR;
+
+        private float attackRange;
 
         public Action OnRandomTarget;
 
@@ -37,13 +38,10 @@ namespace ShootingGame
             _characterSR = GetComponentInChildren<SpriteRenderer>();
             InvokeRepeating(nameof(CalculatePath), 0f, _repeatTimeUpdatePath);
         }
-
+        public void SetAttackRange(float value) => attackRange = value;
         protected void GetTarget() => OnRandomTarget?.Invoke();
 
-        public void SetTarget(Transform target)
-        {
-            _target = target;
-        }
+        public void SetTarget(Transform target) => _target = target;
 
         protected void CalculatePath()
         {
@@ -52,8 +50,7 @@ namespace ShootingGame
                 GetTarget();
                 return;
             }
-            if (_seeker.IsDone())
-                _seeker.StartPath(_rb.position, _target.position, OnPathCompleted);
+            if (_seeker.IsDone()) _seeker.StartPath(_rb.position, _target.position, OnPathCompleted);
         }
 
 
@@ -69,26 +66,20 @@ namespace ShootingGame
         protected virtual IEnumerator MoveToTargetCoroutine()
         {
             int currentWP = 0;
-            while (currentWP < _path.vectorPath.Count)
+            while (_path != null && currentWP < _path.vectorPath.Count)
             {
 
                 if(_target == null) GetTarget();
-                float distance = Vector2.Distance(_rb.position, _target.position);
-                if (distance <= distanceToTarget)
-                {
-                    yield return null;
-                    continue;
-                }
-
+                float distance = Vector2.Distance(_rb.position, _path.vectorPath[currentWP]);
                 Vector2 direction = ((Vector2)_path.vectorPath[currentWP] - _rb.position).normalized;
                 Vector2 force = direction * _moveSpeed * Time.deltaTime;
-
-                transform.position += (Vector3)force;
-
-                distance = Vector2.Distance(_rb.position, _path.vectorPath[currentWP]);
-                if (distance < _nextWayPointDistance)
-                    currentWP++;
-
+                if (Vector3.Distance(transform.position, _target.transform.position) >= attackRange)
+                {
+                    transform.position += (Vector3)force;
+                    if (distance < _nextWayPointDistance)
+                        currentWP++;
+                }
+                
                 if (force.x != 0){
                     var scaleSprite = Mathf.Abs(_characterSR.transform.localScale.x);
                     if (force.x < 0)
@@ -121,9 +112,7 @@ namespace ShootingGame
 
         public void Move(Vector3 direction) => Continue();
 
-        internal void Init(float scaleFactor)
-        {
-            
-        }
+        internal void Init(float scaleFactor) { }
+        
     }
 }

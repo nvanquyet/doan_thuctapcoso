@@ -23,7 +23,7 @@ namespace ShootingGame
         [SerializeField] private EnemyDefender _enemyDefender;
         [SerializeField] private EnemyMovement _enemyMovement;
 
-        [SerializeField] private TypeAttack typeBossAttack;
+        [SerializeField] private Animator animator;
 
         public bool IsDead => _enemyDefender.IsDead;
 
@@ -35,6 +35,7 @@ namespace ShootingGame
             _enemyAttacker = GetComponentInChildren<EnemyAttacker>();
             _enemyDefender = GetComponentInChildren<EnemyDefender>();
             _enemyMovement = GetComponentInChildren<EnemyMovement>();
+            animator = GetComponentInChildren<Animator>();
         }
 #endif
 
@@ -42,6 +43,7 @@ namespace ShootingGame
         {
             if (_enemyMovement != null && _enemyDefender != null)
             {
+                _enemyMovement.OnRandomTarget = GetTarget;
                 _enemyDefender.OnDefend += () => _enemyMovement.PauseMovement(true);
                 _enemyDefender.OnDefendSuccess += () => _enemyMovement.PauseMovement(false);
                 _enemyDefender.OnDeath += () =>
@@ -50,8 +52,14 @@ namespace ShootingGame
                     LevelSpawner.Instance.OnEnemyDeath(this);
                     Destroy(gameObject);
                 };
-                _enemyAttacker.SetAttackAction(() => _enemyMovement.PauseMovement(true), () => _enemyMovement.PauseMovement(false));
-                _enemyMovement.OnRandomTarget = GetTarget;
+                _enemyAttacker.SetAttackAction(() => {
+                    Debug.Log("Attack");
+                    //animator?.SetTrigger("Attack");
+                }, () => {
+                    Debug.Log("Attack Complete");
+                    //animator?.SetTrigger("Idle");
+                });
+                _enemyMovement.SetAttackRange(_enemyAttacker.AttackRange);
             }
         }
 
@@ -59,7 +67,7 @@ namespace ShootingGame
         {
             _enemyDefender.Init(scaleFactor);
             _enemyAttacker.Init(scaleFactor);
-            //_enemyMovement.Init(scaleFactor);
+            _enemyMovement.Init(scaleFactor);
         }
 
         public int GetStrength()
@@ -73,12 +81,12 @@ namespace ShootingGame
 
         public override void OnInteract(Interface.IInteract target)
         {
-            if (target is FireRangePlayer) target.OnInteract(this);
+            //if (target is FireRangePlayer) target.OnInteract(this);
         }
 
         public override void ExitInteract(Interface.IInteract target)
         {
-            if (target is FireRangePlayer) target.OnInteract(this);
+            //if (target is FireRangePlayer) target.OnInteract(this);
         }
 
         public virtual void GetTarget()
@@ -86,7 +94,6 @@ namespace ShootingGame
             var _target = GameCtrl.Instance.GetRandomPlayer().Defender;
             _enemyAttacker.SetTarget(_target);
             _enemyMovement.SetTarget(_target.transform);
-
         }
     }
 }

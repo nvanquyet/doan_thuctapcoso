@@ -55,6 +55,7 @@ MonoBehaviour:
   _enemyAttacker: {fileID: 5195548636648846595}
   _enemyDefender: {fileID: 724029092634259062}
   _enemyMovement: {fileID: 3737105127655994885}
+  animator: {fileID: 8361612213319942155}
 --- !u!114 &3731585282483701307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,6 +185,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 10
   _oneHitOnly: 0
+  timeAttack: 1
+  projectilePrefab: {fileID: 0}
+  projectileSpawnPoint: {fileID: 0}
+  attackRange: 0.75
+  attackType: 0
 --- !u!114 &724029092634259062
 MonoBehaviour:
   m_ObjectHideFlags: 0
