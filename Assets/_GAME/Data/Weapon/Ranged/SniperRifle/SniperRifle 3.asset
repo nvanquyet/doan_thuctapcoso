@@ -14,7 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   stat:
-    stats: []
+    stats:
+    - typeStat: 1
+      typeValueStat: 0
+      value: 27
+    - typeStat: 2
+      typeValueStat: 0
+      value: 9
+    - typeStat: 4
+      typeValueStat: 1
+      value: 27
+    - typeStat: 8
+      typeValueStat: 1
+      value: 7
+    - typeStat: 9
+      typeValueStat: 0
+      value: 3
   appearance:
     itemName: 
     icon: {fileID: 0}

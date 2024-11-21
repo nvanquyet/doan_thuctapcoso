@@ -13,7 +13,25 @@ MonoBehaviour:
   m_Name: Knife 2
   m_EditorClassIdentifier: 
   prefab: {fileID: 6098454974081046693, guid: f0a42d71d5c44da48b02ff947926cd23, type: 3}
-  stat: {fileID: 11400000, guid: b82e2f0ac73f39941ab46d4e11900115, type: 2}
-  appearance: {fileID: 11400000, guid: ddd990f10af061244bf0e987370d73ca, type: 2}
+  stat:
+    stats:
+    - typeStat: 1
+      typeValueStat: 0
+      value: 12
+    - typeStat: 2
+      typeValueStat: 0
+      value: 115
+    - typeStat: 4
+      typeValueStat: 1
+      value: 7
+    - typeStat: 8
+      typeValueStat: 1
+      value: 4
+    - typeStat: 9
+      typeValueStat: 0
+      value: 3
+  appearance:
+    itemName: 
+    icon: {fileID: 0}
   matrixData: {fileID: 11400000, guid: 0f838fe5b6a743643b8bbe8152b1aa34, type: 2}
   nextLevelAttribute: {fileID: 11400000, guid: 69cbcc6d3a61b7743bf7b375d9ac6e24, type: 2}
