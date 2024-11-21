@@ -22,6 +22,9 @@ namespace ShootingGame
         [SerializeField] private EnemyAttacker _enemyAttacker;
         [SerializeField] private EnemyDefender _enemyDefender;
         [SerializeField] private EnemyMovement _enemyMovement;
+
+        [SerializeField] private TypeAttack typeBossAttack;
+
         public bool IsDead => _enemyDefender.IsDead;
 
         public Action OnDeadAction;
@@ -47,6 +50,8 @@ namespace ShootingGame
                     LevelSpawner.Instance.OnEnemyDeath(this);
                     Destroy(gameObject);
                 };
+                _enemyAttacker.SetAttackAction(() => _enemyMovement.PauseMovement(true), () => _enemyMovement.PauseMovement(false));
+                _enemyMovement.OnRandomTarget = GetTarget;
             }
         }
 
@@ -74,6 +79,14 @@ namespace ShootingGame
         public override void ExitInteract(Interface.IInteract target)
         {
             if (target is FireRangePlayer) target.OnInteract(this);
+        }
+
+        public virtual void GetTarget()
+        {
+            var _target = GameCtrl.Instance.GetRandomPlayer().Defender;
+            _enemyAttacker.SetTarget(_target);
+            _enemyMovement.SetTarget(_target.transform);
+
         }
     }
 }

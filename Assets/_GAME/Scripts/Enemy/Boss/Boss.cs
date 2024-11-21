@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ShootingGame
 {
 
-    public enum TypeBossAttack
+    public enum TypeAttack
     {
         Mellee,
         Ranged
@@ -15,7 +15,7 @@ namespace ShootingGame
         [SerializeField] private ADefender _bossDefender;
         [SerializeField] private BossMovement _bossMovement;
 
-        [SerializeField] private TypeBossAttack typeBossAttack;
+        [SerializeField] private TypeAttack typeAttack;
         public override void ExitInteract(Interface.IInteract target)
         {
            

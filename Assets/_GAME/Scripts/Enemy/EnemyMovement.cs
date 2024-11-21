@@ -8,17 +8,19 @@ namespace ShootingGame
     [RequireComponent(typeof(Rigidbody2D))]
     public class EnemyMovement : MonoBehaviour, Interface.IPlayerMovement
     {
-        [SerializeField] private float _repeatTimeUpdatePath = 0.5f;
-        [SerializeField] private float _moveSpeed = 2f;
-        [SerializeField] private float _nextWayPointDistance = .2f;
+        [SerializeField] protected float _repeatTimeUpdatePath = 0.5f;
+        [SerializeField] protected float _moveSpeed = 2f;
+        [SerializeField] protected float _nextWayPointDistance = .2f;
+        [SerializeField] protected float distanceToTarget = 1f;
 
-        private Seeker _seeker;
-        private Rigidbody2D _rb;
+        protected Seeker _seeker;
+        protected Rigidbody2D _rb;
+        protected Path _path;
+        protected Transform _target;
+        protected Coroutine _moveCoroutine;
+        protected SpriteRenderer _characterSR;
 
-        private Path _path;
-        private Transform _target;
-        private Coroutine _moveCoroutine; 
-        private SpriteRenderer _characterSR;
+        public Action OnRandomTarget;
 
         public PlayerLocoMotionState LocomotionState => PlayerLocoMotionState.Run;
 
@@ -36,13 +38,14 @@ namespace ShootingGame
             InvokeRepeating(nameof(CalculatePath), 0f, _repeatTimeUpdatePath);
         }
 
-        private Transform GetTarget()
+        protected void GetTarget() => OnRandomTarget?.Invoke();
+
+        public void SetTarget(Transform target)
         {
-            if (_target == null) _target = GameCtrl.Instance.GetRandomTransformPlayer();
-            return _target;
+            _target = target;
         }
 
-        void CalculatePath()
+        protected void CalculatePath()
         {
             if (_target == null)
             {
@@ -54,7 +57,7 @@ namespace ShootingGame
         }
 
 
-        void OnPathCompleted(Path p)
+        protected void OnPathCompleted(Path p)
         {
             if (!p.error)
             {
@@ -63,19 +66,26 @@ namespace ShootingGame
             }
         }
 
-        IEnumerator MoveToTargetCoroutine()
+        protected virtual IEnumerator MoveToTargetCoroutine()
         {
             int currentWP = 0;
             while (currentWP < _path.vectorPath.Count)
             {
 
                 if(_target == null) GetTarget();
+                float distance = Vector2.Distance(_rb.position, _target.position);
+                if (distance <= distanceToTarget)
+                {
+                    yield return null;
+                    continue;
+                }
 
                 Vector2 direction = ((Vector2)_path.vectorPath[currentWP] - _rb.position).normalized;
                 Vector2 force = direction * _moveSpeed * Time.deltaTime;
+
                 transform.position += (Vector3)force;
 
-                float distance = Vector2.Distance(_rb.position, _path.vectorPath[currentWP]);
+                distance = Vector2.Distance(_rb.position, _path.vectorPath[currentWP]);
                 if (distance < _nextWayPointDistance)
                     currentWP++;
 
@@ -113,7 +123,7 @@ namespace ShootingGame
 
         internal void Init(float scaleFactor)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

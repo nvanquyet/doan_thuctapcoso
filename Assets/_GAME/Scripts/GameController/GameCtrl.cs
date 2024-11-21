@@ -31,10 +31,10 @@ namespace ShootingGame
         /// Get Random Player
         /// </summary>
         /// <returns></returns>
-        public Transform GetRandomTransformPlayer()
+        public Player GetRandomPlayer()
         {
             if (_players == null || _players.Count <= 0) return null;
-            return _players[Random.Range(0, _players.Count)].transform;
+            return _players[Random.Range(0, _players.Count)];
         }
 
         /// <summary>

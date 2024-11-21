@@ -12,6 +12,7 @@ namespace ShootingGame
         [SerializeField] private PlayerStat _playerStat;
 
         public PlayerStat Stat => _playerStat;
+        public PlayerDefender Defender => _playerDefender;
 
 #if UNITY_EDITOR
         protected override void OnValidate()
