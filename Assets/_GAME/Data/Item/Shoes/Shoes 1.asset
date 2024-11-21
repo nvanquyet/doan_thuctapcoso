@@ -13,7 +13,25 @@ MonoBehaviour:
   m_Name: Shoes 1
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  stat: {fileID: 11400000, guid: b9f61cefc6dea044ca75015c119445cb, type: 2}
-  appearance: {fileID: 11400000, guid: eb8802f6cb6bfbf4ba607faf7945964e, type: 2}
+  stat:
+    stats:
+    - typeStat: 0
+      typeValueStat: 1
+      value: 5
+    - typeStat: 3
+      typeValueStat: 1
+      value: 1
+    - typeStat: 5
+      typeValueStat: 0
+      value: 2
+    - typeStat: 4
+      typeValueStat: 1
+      value: 2
+    - typeStat: 6
+      typeValueStat: 1
+      value: 1
+  appearance:
+    itemName: 
+    icon: {fileID: 0}
   matrixData: {fileID: 0}
   nextLevelAttribute: {fileID: 11400000, guid: 6b1eb5eb14bbb574bb79e03c61b9fcda, type: 2}

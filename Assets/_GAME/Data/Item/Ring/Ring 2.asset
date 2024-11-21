@@ -13,7 +13,25 @@ MonoBehaviour:
   m_Name: Ring 2
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  stat: {fileID: 11400000, guid: 62ce7f38c5b53464fbfa6e40410a3fb9, type: 2}
-  appearance: {fileID: 11400000, guid: 797b2d1fe08f2b249bebc70f4993b1e1, type: 2}
+  stat:
+    stats:
+    - typeStat: 0
+      typeValueStat: 1
+      value: 5
+    - typeStat: 3
+      typeValueStat: 1
+      value: 1
+    - typeStat: 5
+      typeValueStat: 0
+      value: 2
+    - typeStat: 4
+      typeValueStat: 1
+      value: 2
+    - typeStat: 7
+      typeValueStat: 0
+      value: 5
+  appearance:
+    itemName: 
+    icon: {fileID: 0}
   matrixData: {fileID: 0}
   nextLevelAttribute: {fileID: 11400000, guid: ed1d95aa0c3adc0498c75b3af1106627, type: 2}

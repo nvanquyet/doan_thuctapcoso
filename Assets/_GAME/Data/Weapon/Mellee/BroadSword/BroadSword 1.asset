@@ -10,28 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b338d77a6eb9f344482feaa2651e8235, type: 3}
-  m_Name: Ring 3
+  m_Name: BroadSword 1
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 890306653094463171, guid: e53b54648e50a91408d7b3f71ff3c33f, type: 3}
   stat:
-    stats:
-    - typeStat: 0
-      typeValueStat: 1
-      value: 5
-    - typeStat: 3
-      typeValueStat: 1
-      value: 1
-    - typeStat: 5
-      typeValueStat: 0
-      value: 2
-    - typeStat: 4
-      typeValueStat: 1
-      value: 2
-    - typeStat: 7
-      typeValueStat: 0
-      value: 10
+    stats: []
   appearance:
     itemName: 
     icon: {fileID: 0}
-  matrixData: {fileID: 0}
-  nextLevelAttribute: {fileID: 0}
+  matrixData: {fileID: 11400000, guid: 0f838fe5b6a743643b8bbe8152b1aa34, type: 2}
+  nextLevelAttribute: {fileID: 11400000, guid: b23640b4baca5bf49a49bd8862ffe6ba, type: 2}

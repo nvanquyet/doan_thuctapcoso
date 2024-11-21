@@ -13,7 +13,25 @@ MonoBehaviour:
   m_Name: Trouser 3
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  stat: {fileID: 11400000, guid: af8a5e0d9c3e59242b685239cee0e4af, type: 2}
-  appearance: {fileID: 11400000, guid: 05cc4aa8f7aad104ea9204dcf99b3f78, type: 2}
+  stat:
+    stats:
+    - typeStat: 0
+      typeValueStat: 1
+      value: 15
+    - typeStat: 3
+      typeValueStat: 1
+      value: 1
+    - typeStat: 5
+      typeValueStat: 0
+      value: 2
+    - typeStat: 4
+      typeValueStat: 1
+      value: 2
+    - typeStat: 8
+      typeValueStat: 1
+      value: 1
+  appearance:
+    itemName: 
+    icon: {fileID: 0}
   matrixData: {fileID: 0}
   nextLevelAttribute: {fileID: 0}
