@@ -36,6 +36,7 @@ namespace ShootingGame
             foreach (var statData in CurrentEquiqmentStat.Stats)
             {
                 CurrentEquiqmentStat.UpdateStat(GameService.CaculateStat(statData, stat.GetStat(statData.TypeStat), EquiqmentStat.GetStat(statData.TypeStat)));
+                GameService.LogColor($"{gameObject.name} {CurrentEquiqmentStat.GetStat(statData.TypeStat).Value}");
             }
         }
 

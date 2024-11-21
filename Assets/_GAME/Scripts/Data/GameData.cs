@@ -6,6 +6,7 @@ namespace ShootingGame {
 
         public Data.PlayerData Players;
         public Data.EnemyData Enemies;
+        public Data.EnemyData Bosses;
         //public PlayerStatData PlayerStatData;
         public ItemData ItemData;
 

@@ -104,6 +104,7 @@ namespace ShootingGame
 
             var allEnimies = GameData.Instance.Enemies.GetAllValue();
             var curEnemyCount = 0;
+            Debug.Log($"Wave {currentWave} - {allEnimies.Length}");
             while (waveProperties.strengthWave > 0)
             {
                 //Spawn Enemy from data
@@ -111,6 +112,7 @@ namespace ShootingGame
                 //Init data enemy
                 if (enemy != null)
                 {
+                    Debug.Log($"Wave {currentWave} - {enemy.name}");
                     var enemyInstance = Instantiate(enemy,  spawnPositions[Random.Range(0, spawnPositions.Count)]);
                     //Init data enemy
                     if (enemyInstance)
@@ -137,11 +139,28 @@ namespace ShootingGame
             if (isBossWave)
             {
                 //Spawn Boss
+                SpawnBoss();
             }
 
             isSpawning = false;
         }
 
+        private void SpawnBoss()
+        {
+            //Spawn Boss from data
+            var boss = GameData.Instance.Bosses.GetAllValue()[(currentWave / GameConfig.Instance.bossWaveDistance) - 1];
+            if (boss != null)
+            {
+                var bossInstance = Instantiate(boss, spawnPositions[Random.Range(0, spawnPositions.Count)]);
+                //Init data enemy
+                if (bossInstance)
+                {
+                    bossInstance.transform.localPosition = Vector3.zero;
+                    bossInstance.Init(scalingFactor);
+                    AddEnemy(bossInstance);
+                }
+            }
+        }
 
         public bool OnEnemyDeath(Enemy enemy)
         {
