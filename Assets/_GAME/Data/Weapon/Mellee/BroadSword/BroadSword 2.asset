@@ -31,7 +31,7 @@ MonoBehaviour:
       typeValueStat: 0
       value: 3
   appearance:
-    itemName: 
-    icon: {fileID: 0}
+    itemName: BroadSword Level 2
+    icon: {fileID: 21300000, guid: cf763a1e3c86b4242b1f4e0fe69f4fe9, type: 3}
   matrixData: {fileID: 11400000, guid: 0f838fe5b6a743643b8bbe8152b1aa34, type: 2}
   nextLevelAttribute: {fileID: 11400000, guid: 6519d7c916ede954a9a8a7a482686822, type: 2}

@@ -31,7 +31,7 @@ MonoBehaviour:
       typeValueStat: 0
       value: 3
   appearance:
-    itemName: 
-    icon: {fileID: 0}
+    itemName: Knife Level 2
+    icon: {fileID: 21300000, guid: 1aa31c6c37555ba469ccd8312f2d0185, type: 3}
   matrixData: {fileID: 11400000, guid: 0f838fe5b6a743643b8bbe8152b1aa34, type: 2}
   nextLevelAttribute: {fileID: 11400000, guid: 69cbcc6d3a61b7743bf7b375d9ac6e24, type: 2}

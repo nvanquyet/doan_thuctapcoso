@@ -31,7 +31,7 @@ MonoBehaviour:
       typeValueStat: 1
       value: 5
   appearance:
-    itemName: 
-    icon: {fileID: 0}
+    itemName: Hat Level 3
+    icon: {fileID: 21300000, guid: 2ee665b2d6a5d384e9bf754c7222df7b, type: 3}
   matrixData: {fileID: 0}
   nextLevelAttribute: {fileID: 11400000, guid: 4a864d0f4e2f6d843a3d70600a34f60e, type: 2}
