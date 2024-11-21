@@ -13,7 +13,25 @@ MonoBehaviour:
   m_Name: Sword 2
   m_EditorClassIdentifier: 
   prefab: {fileID: 890306653094463171, guid: e53b54648e50a91408d7b3f71ff3c33f, type: 3}
-  stat: {fileID: 11400000, guid: 6fd4be266a5b5174f955df2ccab9a6a4, type: 2}
-  appearance: {fileID: 11400000, guid: b4710b9644d95e74fa2238e7e328a8bc, type: 2}
+  stat:
+    stats:
+    - typeStat: 1
+      typeValueStat: 0
+      value: 15
+    - typeStat: 2
+      typeValueStat: 0
+      value: 10
+    - typeStat: 4
+      typeValueStat: 1
+      value: 4
+    - typeStat: 8
+      typeValueStat: 1
+      value: 3
+    - typeStat: 9
+      typeValueStat: 0
+      value: 3
+  appearance:
+    itemName: 
+    icon: {fileID: 0}
   matrixData: {fileID: 11400000, guid: 0f838fe5b6a743643b8bbe8152b1aa34, type: 2}
   nextLevelAttribute: {fileID: 11400000, guid: e36b943d150dbeb41b7b1a7cd412427b, type: 2}

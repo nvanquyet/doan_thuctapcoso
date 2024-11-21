@@ -13,7 +13,25 @@ MonoBehaviour:
   m_Name: Pistol 3
   m_EditorClassIdentifier: 
   prefab: {fileID: 3537812215717957531, guid: 109a9be53ee648c4aaba0feaa7614be4, type: 3}
-  stat: {fileID: 11400000, guid: 4dcb034090bf7904c94d0ae2236b2fba, type: 2}
-  appearance: {fileID: 11400000, guid: ae6433c72a08961488acc9476e9c70d9, type: 2}
+  stat:
+    stats:
+    - typeStat: 1
+      typeValueStat: 0
+      value: 13
+    - typeStat: 2
+      typeValueStat: 0
+      value: 23
+    - typeStat: 4
+      typeValueStat: 1
+      value: 13
+    - typeStat: 8
+      typeValueStat: 1
+      value: 10
+    - typeStat: 9
+      typeValueStat: 0
+      value: 12
+  appearance:
+    itemName: 
+    icon: {fileID: 0}
   matrixData: {fileID: 11400000, guid: 79b119336430ac84e925248b9f81a5a6, type: 2}
   nextLevelAttribute: {fileID: 0}

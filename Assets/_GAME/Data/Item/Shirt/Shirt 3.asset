@@ -13,7 +13,25 @@ MonoBehaviour:
   m_Name: Shirt 3
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  stat: {fileID: 11400000, guid: 9c561194b781a7844a3616a52427bacf, type: 2}
-  appearance: {fileID: 11400000, guid: 0a2abe5169c04244aa07422b09259aa9, type: 2}
+  stat:
+    stats:
+    - typeStat: 0
+      typeValueStat: 1
+      value: 5
+    - typeStat: 3
+      typeValueStat: 1
+      value: 1
+    - typeStat: 5
+      typeValueStat: 0
+      value: 10
+    - typeStat: 4
+      typeValueStat: 1
+      value: 2
+    - typeStat: 8
+      typeValueStat: 1
+      value: 1
+  appearance:
+    itemName: 
+    icon: {fileID: 0}
   matrixData: {fileID: 11400000, guid: 240c44e0b317f7647ad3dd83a0b0976a, type: 2}
   nextLevelAttribute: {fileID: 0}

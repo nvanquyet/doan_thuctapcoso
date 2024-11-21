@@ -13,7 +13,25 @@ MonoBehaviour:
   m_Name: Glove 3
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  stat: {fileID: 11400000, guid: f66865d770f3dba4d9cbf6291d6b316e, type: 2}
-  appearance: {fileID: 11400000, guid: f30d2d8d8a04b92478f6d62398e1ca6e, type: 2}
+  stat:
+    stats:
+    - typeStat: 0
+      typeValueStat: 1
+      value: 5
+    - typeStat: 3
+      typeValueStat: 1
+      value: 1
+    - typeStat: 5
+      typeValueStat: 0
+      value: 2
+    - typeStat: 4
+      typeValueStat: 1
+      value: 2
+    - typeStat: 1
+      typeValueStat: 1
+      value: 15
+  appearance:
+    itemName: 
+    icon: {fileID: 0}
   matrixData: {fileID: 0}
   nextLevelAttribute: {fileID: 0}
