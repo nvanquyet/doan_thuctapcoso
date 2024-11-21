@@ -80,7 +80,7 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
         {
             stringStats += $"{stat.GetStatString()}\n";
         }
-        tetrisDescription.ModifyDescription(data.Appearance.Icon, data.Appearance.name, stringStats);     
+        tetrisDescription.ModifyDescription(data.Appearance.Icon, data.Appearance.Name, stringStats);     
     }
 
 #endregion

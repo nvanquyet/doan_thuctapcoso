@@ -6,8 +6,8 @@ namespace ShootingGame.Data {
         Sprite Icon { get; }
     }
 
-    [CreateAssetMenu(fileName = "ItemAppearanceData", menuName = "Items/ItemAppearanceData")]
-    public class ItemAppearanceData : ScriptableObject, IAppearanceData
+    [System.Serializable]
+    public class ItemAppearanceData : IAppearanceData
     {
         [SerializeField] private string itemName;
         [SerializeField] private Sprite icon;

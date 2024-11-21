@@ -56,9 +56,17 @@ public class TetrisInventory : MonoBehaviour
         waitingSlots.AddItem(item);
         tetrisSlot.RemoveItem(item);
     }
+    public void AddItem(ItemAttributeData[] items)
+    {
+        for(int i = 0; i < items.Length; i++)
+        {
+            CreateNewItem(items[i]);
+        }
+    }
+
     public void AddItem()
     {
-        for(int i = 0; i < itemTest.Length; i++)
+        for (int i = 0; i < itemTest.Length; i++)
         {
             CreateNewItem(itemTest[i]);
         }

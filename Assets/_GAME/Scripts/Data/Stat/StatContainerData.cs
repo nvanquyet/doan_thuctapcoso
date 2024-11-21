@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace ShootingGame.Data
 {
-    [CreateAssetMenu(fileName = "StatContainerData", menuName = "Items/Stat/StatContainerData")]
-    public class StatContainerData : ScriptableObject
+    [System.Serializable]
+    public class StatContainerData
     {
         [SerializeField] private StatData[] stats;
 

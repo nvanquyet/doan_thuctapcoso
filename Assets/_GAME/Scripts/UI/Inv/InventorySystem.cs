@@ -1,6 +1,8 @@
 
+using System.Collections.Generic;
 using System.Linq;
 using ShootingGame;
+using ShootingGame.Data;
 using UnityEngine;
 using UnityEngine.UI;
 public class InventorySystem : Frame
@@ -9,7 +11,7 @@ public class InventorySystem : Frame
     [SerializeField] private Button buttonSpawnItem;
 
     [SerializeField] private TetrisInventory tetrisInventory;
-
+    [SerializeField] private List<ItemAttributeData> claimedItems;
 #if UNITY_EDITOR
     private void OnValidate()
     {
@@ -22,6 +24,7 @@ public class InventorySystem : Frame
         buttonPlayGame.onClick.AddListener(OnButtonPlayGameClick);
         buttonSpawnItem.onClick.AddListener(OnButtonSpawnItemClick);
         this.AddListener<GameEvent.OnWaveClear>(OnWaveClear, false);
+        claimedItems = new List<ItemAttributeData>();
     }
 
     private void OnButtonPlayGameClick()
@@ -41,6 +44,7 @@ public class InventorySystem : Frame
 
     private void OnButtonSpawnItemClick()
     {
-        tetrisInventory.AddItem();
+        tetrisInventory.AddItem(claimedItems.ToArray());
+        claimedItems.Clear();
     }
 }
