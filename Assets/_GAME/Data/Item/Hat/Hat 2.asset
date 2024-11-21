@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Hat 2
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  stat: {fileID: 11400000, guid: 23aab62697a2225468df8ca907490ba9, type: 2}
-  appearance: {fileID: 11400000, guid: ee75620f2fe47c24486f380804a000e0, type: 2}
+  stat:
+    stats: []
+  appearance:
+    itemName: 
+    icon: {fileID: 0}
   matrixData: {fileID: 0}
   nextLevelAttribute: {fileID: 11400000, guid: 4a864d0f4e2f6d843a3d70600a34f60e, type: 2}

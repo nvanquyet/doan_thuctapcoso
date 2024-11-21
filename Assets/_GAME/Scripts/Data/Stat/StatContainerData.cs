@@ -5,25 +5,9 @@ namespace ShootingGame.Data
     [System.Serializable]
     public class StatContainerData
     {
-        [SerializeField] private StatData[] stats;
+        [SerializeField] private Stat[] stats;
 
-        private Stat[] baseStat;
-        public Stat[] Stats
-        {
-            get
-            {
-                var result = new Stat[stats.Length];
-                for (int i = 0; i < stats.Length; i++)
-                {
-                    result[i] = stats[i].Stat;
-                }
-                if (baseStat == null || baseStat.Length <= 0)
-                {
-                    baseStat = result;
-                }
-                return result;
-            }
-        }
+        public Stat[] Stats => stats;
 
         private Dictionary<TypeStat, Stat> dictDatas = new Dictionary<TypeStat, Stat>();
 
@@ -39,13 +23,9 @@ namespace ShootingGame.Data
 
         public Stat GetStat(TypeStat type)
         {
-            if (dictDatas == null || dictDatas.Count <= 0)
+            if (DictDatas.ContainsKey(type))
             {
-                InitDict();
-            }
-            if (dictDatas.ContainsKey(type))
-            {
-                return dictDatas[type];
+                return DictDatas[type];
             }
             var stat = new Stat();
             stat.SetTypeStat(type);
@@ -54,25 +34,20 @@ namespace ShootingGame.Data
 
         public void UpdateStat(Stat updatedStat)
         {
-            if (dictDatas == null || dictDatas.Count <= 0)
+            if (DictDatas.ContainsKey(updatedStat.TypeStat))
             {
-                InitDict();
-            }
-            if (dictDatas.ContainsKey(updatedStat.TypeStat))
-            {
-                dictDatas[updatedStat.TypeStat] = updatedStat;
+                DictDatas[updatedStat.TypeStat] = updatedStat;
             }
             else
             {
-                dictDatas.Add(updatedStat.TypeStat, updatedStat);
+                DictDatas.Add(updatedStat.TypeStat, updatedStat);
             }
 
             for (int i = 0; i < Stats.Length; i++)
             {
-                if (stats[i].Stat.TypeStat == updatedStat.TypeStat)
+                if (stats[i].TypeStat == updatedStat.TypeStat)
                 {
-                    stats[i].UpdateStat(updatedStat);
-                    GameService.LogColor($"Update Stat {updatedStat.TypeStat} {stats[i].Stat.Value}");
+                    stats[i] = updatedStat;
                     return;
                 }
             }
@@ -80,27 +55,21 @@ namespace ShootingGame.Data
 
         private void InitDict()
         {
-            if (dictDatas == null || dictDatas.Count <= 0)
-            {
-                dictDatas = new Dictionary<TypeStat, Stat>();
-            }
             if(stats == null) return;
             foreach (var property in Stats)
             {
-                if(!dictDatas.ContainsKey(property.TypeStat)) dictDatas.Add(property.TypeStat, property);
-                else dictDatas[property.TypeStat] = property;
+                if(!DictDatas.ContainsKey(property.TypeStat)) DictDatas.Add(property.TypeStat, property);
+                else DictDatas[property.TypeStat] = property;
             }
         }
 
         public StatContainerData(StatContainerData clone)
         {
             if(clone == null) return;
-            stats = new StatData[clone.Stats.Length];
+            stats = new Stat[clone.Stats.Length];
             for (int i = 0; i < clone.Stats.Length; i++)
             {
-                var newStat = new Stat(clone.Stats[i]);
-                if (stats[i] == null) stats[i] = new StatData(newStat);
-                else stats[i].UpdateStat(newStat);
+                stats[i] = new Stat(clone.Stats[i]);
             }
         }
     }
