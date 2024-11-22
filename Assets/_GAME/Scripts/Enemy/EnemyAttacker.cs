@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static ShootingGame.Interface;
 
 namespace ShootingGame
 {
@@ -15,8 +16,17 @@ namespace ShootingGame
         [SerializeField] private Transform projectileSpawnPoint;
         [SerializeField] private float attackRange = 1.5f;
         [SerializeField] private TypeAttack attackType;
+
+        private IDefender denfender;
+
         private ADefender _target;
         public float AttackRange => attackRange;
+
+        private void Start()
+        {
+            denfender = GetComponentInParent<IDefender>();
+        }
+
         public void SetTarget(ADefender target) => _target = target;
         public void SetAttackAction(Action attackAction, Action onAttackCompletedAction)
         {

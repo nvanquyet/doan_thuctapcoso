@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5195548636648846595}
   - component: {fileID: 724029092634259062}
   - component: {fileID: 3737105127655994885}
+  - component: {fileID: -5191231343877230423}
   m_Layer: 0
   m_Name: Enemy_03
   m_TagString: Enemy
@@ -55,6 +56,7 @@ MonoBehaviour:
   _enemyAttacker: {fileID: 5195548636648846595}
   _enemyDefender: {fileID: 724029092634259062}
   _enemyMovement: {fileID: 3737105127655994885}
+  _enemyAnimation: {fileID: -5191231343877230423}
 --- !u!114 &3731585282483701307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,6 +186,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 10
   _oneHitOnly: 0
+  timeAttack: 1
+  projectilePrefab: {fileID: 0}
+  projectileSpawnPoint: {fileID: 0}
+  attackRange: 1.5
+  attackType: 0
 --- !u!114 &724029092634259062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,6 +222,20 @@ MonoBehaviour:
   _repeatTimeUpdatePath: 0.5
   _moveSpeed: 3
   _nextWayPointDistance: 0.3
+--- !u!114 &-5191231343877230423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926085311155766288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0de4081bf613bf94fbb4d7ba67f0502f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 8361612213319942155}
+  _spriteRenderer: {fileID: 4398302326340471489}
 --- !u!1 &5084586819772066348
 GameObject:
   m_ObjectHideFlags: 0

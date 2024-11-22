@@ -36,10 +36,7 @@ namespace ShootingGame
             if (other == null) return;
             if (other.TryGetComponent(out Interface.IDefender defender))
             {
-                if (owner != null && defender == owner)
-                {
-                    return;
-                }
+                if (owner != null && defender.GetType().Equals(owner.GetType())) return;
                 Attack(defender);
                 ActiveEffect(hitEffect);
                 Rigid.velocity = Vector2.zero;
