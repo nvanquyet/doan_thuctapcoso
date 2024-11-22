@@ -24,7 +24,7 @@ namespace ShootingGame
             OnAttackCompletedAction = onAttackCompletedAction;
         }
 
-        private void Update()
+        public void Update()
         {
             if (_target == null) return;
             Vector2 direction = (_target.transform.position - transform.position).normalized;

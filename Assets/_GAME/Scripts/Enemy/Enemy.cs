@@ -22,9 +22,7 @@ namespace ShootingGame
         [SerializeField] private EnemyAttacker _enemyAttacker;
         [SerializeField] private EnemyDefender _enemyDefender;
         [SerializeField] private EnemyMovement _enemyMovement;
-
-        [SerializeField] private Animator animator;
-
+        [SerializeField] private EnemyAnimation _enemyAnimation;
         public bool IsDead => _enemyDefender.IsDead;
 
         public Action OnDeadAction;
@@ -35,7 +33,7 @@ namespace ShootingGame
             _enemyAttacker = GetComponentInChildren<EnemyAttacker>();
             _enemyDefender = GetComponentInChildren<EnemyDefender>();
             _enemyMovement = GetComponentInChildren<EnemyMovement>();
-            animator = GetComponentInChildren<Animator>();
+            _enemyAnimation = GetComponentInChildren<EnemyAnimation>();
         }
 #endif
 
@@ -43,23 +41,20 @@ namespace ShootingGame
         {
             if (_enemyMovement != null && _enemyDefender != null)
             {
+                OnDeadAction += () =>
+                {
+                    LevelSpawner.Instance.OnEnemyDeath(this);
+                    _enemyMovement.PauseMovement(true);
+                    _enemyAnimation.OnTriggerDead();
+                    Destroy(gameObject, 0.32f);
+                };
                 _enemyMovement.OnRandomTarget = GetTarget;
+                _enemyMovement.OnMoveAction += _enemyAnimation.SetVelocity;
                 _enemyDefender.OnDefend += () => _enemyMovement.PauseMovement(true);
                 _enemyDefender.OnDefendSuccess += () => _enemyMovement.PauseMovement(false);
-                _enemyDefender.OnDeath += () =>
-                {
-                    OnDeadAction?.Invoke();
-                    LevelSpawner.Instance.OnEnemyDeath(this);
-                    Destroy(gameObject);
-                };
-                _enemyAttacker.SetAttackAction(() => {
-                    Debug.Log("Attack");
-                    //animator?.SetTrigger("Attack");
-                }, () => {
-                    Debug.Log("Attack Complete");
-                    //animator?.SetTrigger("Idle");
-                });
+                _enemyAttacker.SetAttackAction(_enemyAnimation.OnTriggerAttack, null);
                 _enemyMovement.SetAttackRange(_enemyAttacker.AttackRange);
+                _enemyDefender.OnDeath += OnDeadAction;
             }
         }
 

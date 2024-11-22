@@ -23,6 +23,8 @@ namespace ShootingGame
 
         public Action OnRandomTarget;
 
+        public Action<float> OnMoveAction;
+
         public PlayerLocoMotionState LocomotionState => PlayerLocoMotionState.Run;
 
         public bool IsMoving => CurrentSpeed > 0;
@@ -87,6 +89,9 @@ namespace ShootingGame
                     else
                         _characterSR.transform.localScale = new Vector3(-1, 1, 0) * scaleSprite;
                 }
+
+                OnMoveAction?.Invoke(CurrentSpeed);
+
                 yield return null;
             }
         }
