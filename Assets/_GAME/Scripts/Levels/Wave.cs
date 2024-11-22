@@ -104,7 +104,6 @@ namespace ShootingGame
 
             var allEnimies = GameData.Instance.Enemies.GetAllValue();
             var curEnemyCount = 0;
-            Debug.Log($"Wave {currentWave} - {allEnimies.Length}");
             while (waveProperties.strengthWave > 0)
             {
                 //Spawn Enemy from data
@@ -112,7 +111,6 @@ namespace ShootingGame
                 //Init data enemy
                 if (enemy != null)
                 {
-                    Debug.Log($"Wave {currentWave} - {enemy.name}");
                     var enemyInstance = Instantiate(enemy,  spawnPositions[Random.Range(0, spawnPositions.Count)]);
                     //Init data enemy
                     if (enemyInstance)

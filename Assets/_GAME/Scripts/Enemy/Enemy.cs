@@ -50,9 +50,18 @@ namespace ShootingGame
                 };
                 _enemyMovement.OnRandomTarget = GetTarget;
                 _enemyMovement.OnMoveAction += _enemyAnimation.SetVelocity;
-                _enemyDefender.OnDefend += () => _enemyMovement.PauseMovement(true);
+                _enemyDefender.OnDefend += () =>
+                {
+                    _enemyMovement.PauseMovement(true);
+                };
                 _enemyDefender.OnDefendSuccess += () => _enemyMovement.PauseMovement(false);
-                _enemyAttacker.SetAttackAction(_enemyAnimation.OnTriggerAttack, null);
+
+                _enemyAttacker.SetAttackAction(() =>
+                {
+                    _enemyMovement.PauseMovement(true);
+                    _enemyAnimation.OnTriggerAttack();
+                }, () => _enemyMovement.PauseMovement(false));
+
                 _enemyMovement.SetAttackRange(_enemyAttacker.AttackRange);
                 _enemyDefender.OnDeath += OnDeadAction;
             }

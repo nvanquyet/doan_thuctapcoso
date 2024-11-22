@@ -58,8 +58,8 @@ namespace ShootingGame.Data
             if(stats == null) return;
             foreach (var property in Stats)
             {
-                if(!DictDatas.ContainsKey(property.TypeStat)) DictDatas.Add(property.TypeStat, property);
-                else DictDatas[property.TypeStat] = property;
+                if(!dictDatas.ContainsKey(property.TypeStat)) dictDatas.Add(property.TypeStat, property);
+                else dictDatas[property.TypeStat] = property;
             }
         }
 

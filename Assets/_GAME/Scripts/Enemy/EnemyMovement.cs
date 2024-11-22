@@ -39,6 +39,7 @@ namespace ShootingGame
             _rb = GetComponent<Rigidbody2D>();
             _characterSR = GetComponentInChildren<SpriteRenderer>();
             InvokeRepeating(nameof(CalculatePath), 0f, _repeatTimeUpdatePath);
+            Invoke(nameof(Continue), 0.5f);
         }
         public void SetAttackRange(float value) => attackRange = value;
         protected void GetTarget() => OnRandomTarget?.Invoke();
@@ -58,11 +59,7 @@ namespace ShootingGame
 
         protected void OnPathCompleted(Path p)
         {
-            if (!p.error)
-            {
-                _path = p;
-                Move(Vector3.zero);
-            }
+            if (!p.error) _path = p;
         }
 
         protected virtual IEnumerator MoveToTargetCoroutine()
@@ -70,13 +67,13 @@ namespace ShootingGame
             int currentWP = 0;
             while (_path != null && currentWP < _path.vectorPath.Count)
             {
-
                 if(_target == null) GetTarget();
                 float distance = Vector2.Distance(_rb.position, _path.vectorPath[currentWP]);
                 Vector2 direction = ((Vector2)_path.vectorPath[currentWP] - _rb.position).normalized;
-                Vector2 force = direction * _moveSpeed * Time.deltaTime;
+                Vector2 force = Vector2.zero;
                 if (Vector3.Distance(transform.position, _target.transform.position) >= attackRange)
                 {
+                    force = direction * _moveSpeed * Time.deltaTime;
                     transform.position += (Vector3)force;
                     if (distance < _nextWayPointDistance)
                         currentWP++;
@@ -90,8 +87,7 @@ namespace ShootingGame
                         _characterSR.transform.localScale = new Vector3(-1, 1, 0) * scaleSprite;
                 }
 
-                OnMoveAction?.Invoke(CurrentSpeed);
-
+                OnMoveAction?.Invoke(force.normalized.magnitude);
                 yield return null;
             }
         }
@@ -100,6 +96,7 @@ namespace ShootingGame
         {
             if (_moveCoroutine != null) StopCoroutine(_moveCoroutine);
             _moveCoroutine = null;
+            OnMoveAction?.Invoke(0);
         }
 
         public void Continue()
@@ -111,11 +108,12 @@ namespace ShootingGame
         public void PauseMovement(bool pauseMovement) {
             if(pauseMovement) Stop();
             else Continue();
+            GameService.LogColor($"PauseMovement: {pauseMovement}");
         } 
 
         public void SetSpeed(float speed) => _moveSpeed = Mathf.Max(speed, 1);
 
-        public void Move(Vector3 direction) => Continue();
+        public void Move(Vector3 direction) { }
 
         internal void Init(float scaleFactor) { }
         

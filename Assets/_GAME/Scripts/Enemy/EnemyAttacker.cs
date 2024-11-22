@@ -9,6 +9,7 @@ namespace ShootingGame
         private Interface.IDefender _currentTarget;
         private bool _isAttacking = false;
         [SerializeField] private float timeAttack = 1f;
+        [SerializeField] private float timeAttackAnimation = 1f;
         private Action OnAttackAction;
         private Action OnAttackCompletedAction;
 
@@ -17,14 +18,17 @@ namespace ShootingGame
         [SerializeField] private float attackRange = 1.5f;
         [SerializeField] private TypeAttack attackType;
 
-        private IDefender denfender;
+        private ObjectPooling<BaseBullet> _bulletPool;
+        private IDefender defenderOwner;
 
         private ADefender _target;
         public float AttackRange => attackRange;
 
         private void Start()
         {
-            denfender = GetComponentInParent<IDefender>();
+            defenderOwner = GetComponentInParent<IDefender>();
+            _bulletPool = new ObjectPooling<BaseBullet>(projectilePrefab, 4, transform);
+            InvokeRepeating(nameof(AutoAttack), 0, timeAttack);
         }
 
         public void SetTarget(ADefender target) => _target = target;
@@ -34,32 +38,47 @@ namespace ShootingGame
             OnAttackCompletedAction = onAttackCompletedAction;
         }
 
-        public void Update()
+        public void AutoAttack()
         {
             if (_target == null) return;
-            Vector2 direction = (_target.transform.position - transform.position).normalized;
-            float distanceToTarget = Vector3.Distance(transform.position, _target.transform.position);
-            if(distanceToTarget <= attackRange)
+            if (!_isAttacking)
             {
-                if (!_isAttacking)
+                if (attackType == TypeAttack.Melee)
                 {
-                    if (attackType == TypeAttack.Melee) _isAttacking = Attack(_target);
-                    else if (attackType == TypeAttack.Ranged) _isAttacking = SpawnProjectile(direction);
-                    if (_isAttacking)
-                    {
-                        OnAttackAction?.Invoke();
-                        Invoke(nameof(OnAttackCompleted), timeAttack);
-                    }
+                    var distanceToTarget = Vector3.Distance(transform.position, _target.transform.position);
+                    if (distanceToTarget <= attackRange) _isAttacking = Attack(_target);
+                    else _isAttacking = false;
+                }
+                else if (attackType == TypeAttack.Ranged)
+                {
+                    var direction = (_target.transform.position - transform.position).normalized;
+                    _isAttacking = SpawnProjectile(direction);
+                }
+                if (_isAttacking)
+                {
+                    OnAttackAction?.Invoke();
+                    Invoke(nameof(OnAttackCompleted), timeAttackAnimation);
                 }
             }
         }
 
         private bool SpawnProjectile(Vector2 direction)
         {
-            if (attackType == TypeAttack.Ranged && projectilePrefab != null && _target != null)
+            if (attackType == TypeAttack.Ranged && _target != null)
             {
-                var projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
-                projectile.Spawn(direction, (Damage, false, 0));
+                var projectile = _bulletPool.Get();
+                projectile.transform.SetParent(null);
+                projectile.transform.position = projectileSpawnPoint.position;
+                projectile.Spawn(direction, (Damage, false, 0), defenderOwner);
+                projectile.RecycleAction = () => {
+                    if (projectile == null) return;
+                    if(gameObject == null) Destroy(projectile.gameObject);
+                    else
+                    {
+                        projectile.transform.SetParent(transform);
+                        _bulletPool.Recycle(projectile);
+                    }
+                };
                 return true;
             }
             return false;
