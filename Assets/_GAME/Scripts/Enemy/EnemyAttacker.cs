@@ -4,6 +4,11 @@ using static ShootingGame.Interface;
 
 namespace ShootingGame
 {
+    public enum TypeAttack
+    {
+        Melee,
+        Ranged
+    }
     public class EnemyAttacker : AAttacker
     {
         private Interface.IDefender _currentTarget;
@@ -13,12 +18,12 @@ namespace ShootingGame
         private Action OnAttackAction;
         private Action OnAttackCompletedAction;
 
-        [SerializeField] private BaseBullet projectilePrefab;
+        [SerializeField] private Projectile projectilePrefab;
         [SerializeField] private Transform projectileSpawnPoint;
         [SerializeField] private float attackRange = 1.5f;
         [SerializeField] private TypeAttack attackType;
 
-        private ObjectPooling<BaseBullet> _bulletPool;
+        private ObjectPooling<Projectile> projectilePool;
         private IDefender defenderOwner;
 
         private ADefender _target;
@@ -27,7 +32,7 @@ namespace ShootingGame
         private void Start()
         {
             defenderOwner = GetComponentInParent<IDefender>();
-            _bulletPool = new ObjectPooling<BaseBullet>(projectilePrefab, 4, transform);
+            projectilePool = new ObjectPooling<Projectile>(projectilePrefab, 4, transform);
             InvokeRepeating(nameof(AutoAttack), 0, timeAttack);
         }
 
@@ -66,17 +71,17 @@ namespace ShootingGame
         {
             if (attackType == TypeAttack.Ranged && _target != null)
             {
-                var projectile = _bulletPool.Get();
+                var projectile = projectilePool.Get();
                 projectile.transform.SetParent(null);
                 projectile.transform.position = projectileSpawnPoint.position;
                 projectile.Spawn(direction, (Damage, false, 0), defenderOwner);
-                projectile.RecycleAction = () => {
+                projectile.OnRecycle = () => {
                     if (projectile == null) return;
                     if(gameObject == null) Destroy(projectile.gameObject);
                     else
                     {
                         projectile.transform.SetParent(transform);
-                        _bulletPool.Recycle(projectile);
+                        projectilePool.Recycle(projectile);
                     }
                 };
                 return true;

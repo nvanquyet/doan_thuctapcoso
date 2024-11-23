@@ -33,5 +33,5 @@ MonoBehaviour:
   appearance:
     itemName: Ring Level 1
     icon: {fileID: 21300000, guid: c802da4c18509eb4c98a179cc230acf7, type: 3}
-  matrixData: {fileID: 0}
+  matrixData: {fileID: 11400000, guid: 2094a8427d8b56f41bdcbc574ce28628, type: 2}
   nextLevelAttribute: {fileID: 11400000, guid: 175ceac40fd6dfd4db6765320e55ad28, type: 2}
