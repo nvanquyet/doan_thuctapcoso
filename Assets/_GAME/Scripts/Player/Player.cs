@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using ShootingGame;
+using ShootingGame.Data;
 namespace ShootingGame
 {
     [RequireComponent(typeof(PlayerMovement), typeof(PlayerStat))]
@@ -29,28 +30,17 @@ namespace ShootingGame
         void Start()
         {
             GameCtrl.Instance.AddPlayer(this);
-            SetStatForPlayer();
+            _playerStat.OnStatChanged = OnStatChanged;
+            OnStatChanged(_playerStat.CurrentStat);
             InitData();
 
-            RegisterEventListener();
         }
 
-        private void RegisterEventListener()
+        private void OnStatChanged(StatContainerData CurrentStat)
         {
-            this.AddListener<GameEvent.OnStatChange>(OnStatChange, false);
-        }
-
-        private void OnStatChange(GameEvent.OnStatChange param)
-        {
-            SetStatForPlayer();
-        }
-
-        private void SetStatForPlayer()
-        {
-            if (_playerStat == null) return;
-            var currentData = _playerStat.CurrentStat;
-            _playerDefender.SetHealth((int) currentData.GetStat(ShootingGame.Data.TypeStat.Hp).Value, false);
-            _playerMovement.SetSpeed(currentData.GetStat(ShootingGame.Data.TypeStat.MoveSpeed).Value);
+            if(CurrentStat == null) return;
+            _playerDefender.SetHealth((int)CurrentStat.GetStat(ShootingGame.Data.TypeStat.Hp).Value, false);
+            _playerMovement.SetSpeed(CurrentStat.GetStat(ShootingGame.Data.TypeStat.MoveSpeed).Value);
         }
 
         private void InitData()

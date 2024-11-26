@@ -46,11 +46,20 @@ namespace ShootingGame
     {
         protected float attackSpeed;
         protected bool isAttacking = false;
+
+        protected Transform target;
+
+        public void SetTarget(Transform target) => this.target = target;
+
         public virtual bool Attack(){
-            if(isAttacking) return false;
-            isAttacking = true;
-            Invoke(nameof(ResetAttack), attackSpeed);
-            return true;
+            if(isAttacking || target == null) return false;
+            if(Vector3.Distance(transform.position, target.position) < CurrentEquiqmentStat.GetStat(TypeStat.RangeWeapon).Value)
+            {
+                isAttacking = true;
+                Invoke(nameof(ResetAttack), attackSpeed);
+                return true;
+            }
+            return false;
         }
 
         public override bool Attack(Interface.IDefender target, bool isSuper = false, float forcePushBack = 0)
@@ -91,6 +100,7 @@ namespace ShootingGame
         {
             var rate = CurrentEquiqmentStat.GetStat(TypeStat.AttackRate).Value;
             attackSpeed = 1 / (rate == 0 ? 1 : rate);
+
         }
 
     }

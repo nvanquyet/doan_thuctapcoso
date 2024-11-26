@@ -9,6 +9,7 @@ namespace ShootingGame
     {
         [SerializeField] protected ParticleSystem impactEffect;
         [SerializeField] private ParticleSystem projectileTrail;
+        [SerializeField] private GameObject visualProjectile;
         [SerializeField] private byte projectileSpeed = 20;
 
         public Action OnRecycle;
@@ -53,7 +54,8 @@ namespace ShootingGame
 
             if (base.Attack(target, isCritical, knockback))
             {
-                Invoke(nameof(Recycle), 0.1f);
+                visualProjectile?.SetActive(false);
+                Invoke(nameof(Recycle), 0.32f);
                 return true;
             }
             return false;

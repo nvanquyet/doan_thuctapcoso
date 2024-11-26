@@ -270,6 +270,7 @@ namespace ShootingGame
         public void PushBack(float force, Transform target)
         {
             if(Rigid == null) return;
+            if (target == null) return;
             var direction = this.transform.position - target.position;
             Rigid.AddForce(direction.normalized * force, ForceMode2D.Impulse);
         }

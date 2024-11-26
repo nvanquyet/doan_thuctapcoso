@@ -45,25 +45,31 @@ namespace ShootingGame
         {
             var index = 0;
             var allItems = GameData.Instance.ItemData;
-            
+
             _player.Stat.ResetStat();
+            var allIDWeapon = new List<int>();
             foreach (var i in param.allIDItem)
             {
                 var data = allItems.GetValue(i);
-                if (data.Prefab != null && (data.Prefab is AWeapon))
+                if (data == null) continue;
+                if (data.Prefab != null && (data.Prefab is AWeapon)) allIDWeapon.Add(i);
+                else _player.Stat.BuffStat(data.Stat);
+            }
+            if (allIDWeapon.Count > 0)
+            {
+                foreach (var wID in allIDWeapon)
                 {
-                    var clone = Instantiate(data.Prefab, _allPositionSpawnWeapon[index++].transform);
-                    clone.InitializeItem(data);
-                    clone.gameObject.SetActive(true);
-                    if (clone is AWeapon) _weapons.Add(clone as AWeapon);
-                }
-                else
-                {
-                    var item = allItems.GetValue(i);
-                    _player.Stat.BuffStat(item.Stat);
+                    var data = allItems.GetValue(wID);
+                    if (data.Prefab != null && (data.Prefab is AWeapon))
+                    {
+                        var clone = Instantiate(data.Prefab, _allPositionSpawnWeapon[index++].transform);
+                        clone.InitializeItem(data);
+                        clone.gameObject.SetActive(true);
+                        if (clone is AWeapon) _weapons.Add(clone as AWeapon);
+                        clone.ApplyStat(_player.Stat.CurrentStat);
+                    }
                 }
             }
-            _player.Stat.ApplyStat();
 #if UNITY_EDITOR
             testStat.ShowStat(_player);
 #endif
@@ -102,23 +108,25 @@ namespace ShootingGame
             var enemies = LevelSpawner.Instance.GetActiveEnemies();
             foreach (var weapon in _weapons)
             {
-                weapon.Rotate(GetNearestEnemy(weapon.transform.position, enemies));
+                var neareatEnemy = GetNearestEnemy(weapon.transform.position, enemies);
+                weapon.SetTarget(neareatEnemy);  
+                weapon.Rotate(neareatEnemy.transform.position);
             }
         }
 
-        public Vector3 GetNearestEnemy(Vector3 weaponPos, List<Transform> enemies)
+        public Transform GetNearestEnemy(Vector3 weaponPos, List<Transform> enemies)
         {
-            if (_weapons == null || _weapons.Count <= 0) return Vector3.zero;
+            if (_weapons == null || _weapons.Count <= 0) return null;
             // FireRange At Here
             float distance = 80;
-            if (enemies == null || enemies.Count <= 0) return Vector3.zero;
-            Vector3 nearestEnemy = enemies[0].transform.position;
+            if (enemies == null || enemies.Count <= 0) return null;
+            var nearestEnemy = enemies[0];
             foreach (var e in enemies)
             {
                 if (Vector3.Distance(e.transform.position, weaponPos) <= distance)
                 {
-                    nearestEnemy = e.transform.position;
-                    distance = Vector3.Distance(nearestEnemy, weaponPos);
+                    nearestEnemy = e;
+                    distance = Vector3.Distance(nearestEnemy.transform.position, weaponPos);
                 }
             }
 
@@ -134,16 +142,6 @@ namespace ShootingGame
         //{
         //    Enemies.Remove(transform);
         //}
-
-        public void ApplyStat(StatContainerData stat)
-        {
-            if (_weapons == null || _weapons.Count <= 0) return;
-
-            foreach (var wp in _weapons)
-            {
-                wp.ApplyStat(stat);
-            }
-        }
     }
 
 }

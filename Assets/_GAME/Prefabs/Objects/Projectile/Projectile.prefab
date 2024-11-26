@@ -114,8 +114,8 @@ MonoBehaviour:
   _damage: 0
   _oneHitOnly: 1
   impactEffect: {fileID: 0}
-  bulletTrailEffect: {fileID: 0}
   projectileTrail: {fileID: 0}
+  visualProjectile: {fileID: 6895031726145855758}
   projectileSpeed: 20
 --- !u!61 &411114611003256357
 BoxCollider2D:
@@ -314,6 +314,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: baf45fcc725d71e47ad7c6944cf0bd31, type: 3}
+--- !u!1 &6895031726145855758 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 135146, guid: baf45fcc725d71e47ad7c6944cf0bd31, type: 3}
+  m_PrefabInstance: {fileID: 6895031726145990372}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6895031726146060640 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 454532, guid: baf45fcc725d71e47ad7c6944cf0bd31, type: 3}

@@ -22,7 +22,8 @@ namespace ShootingGame.Data
         MoveSpeed,
         Luck,
         DamageToHp,
-        WeaponForce
+        WeaponForce,
+        RangeWeapon
     }
     [System.Serializable]
     public struct Stat
@@ -83,6 +84,9 @@ namespace ShootingGame.Data
                     break;
                 case TypeStat.WeaponForce:
                     typeStat = "WeaponForce";
+                    break;
+                case TypeStat.RangeWeapon:
+                    typeStat = "Range";
                     break;
                 default:
                     typeStat = TypeStat.ToString();

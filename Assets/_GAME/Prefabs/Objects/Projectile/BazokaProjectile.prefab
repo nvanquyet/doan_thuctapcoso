@@ -159,8 +159,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 0
   _oneHitOnly: 1
-  impactEffect: {fileID: 0}
+  impactEffect: {fileID: 2507771684740434960}
   projectileTrail: {fileID: 0}
+  visualProjectile: {fileID: 6895031726145855758}
   projectileSpeed: 20
   explosionRadius: 1
 --- !u!1001 &1817030128679975774
@@ -241,17 +242,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExplosionNovaFire
       objectReference: {fileID: 0}
+    - target: {fileID: 115286, guid: ec1c5863f61e8ff4a84dbdb8a282a7ac, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 405762, guid: ec1c5863f61e8ff4a84dbdb8a282a7ac, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.25
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 405762, guid: ec1c5863f61e8ff4a84dbdb8a282a7ac, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.25
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 405762, guid: ec1c5863f61e8ff4a84dbdb8a282a7ac, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.25
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 405762, guid: ec1c5863f61e8ff4a84dbdb8a282a7ac, type: 3}
       propertyPath: m_LocalPosition.x
@@ -297,11 +302,40 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 19802058, guid: ec1c5863f61e8ff4a84dbdb8a282a7ac, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19816948, guid: ec1c5863f61e8ff4a84dbdb8a282a7ac, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19824674, guid: ec1c5863f61e8ff4a84dbdb8a282a7ac, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19827778, guid: ec1c5863f61e8ff4a84dbdb8a282a7ac, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19850018, guid: ec1c5863f61e8ff4a84dbdb8a282a7ac, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19887218, guid: ec1c5863f61e8ff4a84dbdb8a282a7ac, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec1c5863f61e8ff4a84dbdb8a282a7ac, type: 3}
+--- !u!198 &2507771684740434960 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19827778, guid: ec1c5863f61e8ff4a84dbdb8a282a7ac, type: 3}
+  m_PrefabInstance: {fileID: 2507771684754423890}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2507771684754567504 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 405762, guid: ec1c5863f61e8ff4a84dbdb8a282a7ac, type: 3}
@@ -393,6 +427,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: baf45fcc725d71e47ad7c6944cf0bd31, type: 3}
+--- !u!1 &6895031726145855758 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 135146, guid: baf45fcc725d71e47ad7c6944cf0bd31, type: 3}
+  m_PrefabInstance: {fileID: 6895031726145990372}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6895031726146060640 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 454532, guid: baf45fcc725d71e47ad7c6944cf0bd31, type: 3}

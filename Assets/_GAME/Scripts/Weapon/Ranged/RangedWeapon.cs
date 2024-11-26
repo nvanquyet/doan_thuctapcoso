@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static ShootingGame.Interface;
 namespace ShootingGame
@@ -28,6 +29,8 @@ namespace ShootingGame
         private ObjectPooling<Transform> muzzlePool;
 
         private IDefender defendOwner;
+
+        private List<Projectile> projectileList = new List<Projectile>();
 #if UNITY_EDITOR
         protected override void OnValidate()
         {
@@ -122,12 +125,14 @@ namespace ShootingGame
 
             Vector2 direction = (spawnPoint.position - _muzzuleSpawnPoint.position).normalized;
             bulletClone.Spawn(direction, (data.Item1, data.Item2, data.Item3), defendOwner);
+            projectileList.Add(bulletClone);
         }
 
 
         private void RecycleBullet(Projectile bulletClone)
         {
-            if (gameObject == null || bulletClone == null) return;
+            if (bulletClone == null) return;
+            projectileList.Remove(bulletClone);
             bulletClone.transform.SetParent(transform);
             projectilePool.Recycle(bulletClone);
         }
@@ -139,7 +144,17 @@ namespace ShootingGame
             callback?.Invoke();
         }
 
-
+        private void OnDestroy()
+        {
+            if(projectileList.Count > 0)
+            {
+                foreach (var projectile in projectileList)
+                {
+                    Destroy(projectile.gameObject);
+                }
+                projectileList.Clear();
+            }
+        }
         public override int Damage => 0;
     }
 
