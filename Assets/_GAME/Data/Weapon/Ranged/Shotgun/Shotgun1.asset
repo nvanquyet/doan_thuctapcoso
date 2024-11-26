@@ -10,28 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b338d77a6eb9f344482feaa2651e8235, type: 3}
-  m_Name: SubmachineGun 2
+  m_Name: Shotgun1
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   stat:
     stats:
     - typeStat: 1
       typeValueStat: 0
-      value: 14
+      value: 10
     - typeStat: 2
       typeValueStat: 0
-      value: 1.4
+      value: 0.4
     - typeStat: 4
       typeValueStat: 1
-      value: 14
+      value: 10
     - typeStat: 8
       typeValueStat: 1
-      value: 6
+      value: 3
     - typeStat: 9
       typeValueStat: 0
-      value: 6
+      value: 3
   appearance:
-    itemName: Shotgun Level 2
-    icon: {fileID: 21300000, guid: 273d8fbe8e3424c4c898d915bc1f9de1, type: 3}
+    itemName: Shotgun Level 1
+    icon: {fileID: 21300000, guid: f1fc3becd13a8be4cab2ef136190a905, type: 3}
   matrixData: {fileID: 0}
   nextLevelAttribute: {fileID: 0}

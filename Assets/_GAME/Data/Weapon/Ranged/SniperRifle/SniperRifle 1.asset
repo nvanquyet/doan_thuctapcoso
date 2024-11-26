@@ -20,7 +20,7 @@ MonoBehaviour:
       value: 15
     - typeStat: 2
       typeValueStat: 0
-      value: 5
+      value: 0.3
     - typeStat: 4
       typeValueStat: 1
       value: 15
