@@ -18,13 +18,6 @@ namespace ShootingGame
         [SerializeField] private TweenRotationStruct tweenRotationStruct;
         private (float, float, float) slashingTime; 
 
-       
-
-        private void Start()
-        {
-            OnAttackSpeedChange();
-        }
-
         protected override void OnAttackSpeedChange()
         {
             base.OnAttackSpeedChange();

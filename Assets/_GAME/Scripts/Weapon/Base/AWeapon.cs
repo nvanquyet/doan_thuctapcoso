@@ -25,7 +25,7 @@ namespace ShootingGame
 
         public void InitializeItem(ItemAttributeData data)
         {
-            equiqment = data.Stat;
+            equiqment = new StatContainerData(data.Stat);
             SetSprite(data.Appearance.Icon);
         }
 
@@ -35,8 +35,8 @@ namespace ShootingGame
             if (stat == null) return;
             foreach (var statData in CurrentEquiqmentStat.Stats)
             {
-                CurrentEquiqmentStat.UpdateStat(GameService.CaculateStat(statData, stat.GetStat(statData.TypeStat), EquiqmentStat.GetStat(statData.TypeStat)));
-                GameService.LogColor($"{gameObject.name} {CurrentEquiqmentStat.GetStat(statData.TypeStat).Value}");
+                var nStat = GameService.CaculateStat(statData, stat.GetStat(statData.TypeStat), EquiqmentStat.GetStat(statData.TypeStat));
+                CurrentEquiqmentStat.UpdateStat(nStat);
             }
         }
 
@@ -45,8 +45,7 @@ namespace ShootingGame
     public abstract class AWeapon : AItem
     {
         protected float attackSpeed;
-        private bool isAttacking = false;
-
+        protected bool isAttacking = false;
         public virtual bool Attack(){
             if(isAttacking) return false;
             isAttacking = true;
@@ -85,7 +84,6 @@ namespace ShootingGame
         public override void ApplyStat(StatContainerData stat)
         {
             base.ApplyStat(stat);
-
             OnAttackSpeedChange();
         }
 

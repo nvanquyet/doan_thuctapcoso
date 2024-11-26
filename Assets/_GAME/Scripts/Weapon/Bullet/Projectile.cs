@@ -8,7 +8,6 @@ namespace ShootingGame
     public class Projectile : AAttacker, Interface.IMoveable, ISpawner
     {
         [SerializeField] protected ParticleSystem impactEffect;
-        [SerializeField] private ParticleSystem bulletTrailEffect;
         [SerializeField] private ParticleSystem projectileTrail;
         [SerializeField] private byte projectileSpeed = 20;
 
@@ -83,7 +82,6 @@ namespace ShootingGame
             Move(transform.right * projectileSpeed);
             if (projectileTrail) projectileTrail.Play();
             transform.SetParent(null);
-            ActivateBulletEffect(transform.right.normalized);
             Invoke(nameof(Recycle), 2f);
         }
 
@@ -95,17 +93,11 @@ namespace ShootingGame
             Move(direction.normalized * projectileSpeed);
             SetDamage(properties.damage);
             if (projectileTrail) projectileTrail.Play();
+            transform.right = direction;
             transform.SetParent(null);
-            ActivateBulletEffect(direction.normalized);
             Invoke(nameof(Recycle), 2f);
         }
         #endregion
-
-        private void ActivateBulletEffect(Vector3 direction)
-        {
-            ActivateEffect(bulletTrailEffect);
-            if (bulletTrailEffect) bulletTrailEffect.transform.right = direction;
-        }
 
         protected void ActivateEffect(ParticleSystem effect)
         {
@@ -116,7 +108,6 @@ namespace ShootingGame
         private void DeactivateAllEffects()
         {
             if (impactEffect) DeactivateEffect(impactEffect);
-            if (bulletTrailEffect) DeactivateEffect(bulletTrailEffect);
             if (projectileTrail) DeactivateEffect(projectileTrail);
         }
 

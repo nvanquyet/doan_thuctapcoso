@@ -108,7 +108,6 @@ namespace ShootingGame
         public void PauseMovement(bool pauseMovement) {
             if(pauseMovement) Stop();
             else Continue();
-            GameService.LogColor($"PauseMovement: {pauseMovement}");
         } 
 
         public void SetSpeed(float speed) => _moveSpeed = Mathf.Max(speed, 1);

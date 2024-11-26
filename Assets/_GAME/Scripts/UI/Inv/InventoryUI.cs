@@ -22,8 +22,13 @@ public class InventoryUI : Frame
         btnRandomItem.onClick.AddListener(OnButtonRandomItemClick);
     }
 
-    private void OnButtonRandomItemClick()
+    public void OnButtonRandomItemClick()
     {
+        //Remove all Item in Placeholder
+        foreach (Transform child in placeHolder)
+        {
+            Destroy(child.gameObject);
+        }
         //Random Item Here
         var allItems = GameData.Instance.ItemData.GetAllValue();
         for (int i = 0; i < maxItem; i++)

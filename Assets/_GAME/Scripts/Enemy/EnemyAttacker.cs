@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using static ShootingGame.Interface;
 
@@ -28,7 +29,7 @@ namespace ShootingGame
 
         private ADefender _target;
         public float AttackRange => attackRange;
-
+        private List<Projectile> currentProjectile = new List<Projectile>();
         private void Start()
         {
             defenderOwner = GetComponentInParent<IDefender>();
@@ -77,16 +78,29 @@ namespace ShootingGame
                 projectile.Spawn(direction, (Damage, false, 0), defenderOwner);
                 projectile.OnRecycle = () => {
                     if (projectile == null) return;
-                    if(gameObject == null) Destroy(projectile.gameObject);
                     else
                     {
                         projectile.transform.SetParent(transform);
+                        currentProjectile.Remove(projectile);
                         projectilePool.Recycle(projectile);
                     }
                 };
+                currentProjectile.Add(projectile);
                 return true;
             }
             return false;
+        }
+
+
+        private void OnDestroy()
+        {
+            if(currentProjectile.Count > 0)
+            {
+                foreach (var projectile in currentProjectile)
+                {
+                    Destroy(projectile.gameObject);
+                }
+            }
         }
 
         public override bool Attack(Interface.IDefender target, bool isSuper = false, float forcePushBack = 0)

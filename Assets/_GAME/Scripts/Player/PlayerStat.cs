@@ -54,8 +54,11 @@ namespace ShootingGame
             this.Dispatch<GameEvent.OnStatChange>(new GameEvent.OnStatChange());    
         }
 
-        public void ApplyStat() => weaponCtrl.ApplyStat(currentStat);
-        #endregion
+        public void ApplyStat()
+        {
+            weaponCtrl.ApplyStat(CurrentStat);
+        }
+       #endregion
     }
 
 }

@@ -6,11 +6,15 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Image icon;
     [SerializeField] private TetrisUpgradeItem tetrisUpgradeItem;
+#if UNITY_ANDROID
+    private int currentClicked = 0;
+#endif
     public ItemAttributeData itemData { get; private set; }
 #region Properties
     private TetrisSlot slots;
@@ -35,14 +39,42 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
 
     private void Update()
     {
+#if UNITY_EDITOR
         if (isHolding && Input.GetKeyDown(KeyCode.R))
         {
             RotateItem();
         }
+#elif UNITY_ANDROID
+       if (Input.touchCount > 0)
+        {
+            //Raise click event
+            if (Input.GetTouch(0).phase == TouchPhase.Canceled)
+            {
+                currentClicked++;
+            }
+            if(currentClicked == 1)
+            {
+                Invoke(nameof(ResetClick), 1f);
+            }
+            else if (currentClicked == 2)
+            {
+                RotateItem();
+                currentClicked = 0;
+            }
+        }
+#endif
     }
 
+#if UNITY_ANDROID
+    private void ResetClick()
+    {
+        currentClicked = 0;
+    }
 
-#region  InitItem
+#endif
+
+
+    #region  InitItem
     public void InitItem(TetrisSlot slots, TetrisItemDescription tetrisDescription, ItemAttributeData data, Vector2 cellSize)
     {
         if (data == null) return;
@@ -58,6 +90,13 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
         RectTransform.anchorMin = new Vector2(0f, 1f);
         RectTransform.anchorMax = new Vector2(0f, 1f);
         RectTransform.pivot = new Vector2(0.5f, 0.5f);
+
+        Invoke(nameof(ReScale), Time.deltaTime);
+    }
+    private void ReScale()
+    {
+        transform.localScale = Vector3.one;
+        GameService.LogColor($"CreateItem {transform.localScale}");
     }
 
     public void InitAction(Action<TetrisItemSlot> actionReturnWaitingList, Action<TetrisItemSlot> actionAddToBag, 
@@ -172,20 +211,26 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
         Vector2 finalSlot = AnchorGrid(RectTransform.anchoredPosition, halfSize); //position that the item was dropped on canvas
 
         if (!itemData.MatrixData.IsUniformMatrix) this.transform.SetAsFirstSibling();
-
+#if UNITY_EDITOR
         if (EventSystem.current.IsPointerOverGameObject())
+#elif UNITY_ANDROID
+        if (Input.touchCount > 0 && EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+#endif
         {
+            GameService.LogColor($"Interact Gird");
             //Check if the item is upgradeable
             if (tetrisUpgradeItem.CheckInteract()) return;
-
+            GameService.LogColor($"Cant Upgrade");
             //Calculate the final slot of the item
             if (IsValidPosition(finalSlot, itemSize)) // test if item is inside slot area
             {
+                GameService.LogColor($"Valid Position");
                 List<Vector2> newPosItem = new List<Vector2>(); //new item position in bag
                 bool fit = CheckItemFit(finalSlot, itemSize, newPosItem, grid); //check if item fits in the bag
                 //Caclate the new position of the item
                 if (fit)
                 {
+                    GameService.LogColor($"Valid FIT");
                     MarkItemInGrid(newPosItem[0], itemSize, grid);
                     startPosition = newPosItem[0];
                     RectTransform.anchoredPosition = new Vector2((newPosItem[0].x + halfSize.x) * cellSize.x, -(newPosItem[0].y + halfSize.y) * cellSize.y);
@@ -193,6 +238,7 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
                 }
                 else
                 {
+                    GameService.LogColor($"InValid FIT");
                     if (IsValidPosition(AnchorGrid(oldPosition, halfSize), itemSize))
                     {
                         RectTransform.anchoredPosition = oldPosition;
@@ -203,12 +249,14 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
             }
             else
             {
+                GameService.LogColor($"InValid Position");
                 ReturnToWaitingList();
                 return;
             }
         }
         else
         {
+            GameService.LogColor($"NonInteract Gird");
             if (IsValidPosition(AnchorGrid(oldPosition, halfSize), itemSize))
             {
                 RectTransform.anchoredPosition = oldPosition;
@@ -219,7 +267,7 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
 
     }
 
-    #endregion
+#endregion
 
     #region  Other
     private void RescalingItem(RectTransform rect)

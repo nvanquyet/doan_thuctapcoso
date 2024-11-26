@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using ShootingGame.Data;
-using static UnityEditor.Experimental.GraphView.GraphView;
 namespace ShootingGame
 {
     public class WeaponCtrl : MonoBehaviour
@@ -28,18 +27,25 @@ namespace ShootingGame
         private void Start()
         {
             this.AddListener<GameEvent.OnNextWave>(OnNextWave);
+            this.AddListener<GameEvent.OnWaveClear>(OnWaveClear);
         }
 
-        private void OnNextWave(GameEvent.OnNextWave param)
+
+        private void OnWaveClear(GameEvent.OnWaveClear param)
         {
-            var index = 0;
-            var allItems = GameData.Instance.ItemData;
             //Remove all old weapon
             foreach (var w in _weapons)
             {
                 Destroy(w.gameObject);
             }
             GameService.ClearList(ref _weapons);
+        }
+
+        private void OnNextWave(GameEvent.OnNextWave param)
+        {
+            var index = 0;
+            var allItems = GameData.Instance.ItemData;
+            
             _player.Stat.ResetStat();
             foreach (var i in param.allIDItem)
             {
@@ -133,17 +139,11 @@ namespace ShootingGame
         {
             if (_weapons == null || _weapons.Count <= 0) return;
 
-            foreach (var weapon in _weapons)
+            foreach (var wp in _weapons)
             {
-                weapon.ApplyStat(stat);
+                wp.ApplyStat(stat);
             }
         }
-
-
-
-        #region  Test
-        public List<AWeapon> AllWeapons => _weapons;
-        #endregion
     }
 
 }

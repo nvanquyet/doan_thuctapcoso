@@ -23,7 +23,6 @@ public class TetrisInventory : Frame
     private void OnValidate()
     {
         tetrisUI = GetComponentInChildren<TetrisUI>();
-        tetrisUI.SetCellSize(cellSize);
         tetrisSlot = GetComponentInChildren<TetrisSlot>();
         tetrisSlot.SetCellSize(cellSize);
         waitingSlots = GetComponentInChildren<WaitingSlots>();

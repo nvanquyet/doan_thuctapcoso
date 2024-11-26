@@ -5,7 +5,6 @@ using static ShootingGame.Interface;
 public class BazokaProjectile : Projectile
 {
     [SerializeField] private float explosionRadius = 5f;
-    [SerializeField] private int aoeDamage = 50;
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {

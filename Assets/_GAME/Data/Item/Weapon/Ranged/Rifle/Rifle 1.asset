@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b338d77a6eb9f344482feaa2651e8235, type: 3}
   m_Name: Rifle 1
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 3537812215717957531, guid: b2533ac7226809646ba9b2ff69af86f3, type: 3}
   stat:
     stats:
     - typeStat: 1
@@ -20,7 +20,7 @@ MonoBehaviour:
       value: 13
     - typeStat: 2
       typeValueStat: 0
-      value: 7
+      value: 1
     - typeStat: 4
       typeValueStat: 1
       value: 13
@@ -32,6 +32,6 @@ MonoBehaviour:
       value: 2
   appearance:
     itemName: Rifle Level 1
-    icon: {fileID: 21300000, guid: a90570212cf87224aa22db1aa79e9c28, type: 3}
-  matrixData: {fileID: 0}
-  nextLevelAttribute: {fileID: 0}
+    icon: {fileID: 21300000, guid: dbb81db3ebe4db749a63c4186da0654c, type: 3}
+  matrixData: {fileID: 11400000, guid: 79b119336430ac84e925248b9f81a5a6, type: 2}
+  nextLevelAttribute: {fileID: 11400000, guid: c8072e39d20ab5843810dd3d90b9c823, type: 2}

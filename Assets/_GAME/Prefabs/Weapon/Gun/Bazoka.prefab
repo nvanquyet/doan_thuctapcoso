@@ -242,9 +242,12 @@ MonoBehaviour:
   _damage: 0
   _oneHitOnly: 1
   weaponSprite: {fileID: 9163475136738846238}
-  _bulletPrefab: {fileID: -6031142928564043692, guid: fea7cf601e56a4a46b8a554854776927, type: 3}
+  _bulletPrefab: {fileID: -8053909183671182864, guid: 289ea4ebac1566a47b02f514afa987db, type: 3}
   _muzzlePrefab: {fileID: 6987829488301963158, guid: 4cddeea29ee8f4675b5af572c76d3215, type: 3}
   _bulletSpawnPoint:
   - {fileID: 9163475137039164302}
   _muzzuleSpawnPoint: {fileID: 577203009588991018}
-  _amountBulletPooling: 10
+  shootingType: 2
+  burstDelay: 0.1
+  amountBulletPooling: 10
+  burstCount: 1

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b338d77a6eb9f344482feaa2651e8235, type: 3}
   m_Name: SniperRifle 2
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 3537812215717957531, guid: 20d35a4afd1710c4cbfa169cdf54b91e, type: 3}
   stat:
     stats:
     - typeStat: 1
@@ -20,7 +20,7 @@ MonoBehaviour:
       value: 21
     - typeStat: 2
       typeValueStat: 0
-      value: 7
+      value: 1
     - typeStat: 4
       typeValueStat: 1
       value: 21
@@ -33,5 +33,5 @@ MonoBehaviour:
   appearance:
     itemName: SniperRifle Level 2
     icon: {fileID: 21300000, guid: dbb81db3ebe4db749a63c4186da0654c, type: 3}
-  matrixData: {fileID: 0}
-  nextLevelAttribute: {fileID: 0}
+  matrixData: {fileID: 11400000, guid: 88ff4ef679228f5468e350c6d6b9296d, type: 2}
+  nextLevelAttribute: {fileID: 11400000, guid: 4ad0fa105f61c0f46a7f453779290ae2, type: 2}

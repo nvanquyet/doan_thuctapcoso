@@ -101,7 +101,7 @@ namespace ShootingGame
             while (true)
             {
                 FireBullet(_bulletSpawnPoint[0], GetData());
-                yield return new WaitForSeconds(0.1f);  // T?c ?? b?n nhanh
+                yield return new WaitForSeconds(0.2f);  
             }
         }
 

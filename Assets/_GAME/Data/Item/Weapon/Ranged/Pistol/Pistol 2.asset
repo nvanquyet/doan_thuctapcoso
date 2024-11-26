@@ -20,7 +20,7 @@ MonoBehaviour:
       value: 10
     - typeStat: 2
       typeValueStat: 0
-      value: 18
+      value: 1
     - typeStat: 4
       typeValueStat: 1
       value: 10
@@ -32,6 +32,6 @@ MonoBehaviour:
       value: 8
   appearance:
     itemName: Pistol Level 2
-    icon: {fileID: 21300000, guid: f83a3e5b3d332de498f8730c382b0efd, type: 3}
+    icon: {fileID: 21300000, guid: 52103907acdd02a498d2e64039e50dba, type: 3}
   matrixData: {fileID: 11400000, guid: 79b119336430ac84e925248b9f81a5a6, type: 2}
   nextLevelAttribute: {fileID: 11400000, guid: c733d68eb9b6a6d458a71d812adacb67, type: 2}
