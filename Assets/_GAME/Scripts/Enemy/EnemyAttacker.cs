@@ -62,6 +62,7 @@ namespace ShootingGame
                 }
                 if (_isAttacking)
                 {
+                    GameService.LogColor($"EnemyAttacker {gameObject.name}");
                     OnAttackAction?.Invoke();
                     Invoke(nameof(OnAttackCompleted), timeAttackAnimation);
                 }
@@ -112,6 +113,7 @@ namespace ShootingGame
 
         private void OnAttackCompleted()
         {
+            GameService.LogColor($"Attack Completed {gameObject.name}");
             OnAttackCompletedAction?.Invoke();
             _isAttacking = false;
         }

@@ -60,7 +60,10 @@ namespace ShootingGame
                 {
                     _enemyMovement.PauseMovement(true);
                     _enemyAnimation.OnTriggerAttack();
-                }, () => _enemyMovement.PauseMovement(false));
+                }, () =>
+                {
+                    _enemyMovement.PauseMovement(false);
+                });
 
                 _enemyMovement.SetAttackRange(_enemyAttacker.AttackRange);
                 _enemyDefender.OnDeath += OnDeadAction;
