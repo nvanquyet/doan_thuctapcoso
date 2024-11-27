@@ -9,7 +9,7 @@ namespace ShootingGame.Data
 
         public Stat[] Stats => stats;
 
-        private Dictionary<TypeStat, Stat> dictDatas = new Dictionary<TypeStat, Stat>();
+        private Dictionary<TypeStat, Stat> dictDatas;
 
         public Dictionary<TypeStat, Stat> DictDatas {
             get {
@@ -56,10 +56,11 @@ namespace ShootingGame.Data
         private void InitDict()
         {
             if(stats == null) return;
+            dictDatas = new Dictionary<TypeStat, Stat>();
             foreach (var property in Stats)
             {
-                if(!DictDatas.ContainsKey(property.TypeStat)) DictDatas.Add(property.TypeStat, property);
-                else DictDatas[property.TypeStat] = property;
+                if(!dictDatas.ContainsKey(property.TypeStat)) dictDatas.Add(property.TypeStat, property);
+                else dictDatas[property.TypeStat] = property;
             }
         }
 

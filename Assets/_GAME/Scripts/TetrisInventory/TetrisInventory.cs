@@ -3,8 +3,9 @@ using ShootingGame;
 using ShootingGame.Data;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class TetrisInventory : MonoBehaviour
+public class TetrisInventory : Frame
 {
     [SerializeField] private int numberSlots = 64;
     [SerializeField] private Vector2 cellSize;
@@ -14,13 +15,17 @@ public class TetrisInventory : MonoBehaviour
     [SerializeField] private TetrisItemDescription tetrisDescription;
     [SerializeField] private TetrisRemoveItem tetrisRemoveItem;
     [SerializeField] private ItemAttributeData[] itemTest;
+
+    [SerializeField] private Button btnPlay, btnBack;
+    public Action OnBtnPlayClick, OnBtnBackClick;
+
 #if UNITY_EDITOR
     private void OnValidate()
     {
         tetrisUI = GetComponentInChildren<TetrisUI>();
-        tetrisUI.SetCellSize(cellSize);
         tetrisSlot = GetComponentInChildren<TetrisSlot>();
         tetrisSlot.SetCellSize(cellSize);
+        tetrisUI.SetCellSize(cellSize);
         waitingSlots = GetComponentInChildren<WaitingSlots>();
         tetrisDescription = GetComponentInChildren<TetrisItemDescription>();
         tetrisRemoveItem = GetComponentInChildren<TetrisRemoveItem>();
@@ -30,6 +35,8 @@ public class TetrisInventory : MonoBehaviour
     private void Start(){
         SetNumberSlots(this.numberSlots);
         tetrisRemoveItem.SetAction(OnRemoveItem);
+        btnPlay.onClick.AddListener(() => OnBtnPlayClick?.Invoke());
+        btnBack.onClick.AddListener(() => OnBtnBackClick?.Invoke());
     }
 
     public void SetNumberSlots(int numberSlots)
@@ -64,15 +71,6 @@ public class TetrisInventory : MonoBehaviour
         }
     }
 
-    public void AddItem()
-    {
-        for (int i = 0; i < itemTest.Length; i++)
-        {
-            CreateNewItem(itemTest[i]);
-        }
-
-        //Random at here
-    }
 
     public TetrisItemSlot CreateNewItem(ItemAttributeData item)
     {

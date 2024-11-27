@@ -9,8 +9,10 @@ namespace ShootingGame
         {
             Sequence attackSequence = DOTween.Sequence();
             attackSequence.AppendCallback(() => EnableInteract(true));
-            var timeAvgAttack = attackSpeed / 2;
-            attackSequence.Append(WeaponTs.DOLocalMoveX(1.25f, timeAvgAttack / 2).SetEase(Ease.InOutQuad));
+            var timeAvgAttack = attackSpeed / 4;
+            GameService.LogColor($"Range Multiplier: {CurrentEquiqmentStat.GetStat(Data.TypeStat.RangeWeapon).Value}");
+
+            attackSequence.Append(WeaponTs.DOLocalMoveX(CurrentEquiqmentStat.GetStat(Data.TypeStat.RangeWeapon).Value, timeAvgAttack / 2).SetEase(Ease.InOutQuad));
             attackSequence.Append(WeaponTs.DOLocalMoveX(0, timeAvgAttack / 2).SetEase(Ease.InOutQuad).OnComplete(() => EnableInteract(false)));
             attackSequence.Play();
         }

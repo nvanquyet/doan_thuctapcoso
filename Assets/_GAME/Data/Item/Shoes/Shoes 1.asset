@@ -33,5 +33,5 @@ MonoBehaviour:
   appearance:
     itemName: Shoes Level 1
     icon: {fileID: 21300000, guid: abfa6d7d4221ab24e81ca18245e08be5, type: 3}
-  matrixData: {fileID: 0}
+  matrixData: {fileID: 11400000, guid: 2094a8427d8b56f41bdcbc574ce28628, type: 2}
   nextLevelAttribute: {fileID: 11400000, guid: 6b1eb5eb14bbb574bb79e03c61b9fcda, type: 2}

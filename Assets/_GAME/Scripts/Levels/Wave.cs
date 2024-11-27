@@ -88,7 +88,7 @@ namespace ShootingGame
         /// </summary>
         public void StartSpawning()
         {
-            spawnRoutine = StartRoutine(Spawn());
+            spawnRoutine = StartRoutine(IESpawn());
         }
         public void StopSpawning() => StopRoutine(spawnRoutine);
 
@@ -96,7 +96,7 @@ namespace ShootingGame
         /// Spawn Enemy Coroutine
         /// </summary>
         /// <returns></returns>
-        private IEnumerator Spawn()
+        private IEnumerator IESpawn()
         {
             isSpawning = true;
             GameService.ClearList(ref enemies);
@@ -137,11 +137,29 @@ namespace ShootingGame
             if (isBossWave)
             {
                 //Spawn Boss
+                GameService.LogColor("Spawn Boss");
+                SpawnBoss();
             }
 
             isSpawning = false;
         }
 
+        private void SpawnBoss()
+        {
+            //Spawn Boss from data
+            var boss = GameData.Instance.Bosses.GetAllValue()[(currentWave / GameConfig.Instance.bossWaveDistance) - 1];
+            if (boss != null)
+            {
+                var bossInstance = Instantiate(boss, spawnPositions[Random.Range(0, spawnPositions.Count)]);
+                //Init data enemy
+                if (bossInstance)
+                {
+                    bossInstance.transform.localPosition = Vector3.zero;
+                    bossInstance.Init(scalingFactor);
+                    AddEnemy(bossInstance);
+                }
+            }
+        }
 
         public bool OnEnemyDeath(Enemy enemy)
         {

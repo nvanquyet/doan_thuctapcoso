@@ -24,7 +24,11 @@ namespace ShootingGame
             Invoke(nameof(DefendSuccess), .25f);
         }
 
-        private void DefendSuccess() => OnDefendSuccess?.Invoke();
+        private void DefendSuccess()
+        {
+            Rigid.velocity = Vector2.zero;
+            OnDefendSuccess?.Invoke();
+        }
 
         internal void Init(float scaleFactor)
         {

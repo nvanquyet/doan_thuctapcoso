@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b338d77a6eb9f344482feaa2651e8235, type: 3}
+  m_Name: Rifle 2
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 3537812215717957531, guid: b2533ac7226809646ba9b2ff69af86f3, type: 3}
+  stat:
+    stats:
+    - typeStat: 1
+      typeValueStat: 0
+      value: 18
+    - typeStat: 2
+      typeValueStat: 0
+<<<<<<< HEAD:Assets/_GAME/Data/Weapon/Ranged/Rifle/Rifle 2.asset
+      value: 1.4
+=======
+      value: 1
+>>>>>>> origin/release/0.0.1.1:Assets/_GAME/Data/Item/Weapon/Ranged/Rifle/Rifle 2.asset
+    - typeStat: 4
+      typeValueStat: 1
+      value: 18
+    - typeStat: 8
+      typeValueStat: 1
+      value: 6
+    - typeStat: 9
+      typeValueStat: 0
+      value: 4
+    - typeStat: 10
+      typeValueStat: 0
+      value: 5
+  appearance:
+    itemName: Rifle Level 2
+    icon: {fileID: 21300000, guid: 5510369630651cf4f86e6044eaeaf052, type: 3}
+  matrixData: {fileID: 11400000, guid: 88ff4ef679228f5468e350c6d6b9296d, type: 2}
+  nextLevelAttribute: {fileID: 11400000, guid: d45f5b96bc73a374987ec73d26598e15, type: 2}

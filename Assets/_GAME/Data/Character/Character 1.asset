@@ -15,14 +15,36 @@ MonoBehaviour:
   prefab: {fileID: 0}
   stat:
     stats:
-    - {fileID: 11400000, guid: 525bcbd2497847040b7e8f85b9a6b186, type: 2}
-    - {fileID: 11400000, guid: df23ae195a321dd418e5610b3c6a5d78, type: 2}
-    - {fileID: 11400000, guid: 79987e967fdb3044eaf443f6a57386fa, type: 2}
-    - {fileID: 11400000, guid: a784ed5c5719f3b46ac8e778f19feee5, type: 2}
-    - {fileID: 11400000, guid: 4ef0860c773638a4b95cb419254518ef, type: 2}
-    - {fileID: 11400000, guid: 05c750245239a4f43aa1673d7648f633, type: 2}
-    - {fileID: 11400000, guid: 808a77667abfc304d9c6a5102bc6f993, type: 2}
-    - {fileID: 11400000, guid: d394111194c652c4ca8421512af5bcf9, type: 2}
+    - typeStat: 0
+      typeValueStat: 0
+      value: 100
+    - typeStat: 1
+      typeValueStat: 1
+      value: 0
+    - typeStat: 2
+      typeValueStat: 1
+      value: 0
+    - typeStat: 3
+      typeValueStat: 1
+      value: 0
+    - typeStat: 4
+      typeValueStat: 1
+      value: 0
+    - typeStat: 5
+      typeValueStat: 0
+      value: 0
+    - typeStat: 6
+      typeValueStat: 0
+      value: 4
+    - typeStat: 7
+      typeValueStat: 0
+      value: 0
+    - typeStat: 8
+      typeValueStat: 1
+      value: 0
+    - typeStat: 9
+      typeValueStat: 1
+      value: 0
   appearance:
     itemName: 
     icon: {fileID: 0}

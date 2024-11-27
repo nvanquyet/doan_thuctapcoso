@@ -1,11 +1,11 @@
 using UnityEngine;
 using ShootingGame.Data;
+using System;
 namespace ShootingGame
 {
     public class PlayerStat : MonoBehaviour
     {
         [SerializeField] private int id;
-        [SerializeField] private WeaponCtrl weaponCtrl;
 
         private StatContainerData baseData;
         public StatContainerData BaseData
@@ -31,12 +31,8 @@ namespace ShootingGame
                 return currentStat;
             }
         }
-#if UNITY_EDITOR
-        private void OnValidate()
-        {
-            weaponCtrl = GetComponentInChildren<WeaponCtrl>();
-        }
-#endif
+
+        public Action<StatContainerData> OnStatChanged;
 
         #region Stat Ctrl
         public void ResetStat() => currentStat = new StatContainerData(BaseData);
@@ -48,14 +44,12 @@ namespace ShootingGame
             foreach (var stat in statBuff.Stats)
             {
                 //Apply Value to Data
-                CurrentStat.UpdateStat(GameService.CaculateStat(CurrentStat.GetStat(stat.TypeStat), stat,
-                                            BaseData.GetStat(stat.TypeStat)));
+                var newStat = GameService.CaculateStat(CurrentStat.GetStat(stat.TypeStat), stat, BaseData.GetStat(stat.TypeStat));
+                CurrentStat.UpdateStat(newStat);
             }
-            this.Dispatch<GameEvent.OnStatChange>(new GameEvent.OnStatChange());    
+            OnStatChanged?.Invoke(CurrentStat);
         }
-
-        public void ApplyStat() => weaponCtrl.ApplyStat(currentStat);
-        #endregion
+       #endregion
     }
 
 }

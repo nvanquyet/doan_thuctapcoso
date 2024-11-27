@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using ShootingGame;
 using ShootingGame.Data;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -11,6 +10,9 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
 {
     [SerializeField] private Image icon;
     [SerializeField] private TetrisUpgradeItem tetrisUpgradeItem;
+#if UNITY_ANDROID
+    private int currentClicked = 0;
+#endif
     public ItemAttributeData itemData { get; private set; }
 #region Properties
     private TetrisSlot slots;
@@ -18,6 +20,10 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
     private Vector2 startPosition, oldPosition, cellSize, distaceToMousePosition;
     private int currentRotation = 0;
     private bool isHolding = false;
+
+    //Properties check item is in grid
+    private bool IsInGrid = false;
+
 #endregion
 
 #region  Action
@@ -35,14 +41,42 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
 
     private void Update()
     {
+#if UNITY_EDITOR
         if (isHolding && Input.GetKeyDown(KeyCode.R))
         {
             RotateItem();
         }
+#elif UNITY_ANDROID
+       if (Input.touchCount > 0)
+        {
+            //Raise click event
+            if (Input.GetTouch(0).phase == TouchPhase.Canceled)
+            {
+                currentClicked++;
+            }
+            if(currentClicked == 1)
+            {
+                Invoke(nameof(ResetClick), 1f);
+            }
+            else if (currentClicked == 2)
+            {
+                RotateItem();
+                currentClicked = 0;
+            }
+        }
+#endif
     }
 
+#if UNITY_ANDROID
+    private void ResetClick()
+    {
+        currentClicked = 0;
+    }
 
-#region  InitItem
+#endif
+
+
+    #region  InitItem
     public void InitItem(TetrisSlot slots, TetrisItemDescription tetrisDescription, ItemAttributeData data, Vector2 cellSize)
     {
         if (data == null) return;
@@ -58,6 +92,12 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
         RectTransform.anchorMin = new Vector2(0f, 1f);
         RectTransform.anchorMax = new Vector2(0f, 1f);
         RectTransform.pivot = new Vector2(0.5f, 0.5f);
+
+        Invoke(nameof(ReScale), Time.deltaTime);
+    }
+    private void ReScale()
+    {
+        transform.localScale = Vector3.one;
     }
 
     public void InitAction(Action<TetrisItemSlot> actionReturnWaitingList, Action<TetrisItemSlot> actionAddToBag, 
@@ -105,7 +145,7 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
         //Reset the grid to 0
         var itemSize = GameService.GetItemSize(itemData.MatrixData.ItemSize, currentRotation);
         var grid = GameService.GetMatrix(itemData.MatrixData.Matrix, currentRotation);
-        ResetGrid(itemSize, grid);
+        if(IsInGrid)  ResetGrid(itemSize, grid);
         ActionAddToBag?.Invoke(this);
     }
 
@@ -172,12 +212,14 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
         Vector2 finalSlot = AnchorGrid(RectTransform.anchoredPosition, halfSize); //position that the item was dropped on canvas
 
         if (!itemData.MatrixData.IsUniformMatrix) this.transform.SetAsFirstSibling();
-
+#if UNITY_EDITOR
         if (EventSystem.current.IsPointerOverGameObject())
+#elif UNITY_ANDROID
+        if (Input.touchCount > 0 && EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+#endif
         {
             //Check if the item is upgradeable
             if (tetrisUpgradeItem.CheckInteract()) return;
-
             //Calculate the final slot of the item
             if (IsValidPosition(finalSlot, itemSize)) // test if item is inside slot area
             {
@@ -219,7 +261,7 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
 
     }
 
-    #endregion
+#endregion
 
     #region  Other
     private void RescalingItem(RectTransform rect)
@@ -230,6 +272,7 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
     
     private void ResetGrid(Vector2 itemSize, int[,] grid)
     {
+
         for (int i = 0; i < itemSize.y; i++)
         {
             for (int j = 0; j < itemSize.x; j++)
@@ -245,6 +288,7 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
 
     private void MarkItemInGrid(Vector2 posItem, Vector2 itemSize, int[,] grid)
     {
+        IsInGrid = true;
         for (int i = 0; i < itemSize.y; i++)
         {
             for (int j = 0; j < itemSize.x; j++)
@@ -261,6 +305,7 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
 
     private void ReturnToWaitingList()
     {
+        IsInGrid = false;
         ActionReturnWaitingList?.Invoke(this);
     }
 

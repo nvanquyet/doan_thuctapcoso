@@ -14,6 +14,7 @@ namespace ShootingGame
     {
         #region Properties
         [SerializeField] private float accelerationTime = 0.1f;
+        [SerializeField] private Joystick joystick;
 
         private float _speed;
         private Transform _characterGraphic;
@@ -28,6 +29,17 @@ namespace ShootingGame
         {
             _characterGraphic = characterGraphic;
         }
+
+#if UNITY_EDITOR
+        private void OnValidate()
+        {
+            if (joystick == null)
+            {
+                joystick = FindObjectOfType<Joystick>();
+            }
+        
+        }
+#endif
 
         #region  Implement  
 
@@ -60,7 +72,8 @@ namespace ShootingGame
         {
             if (IsMoving)
             {
-                movementInput = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
+                //movementInput = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
+                movementInput = new Vector3(joystick.Horizontal, joystick.Vertical, 0).normalized;
                 if (movementInput.x != 0)
                 {
                     Vector3 newScale = _characterGraphic.localScale;

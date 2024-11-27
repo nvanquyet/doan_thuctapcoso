@@ -18,35 +18,35 @@ namespace ShootingGame
         [SerializeField] private TweenRotationStruct tweenRotationStruct;
         private (float, float, float) slashingTime; 
 
-       
-
-        private void Start()
-        {
-            OnAttackSpeedChange();
-        }
-
         protected override void OnAttackSpeedChange()
         {
             base.OnAttackSpeedChange();
-            slashingTime.Item1 = attackSpeed * tweenRotationStruct.windUpRatio;
-            slashingTime.Item2 = attackSpeed * tweenRotationStruct.slashRatio;
-            slashingTime.Item3 = attackSpeed * tweenRotationStruct.recoverRatio;
+            var atk = attackSpeed / 2;
+            slashingTime.Item1 = atk * tweenRotationStruct.windUpRatio;
+            slashingTime.Item2 = atk * tweenRotationStruct.slashRatio;
+            slashingTime.Item3 = atk * tweenRotationStruct.recoverRatio;
         }
 
         protected override void CreateTweenSequence()
         {
             Sequence attackSequence = DOTween.Sequence();
             attackSequence.AppendCallback(() => EnableInteract(true));
-            //Wind-up
-            attackSequence.Append(WeaponTs.DOLocalRotate(tweenRotationStruct.windUpAngle, slashingTime.Item1)
+            var rangeMultiplier = CurrentEquiqmentStat.GetStat(Data.TypeStat.RangeWeapon).Value;
+            GameService.LogColor($"Range Multiplier: {rangeMultiplier}");
+            Vector3 extendedWindUpAngle = tweenRotationStruct.windUpAngle * rangeMultiplier;
+            Vector3 extendedSlashAngle = tweenRotationStruct.slashAngle * rangeMultiplier;
+            Vector3 extendedRecoverAngle = tweenRotationStruct.recoverAngle * rangeMultiplier;
+
+            // Wind-up
+            attackSequence.Append(WeaponTs.DOLocalRotate(extendedWindUpAngle, slashingTime.Item1)
                 .SetEase(Ease.InOutQuad).From(tweenRotationStruct.recoverAngle));
-                
-            //Slash
-            attackSequence.Append(WeaponTs.DOLocalRotate(tweenRotationStruct.slashAngle, slashingTime.Item2)
+
+            // Slash
+            attackSequence.Append(WeaponTs.DOLocalRotate(extendedSlashAngle, slashingTime.Item2)
                 .SetEase(Ease.Linear).From(tweenRotationStruct.windUpAngle));
 
-            //Recover
-            attackSequence.Append(WeaponTs.DOLocalRotate(tweenRotationStruct.recoverAngle, slashingTime.Item3)
+            // Recover
+            attackSequence.Append(WeaponTs.DOLocalRotate(extendedRecoverAngle, slashingTime.Item3)
                 .SetEase(Ease.OutQuad).From(tweenRotationStruct.slashAngle).OnComplete(() => EnableInteract(false)));
 
             attackSequence.Play();
