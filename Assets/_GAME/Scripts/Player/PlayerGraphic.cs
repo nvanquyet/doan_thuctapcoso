@@ -9,6 +9,7 @@ namespace ShootingGame
         private Animator _animator;
 
         private int _locomotionAnimation;
+        private int _hitAnimation; 
 
         private Interface.IPlayerMovement playerMovement;
 
@@ -27,6 +28,7 @@ namespace ShootingGame
         public void HashString()
         {
             _locomotionAnimation = Animator.StringToHash("Locomotion");
+            _hitAnimation = Animator.StringToHash("OnHit");
         }
 
         public void SetAnimation(RuntimeAnimatorController runtimeAnimatorController)
@@ -53,6 +55,11 @@ namespace ShootingGame
             this.playerMovement = playerMovement;
             HashString();
        }
+
+        public void OnHitAnimation()
+        {
+            Animator.SetTrigger(_hitAnimation);
+        }
 
         private void LateUpdate()
         {

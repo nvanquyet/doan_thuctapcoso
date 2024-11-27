@@ -51,7 +51,10 @@ namespace ShootingGame
                 _playerMovement.Init(_playerSpawner.transform);
                 _playerSpawner.Init(_playerMovement);
             }
-            _playerDefender.Init(_playerStat);
+            _playerDefender.Init(_playerStat, () =>
+            {
+                _playerSpawner.PlayerGraphic.OnHitAnimation();
+            });
         }
     }
 
