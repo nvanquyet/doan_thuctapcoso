@@ -11,7 +11,8 @@ namespace ShootingGame
         Shotgun,
         Sniper,
         MachineGun,
-        BurstFire
+        BurstFire,
+        Bazoka
     }
     public class RangedWeapon : AWeapon
     {
@@ -61,7 +62,10 @@ namespace ShootingGame
                         ShootShotgun();
                         break;
                     case ShootingType.Sniper:
-                        ShootSniper();
+                        Invoke(nameof(ShootSniper), attackSpeed * 0.75f);
+                        break;
+                    case ShootingType.Bazoka:
+                        Invoke(nameof(ShootBazoka), attackSpeed * 0.45f);
                         break;
                     case ShootingType.MachineGun:
                         StartCoroutine(ShootMachineGun());
@@ -74,29 +78,37 @@ namespace ShootingGame
             }
             return false;
         }
-        private void ShootSingle()
-        {
-            FireBullet(_bulletSpawnPoint[0], GetData());
-        }
+        
         private (int, bool, int) GetData(bool isPowerful = false)
         {
             var statData = CurrentEquiqmentStat;
             var damage = (int)statData.GetStat(Data.TypeStat.Damage).Value;
             var powerFull = isPowerful ? (UnityEngine.Random.Range(1.5f, 3f)) : 1;
-            return ((int)(damage * powerFull), IsCritRate(), (int)statData.GetStat(Data.TypeStat.WeaponForce).Value);
+            var isCritRate = IsCritRate();
+            return ((int)(damage * powerFull), isCritRate, (int)statData.GetStat(Data.TypeStat.WeaponForce).Value);
         }
+
+        private void ShootSingle()
+        {
+            FireBullet(_bulletSpawnPoint[0], GetData());
+        }
+
         private void ShootShotgun()
         {
             foreach (var spawnPoint in _bulletSpawnPoint)
             {
-                GameService.LogColor($"Shoot");
                 FireBullet(spawnPoint, GetData());
             }
         }
 
         private void ShootSniper()
         {
-            FireBullet(_bulletSpawnPoint[0], GetData(true), true); 
+            FireBullet(_bulletSpawnPoint[0], GetData(true)); 
+        }
+
+        private void ShootBazoka()
+        {
+            FireBullet(_bulletSpawnPoint[0], GetData());
         }
 
 
@@ -118,7 +130,7 @@ namespace ShootingGame
             }
         }
 
-        private void FireBullet(Transform spawnPoint, (int, bool, int) data, bool isPowerful = false)
+        private void FireBullet(Transform spawnPoint, (int, bool, int) data)
         {
             var bulletClone = projectilePool.Get();
             bulletClone.transform.position = spawnPoint.position;
