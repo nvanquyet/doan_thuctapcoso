@@ -30,6 +30,9 @@ MonoBehaviour:
     - typeStat: 9
       typeValueStat: 0
       value: 4
+    - typeStat: 10
+      typeValueStat: 0
+      value: 2
   appearance:
     itemName: 
     icon: {fileID: 0}

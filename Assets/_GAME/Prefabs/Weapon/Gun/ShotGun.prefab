@@ -411,4 +411,7 @@ MonoBehaviour:
   - {fileID: 203740471432336236}
   - {fileID: 2299517255881471328}
   _muzzuleSpawnPoint: {fileID: 577203009588991018}
-  _amountBulletPooling: 10
+  shootingType: 1
+  burstDelay: 0.1
+  amountBulletPooling: 10
+  burstCount: 1

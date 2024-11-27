@@ -30,6 +30,9 @@ MonoBehaviour:
     - typeStat: 9
       typeValueStat: 0
       value: 8
+    - typeStat: 10
+      typeValueStat: 0
+      value: 3
   appearance:
     itemName: Pistol Level 2
     icon: {fileID: 21300000, guid: 52103907acdd02a498d2e64039e50dba, type: 3}

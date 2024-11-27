@@ -57,7 +57,6 @@ public class InventorySystem : Frame
         if (data == null) return;
         if(claimedItems == null) claimedItems = new List<ItemAttributeData>();
         claimedItems.Add(data);
-        GameService.LogColor("Claimed Item: " + data.Appearance.Name);
     }
 
     private void OnButtonPlayGameClick()
@@ -67,7 +66,6 @@ public class InventorySystem : Frame
             GameCtrl.Instance.NextWave();
             var allItemsID = tetrisInventory.GetTetrisItemsID();
             string allId = string.Join(",", allItemsID);
-            GameService.LogColor("All ID: " + allId);
             this.Dispatch<GameEvent.OnNextWave>(new GameEvent.OnNextWave { allIDItem = allItemsID.ToList() });
         });
     }

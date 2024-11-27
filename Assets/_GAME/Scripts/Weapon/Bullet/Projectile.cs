@@ -80,6 +80,7 @@ namespace ShootingGame
         public void Spawn()
         {
             isCriticalHit = false;
+            visualProjectile.gameObject.SetActive(true);
             transform.rotation = Quaternion.identity;
             Move(transform.right * projectileSpeed);
             if (projectileTrail) projectileTrail.Play();
@@ -92,6 +93,7 @@ namespace ShootingGame
             originatingOwner = owner;
             isCriticalHit = properties.isCritical;
             knockbackForce = properties.knockback;
+            visualProjectile.gameObject.SetActive(true);
             Move(direction.normalized * projectileSpeed);
             SetDamage(properties.damage);
             if (projectileTrail) projectileTrail.Play();

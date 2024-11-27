@@ -21,9 +21,10 @@ namespace ShootingGame
         protected override void OnAttackSpeedChange()
         {
             base.OnAttackSpeedChange();
-            slashingTime.Item1 = attackSpeed * tweenRotationStruct.windUpRatio;
-            slashingTime.Item2 = attackSpeed * tweenRotationStruct.slashRatio;
-            slashingTime.Item3 = attackSpeed * tweenRotationStruct.recoverRatio;
+            var atk = attackSpeed / 2;
+            slashingTime.Item1 = atk * tweenRotationStruct.windUpRatio;
+            slashingTime.Item2 = atk * tweenRotationStruct.slashRatio;
+            slashingTime.Item3 = atk * tweenRotationStruct.recoverRatio;
         }
 
         protected override void CreateTweenSequence()
@@ -31,7 +32,7 @@ namespace ShootingGame
             Sequence attackSequence = DOTween.Sequence();
             attackSequence.AppendCallback(() => EnableInteract(true));
             var rangeMultiplier = CurrentEquiqmentStat.GetStat(Data.TypeStat.RangeWeapon).Value;
-
+            GameService.LogColor($"Range Multiplier: {rangeMultiplier}");
             Vector3 extendedWindUpAngle = tweenRotationStruct.windUpAngle * rangeMultiplier;
             Vector3 extendedSlashAngle = tweenRotationStruct.slashAngle * rangeMultiplier;
             Vector3 extendedRecoverAngle = tweenRotationStruct.recoverAngle * rangeMultiplier;

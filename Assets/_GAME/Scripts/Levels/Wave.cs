@@ -88,7 +88,7 @@ namespace ShootingGame
         /// </summary>
         public void StartSpawning()
         {
-            spawnRoutine = StartRoutine(Spawn());
+            spawnRoutine = StartRoutine(IESpawn());
         }
         public void StopSpawning() => StopRoutine(spawnRoutine);
 
@@ -96,7 +96,7 @@ namespace ShootingGame
         /// Spawn Enemy Coroutine
         /// </summary>
         /// <returns></returns>
-        private IEnumerator Spawn()
+        private IEnumerator IESpawn()
         {
             isSpawning = true;
             GameService.ClearList(ref enemies);
@@ -137,6 +137,7 @@ namespace ShootingGame
             if (isBossWave)
             {
                 //Spawn Boss
+                GameService.LogColor("Spawn Boss");
                 SpawnBoss();
             }
 

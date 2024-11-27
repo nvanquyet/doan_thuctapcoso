@@ -27,9 +27,12 @@ MonoBehaviour:
     - typeStat: 8
       typeValueStat: 1
       value: 5
+    - typeStat: 10
+      typeValueStat: 0
+      value: 8
     - typeStat: 9
       typeValueStat: 0
-      value: 5
+      value: 1
   appearance:
     itemName: MachineGun Level 1
     icon: {fileID: 21300000, guid: 45a9774db24e7f147bd1f8a58cd6ca5d, type: 3}

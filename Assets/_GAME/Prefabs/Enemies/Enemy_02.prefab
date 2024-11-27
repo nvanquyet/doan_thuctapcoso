@@ -236,8 +236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0480a52ff2bc83547907f82f75c5f2bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  _health: 10
+  maxHealth: 100
+  _health: 100
   rigid: {fileID: 1926085311155766293}
   flash: {fileID: 1926085311155766297}
 --- !u!114 &3737105127655994885

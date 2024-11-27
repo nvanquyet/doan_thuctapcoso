@@ -33,7 +33,7 @@ namespace ShootingGame
         private void Start()
         {
             defenderOwner = GetComponentInParent<IDefender>();
-            projectilePool = new ObjectPooling<Projectile>(projectilePrefab, 4, transform);
+            if(attackType == TypeAttack.Ranged && projectilePrefab) projectilePool = new ObjectPooling<Projectile>(projectilePrefab, 4, transform);
             InvokeRepeating(nameof(AutoAttack), 0, timeAttack);
         }
 

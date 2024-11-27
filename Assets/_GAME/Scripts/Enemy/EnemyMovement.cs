@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections;
+using Mono.CSharp;
 using Pathfinding;
 using UnityEngine;
 namespace ShootingGame
@@ -13,7 +14,6 @@ namespace ShootingGame
         [SerializeField] protected float _nextWayPointDistance = .2f;
 
         protected Seeker _seeker;
-        protected Rigidbody2D _rb;
         protected Path _path;
         protected Transform _target;
         protected Coroutine _moveCoroutine;
@@ -31,15 +31,12 @@ namespace ShootingGame
 
         public float Speed => _moveSpeed;
 
-        public float CurrentSpeed => _rb == null ? 0 : _rb.velocity.magnitude;
+        public float CurrentSpeed => 0;
 
         private void Start()
         {
             _seeker = GetComponent<Seeker>();
-            _rb = GetComponent<Rigidbody2D>();
             _characterSR = GetComponentInChildren<SpriteRenderer>();
-            InvokeRepeating(nameof(CalculatePath), 0f, _repeatTimeUpdatePath);
-            Invoke(nameof(Continue), 0.5f);
         }
         public void SetAttackRange(float value) => attackRange = value;
         protected void GetTarget() => OnRandomTarget?.Invoke();
@@ -53,7 +50,7 @@ namespace ShootingGame
                 GetTarget();
                 return;
             }
-            if (_seeker.IsDone()) _seeker.StartPath(_rb.position, _target.position, OnPathCompleted);
+            if (_seeker.IsDone()) _seeker.StartPath(transform.position, _target.position, OnPathCompleted);
         }
 
 
@@ -65,11 +62,13 @@ namespace ShootingGame
         protected virtual IEnumerator MoveToTargetCoroutine()
         {
             int currentWP = 0;
+
+            yield return new WaitUntil(() => _path != null);
             while (_path != null && currentWP < _path.vectorPath.Count)
             {
-                if(_target == null) GetTarget();
-                float distance = Vector2.Distance(_rb.position, _path.vectorPath[currentWP]);
-                Vector2 direction = ((Vector2)_path.vectorPath[currentWP] - _rb.position).normalized;
+                if (_target == null) GetTarget();
+                float distance = Vector2.Distance(transform.position, _path.vectorPath[currentWP]);
+                Vector2 direction = (Vector2)(_path.vectorPath[currentWP] - transform.position).normalized;
                 Vector2 force = Vector2.zero;
                 if (Vector3.Distance(transform.position, _target.transform.position) >= attackRange)
                 {
@@ -78,8 +77,9 @@ namespace ShootingGame
                     if (distance < _nextWayPointDistance)
                         currentWP++;
                 }
-                
-                if (force.x != 0){
+
+                if (force.x != 0)
+                {
                     var scaleSprite = Mathf.Abs(_characterSR.transform.localScale.x);
                     if (force.x < 0)
                         _characterSR.transform.localScale = new Vector3(1, 1, 0) * scaleSprite;
@@ -105,16 +105,21 @@ namespace ShootingGame
             _moveCoroutine = StartCoroutine(MoveToTargetCoroutine());
         }
 
-        public void PauseMovement(bool pauseMovement) {
-            if(pauseMovement) Stop();
+        public void PauseMovement(bool pauseMovement)
+        {
+            if (pauseMovement) Stop();
             else Continue();
-        } 
+        }
 
         public void SetSpeed(float speed) => _moveSpeed = Mathf.Max(speed, 1);
 
         public void Move(Vector3 direction) { }
 
-        internal void Init(float scaleFactor) { }
-        
+        internal void Init(float scaleFactor)
+        {
+            InvokeRepeating(nameof(CalculatePath), 0f, _repeatTimeUpdatePath);
+            Continue();
+        }
+
     }
 }

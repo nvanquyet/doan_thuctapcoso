@@ -25,6 +25,7 @@ public class TetrisInventory : Frame
         tetrisUI = GetComponentInChildren<TetrisUI>();
         tetrisSlot = GetComponentInChildren<TetrisSlot>();
         tetrisSlot.SetCellSize(cellSize);
+        tetrisUI.SetCellSize(cellSize);
         waitingSlots = GetComponentInChildren<WaitingSlots>();
         tetrisDescription = GetComponentInChildren<TetrisItemDescription>();
         tetrisRemoveItem = GetComponentInChildren<TetrisRemoveItem>();

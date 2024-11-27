@@ -2,11 +2,9 @@ using System;
 using System.Collections.Generic;
 using ShootingGame;
 using ShootingGame.Data;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
@@ -22,6 +20,10 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
     private Vector2 startPosition, oldPosition, cellSize, distaceToMousePosition;
     private int currentRotation = 0;
     private bool isHolding = false;
+
+    //Properties check item is in grid
+    private bool IsInGrid = false;
+
 #endregion
 
 #region  Action
@@ -143,7 +145,7 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
         //Reset the grid to 0
         var itemSize = GameService.GetItemSize(itemData.MatrixData.ItemSize, currentRotation);
         var grid = GameService.GetMatrix(itemData.MatrixData.Matrix, currentRotation);
-        ResetGrid(itemSize, grid);
+        if(IsInGrid)  ResetGrid(itemSize, grid);
         ActionAddToBag?.Invoke(this);
     }
 
@@ -216,7 +218,6 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
         if (Input.touchCount > 0 && EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
 #endif
         {
-            
             //Check if the item is upgradeable
             if (tetrisUpgradeItem.CheckInteract()) return;
             //Calculate the final slot of the item
@@ -271,6 +272,7 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
     
     private void ResetGrid(Vector2 itemSize, int[,] grid)
     {
+
         for (int i = 0; i < itemSize.y; i++)
         {
             for (int j = 0; j < itemSize.x; j++)
@@ -286,6 +288,7 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
 
     private void MarkItemInGrid(Vector2 posItem, Vector2 itemSize, int[,] grid)
     {
+        IsInGrid = true;
         for (int i = 0; i < itemSize.y; i++)
         {
             for (int j = 0; j < itemSize.x; j++)
@@ -302,6 +305,7 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
 
     private void ReturnToWaitingList()
     {
+        IsInGrid = false;
         ActionReturnWaitingList?.Invoke(this);
     }
 

@@ -89,6 +89,7 @@ namespace ShootingGame
         {
             foreach (var spawnPoint in _bulletSpawnPoint)
             {
+                GameService.LogColor($"Shoot");
                 FireBullet(spawnPoint, GetData());
             }
         }
