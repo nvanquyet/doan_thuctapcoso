@@ -63,6 +63,7 @@ namespace ShootingGame
         {
             this.scalingFactor = GameService.ApplyScaleFactorToValue(scalingFactor, currentWave);
             this.isBossWave = currentWave % GameConfig.Instance.bossWaveDistance == 0;
+            this.currentWave = currentWave;
 
             this.waveProperties = new WaveProperties
             {
@@ -122,6 +123,7 @@ namespace ShootingGame
                         waveProperties.strengthWave -= enemyInstance.GetStrength();
                         curEnemyCount++;
                     }
+                    yield return new WaitForSeconds(UnityEngine.Random.Range(0.1f, 0.3f));
                 }
 
                 if (curEnemyCount % waveProperties.spawnThreshold == 0)
@@ -137,7 +139,6 @@ namespace ShootingGame
             if (isBossWave)
             {
                 //Spawn Boss
-                GameService.LogColor("Spawn Boss");
                 SpawnBoss();
             }
 
@@ -147,7 +148,7 @@ namespace ShootingGame
         private void SpawnBoss()
         {
             //Spawn Boss from data
-            var boss = GameData.Instance.Bosses.GetAllValue()[(currentWave / GameConfig.Instance.bossWaveDistance) - 1];
+            var boss = GameData.Instance.Bosses.GetAllValue()[Mathf.Max((currentWave / GameConfig.Instance.bossWaveDistance) - 1, 0)];
             if (boss != null)
             {
                 var bossInstance = Instantiate(boss, spawnPositions[Random.Range(0, spawnPositions.Count)]);

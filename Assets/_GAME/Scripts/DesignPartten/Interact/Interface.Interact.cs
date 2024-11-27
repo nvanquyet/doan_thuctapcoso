@@ -196,7 +196,7 @@ namespace ShootingGame
 
         protected virtual void OnTriggerEnter2D(Collider2D other)
         {
-            if (other == null) return;
+            if (other == null || !CanAttack) return;
             if (other.TryGetComponent(out Interface.IDefender defender))
             {
                 Attack(defender);
