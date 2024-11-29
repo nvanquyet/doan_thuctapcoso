@@ -75,7 +75,7 @@ namespace ShootingGame
                 var projectile = projectilePool.Get();
                 projectile.transform.SetParent(null);
                 projectile.transform.position = projectileSpawnPoint.position;
-                projectile.Spawn(direction, (Damage, false, 0), defenderOwner);
+                projectile.Spawn(direction, new ImpactData(Damage, false, 0), defenderOwner);
                 projectile.OnRecycle = () => {
                     if (projectile == null) return;
                     else

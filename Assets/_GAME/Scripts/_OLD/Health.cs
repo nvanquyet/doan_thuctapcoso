@@ -1,8 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using ShootingGame;
-using TMPro;
 using UnityEngine;
 
 public class Health : MonoBehaviour
@@ -38,7 +33,7 @@ public class Health : MonoBehaviour
                 if (this.gameObject.tag == "Enemy")
                 {
                     //WeaponCtrl.Instance.RemoveEnemyToFireRange(this.transform);
-                    FindObjectOfType<Killed>().UpdateKilled();
+                    //FindObjectOfType<Killed>().UpdateKilled();
                     FindObjectOfType<PlayerExp>().UpdateExperience(UnityEngine.Random.Range(1, 4));
                     Destroy(this.gameObject, 0.125f);
                 }

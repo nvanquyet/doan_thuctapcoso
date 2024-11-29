@@ -14,6 +14,11 @@ namespace ShootingGame
             void ExitInteract(Interface.IInteract target);
         }
 
+        public interface IAttackBehaviour
+        {
+            void ExecuteAttack(Vector2 direction, ImpactData param);
+        }
+
         public interface IAttacker : IInteract
         {
             int Damage { get; }
