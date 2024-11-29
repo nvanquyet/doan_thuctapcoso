@@ -32,7 +32,6 @@ namespace ShootingGame
             Sequence attackSequence = DOTween.Sequence();
             attackSequence.AppendCallback(() => EnableInteract(true));
             var rangeMultiplier = CurrentEquiqmentStat.GetStat(Data.TypeStat.RangeWeapon).Value;
-            GameService.LogColor($"Range Multiplier: {rangeMultiplier}");
             Vector3 extendedWindUpAngle = tweenRotationStruct.windUpAngle * rangeMultiplier;
             Vector3 extendedSlashAngle = tweenRotationStruct.slashAngle * rangeMultiplier;
             Vector3 extendedRecoverAngle = tweenRotationStruct.recoverAngle * rangeMultiplier;

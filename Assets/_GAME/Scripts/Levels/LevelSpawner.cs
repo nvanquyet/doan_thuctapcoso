@@ -36,7 +36,6 @@ namespace ShootingGame
         /// </summary>
         public void OnStartWave() {
             if(wave == null) return;
-            GameService.LogColor($"CurrentWave: {_currentWave}");
             wave.Init(GameConfig.Instance.scalingFactor, _currentWave);
         }
 

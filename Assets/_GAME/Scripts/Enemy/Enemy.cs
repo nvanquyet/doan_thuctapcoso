@@ -53,6 +53,7 @@ namespace ShootingGame
                 _enemyDefender.OnDefend += () =>
                 {
                     _enemyMovement.PauseMovement(true);
+                    _enemyAnimation.OnTriggerDefend();
                 };
                 _enemyDefender.OnDefendSuccess += () => _enemyMovement.PauseMovement(false);
 

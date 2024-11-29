@@ -36,7 +36,6 @@ public class TetrisUpgradeItem : AStayInteractor<BoxCollider2D>
                 }
             }
             if(i is TetrisRemoveItem removeItem){
-                GameService.LogColor("Remove Item");
                 removeItem.InvokeAction(slot);
                 return true;
             }
