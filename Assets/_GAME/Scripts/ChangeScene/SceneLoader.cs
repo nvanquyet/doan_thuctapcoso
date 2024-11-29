@@ -9,9 +9,13 @@ public class SceneLoader : MonoBehaviour
     public GameObject loaderUI;
     public Slider progressSlider;
     public float sliderSpeed = 0.05f;
+    public Image loadingIcon;
+    public float rotationSpeed = 200f;
+    public Sprite[] loadingSprites;
 
     public void LoadScene(int index)
     {
+        RandomizeLoadingIcon();
         StartCoroutine(LoadScene_Coroutine(index));
     }
     /*public IEnumerator LoadScene_Coroutine(int index)
@@ -33,10 +37,21 @@ public class SceneLoader : MonoBehaviour
             yield return null;
         }
     }*/
+
+    private void RandomizeLoadingIcon()
+    {
+        if (loadingSprites.Length > 0)
+        {
+            Sprite randomSprite = loadingSprites[Random.Range(0, loadingSprites.Length)];
+            loadingIcon.sprite = randomSprite;
+        }
+    }
+
     public IEnumerator LoadScene_Coroutine(int index)
     {
         progressSlider.value = 0;
         loaderUI.SetActive(true);
+        StartCoroutine(AnimateLoadingIcon());
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(index);
         asyncOperation.allowSceneActivation = false;
 
@@ -61,6 +76,14 @@ public class SceneLoader : MonoBehaviour
         
         while (!asyncOperation.isDone)
         {
+            yield return null;
+        }
+    }
+    private IEnumerator AnimateLoadingIcon()
+    {
+        while (loaderUI.activeSelf) 
+        {
+            loadingIcon.transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
             yield return null;
         }
     }

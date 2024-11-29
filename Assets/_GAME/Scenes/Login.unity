@@ -3741,7 +3741,7 @@ GameObject:
   - component: {fileID: 1179314166}
   - component: {fileID: 1179314165}
   m_Layer: 5
-  m_Name: IconPlayer
+  m_Name: LoadingIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3802,7 +3802,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -399755518, guid: b8b3f9c85ba9a5f44a8472b57c0dbfd2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3fc112bbfa8350f47a9b3aba49ea1040, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5872,6 +5872,21 @@ MonoBehaviour:
   loaderUI: {fileID: 450183329}
   progressSlider: {fileID: 2102358883}
   sliderSpeed: 0.1
+  loadingIcon: {fileID: 1179314166}
+  rotationSpeed: 200
+  loadingSprites:
+  - {fileID: 21300000, guid: 47f0826c63ef3da459e7c54d01f6b146, type: 3}
+  - {fileID: 21300000, guid: 3d264f0be0985384181d9fa4392b7940, type: 3}
+  - {fileID: 21300000, guid: 7383dac8cb86fb64dac428e6816edbaf, type: 3}
+  - {fileID: 21300000, guid: 323606e37cfc22943a0f3cd421dcc17a, type: 3}
+  - {fileID: 21300000, guid: 679b9145cb04dbf41ab177501b737682, type: 3}
+  - {fileID: 21300000, guid: 5d2581febc1f1c5498ff07acf694cbff, type: 3}
+  - {fileID: 21300000, guid: e3283148dd951cd47924bce6ab4ee402, type: 3}
+  - {fileID: 21300000, guid: 0bc582fbd7769e248bd82feb51bb4b27, type: 3}
+  - {fileID: 21300000, guid: f61adedba3fb2fd42b52188537c30e1c, type: 3}
+  - {fileID: 21300000, guid: e4711f9b0c1d60e43ab9fb3ea8e6c3a4, type: 3}
+  - {fileID: 21300000, guid: 3fc112bbfa8350f47a9b3aba49ea1040, type: 3}
+  - {fileID: 21300000, guid: 486782c085e2d0b468f37b9951d83a4a, type: 3}
 --- !u!114 &1916502399
 MonoBehaviour:
   m_ObjectHideFlags: 0
