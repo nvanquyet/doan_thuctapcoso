@@ -107,6 +107,7 @@ namespace ShootingGame
         {
             if (target == null || target is EnemyDefender) return false;
             _currentTarget = target;
+            target.Defend(Damage, isSuper, (forcePushBack, transform));
             return true;
         }
 

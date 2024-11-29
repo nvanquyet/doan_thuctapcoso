@@ -41,7 +41,10 @@ namespace ShootingGame
                 Destroy(w.gameObject);
             }
             //Clear dict
-            if(dictWeaponPos != null && dictWeaponPos.Count > 0)dictWeaponPos.Clear();
+            if (dictWeaponPos != null && dictWeaponPos.Count > 0)
+            {
+                dictWeaponPos.Clear();
+            }
             GameService.ClearList(ref _weapons);
         }
 
@@ -100,16 +103,6 @@ namespace ShootingGame
             foreach (var weapon in _weapons)
             {
                 weapon.Attack();
-            }
-        }
-
-        public void AddWeapon(AWeapon newWeapon)
-        {
-            if (newWeapon == null) return;
-            if (_weapons.Count < MaxWeapon && !_weapons.Contains(newWeapon))
-            {
-                _weapons.Add(newWeapon);
-                newWeapon.transform.SetParent(_allPositionSpawnWeapon[_weapons.Count].transform);
             }
         }
 

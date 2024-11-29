@@ -53,6 +53,7 @@ namespace ShootingGame
                 _enemyDefender.OnDefend += () =>
                 {
                     _enemyMovement.PauseMovement(true);
+                    _enemyAnimation.OnTriggerDefend();
                 };
                 _enemyDefender.OnDefendSuccess += () => _enemyMovement.PauseMovement(false);
 
@@ -60,7 +61,10 @@ namespace ShootingGame
                 {
                     _enemyMovement.PauseMovement(true);
                     _enemyAnimation.OnTriggerAttack();
-                }, () => _enemyMovement.PauseMovement(false));
+                }, () =>
+                {
+                    _enemyMovement.PauseMovement(false);
+                });
 
                 _enemyMovement.SetAttackRange(_enemyAttacker.AttackRange);
                 _enemyDefender.OnDeath += OnDeadAction;

@@ -12,6 +12,7 @@ namespace ShootingGame
         private const string ATTACK = "Attack";
         private const string DEAD = "Dead";
         private const string RESPAWN = "Respawn";
+        private const string DEFEND = "Hit";
 
 #if UNITY_EDITOR
         private void OnValidate()
@@ -28,6 +29,7 @@ namespace ShootingGame
         public void OnTriggerAttack() => _animator?.SetTrigger(ATTACK);
 
         public void OnTriggerDead() => _animator?.SetTrigger(DEAD);
+        public void OnTriggerDefend() => _animator?.SetTrigger(DEFEND);
 
         public void OnTriggerRespawn() => _animator?.SetTrigger(RESPAWN);
     }

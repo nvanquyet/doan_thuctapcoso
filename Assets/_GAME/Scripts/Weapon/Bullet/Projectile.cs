@@ -28,21 +28,29 @@ namespace ShootingGame
         }
 
         #region Attack
+        private static readonly object _lock = new object();
         protected override void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision == null) return;
-            if (collision.TryGetComponent(out Interface.IDefender defender))
+            if (collision == null || !CanAttack) return;
+
+            lock (_lock)
             {
-                if (originatingOwner != null && defender.GetType().Equals(originatingOwner.GetType())) return;
-
-                Attack(defender);
-                ActivateEffect(impactEffect);
-                Rigidbody.velocity = Vector2.zero;
-
-                if (_oneHitOnly)
+                if (collision.TryGetComponent(out Interface.IDefender defender))
                 {
-                    _canAttack = false;
-                    EnableInteract(false);
+                    if (originatingOwner != null && defender.GetType().Equals(originatingOwner.GetType()))
+                        return;
+
+                    Attack(defender);
+
+                    ActivateEffect(impactEffect);
+
+                    Rigidbody.velocity = Vector2.zero;
+
+                    if (_oneHitOnly)
+                    {
+                        _canAttack = false; 
+                        EnableInteract(false);
+                    }
                 }
             }
         }
@@ -80,6 +88,7 @@ namespace ShootingGame
         public void Spawn()
         {
             isCriticalHit = false;
+            _canAttack = true; 
             visualProjectile.gameObject.SetActive(true);
             transform.rotation = Quaternion.identity;
             Move(transform.right * projectileSpeed);
@@ -91,6 +100,7 @@ namespace ShootingGame
         public void Spawn(Vector2 direction, (int damage, bool isCritical, float knockback) properties, IDefender owner = null)
         {
             originatingOwner = owner;
+            _canAttack = true;
             isCriticalHit = properties.isCritical;
             knockbackForce = properties.knockback;
             visualProjectile.gameObject.SetActive(true);

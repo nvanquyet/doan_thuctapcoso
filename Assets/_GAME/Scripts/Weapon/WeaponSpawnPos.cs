@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using static GameEvent;
 namespace ShootingGame
 {
 
@@ -8,25 +9,31 @@ namespace ShootingGame
         [SerializeField] private Vector3 localPosition;
         [SerializeField] private Vector3 localEuLerAngles;
 
+#if UNITY_EDITOR
         private void OnValidate()
         {
-            #if UNITY_EDITOR
-                localPosition = transform.localPosition;
-                localEuLerAngles = transform.localEulerAngles;
-            #endif
+            localPosition = transform.localPosition;
+            localEuLerAngles = transform.localEulerAngles;
         }
-        
+#endif
+
         // Start is called before the first frame update
         void Start()
         {
-            this.AddListener<GameEvent.OnWaveClear>(OnWaveClear);
+            this.AddListener<GameEvent.OnWaveClear>(OnWaveClear, false);
+            this.AddListener<GameEvent.OnNextWave>(OnNextWave, false);
         }
 
-        private void OnWaveClear(GameEvent.OnWaveClear clear)
+        private void OnWaveClear(GameEvent.OnWaveClear param)
         {
-            transform.DOLocalMove(localPosition, 0.2f);
-            transform.DOLocalRotate(localEuLerAngles, 0.2f);
+            transform.localPosition = localPosition;
+            transform.localEulerAngles = localEuLerAngles;
+        }
+        private void OnNextWave(GameEvent.OnNextWave param)
+        {
+            transform.localPosition = localPosition;
+            transform.localEulerAngles = localEuLerAngles;
         }
     }
 
-}   
+}

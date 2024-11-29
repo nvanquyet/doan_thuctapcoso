@@ -64,15 +64,21 @@ namespace ShootingGame
             int currentWP = 0;
 
             yield return new WaitUntil(() => _path != null);
-            while (_path != null && currentWP < _path.vectorPath.Count)
+            while (_path != null)
             {
+                if(currentWP >= _path.vectorPath.Count)
+                {
+                    CalculatePath();
+                    yield return null;
+                    currentWP = 0;
+                    continue;
+                }
                 if (_target == null) GetTarget();
                 float distance = Vector2.Distance(transform.position, _path.vectorPath[currentWP]);
                 Vector2 direction = (Vector2)(_path.vectorPath[currentWP] - transform.position).normalized;
-                Vector2 force = Vector2.zero;
+                Vector2 force = direction * _moveSpeed * Time.deltaTime;
                 if (Vector3.Distance(transform.position, _target.transform.position) >= attackRange)
                 {
-                    force = direction * _moveSpeed * Time.deltaTime;
                     transform.position += (Vector3)force;
                     if (distance < _nextWayPointDistance)
                         currentWP++;
