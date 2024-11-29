@@ -196,7 +196,7 @@ namespace ShootingGame
 
         protected virtual void OnTriggerEnter2D(Collider2D other)
         {
-            if (other == null) return;
+            if (other == null || !CanAttack) return;
             if (other.TryGetComponent(out Interface.IDefender defender))
             {
                 Attack(defender);
@@ -270,6 +270,7 @@ namespace ShootingGame
         public void PushBack(float force, Transform target)
         {
             if(Rigid == null) return;
+            if (target == null) return;
             var direction = this.transform.position - target.position;
             Rigid.AddForce(direction.normalized * force, ForceMode2D.Impulse);
         }

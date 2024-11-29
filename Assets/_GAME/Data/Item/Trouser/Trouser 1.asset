@@ -31,7 +31,7 @@ MonoBehaviour:
       typeValueStat: 1
       value: 1
   appearance:
-    itemName: 
-    icon: {fileID: 0}
-  matrixData: {fileID: 0}
+    itemName: Trouser Level 1
+    icon: {fileID: 21300000, guid: 99d7c9b90624e4c469e347d01a9dd740, type: 3}
+  matrixData: {fileID: 11400000, guid: 240c44e0b317f7647ad3dd83a0b0976a, type: 2}
   nextLevelAttribute: {fileID: 11400000, guid: 739f1274e28c7434ebf062dffddc9295, type: 2}

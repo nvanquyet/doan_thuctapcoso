@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 //public class TetrisUI : MonoBehaviour
-public class TetrisUI : SingletonBehaviour<TetrisUI>
+public class TetrisUI : UIComponent
 {
     [SerializeField]
     private TetrisItemUI itemUIPrefab;

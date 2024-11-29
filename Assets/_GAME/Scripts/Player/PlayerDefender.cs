@@ -1,5 +1,6 @@
 using UnityEngine;
 using ShootingGame.Data;
+using System;
 namespace ShootingGame
 {   
     public class PlayerDefender : ADefender
@@ -7,7 +8,7 @@ namespace ShootingGame
         [SerializeField] private ColoredFlash _flash;
         [SerializeField] private float _timeInvulnerability = 1f;
         private bool _invulnerability;
-
+        private Action OnDefendAction;
         private float dodgeChance;
         private int armor;
 
@@ -22,10 +23,10 @@ namespace ShootingGame
             _invulnerability = true;
             Invoke(nameof(ResetInvulnerability), _timeInvulnerability);
             if (_flash != null) _flash.Flash(Color.white);
-
             int damageAfterArmor = Mathf.Max(damage - armor, 0);
             base.Defend(damageAfterArmor, isSuper, forceProp);
 
+            OnDefendAction?.Invoke();
             Test();
         }
 
@@ -35,12 +36,14 @@ namespace ShootingGame
             this.Dispatch<GameEvent.OnPlayerDead>();
         }
 
-        internal void Init(PlayerStat playerStat)
+        internal void Init(PlayerStat playerStat, Action OnDefendAction = null)
         {
             var sprite = GetComponentInChildren<SpriteRenderer>();
             if (sprite != null && _flash != null) _flash.SetSpriteRenderer(sprite);
             this.playerStat = playerStat;
             SetHealth((int)playerStat.CurrentStat.GetStat(TypeStat.Hp).Value, true);
+            this.OnDefendAction = OnDefendAction;
+            Test();
         }
 
 

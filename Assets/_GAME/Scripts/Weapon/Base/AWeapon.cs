@@ -25,7 +25,7 @@ namespace ShootingGame
 
         public void InitializeItem(ItemAttributeData data)
         {
-            equiqment = data.Stat;
+            equiqment = new StatContainerData(data.Stat);
             SetSprite(data.Appearance.Icon);
         }
 
@@ -35,8 +35,8 @@ namespace ShootingGame
             if (stat == null) return;
             foreach (var statData in CurrentEquiqmentStat.Stats)
             {
-                CurrentEquiqmentStat.UpdateStat(GameService.CaculateStat(statData, stat.GetStat(statData.TypeStat), EquiqmentStat.GetStat(statData.TypeStat)));
-                GameService.LogColor($"{gameObject.name} {CurrentEquiqmentStat.GetStat(statData.TypeStat).Value}");
+                var nStat = GameService.CaculateStat(statData, stat.GetStat(statData.TypeStat), EquiqmentStat.GetStat(statData.TypeStat));
+                CurrentEquiqmentStat.UpdateStat(nStat);
             }
         }
 
@@ -45,13 +45,21 @@ namespace ShootingGame
     public abstract class AWeapon : AItem
     {
         protected float attackSpeed;
-        private bool isAttacking = false;
+        protected bool isAttacking = false;
+
+        protected Transform target;
+
+        public void SetTarget(Transform target) => this.target = target;
 
         public virtual bool Attack(){
-            if(isAttacking) return false;
-            isAttacking = true;
-            Invoke(nameof(ResetAttack), attackSpeed);
-            return true;
+            if(isAttacking || target == null) return false;
+            if(Vector3.Distance(transform.position, target.position) < CurrentEquiqmentStat.GetStat(TypeStat.RangeWeapon).Value)
+            {
+                isAttacking = true;
+                Invoke(nameof(ResetAttack), attackSpeed);
+                return true;
+            }
+            return false;
         }
 
         public override bool Attack(Interface.IDefender target, bool isSuper = false, float forcePushBack = 0)
@@ -85,7 +93,6 @@ namespace ShootingGame
         public override void ApplyStat(StatContainerData stat)
         {
             base.ApplyStat(stat);
-
             OnAttackSpeedChange();
         }
 
@@ -93,6 +100,7 @@ namespace ShootingGame
         {
             var rate = CurrentEquiqmentStat.GetStat(TypeStat.AttackRate).Value;
             attackSpeed = 1 / (rate == 0 ? 1 : rate);
+
         }
 
     }
