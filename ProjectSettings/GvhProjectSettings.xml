@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <projectSettings>
+  <projectSetting name="com.google.external-dependency-managerAnalyticsCookie" value="29584f71b5f14f02ab8351ee75d3131a" />
+  <projectSetting name="com.google.external-dependency-managerAnalyticsEnabled" value="True" />
   <projectSetting name="GooglePlayServices.PromptBeforeAutoResolution" value="False" />
   <projectSetting name="GooglePlayServices.UseJetifier" value="True" />
 </projectSettings>
