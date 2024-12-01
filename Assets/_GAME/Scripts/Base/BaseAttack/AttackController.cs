@@ -91,20 +91,21 @@ public class AttackController : AAttacker, IAttackBehaviour
     private IEnumerator IEAttackRoutine()
     {
         yield return new WaitForSeconds(timeChangeBehaviour);
+        var index = 0;
         while (true)
         {
-            var randomBehaviour = UnityEngine.Random.Range(0, attackBehaviours.Length);
-            var behaviour = attackBehaviours[randomBehaviour];  
+            if(index >= attackBehaviours.Length) index = 0;
+            var behaviour = attackBehaviours[index];
             distanceAttack = behaviour.AttackRange;
             var impactData = new ImpactData(Damage, false, 0);
             if(behaviour is MeleeAttack)
             {
                 if (Vector2.Distance(transform.position, _target.transform.position) <= DistanceAttack)
                 {
-                    attackBehaviours[randomBehaviour].InitializeImpactData(impactData);
+                    attackBehaviours[index].InitializeImpactData(impactData);
                 }
-            } else attackBehaviours[randomBehaviour].InitializeImpactData(impactData);
-
+            } else attackBehaviours[index].InitializeImpactData(impactData);
+            index++;
             yield return new WaitForSeconds(timeChangeBehaviour);
         }
     }
@@ -123,8 +124,13 @@ public class AttackController : AAttacker, IAttackBehaviour
 
     public override bool Attack(Interface.IDefender target, bool isSuper = false, float forcePushBack = 0)
     {
+        GameService.LogColor($"AttackController.Attack: {target.GetType().Name} isAttacking {_isAttacking}");
         if(!_isAttacking) return false;
         if (target == null || target.GetType().Equals(defenderOwner)) return false;
+        if(target is PlayerDefender)
+        {
+            Debug.Log("Attack Player");
+        }
         return base.Attack(target, isSuper, forcePushBack);
     }
 
@@ -135,9 +141,6 @@ public class AttackController : AAttacker, IAttackBehaviour
 
     public override void ExitInteract(Interface.IInteract target) { }
     public override void OnInteract(Interface.IInteract target) { }
-    protected override void OnTriggerEnter2D(Collider2D other) { }
-
-    protected override void OnTriggerExit2D(Collider2D other) { }
 
    
 }

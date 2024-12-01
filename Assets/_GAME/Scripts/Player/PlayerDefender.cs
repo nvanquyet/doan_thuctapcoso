@@ -5,7 +5,6 @@ namespace ShootingGame
 {   
     public class PlayerDefender : ADefender
     {
-        [SerializeField] private ColoredFlash _flash;
         [SerializeField] private float _timeInvulnerability = 1f;
         private bool _invulnerability;
         private Action OnDefendAction;
@@ -22,7 +21,6 @@ namespace ShootingGame
 
             _invulnerability = true;
             Invoke(nameof(ResetInvulnerability), _timeInvulnerability);
-            if (_flash != null) _flash.Flash(Color.white);
             int damageAfterArmor = Mathf.Max(damage - armor, 0);
             base.Defend(damageAfterArmor, isSuper, forceProp);
 
@@ -39,7 +37,6 @@ namespace ShootingGame
         internal void Init(PlayerStat playerStat, Action OnDefendAction = null)
         {
             var sprite = GetComponentInChildren<SpriteRenderer>();
-            if (sprite != null && _flash != null) _flash.SetSpriteRenderer(sprite);
             this.playerStat = playerStat;
             SetHealth((int)playerStat.CurrentStat.GetStat(TypeStat.Hp).Value, true);
             this.OnDefendAction = OnDefendAction;

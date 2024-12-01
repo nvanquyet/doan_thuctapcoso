@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 3486293495546998591}
   - component: {fileID: 3731585282483701307}
   - component: {fileID: 1926085311155766293}
-  - component: {fileID: 1926085311155766297}
   - component: {fileID: 2872428405466356172}
   - component: {fileID: 5195548636648846595}
   - component: {fileID: 724029092634259062}
   - component: {fileID: 3737105127655994885}
   - component: {fileID: -8395272762796244704}
+  - component: {fileID: 4932282920834015167}
   m_Layer: 0
   m_Name: Enemy 2
   m_TagString: Enemy
@@ -113,21 +113,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1926085311155766297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1926085311155766288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92a51b199c5b04f73affbde9d319487c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flashMaterial: {fileID: 2100000, guid: a2a2f231129ba494b9d6af6dbabd4f51, type: 2}
-  duration: 0.125
-  spriteRenderer: {fileID: 0}
 --- !u!61 &2872428405466356172
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -186,13 +171,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 10
-  _oneHitOnly: 0
-  timeAttack: 2
-  timeAttackAnimation: 1
-  projectilePrefab: {fileID: -6031142928564043692, guid: fea7cf601e56a4a46b8a554854776927, type: 3}
-  projectileSpawnPoint: {fileID: 7562066477904398936}
-  attackRange: 3
-  attackType: 1
+  attackBehaviours:
+  - {fileID: 4932282920834015167}
+  triggerAnimation: {fileID: 5846180044638233947}
+  timeChangeBehaviour: 5
 --- !u!114 &724029092634259062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,7 +190,6 @@ MonoBehaviour:
   maxHealth: 50
   _health: 50
   rigid: {fileID: 1926085311155766293}
-  flash: {fileID: 1926085311155766297}
 --- !u!114 &3737105127655994885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,6 +219,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 5144735856714011042}
   _spriteRenderer: {fileID: 5109778350956485242}
+--- !u!114 &4932282920834015167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926085311155766288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0dc407073cf66542adf4649ea9d81a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerAnimation: Attack
+  attackRange: 3
+  projectilePrefab: {fileID: -8053909183671182864, guid: 289ea4ebac1566a47b02f514afa987db, type: 3}
+  firePoint: {fileID: 7562066477904398936}
 --- !u!1 &3030793500045342208
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,7 +260,7 @@ Transform:
   m_GameObject: {fileID: 3030793500045342208}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.22, y: -0.08, z: 0}
+  m_LocalPosition: {x: -0.22, y: -0.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -348,8 +345,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2365404010451191750, guid: 6617b6fafb7d3f74090cb160ce26a6f0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5846180044638233947}
   m_SourcePrefab: {fileID: 100100000, guid: 6617b6fafb7d3f74090cb160ce26a6f0, type: 3}
+--- !u!1 &1841582517105701453 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2365404010451191750, guid: 6617b6fafb7d3f74090cb160ce26a6f0, type: 3}
+  m_PrefabInstance: {fileID: 4133468694025991563}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5846180044638233947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841582517105701453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fd13b1c9120a95498e9092bec413729, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &5109778350956485242 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 9202142352479875057, guid: 6617b6fafb7d3f74090cb160ce26a6f0, type: 3}

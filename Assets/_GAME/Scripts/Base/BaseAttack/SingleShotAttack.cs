@@ -8,6 +8,13 @@ public abstract class AShootAttack : AttackBehaviour
     private ObjectPooling<Projectile> projectilePooling;
     private List<Projectile> projectileActived;
 
+
+    private void Start()
+    {
+        projectilePooling = new ObjectPooling<Projectile>(projectilePrefab, 10);
+        projectileActived = new List<Projectile>();
+    }
+
     private void OnDestroy()
     {
         if (projectileActived != null && projectileActived.Count > 0)
@@ -30,7 +37,7 @@ public abstract class AShootAttack : AttackBehaviour
             else
             {
                 projectile.transform.SetParent(transform);
-                projectileActived.Remove(projectile);
+                if(projectileActived.Contains(projectile)) projectileActived.Remove(projectile);
                 projectilePooling.Recycle(projectile);
             }
         };
@@ -53,9 +60,12 @@ public class SingleShotAttack : AShootAttack
 
     public override void ExecuteAttack()
     {
-        if(target is MonoBehaviour)
+        if (target is MonoBehaviour)
         {
-            var direction = (Vector2)((target as MonoBehaviour).transform.position - transform.position).normalized;
+            var direction = ((target as MonoBehaviour).transform.position - transform.position).normalized;
+            FirePoint.position = transform.position + direction.normalized * 1.1f;
+
+            direction = (Vector2) direction;
             SpawnProjectile(direction, FirePoint.position, impactData);
         }
     }

@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596865da4a325ce40ab56730bca8889b, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
+  scalingFactor: 1.1
   enemyWeights:
     HpWeight: 0.2
     DamageWeight: 0.2
     SpeedWeight: 0.2
-  bossWaveDistance: 5
+  bossWaveDistance: 1
   waveProperties:
     timeNormalSpawn: 0.2
     timeThreshold: 5

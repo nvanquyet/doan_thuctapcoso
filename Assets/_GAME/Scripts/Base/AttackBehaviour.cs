@@ -44,8 +44,6 @@ public abstract class AttackBehaviour : MonoBehaviour, IAttackBehaviour
     protected IDefender owner;
     protected IDefender target;
 
-    private int hashTriggerAnimation;
-
     protected ImpactData impactData;
 
     public void InitializeImpactData(ImpactData impactData)
@@ -58,12 +56,11 @@ public abstract class AttackBehaviour : MonoBehaviour, IAttackBehaviour
     {
         this.owner = owner;
         this.target = target;
-        hashTriggerAnimation = Animator.StringToHash(triggerAnimation);
     }
-    private void OnTriggerAnimation()
+    protected virtual void OnTriggerAnimation()
     {
         OnStartAttack?.Invoke();
-        Animator?.SetTrigger(hashTriggerAnimation);
+        Animator?.SetTrigger(triggerAnimation);
     }
     public abstract void ExecuteAttack();
 
