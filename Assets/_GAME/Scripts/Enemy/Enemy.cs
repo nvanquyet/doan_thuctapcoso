@@ -60,13 +60,12 @@ namespace ShootingGame
                 _enemyAttacker.SetAttackAction(() =>
                 {
                     _enemyMovement.PauseMovement(true);
-                    _enemyAnimation.OnTriggerAttack();
+                    _enemyMovement.SetAttackRange(_enemyAttacker.DistanceAttack);
                 }, () =>
                 {
                     _enemyMovement.PauseMovement(false);
                 });
-
-                _enemyMovement.SetAttackRange(_enemyAttacker.AttackRange);
+                _enemyMovement.SetAttackRange(_enemyAttacker.DistanceAttack);
                 _enemyDefender.OnDeath += OnDeadAction;
             }
         }

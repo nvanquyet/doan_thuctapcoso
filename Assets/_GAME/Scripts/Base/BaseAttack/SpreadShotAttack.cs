@@ -23,12 +23,11 @@ public class SpreadShotAttack : AShootAttack
         }
     }
 
-    public override void ExecuteAttack(Vector2 direction, ImpactData param)
+    public override void ExecuteAttack()
     {
         foreach (var firePoint in FirePoints)
         {
-            SpawnProjectile((FocusPoint.position - firePoint.position).normalized, FocusPoint.position, param);
+            SpawnProjectile((FocusPoint.position - firePoint.position).normalized, FocusPoint.position, impactData);
         }
-        base.ExecuteAttack(direction, param);
     }
 }

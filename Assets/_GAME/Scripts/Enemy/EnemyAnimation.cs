@@ -26,9 +26,8 @@ namespace ShootingGame
 
         public void SetVelocity(float velocity) => _animator.SetFloat(VELOCITY, velocity);
 
-        public void OnTriggerAttack() => _animator?.SetTrigger(ATTACK);
-
         public void OnTriggerDead() => _animator?.SetTrigger(DEAD);
+
         public void OnTriggerDefend() => _animator?.SetTrigger(DEFEND);
 
         public void OnTriggerRespawn() => _animator?.SetTrigger(RESPAWN);
