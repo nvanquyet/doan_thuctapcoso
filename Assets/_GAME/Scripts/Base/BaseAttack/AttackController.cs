@@ -50,7 +50,6 @@ public class AttackController : AAttacker, IAttackBehaviour
 
     public void OnTriggerAnimation(string nameAnimaiton)
     {
-        GameService.LogColor("Trigger animation: " + nameAnimaiton);
         foreach (var b in attackBehaviours)
         {
             if (b.TriggerAnimation == nameAnimaiton)

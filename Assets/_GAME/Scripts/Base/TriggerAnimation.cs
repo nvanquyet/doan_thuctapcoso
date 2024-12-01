@@ -11,7 +11,6 @@ public class TriggerAnimation : MonoBehaviour, IAnimTrigger
     public Action<string> OnTriggerAction;
     public void TriggerAnimaiton(string nameAnimation)
     {
-        GameService.LogColor("Trigger animation Action: " + nameAnimation);
         OnTriggerAction?.Invoke(nameAnimation);
     }
 }
