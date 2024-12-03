@@ -31,7 +31,7 @@ public class MoneyBar : MonoBehaviour
     {
         float fillAmount = currentMoney / maxMoney; 
         moneyBarFill.fillAmount = fillAmount;      
-        moneyBarText.text = $"${currentMoney:0}/{maxMoney:0}"; 
+        moneyBarText.text = $"{currentMoney:0}/{maxMoney:0}"; 
     }
     public void SetMoney(float amount)
     {
