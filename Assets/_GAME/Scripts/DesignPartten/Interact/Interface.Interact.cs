@@ -257,7 +257,11 @@ namespace ShootingGame
             if (IsDead) return;
             _health -= damage;
             if (IsDead) OnDead();
-            else if(forceProp != default) PushBack(forceProp.Item1, forceProp.Item2);
+            else if (forceProp != default)
+            {
+                PushBack(forceProp.Item1, forceProp.Item2);
+                this.Dispatch<GameEvent.OnShowFloatingText>(new GameEvent.OnShowFloatingText { text = $"-{damage}", worldPos = this.transform.position , color = isSuper ? Color.red : Color.white});
+            }
         }
         public abstract void OnDead();
 

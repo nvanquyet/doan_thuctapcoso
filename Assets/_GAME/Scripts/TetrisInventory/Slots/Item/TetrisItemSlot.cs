@@ -13,7 +13,7 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
 #if UNITY_ANDROID
     private int currentClicked = 0;
 #endif
-    public ItemAttributeData itemData { get; private set; }
+    public ItemDataSO itemData { get; private set; }
 #region Properties
     private TetrisSlot slots;
     private TetrisItemDescription tetrisDescription;
@@ -77,7 +77,7 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
 
 
     #region  InitItem
-    public void InitItem(TetrisSlot slots, TetrisItemDescription tetrisDescription, ItemAttributeData data, Vector2 cellSize)
+    public void InitItem(TetrisSlot slots, TetrisItemDescription tetrisDescription, ItemDataSO data, Vector2 cellSize)
     {
         if (data == null) return;
         this.slots = slots;
@@ -111,7 +111,7 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
         tetrisUpgradeItem.Init(this, actionUpgradeItem);
     }
 
-    private void ShowItemDescription(ItemAttributeData data, bool show)
+    private void ShowItemDescription(ItemDataSO data, bool show)
     {
         tetrisDescription.ActiveDescription(show);
         if(show == false) return;

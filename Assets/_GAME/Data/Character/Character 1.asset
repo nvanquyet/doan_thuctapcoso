@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75c4317c30d87784ba73aa9ac522b684, type: 3}
   m_Name: Character 1
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
   stat:
     stats:
     - typeStat: 0
@@ -45,6 +44,5 @@ MonoBehaviour:
     - typeStat: 9
       typeValueStat: 1
       value: 0
-  appearance:
-    itemName: 
-    icon: {fileID: 0}
+  animator: {fileID: 22100000, guid: 5ae8078ebe58bb44196634f785e3fc32, type: 2}
+  rarity: 0

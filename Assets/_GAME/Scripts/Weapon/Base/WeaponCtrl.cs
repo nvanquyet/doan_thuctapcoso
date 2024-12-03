@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using ShootingGame.Data;
+using System;
 namespace ShootingGame
 {
     public class WeaponCtrl : MonoBehaviour
@@ -50,38 +51,32 @@ namespace ShootingGame
 
         private void OnNextWave(GameEvent.OnNextWave param)
         {
-            var index = 0;
-            var allItems = GameData.Instance.ItemData;
             if (dictWeaponPos == null) dictWeaponPos = new Dictionary<AWeapon, Vector3>();
             else dictWeaponPos.Clear();
+
             _player.Stat.ResetStat();
-            var allIDWeapon = new List<int>();
-            foreach (var i in param.allIDItem)
+
+            foreach (var i in param.allEquiqments)
             {
-                var data = allItems.GetValue(i);
-                if (data == null) continue;
-                if (data.Prefab != null && (data.Prefab is AWeapon)) allIDWeapon.Add(i);
-                else _player.Stat.BuffStat(data.Stat);
+                _player.Stat.BuffStat(i.Stat);
             }
-            if (allIDWeapon.Count > 0)
+
+            int index = 0;
+            foreach (var w in param.allWeapons)
             {
-                foreach (var wID in allIDWeapon)
+                if (w.Prefab != null && (w.Prefab is AWeapon))
                 {
-                    var data = allItems.GetValue(wID);
-                    if (data.Prefab != null && (data.Prefab is AWeapon))
+                    var tsWp = _allPositionSpawnWeapon[index].transform;
+                    var clone = Instantiate(w.Prefab, tsWp);
+                    clone.InitializeItem(w);
+                    clone.gameObject.SetActive(true);
+                    if (clone is AWeapon)
                     {
-                        var tsWp = _allPositionSpawnWeapon[index].transform;
-                        var clone = Instantiate(data.Prefab, tsWp);
-                        clone.InitializeItem(data);
-                        clone.gameObject.SetActive(true);
-                        if (clone is AWeapon)
-                        {
-                            _weapons.Add(clone as AWeapon);
-                            dictWeaponPos.Add(clone as AWeapon, tsWp.localPosition);
-                            clone.ApplyStat(_player.Stat.CurrentStat);
-                        }
-                        index++;
+                        _weapons.Add(clone as AWeapon);
+                        dictWeaponPos.Add(clone as AWeapon, tsWp.localPosition);
+                        clone.ApplyStat(_player.Stat.CurrentStat);
                     }
+                    index++;
                 }
             }
 #if UNITY_EDITOR

@@ -1,5 +1,6 @@
 using System;
 using ShootingGame;
+using ShootingGame.Data;
 using UnityEngine;
 
 public class TetrisUpgradeItem : AStayInteractor<BoxCollider2D>
@@ -22,18 +23,23 @@ public class TetrisUpgradeItem : AStayInteractor<BoxCollider2D>
        
         foreach(var i in _interactables){
             if(i is TetrisUpgradeItem item){
-                if (slot.itemData.NextLevelAttribute == null) continue;
-                if (item.slot.itemData == slot.itemData)
+                if(slot.itemData is ItemEquiqmentData)
                 {
-                    item.slot.OnDestroyItem();
-                    slot.OnDestroyItem();
+                    var it = slot.itemData as ItemEquiqmentData;
+                    if (it.NextLevelAttribute == null) continue;
+                    if (item.slot.itemData == slot.itemData)
+                    {
+                        item.slot.OnDestroyItem();
+                        slot.OnDestroyItem();
 
-                    OnUpgradeItem?.Invoke(item.slot);
+                        OnUpgradeItem?.Invoke(item.slot);
 
-                    Destroy(item.gameObject);
-                    Destroy(gameObject);
-                    return true;
+                        Destroy(item.gameObject);
+                        Destroy(gameObject);
+                        return true;
+                    }
                 }
+                continue;
             }
             if(i is TetrisRemoveItem removeItem){
                 removeItem.InvokeAction(slot);

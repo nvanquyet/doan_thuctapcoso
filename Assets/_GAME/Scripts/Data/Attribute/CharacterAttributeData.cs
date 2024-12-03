@@ -2,23 +2,48 @@ using UnityEngine;
 
 namespace ShootingGame.Data
 {
-    public abstract class AttributeData<T> : ScriptableObject, IStatProvider where T : MonoBehaviour
+    public enum CategoryItem
     {
-        public abstract T Prefab { get; }
-        public abstract StatContainerData Stat { get; }
-        public abstract ItemAppearanceData Appearance { get; }
-
+        MeleeWeapon = 0,
+        RangeWeapon = 1,
+        Equipment = 2,
+        Consumable = 3,
+        Accessory = 4,
     }
 
-    [CreateAssetMenu(fileName = "CharacterAttributeData", menuName = "Character/CharacterAttributeData")]
-    public class CharacterAttributeData : AttributeData<Player>
+    public enum RarityItem
     {
-        [SerializeField] private Player prefab;
+        Common = 0,
+        Uncommon = 1,
+        Rare = 2,
+        Epic = 3,
+        Legendary = 4,
+    }
+    public class ItemDataSO : ScriptableObject
+    {
+        [SerializeField] private CategoryItem category;
+        [SerializeField] private RarityItem rarity;
+
         [SerializeField] private StatContainerData stat;
         [SerializeField] private ItemAppearanceData appearance;
+        [SerializeField] private MatrixData matrixData;
 
-        public override Player Prefab => prefab;
-        public override StatContainerData Stat => stat;
-        public override ItemAppearanceData Appearance => appearance;
+        public StatContainerData Stat => stat;
+        public ItemAppearanceData Appearance => appearance;
+        public MatrixData MatrixData => matrixData;
+    }
+
+
+    [CreateAssetMenu(fileName = "CharacterAttributeData", menuName = "Character/CharacterAttributeData")]
+    public class CharacterAttributeData : ScriptableObject
+    {
+
+        [SerializeField] private StatContainerData stat;
+
+        [SerializeField] private RuntimeAnimatorController animator;
+        [SerializeField] private RarityItem rarity;
+        public RuntimeAnimatorController Animator => animator;
+        public StatContainerData Stat => stat;
+        public RarityItem Rarity => rarity;
     }
 }

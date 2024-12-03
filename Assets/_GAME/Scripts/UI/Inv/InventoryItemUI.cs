@@ -11,18 +11,18 @@ public class InventoryItemUI : UIComponent
     [SerializeField] private Image icon;
     [SerializeField] private TextMeshProUGUI txtName, txtDescription;
 
-    private Action<ItemAttributeData> OnButtonBuyClickAction;
-    private ItemAttributeData itemAttributeData;
+    private Action<ItemDataSO> OnButtonBuyClickAction;
+    private ItemDataSO itemData;
 
     private void Start()
     {
         btnBuy.onClick.AddListener(OnButtonBuyClick);
     }
 
-    public void Initialized(ItemAttributeData data, Action<ItemAttributeData> clickBuyAction)
+    public void Initialized(ItemDataSO data, Action<ItemDataSO> clickBuyAction)
     {
         OnButtonBuyClickAction = clickBuyAction;
-        itemAttributeData = data;
+        itemData = data;
         icon.sprite = data.Appearance.Icon;
         txtName.text = data.Appearance.Name;
         var stringStats = "";
@@ -36,7 +36,7 @@ public class InventoryItemUI : UIComponent
 
     private void OnButtonBuyClick()
     {
-        OnButtonBuyClickAction?.Invoke(itemAttributeData);
+        OnButtonBuyClickAction?.Invoke(itemData);
         Destroy(gameObject);
     }
 }
