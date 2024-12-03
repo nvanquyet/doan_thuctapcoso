@@ -14,6 +14,11 @@ namespace ShootingGame
             void ExitInteract(Interface.IInteract target);
         }
 
+        public interface IAttackBehaviour
+        {
+            void ExecuteAttack();
+        }
+
         public interface IAttacker : IInteract
         {
             int Damage { get; }
@@ -181,7 +186,6 @@ namespace ShootingGame
     public abstract class AAttacker : AInteractable<BoxCollider2D>, Interface.IAttacker
     {
         [SerializeField] protected int _damage;
-        [SerializeField] protected bool _oneHitOnly = true;
         protected bool _canAttack = true;
         public virtual int Damage => _damage;
         public bool CanAttack => _canAttack;
@@ -200,7 +204,6 @@ namespace ShootingGame
             if (other.TryGetComponent(out Interface.IDefender defender))
             {
                 Attack(defender);
-                if(_oneHitOnly) _canAttack = false;
             }
         }
 

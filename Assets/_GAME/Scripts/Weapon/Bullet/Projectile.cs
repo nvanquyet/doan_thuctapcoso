@@ -17,7 +17,7 @@ namespace ShootingGame
         private float knockbackForce;
         private Rigidbody2D _rigidbody;
         protected IDefender originatingOwner;
-
+        
         public Rigidbody2D Rigidbody
         {
             get
@@ -46,11 +46,8 @@ namespace ShootingGame
 
                     Rigidbody.velocity = Vector2.zero;
 
-                    if (_oneHitOnly)
-                    {
-                        _canAttack = false; 
-                        EnableInteract(false);
-                    }
+                    _canAttack = false;
+                    EnableInteract(false);
                 }
             }
         }
@@ -97,12 +94,12 @@ namespace ShootingGame
             Invoke(nameof(Recycle), 2f);
         }
 
-        public void Spawn(Vector2 direction, (int damage, bool isCritical, float knockback) properties, IDefender owner = null)
+        public void Spawn(Vector2 direction, ImpactData properties, IDefender owner = null)
         {
             originatingOwner = owner;
             _canAttack = true;
             isCriticalHit = properties.isCritical;
-            knockbackForce = properties.knockback;
+            knockbackForce = properties.pushForce;
             visualProjectile.gameObject.SetActive(true);
             Move(direction.normalized * projectileSpeed);
             SetDamage(properties.damage);
