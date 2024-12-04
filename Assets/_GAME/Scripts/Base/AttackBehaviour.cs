@@ -1,3 +1,4 @@
+using ShootingGame;
 using System;
 using UnityEngine;
 using static ShootingGame.Interface;
@@ -19,34 +20,53 @@ public struct ImpactData
     }
 }
 
-public class AttackBehaviour : MonoBehaviour, IAttackBehaviour
+public abstract class AttackBehaviour : MonoBehaviour, IAttackBehaviour
 {
     [SerializeField] private string triggerAnimation = "Attack";
+    [SerializeField] private float attackRange = 1.5f;
 
+    public float AttackRange => attackRange;
+    public string TriggerAnimation => triggerAnimation;
+    public Animator Animator
+    {
+        get
+        {
+            if (animator == null)
+            {
+                animator = GetComponentInChildren<Animator>();
+            }
+            return animator;
+        }
+    }
     public Action OnStartAttack;
 
-    public Action OnEndAttack;
     protected Animator animator;
-    protected IDefender defenderOwner;
+    protected IDefender owner;
+    protected IDefender target;
 
+    protected ImpactData impactData;
 
-    private int hashTriggerAnimation;
-
-    public virtual void Initialize(Animator animator, IDefender owner)
+    public void InitializeImpactData(ImpactData impactData)
     {
-        this.animator = animator;
-        this.defenderOwner = owner;
-        hashTriggerAnimation = Animator.StringToHash(triggerAnimation);
+        this.impactData = impactData;
+        OnTriggerAnimation();
     }
 
-    public virtual void ExecuteAttack(Vector2 direction, ImpactData param)
+    public virtual void Initialize(IDefender owner, IDefender target)
     {
-        animator?.SetTrigger(hashTriggerAnimation);
+        this.owner = owner;
+        this.target = target;
     }
+    protected virtual void OnTriggerAnimation()
+    {
+        OnStartAttack?.Invoke();
+        Animator?.SetTrigger(triggerAnimation);
+    }
+    public abstract void ExecuteAttack();
 
     protected float GetAnimationDuration()
     {
-        var clips = animator.runtimeAnimatorController.animationClips;
+        var clips = Animator.runtimeAnimatorController.animationClips;
 
         foreach (var clip in clips)
         {

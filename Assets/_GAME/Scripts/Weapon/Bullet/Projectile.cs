@@ -17,7 +17,7 @@ namespace ShootingGame
         private float knockbackForce;
         private Rigidbody2D _rigidbody;
         protected IDefender originatingOwner;
-
+        
         public Rigidbody2D Rigidbody
         {
             get
@@ -46,11 +46,8 @@ namespace ShootingGame
 
                     Rigidbody.velocity = Vector2.zero;
 
-                    if (_oneHitOnly)
-                    {
-                        _canAttack = false; 
-                        EnableInteract(false);
-                    }
+                    _canAttack = false;
+                    EnableInteract(false);
                 }
             }
         }

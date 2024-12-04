@@ -14,7 +14,10 @@ namespace ShootingGame
         private Interface.IPlayerMovement playerMovement;
 
         #endregion  
-
+        private void Start()
+        {
+            SetAnimator(GameData.Instance.Players.GetValue(UserData.CurrentCharacter).Animator);
+        }
         #region Implement
         public Animator Animator {
             get {
@@ -29,11 +32,11 @@ namespace ShootingGame
         {
             _locomotionAnimation = Animator.StringToHash("Locomotion");
             _hitAnimation = Animator.StringToHash("OnHit");
-        }
+        } 
 
-        public void SetAnimation(RuntimeAnimatorController runtimeAnimatorController)
+        public void SetAnimator(RuntimeAnimatorController runtimeAnimatorController)
         {
-            _animator.runtimeAnimatorController = runtimeAnimatorController;
+            Animator.runtimeAnimatorController = runtimeAnimatorController;
         }
 
         public void SetLocoMotionState(PlayerLocoMotionState state)

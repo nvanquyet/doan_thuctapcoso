@@ -4,10 +4,24 @@ using UnityEngine;
 public class RollAttack : AttackBehaviour
 {
     [SerializeField] private float distanceRoll;
-    
-    public override void ExecuteAttack(Vector2 direction, ImpactData param)
+
+    protected override void OnTriggerAnimation()
     {
-        this.transform.DOMove((Vector2)transform.position + direction.normalized * distanceRoll, GetAnimationDuration()).SetEase(Ease.Linear).SetDelay(0.05f);
-        base.ExecuteAttack(direction, param);
+        base.OnTriggerAnimation();
+        Animator?.SetBool("IsRolling", true);
+        if (target is MonoBehaviour)
+        {
+            var direction = (Vector2)((target as MonoBehaviour).transform.position - transform.position).normalized;
+            this.transform.DOMove((Vector2)transform.position + direction.normalized * distanceRoll, 1.24f).SetEase(Ease.Linear).SetDelay(1.292f)
+                .OnComplete(() =>
+                {
+                    Animator?.SetBool("IsRolling", false);
+                });
+        }
+    }
+
+    public override void ExecuteAttack()
+    {
+       
     }
 }

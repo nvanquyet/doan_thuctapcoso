@@ -76,9 +76,10 @@ namespace ShootingGame
                 if (_target == null) GetTarget();
                 float distance = Vector2.Distance(transform.position, _path.vectorPath[currentWP]);
                 Vector2 direction = (Vector2)(_path.vectorPath[currentWP] - transform.position).normalized;
-                Vector2 force = direction * _moveSpeed * Time.deltaTime;
+                Vector2 force = Vector2.zero;
                 if (Vector3.Distance(transform.position, _target.transform.position) >= attackRange)
                 {
+                    force = direction * _moveSpeed * Time.deltaTime;
                     transform.position += (Vector3)force;
                     if (distance < _nextWayPointDistance)
                         currentWP++;

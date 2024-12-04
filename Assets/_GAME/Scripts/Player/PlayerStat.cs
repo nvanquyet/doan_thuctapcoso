@@ -5,8 +5,6 @@ namespace ShootingGame
 {
     public class PlayerStat : MonoBehaviour
     {
-        [SerializeField] private int id;
-
         private StatContainerData baseData;
         public StatContainerData BaseData
         {
@@ -14,7 +12,7 @@ namespace ShootingGame
             {
                 if(baseData == null)
                 {
-                    baseData = GameData.Instance.Players.GetValue(id).Stat;
+                    baseData = GameData.Instance.Players.GetValue(UserData.CurrentCharacter).Stat;
                 }
                 return baseData;
             }

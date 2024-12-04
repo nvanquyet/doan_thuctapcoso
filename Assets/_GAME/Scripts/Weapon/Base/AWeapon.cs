@@ -6,7 +6,6 @@ namespace ShootingGame
     {
         [SerializeField] protected SpriteRenderer weaponSprite;
 
-
         private void SetSprite(Sprite sprite) => weaponSprite.sprite = sprite;
 
         #region Stat
@@ -23,7 +22,7 @@ namespace ShootingGame
             }
         }
 
-        public void InitializeItem(ItemAttributeData data)
+        public void InitializeItem(ItemDataSO data)
         {
             equiqment = new StatContainerData(data.Stat);
             SetSprite(data.Appearance.Icon);

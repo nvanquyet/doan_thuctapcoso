@@ -8,7 +8,7 @@ public class InventorySystem : Frame
 {
     [SerializeField] private TetrisInventory tetrisInventory;
     [SerializeField] private InventoryUI inventoryUI;
-    [SerializeField] private List<ItemAttributeData> claimedItems;
+    [SerializeField] private List<ItemDataSO> claimedItems;
 #if UNITY_EDITOR
     private void OnValidate()
     {
@@ -20,7 +20,7 @@ public class InventorySystem : Frame
     private void Start()
     {
         this.AddListener<GameEvent.OnWaveClear>(OnWaveClear, false);
-        claimedItems = new List<ItemAttributeData>();
+        claimedItems = new List<ItemDataSO>();
         inventoryUI.OnItemClickedAction += OnItemClicked;
         inventoryUI.OnButtonTetrisInvClickAction += () => {
             OnShowTetrisUI();
@@ -52,10 +52,10 @@ public class InventorySystem : Frame
         tetrisInventory.gameObject.SetActive(false);
     }
 
-    private void OnItemClicked(ItemAttributeData data)
+    private void OnItemClicked(ItemDataSO data)
     {
         if (data == null) return;
-        if(claimedItems == null) claimedItems = new List<ItemAttributeData>();
+        if(claimedItems == null) claimedItems = new List<ItemDataSO>();
         claimedItems.Add(data);
     }
 
@@ -64,9 +64,10 @@ public class InventorySystem : Frame
         //Call next wave
         UICtrl.Instance.Hide<InventorySystem>(true, () => {
             GameCtrl.Instance.NextWave();
-            var allItemsID = tetrisInventory.GetTetrisItemsID();
-            string allId = string.Join(",", allItemsID);
-            this.Dispatch<GameEvent.OnNextWave>(new GameEvent.OnNextWave { allIDItem = allItemsID.ToList() });
+            if(tetrisInventory.GetTetrisItem(out var weapons, out var equiqment, out var buffItems))
+            {
+                this.Dispatch<GameEvent.OnNextWave>(new GameEvent.OnNextWave { allWeapons = weapons, allEquiqments = equiqment , allBuffItems = buffItems});
+            }
         });
     }
 

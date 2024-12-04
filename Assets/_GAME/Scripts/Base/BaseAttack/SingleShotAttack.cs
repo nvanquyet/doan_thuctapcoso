@@ -8,6 +8,13 @@ public abstract class AShootAttack : AttackBehaviour
     private ObjectPooling<Projectile> projectilePooling;
     private List<Projectile> projectileActived;
 
+
+    private void Start()
+    {
+        projectilePooling = new ObjectPooling<Projectile>(projectilePrefab, 10);
+        projectileActived = new List<Projectile>();
+    }
+
     private void OnDestroy()
     {
         if (projectileActived != null && projectileActived.Count > 0)
@@ -24,13 +31,13 @@ public abstract class AShootAttack : AttackBehaviour
         var projectile = projectilePooling.Get();
         projectile.transform.SetParent(null);
         projectile.transform.position = position;
-        projectile.Spawn(direction, param, defenderOwner);
+        projectile.Spawn(direction, param, owner);
         projectile.OnRecycle = () => {
             if (projectile == null) return;
             else
             {
                 projectile.transform.SetParent(transform);
-                projectileActived.Remove(projectile);
+                if(projectileActived.Contains(projectile)) projectileActived.Remove(projectile);
                 projectilePooling.Recycle(projectile);
             }
         };
@@ -51,9 +58,15 @@ public class SingleShotAttack : AShootAttack
         }
     }
 
-    public override void ExecuteAttack(Vector2 direction, ImpactData param)
+    public override void ExecuteAttack()
     {
-        SpawnProjectile(direction, FirePoint.position, param);
-        base.ExecuteAttack(direction, param);
+        if (target is MonoBehaviour)
+        {
+            var direction = ((target as MonoBehaviour).transform.position - transform.position).normalized;
+            FirePoint.position = transform.position + direction.normalized * 1.1f;
+
+            direction = (Vector2) direction;
+            SpawnProjectile(direction, FirePoint.position, impactData);
+        }
     }
 }

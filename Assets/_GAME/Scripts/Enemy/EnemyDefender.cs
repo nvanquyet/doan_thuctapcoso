@@ -5,8 +5,6 @@ namespace ShootingGame
 {
     public class EnemyDefender : ADefender
     {
-        [SerializeField] ColoredFlash flash;
-
         public Action OnDefend;
         public Action OnDefendSuccess;
         public Action OnDeath;
@@ -18,8 +16,6 @@ namespace ShootingGame
         public override void Defend(int damage, bool isSuper = false, (float, Transform) forceProp = default)
         {
             base.Defend(damage, isSuper, forceProp);
-            // Flash
-            if (flash != null)  flash.Flash(Color.white);
             OnDefend?.Invoke();
             Invoke(nameof(DefendSuccess), .25f);
         }

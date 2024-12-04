@@ -13,7 +13,7 @@ namespace ShootingGame
 
             float Speed { get; }
 
-            void SetAnimation(RuntimeAnimatorController runtimeAnimatorController);
+            void SetAnimator(RuntimeAnimatorController runtimeAnimatorController);
 
             void SetLocoMotionState(PlayerLocoMotionState state);
 

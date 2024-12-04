@@ -23,12 +23,19 @@ public class SpreadShotAttack : AShootAttack
         }
     }
 
-    public override void ExecuteAttack(Vector2 direction, ImpactData param)
+    public override void ExecuteAttack()
     {
+        if (target is MonoBehaviour)
+        {
+            var direction = ((target as MonoBehaviour).transform.position - transform.position).normalized;
+            FocusPoint.position = transform.position + direction.normalized;
+            FocusPoint.right = direction;
+        }
+
         foreach (var firePoint in FirePoints)
         {
-            SpawnProjectile((FocusPoint.position - firePoint.position).normalized, FocusPoint.position, param);
+            SpawnProjectile((firePoint.position - FocusPoint.position).normalized, FocusPoint.position, impactData);
         }
-        base.ExecuteAttack(direction, param);
+
     }
 }

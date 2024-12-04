@@ -5,7 +5,7 @@ public class RadialSpreadShot : AShootAttack
     [SerializeField] private int projectileCount = 10;
     [SerializeField] private float distanceFromObject = 1f;
 
-    public override void ExecuteAttack(Vector2 direction, ImpactData param)
+    public override void ExecuteAttack()
     {
         float angleStep = 360f / projectileCount;
 
@@ -15,12 +15,10 @@ public class RadialSpreadShot : AShootAttack
 
             Vector2 targetPosition = CalculateBulletPosition(transform.position, angle, distanceFromObject);
 
-            direction =  (targetPosition - (Vector2) transform.position).normalized;
+            var direction =  (targetPosition - (Vector2) transform.position).normalized;
 
-            SpawnProjectile(direction, targetPosition, param);
+            SpawnProjectile(direction, targetPosition, impactData);
         }
-
-        base.ExecuteAttack(direction, param);
     }
 
     private Vector3 CalculateBulletPosition(Vector3 position, float angle, float distance)
