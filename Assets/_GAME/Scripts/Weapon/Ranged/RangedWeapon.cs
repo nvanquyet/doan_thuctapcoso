@@ -79,13 +79,13 @@ namespace ShootingGame
             return false;
         }
         
-        private (int, bool, int) GetData(bool isPowerful = false)
+        private ImpactData GetData(bool isPowerful = false)
         {
             var statData = CurrentEquiqmentStat;
             var damage = (int)statData.GetStat(Data.TypeStat.Damage).Value;
             var powerFull = isPowerful ? (UnityEngine.Random.Range(1.5f, 3f)) : 1;
             var isCritRate = IsCritRate();
-            return ((int)(damage * powerFull), isCritRate, (int)statData.GetStat(Data.TypeStat.WeaponForce).Value);
+            return new ImpactData((int)(damage * powerFull), isCritRate, (int)statData.GetStat(Data.TypeStat.WeaponForce).Value);
         }
 
         private void ShootSingle()
@@ -130,14 +130,14 @@ namespace ShootingGame
             }
         }
 
-        private void FireBullet(Transform spawnPoint, (int, bool, int) data)
+        private void FireBullet(Transform spawnPoint, ImpactData data)
         {
             var bulletClone = projectilePool.Get();
             bulletClone.transform.position = spawnPoint.position;
             bulletClone.OnRecycle = () => RecycleBullet(bulletClone);
 
             Vector2 direction = (spawnPoint.position - _muzzuleSpawnPoint.position).normalized;
-            bulletClone.Spawn(direction, (data.Item1, data.Item2, data.Item3), defendOwner);
+            bulletClone.Spawn(direction, data, defendOwner);
             projectileList.Add(bulletClone);
         }
 

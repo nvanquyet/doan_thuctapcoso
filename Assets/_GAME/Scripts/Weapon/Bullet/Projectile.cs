@@ -97,12 +97,12 @@ namespace ShootingGame
             Invoke(nameof(Recycle), 2f);
         }
 
-        public void Spawn(Vector2 direction, (int damage, bool isCritical, float knockback) properties, IDefender owner = null)
+        public void Spawn(Vector2 direction, ImpactData properties, IDefender owner = null)
         {
             originatingOwner = owner;
             _canAttack = true;
             isCriticalHit = properties.isCritical;
-            knockbackForce = properties.knockback;
+            knockbackForce = properties.pushForce;
             visualProjectile.gameObject.SetActive(true);
             Move(direction.normalized * projectileSpeed);
             SetDamage(properties.damage);
