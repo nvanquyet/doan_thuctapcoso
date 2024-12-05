@@ -1,0 +1,6750 @@
+fileFormatVersion: 2
+guid: b726682573057514d99a923e9252bdef
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: gdp_styles_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 242
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 134ca085fb183e147b0d22aa69ee7b49
+      internalID: 1068725535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_1
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 242
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e881b3c20cc5bf6449eac9a27e44c3c5
+      internalID: 389790981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_2
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 242
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12d89bf5c48009f4585a31293321b662
+      internalID: -2041263877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_3
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 242
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdb5a60fe04907544a65945aa6e214c0
+      internalID: 2094409452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_4
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 242
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4091a5784bbe59a4698883359d15e176
+      internalID: 1053190599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_5
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 242
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7aabb077a665d3f48acceb597b95d44f
+      internalID: -22328634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_6
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 242
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65067b7efbfd7cb40b7b3aec73d5ef8c
+      internalID: 101804046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_7
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 242
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7594ae8b587ef444280dc47f08451923
+      internalID: 1795930500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_8
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 242
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1202c67f70fda745868b2de1fec5887
+      internalID: -1765945922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_9
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 242
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4d9eba878dc41648b7caca32887f22d
+      internalID: -242577836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_10
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 242
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 630ff5ae0d2488747b53f1fe195f1c03
+      internalID: 241957052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_11
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 242
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2c8ebfbe3a604a45bfb183ab47ea283
+      internalID: -173278702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_12
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 242
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdbfe267fa2c30f4e82c3f41f6716af2
+      internalID: 128541306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_13
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 242
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9101a4c9e26a14e4a96d85e2f0fc1fc0
+      internalID: -280177922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_14
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 242
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 975e530b27793b94baf6ac3040795839
+      internalID: -404121660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_15
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 242
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20636baf4c7ab3f44aee40d5caef39bd
+      internalID: -298821418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_16
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 242
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 057010a9be6c5024fb5da5e8365c94e8
+      internalID: -606055197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_17
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 242
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf5a2ff3958a680488202c1709b00417
+      internalID: -848249131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_18
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 228
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17c1fb1f306d1d8488ce7a20bf343d8d
+      internalID: -991646419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_19
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 228
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b20dd2c7b3cb824a80371415dd79390
+      internalID: 1633915938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_20
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 228
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66d656202b533ec4f8f2f1745cdc536a
+      internalID: 651866178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_21
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 228
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ba28c1cdc678c7449c9d838cd2c7024
+      internalID: -618774638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_22
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 228
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62943923b5caef742ab37221af90272e
+      internalID: 87660685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_23
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 228
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d3b973f18b78aa42a2002f18d0b9ee6
+      internalID: 1724145454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_24
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 227
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8105db36e7035dc429a59065da105da9
+      internalID: -330254399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_25
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 227
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdda3d381b1041548af75c067c1dc25b
+      internalID: 342997210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_26
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 228
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e919a8a136baa9040af4a7ba8dbdd7f0
+      internalID: -2088145835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_27
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 228
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5626a97ea2e349049a37bb6af55d4e39
+      internalID: -1380932687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_28
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 228
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df5a0f8172272f24fadeb466dcdd1136
+      internalID: 2124179320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_29
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 228
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07600d5cacc173f4f962ff4e5b070ca5
+      internalID: 1744839420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_30
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 228
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7af298faa55d1c4dbabb5fcd77faf76
+      internalID: -464505791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_31
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 228
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3374e98a33cac0c448fe1c005e4cf12c
+      internalID: -317334795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_32
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 228
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 548407b7f2088fe438cc5cef62257892
+      internalID: 1505412727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_33
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 228
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42feac22c078eec468cd45823a799f09
+      internalID: -2048821819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_34
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 228
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74010e14413b283408a5e8346f6f73a3
+      internalID: -1825769839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_35
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 228
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0869cc9c1a273b942a96e6dc289ca574
+      internalID: -73958335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_36
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 214
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 575291a788a40e3498cabe2cab50e3dd
+      internalID: -2075352826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_37
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 214
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51040a36257e77c468295f03f2f838e4
+      internalID: 638694594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_38
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 214
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6ebfe515a77be448b24925da71f0da2
+      internalID: 1368512334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_39
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 214
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32f3205e67f500246bad237e7e6333b6
+      internalID: -2050810456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_40
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 214
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fb8012b87219194faa9ef4a050542a0
+      internalID: -861553219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_41
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 214
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7339790d34067a8439606e8a1ef83fb7
+      internalID: -1552943906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_42
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 212
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e46c12ebbcd18f247a49448c9887914b
+      internalID: 1579322799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_43
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 212
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77b9e4d76425dd446bff65a050b7f85d
+      internalID: 35429206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_44
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 214
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2eeb0a1be477c542b52cd3aec0a79e1
+      internalID: -1437300459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_45
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 214
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9986f641cecb7841b69a23a60b47970
+      internalID: 308317220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_46
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 214
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 919c39d00eed72147863c54ec68afbd0
+      internalID: -790468414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_47
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 214
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 063b38e7be531b34b8969f7c3b04af31
+      internalID: 668725767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_48
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 214
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46237ff4f176f5c44bd974694c58b908
+      internalID: -808576453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_49
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 214
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1e6c64579eb6514a9af9af208d4682c
+      internalID: -343326949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_50
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 214
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d8f760e582610949ad76e6bfc716bf2
+      internalID: -1763049070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_51
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 214
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 612c5dc4bc01eef4392b2da42cbdd99e
+      internalID: 973228824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_52
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 214
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 125e75f812705444492969d70fca7a0c
+      internalID: 2096465816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_53
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 214
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6aa306585de77144bffc6363c462861
+      internalID: 1191451683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_54
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 200
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5de3105bf047c6149b781cdba60da7d0
+      internalID: -2102473063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_55
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 200
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd7ed2d8bdf02a34a93b5998f541284b
+      internalID: -1542717761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_56
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 186
+        width: 13
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7493e8133c736e3468a7cb980a0e3bc3
+      internalID: 1085905862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_57
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 186
+        width: 14
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54b27031980f6f94792e736c9573ee4a
+      internalID: 1213470122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_58
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 200
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff2e5d12226acb44b8863fe456d8c072
+      internalID: 1251595131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_59
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 200
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34c1ef9e570c372409bcd6791609fadd
+      internalID: 1509653971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_60
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 197
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1ee026ce9281d648991485d88588cd4
+      internalID: 1810745724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_61
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 197
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13b8d63fafe698943b755222f3547ea3
+      internalID: 1352008567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_62
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 200
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2aeb6ed3f80b33642ac5af454d67412f
+      internalID: -448609117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_63
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 200
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 046c5eac9199cf54eb60e0e09c9aa94d
+      internalID: 1895025718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_64
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 200
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1344d39e8012de4e86b13e02468020f
+      internalID: -1148884427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_65
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 200
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a92ffb394d18840459aa1426d4a0e5e7
+      internalID: -1675571758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_66
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 200
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9382d3d00069cc4db2985d2fcac3c80
+      internalID: 1920417124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_67
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 200
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 045f2f7e286b0cd4f9d1a475b851c019
+      internalID: -212762742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_68
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 200
+        width: 27
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 377423e70b74ff24d98ae52e7bb6266f
+      internalID: 1732553433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_69
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 200
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 210d6a36b0535b8428b8669e9de8038b
+      internalID: 1773637626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_70
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 200
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d86e3564c28bb648bc40213b7e99455
+      internalID: 265572324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_71
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 186
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16ba69960c830ec4499defe3bfa04147
+      internalID: -1818040254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_72
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 186
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2ac8f3df283f034aade527ca692153f
+      internalID: 950179917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_73
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 182
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdecf7f896664e4438bb617183704be0
+      internalID: 1193517153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_74
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 184
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b786008d46cf3cd4ab4afd444b61db5d
+      internalID: 931131605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_75
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 184
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e4baa83446f8684eb636ea061061bec
+      internalID: -753618171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_76
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 184
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96a0ef04d80601744940ba00a483e715
+      internalID: -714064458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_77
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 185
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23d98e1ef8bc8f44eb63d8f127934b11
+      internalID: 1203514241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_78
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 186
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0aca23a39c8a02c42ae58090e6eab7d4
+      internalID: 693215333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_79
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 186
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2911bff1f0e2b1e46877f98764306884
+      internalID: -462261955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_80
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 175
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1be8e642c299c1d48bbc60e6eb17be57
+      internalID: -301881377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_81
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 174
+        width: 4
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e01b8dfa45d7cda488ae667d659671c1
+      internalID: 788959004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_82
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 174
+        width: 4
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 472aab797e787ab49a7a92833c11d28e
+      internalID: -1778158731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_83
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 173
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5b55e46ff7dd394ead26a6d015a722c
+      internalID: -1199682310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_84
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 173
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bb237730637aad4e98a211daa6091e7
+      internalID: -812743815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_85
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 173
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 559633047f58e4646ad54c31630d5644
+      internalID: 1326552478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_86
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 173
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4608132534268049a9150ec5edbd2a7
+      internalID: -1033715489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_87
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 170
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d166ed1492f7d274c9df29784d666ec9
+      internalID: -1668497848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_88
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 172
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc7b073cde75cf0408effbaaadf9594e
+      internalID: 423766915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_89
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 172
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afb62fcef4898444da8cd9ec287d8bfd
+      internalID: -1042258970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_90
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 160
+        width: 4
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43f19a65fefb64846ab2be279ac995c0
+      internalID: 937059580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_91
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 160
+        width: 4
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 521e622d590ff604194b8556b6260da7
+      internalID: -305916518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_92
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 161
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c2bb571899dde143809a0e7c722b1ca
+      internalID: -1209267579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_93
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 160
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ead0ec1a4e8e12440bd78400208b107e
+      internalID: -2105878544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_94
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 160
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 203e4db204819154896561701cab38ac
+      internalID: 1333718083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_95
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 160
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b7e617e902a3de4e9070aceb534b1c1
+      internalID: 803756298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_96
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 160
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c84d54dc474662e47ac87120667d0d44
+      internalID: -300293179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_97
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 153
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7caa6f40a626ff4288d6ce1078a29ab
+      internalID: -1320110015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_98
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 155
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 508743f2335a28e49acffe94497d736c
+      internalID: -1905514861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_99
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 158
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1086b7340800d643b5a172810c94f5a
+      internalID: -1994460280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_100
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 158
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3f7c1721a2ad3947bb684e73342f808
+      internalID: 1350150863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_101
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 149
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68df3dabf37834448b75824cca1a28e8
+      internalID: -1603114131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_102
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 149
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 519bc0a6d62e87546bbd4b6e17d8fe60
+      internalID: 1689551427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_103
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 148
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d6a4057a45f15248bf1ab471b108c80
+      internalID: -1909480771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_104
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 148
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 754048559f6491d42891699931ae6d9a
+      internalID: -1442878117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_105
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 153
+        width: 7
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc28bfca61699a34da888ec41b6b4f01
+      internalID: 1761631421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_106
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 140
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4d83392b55c755429d0508e2bb3fc03
+      internalID: -795541204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_107
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 144
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fcd6ba14ca3e444b9920e99c906b60f
+      internalID: 1874356835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_108
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 144
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1e058082f246044698e246b19fc775f
+      internalID: 1195354715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_109
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 147
+        width: 9
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fbea6e625137314990e9eee46c083a5
+      internalID: 648208270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_110
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 147
+        width: 9
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1027d120f15e9d443ba421a48f9d7b95
+      internalID: -1474051203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_111
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 138
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55df8680e2a8fc34bb600290ea52488a
+      internalID: 886897798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_112
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 138
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee885b1abfd191744bb91e144baa1690
+      internalID: -874193875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_113
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 138
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 259e7d18fd4a23f4388c07257283b9ee
+      internalID: 682790893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_114
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 138
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff5ac54fceaea82478ed704d1e13987c
+      internalID: -879935259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_115
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 138
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 581285a977cd8d741acba17315daef48
+      internalID: 1172002626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_116
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 137
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d60e88a5416e7524291b01283afeaffa
+      internalID: -1659640756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_117
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 137
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fed500f6ebc29c1459be181f38d234a9
+      internalID: -1701638401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_118
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 136
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eca2bb3f15fb03946b5a5425c7f6f30f
+      internalID: 2096289685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_119
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 136
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e4f47618ed17024485145f9eb215438
+      internalID: -1914206916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_120
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 140
+        width: 9
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e16c8f50e2b9d684e9fcbb053b13cdf9
+      internalID: 1649451949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_121
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 140
+        width: 7
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8747f7b5ad7909469209eaf00a8f29b
+      internalID: 1167892233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_122
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 130
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e21b9394b262ae43ba1964189f402a0
+      internalID: 607897896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_123
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 130
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5dcfb8d1b68bfc4d86708f6d72d9497
+      internalID: -1221361802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_124
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 125
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37947189dd7e403488b8647f32742262
+      internalID: 1624590369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_125
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 125
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fe5b611c55a73048a876b1855ed3723
+      internalID: 1226976997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_126
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 124
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b092c94cbc3b8344e9969e2a2c794337
+      internalID: -763941216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_127
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 124
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bb5c8119fb55844b84490ae80262cff
+      internalID: 309567931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_128
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 131
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd30f3b16f80e81459eed755b0b56776
+      internalID: 1587492885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_129
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 131
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d9c9a6fb5959764382d61b762582c7e
+      internalID: 1039436455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_130
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 127
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78eb6817030ccb2418d558efc63a445b
+      internalID: -313601798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_131
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 127
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28090346abfc6f744ba07badf8af8827
+      internalID: 112728715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_132
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 127
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bd2cbfb606759d479c7ce400b0afbc6
+      internalID: 1099112476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_133
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 127
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9406c0599f5dbb74fabd6b059c9f6a2a
+      internalID: 1179639326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_134
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 127
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d442ad50d8267a489384d61ae75b98a
+      internalID: -1461512915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_135
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 125
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af12ed202624e71438939b89584d2c91
+      internalID: -160752910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_136
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 123
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 338ca989b94bf3647aaf9f5e4b9e4907
+      internalID: 836532811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_137
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 123
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5184e547b7299bc40a69c70891066192
+      internalID: -1317099453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_138
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 109
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd4580b035c0647478d6d35e61fc7e92
+      internalID: -392117006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_139
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 109
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 079061e0de873d340afad29f4a74334a
+      internalID: -168930847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_140
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 109
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 984f59c311abfd041a058a23e72acecf
+      internalID: -1747051569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_141
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 109
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c899d6fb48fc3e46ac81a8d4607df5e
+      internalID: 405999323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_142
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 109
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70d53d6d7e1d2784c857467ced0bff3e
+      internalID: 1122000990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_143
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 108
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e103cfd737aad245bb69143ecc40716
+      internalID: -1255382558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_144
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 114
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74e8c4d81d14ace4d8696e6b79c98bad
+      internalID: -2032336492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_145
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 114
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6519f7602547a4e48993cf961a69ebb1
+      internalID: 2020568469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_146
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 112
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9186fbd9b4e900e46897c9b21c1da86e
+      internalID: -400732111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_147
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 112
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccc1250b8931cb743841861d8695d2d1
+      internalID: -1756433437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_148
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 115
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ee48e609eef6374b940567158f8f4c7
+      internalID: 1900453855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_149
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 115
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae944d2a9f90fe2449bff7eae6501a8a
+      internalID: 619087137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_150
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 100
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11dbdf38adc152c49a5c9f48382851a5
+      internalID: -1063766327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_151
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 100
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5499bdbbf2e528e4d84e0deded6b9b0a
+      internalID: 1452445249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_152
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 107
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6abe377fad98254b83c20115828ad31
+      internalID: 325243822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_153
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 107
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f580139e3de5b048a97e4e40fb6e8ec
+      internalID: -1199507082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_154
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 92
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2bed1b0b617a954492a537126bb02a9
+      internalID: 31409794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_155
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 92
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd722f3d137ec0448b6fc6b92faed3a4
+      internalID: -765706014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_156
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 92
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81e180599e1fd65469f768d2d8ae6d88
+      internalID: -2135357950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_157
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 92
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a525d5a2093de08428e79e26207b038d
+      internalID: -258156102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_158
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 92
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ef0b3b0cde310143a99983745880c49
+      internalID: -70394900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_159
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 101
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2aebe463db0a7884a8d168babbb26a44
+      internalID: -197853018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_160
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 101
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cd4bd92465bf164a906e2cbcf495bf5
+      internalID: 1450173298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_161
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 99
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3b580594c0219e4aacb35b73c305a57
+      internalID: -297057042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_162
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 99
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1edc02fdcebb97e4487f39109520015a
+      internalID: 238870444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_163
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 86
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5d9597545a73364dac5bcce822753ce
+      internalID: 2050283644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_164
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 86
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 182302b8b0f51b14da5bdcd77555e778
+      internalID: 1175121488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_165
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 86
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adb22906d6d707c4483688387b97ec83
+      internalID: 1119385148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_166
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 86
+        width: 29
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: effb1176e175569438d3eb1ea5a10440
+      internalID: -808990331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_167
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 90
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a9162d38522d254289258d6c90a313c
+      internalID: -1115944757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_168
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 90
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1eeafbc5ec7ab4429940a99f9d52a3b
+      internalID: 1775200164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_169
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 88
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b9e67c5340ccde40b1a77be68a5b490
+      internalID: -1929463469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_170
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 88
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f77f5141a31dc0b4fa8975ed4cb04eb1
+      internalID: 91325078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_171
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 92
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cc7f1fe365ad8d448f5238f71c3c2ac
+      internalID: 1510680509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_172
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 91
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5afd1dd4854a22d4bb204f13adead236
+      internalID: 1462090012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_173
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 76
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 687315702c3c32b4789b1128302db9b7
+      internalID: 899657180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_174
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 76
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a3b214ab3bf1f7499d3404bfbe779d0
+      internalID: 749900388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_175
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 85
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b51c9700f8c06654e9c0b537abee5131
+      internalID: 1327846092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_176
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 83
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 182862504a4331040866673bf5fac10b
+      internalID: -1401442738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_177
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 75
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8aaaeb8c9cb5a054098b0a9944a84300
+      internalID: -127870083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_178
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 75
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cd3fe97c20b7f54288017df873fd219
+      internalID: 1196215885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_179
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 75
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d5e4d41d3550be45b7a51a9e4ff91ac
+      internalID: -656972037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_180
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 75
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1badbed2642e294b89e4649499182c9
+      internalID: 628720638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_181
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 75
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80c775ea29cd7a449aac2fbb203c323d
+      internalID: -1486667299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_182
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 60
+        width: 12
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc5294c59f8d20645b0b3dc421f7e765
+      internalID: -428970979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_183
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 77
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a9fc7ced7b7beb42b06ab6a1daa2bd8
+      internalID: -1203171926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_184
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 77
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2d4b2bc0e77ad241856cb159563b795
+      internalID: -144508323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_185
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 75
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b009a82bf71cc4245837ad7ec084a4b3
+      internalID: 718254141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_186
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 69
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 686fc2398450b97498f15a811779dac2
+      internalID: 366223722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_187
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 69
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f94171d18e1610b43a615c724165af7c
+      internalID: 1395158136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_188
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 69
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3fa4e0ecf3ef004da139d53bea57658
+      internalID: -1330618903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_189
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 69
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a99ea76a9a15f29428e0472f36da31c9
+      internalID: 898589178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_190
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 69
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e97a1c6421fcaf2409736304671d5579
+      internalID: 616617970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_191
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 65
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d1f2afbfb1a5ec4ca9479c1eb4dd743
+      internalID: 1180169333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_192
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 65
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4694f970b823d714d96be5626861df32
+      internalID: -717736656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_193
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 64
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b878d8f5f60cbc43a5858801a12d25f
+      internalID: -406083894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_194
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 64
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 165d96af426ea76408674ab45fc87465
+      internalID: -748319676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_195
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 67
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4322a2084244454ba2cb446ab4ceb09
+      internalID: 2112743827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_196
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 63
+        width: 7
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39d8642a22e8e4b439fc7c57812296d2
+      internalID: -1442088510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_197
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 65
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26ee50839bde80a41b4fcb95a7cb3d85
+      internalID: -1593475036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_198
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 65
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1302aeac82185394fa130ffcb68422b7
+      internalID: -513914227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_199
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 64
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eef195aef8b4c46459d9e9826be0af9b
+      internalID: 566838566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_200
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 64
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2163cb2c474004c4fa78f3d671566b2d
+      internalID: -584581630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_201
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 64
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40489710e63b4f34bb30f246a97b586e
+      internalID: -550579953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_202
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 64
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c0dff6fe22ea934284c1cf3a0bd7b07
+      internalID: -762979754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_203
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 64
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aeea8aaef03d58749ae067c9c6562a53
+      internalID: 170138828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_204
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 52
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a3e8e81572592a428cb803ae47ff2ed
+      internalID: -298367364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_205
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 52
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17a89f6cdd6aec645ad959b13770301f
+      internalID: 794531826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_206
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 52
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5803cabb0e51904c95adc789912df88
+      internalID: -627147999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_207
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 52
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8aa7d4aa812e2d4fbeac6b9ed8a056a
+      internalID: 688742387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_208
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 53
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a27f511e4146bc547bb9db8c375e1ef4
+      internalID: 15214726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_209
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 53
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dd9465690921b0459d1c6fbac55d05a
+      internalID: 1722992733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_210
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 52
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbb0cbbb376065c4fb12b9fd32949d19
+      internalID: 1171962751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_211
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 52
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87799e2e6eb8069469f395b1b949e1d2
+      internalID: -1312892629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_212
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 59
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d8eb518ea1d07347935114540a68fe9
+      internalID: -853470460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_213
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 57
+        width: 7
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0caf7f4c6b1b52498fd38a009f92355
+      internalID: -987107467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_214
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 57
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63047f431565534479f16043cbf4aca5
+      internalID: 999490328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_215
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 57
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 018e9a09b3073b14484469a629ee3120
+      internalID: -438244611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_216
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 53
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbb0fa69d363315409c1c0c509dbbb1d
+      internalID: -120169090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_217
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 53
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05ab1529c13799046b90df4d65b758d8
+      internalID: -750870412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_218
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 53
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea34fcc4fb7a851488f498aaa2962719
+      internalID: 638437139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_219
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 53
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efe72f02925ba474f918c8ea14e78d0e
+      internalID: -1337694803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_220
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 53
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 141618f21240d8246b70b8f7f38179e2
+      internalID: -1831448579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_221
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 51
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12777afc94835de4ba4ebaac040c56a5
+      internalID: -87486093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_222
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 51
+        width: 7
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c50ac97bf6bec8d4e9d654e8975c5f38
+      internalID: 1255217500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_223
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 51
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2efa9df9719a7874897dd47c0f085766
+      internalID: 1631342125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_224
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 51
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: deea59201f981804193885c4659d1f32
+      internalID: 1862286371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_225
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 33
+        width: 6
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c05628b61df898646b7e1b00f7d193f7
+      internalID: -303009620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_226
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 33
+        width: 6
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19fbd828c9137c142acc3d6474a5705b
+      internalID: 248515684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_227
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 33
+        width: 6
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0d020796af02864788ea33c388f4a47
+      internalID: -684765719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_228
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 33
+        width: 6
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32bc270621636fb42851c3553b3a9a7c
+      internalID: -1617305596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_229
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 43
+        width: 18
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 344b3316490c06b4a9fcdf78aa9c1b18
+      internalID: 409958979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_230
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 43
+        width: 18
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be70e990929a40e45af2edd256eaed99
+      internalID: -1988680246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_231
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 43
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d5d54c799121814b94d3bfb9d2aa8ec
+      internalID: -1766272814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_232
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 43
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c952d3e69dbd2ec4eaabc3d75aad27d2
+      internalID: -667347658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_233
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 35
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cfe1422791e88c418f699010c0a3062
+      internalID: -2085027395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_234
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 35
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 501f50afcca0b0a4da9cd6e2df41f25a
+      internalID: 104245065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_235
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 35
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5a53e07ec1967149ae98f9e08694120
+      internalID: -259557958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_236
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 35
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 778329b257288e4479e2657925f20456
+      internalID: 1482999663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_237
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 35
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb35b6bd2b8feee4ab97edafe1437c59
+      internalID: -776503368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_238
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 35
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48ae7a12fa88bd24caeb6ae8306586d5
+      internalID: -1623682732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_239
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 35
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 916a325200da96c4fac72cb4790f8bb9
+      internalID: 1835522497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_240
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 35
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7454bbf43af88914abb66d9b35ab289a
+      internalID: -145635799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_241
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 35
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01918659026249643b80b1c1bec19841
+      internalID: 1021368012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_242
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 35
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 492f9857070706840bdfdc2ef52a9215
+      internalID: -1705895269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_243
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 34
+        width: 18
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36e92ef69e848d94f9c93030f299ea80
+      internalID: -997712934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_244
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 34
+        width: 18
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1aff1e2f275808744a39f0b3c4cda301
+      internalID: -1343910457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_245
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 37
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af793fa2434137a49ae02f6b5e519359
+      internalID: -523356322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_246
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 37
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 530ca707dc0a0f44797492080fad09b4
+      internalID: -2123029777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_247
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 25
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed0c1d9b8eaca0a48b2126916adee5d0
+      internalID: -24877520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_248
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 25
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbd1c4dedfe9992468b9e54138100ca0
+      internalID: 1176095356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_249
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 25
+        width: 14
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff73d9345ad5dea4fa97d891ef0eeafa
+      internalID: -1296132413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_250
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 27
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 708f877859660b24d8ee550e8d3e84b3
+      internalID: 194755431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_251
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 27
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff5e53da42a5c09489151995cc857057
+      internalID: -659956837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_252
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 27
+        width: 11
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 444964d8c41b9d440861adc1796ad00e
+      internalID: 579021551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_253
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 29
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d83afed3651dd84fb4dff58839fa44d
+      internalID: -1326027944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_254
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 29
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25e45929009341d408bb28a58fa49d41
+      internalID: 489759682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_255
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 18
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a8a4344be8fbe24786b4417f0a684b3
+      internalID: 511590862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_256
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 18
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78e62dcf77f02fb4d87adb77a720c57c
+      internalID: -517160185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_257
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 18
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f94cf7c8b2165d4ebb17f215d136b58
+      internalID: -933099226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_258
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 18
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2e04d80b4266274b81e74a68c1756d7
+      internalID: -81933810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_259
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 18
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42aee4ba945987d4484c4ab71cf4a1dd
+      internalID: -1046407016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_260
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 18
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27c0476d277bcd1478619eb8d0fadf30
+      internalID: -1419922210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_261
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 18
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d04ca387b587644295d5961851532a3
+      internalID: 1800443653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_262
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 18
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83b93e4a6b7f825458c6d37bf7fb05b2
+      internalID: 2939400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_263
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 18
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0f082da571a18f4fa8dbc73feb45e3f
+      internalID: 265785031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_264
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 18
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65d28fd799e84fd4a9a3832d2fbf0622
+      internalID: 457411711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_265
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 17
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b4e0a62e4323dc4587bf1af3a9e5886
+      internalID: -101773026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_266
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 17
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89bd35e7760251c4891c6836d0387fa2
+      internalID: 1177937218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_267
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 17
+        width: 14
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f00d525bd939a4943a63cc47fc4deb33
+      internalID: 589459950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_268
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 21
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c87f85a646d8a14197d6bbbf7eeb61d
+      internalID: -105379719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_269
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 21
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84ac5021d2795bd4b92a98fcda574123
+      internalID: 2104405439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_270
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 10
+        width: 19
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa342f75023e7544186b5eff7c07dbf9
+      internalID: -2025525992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_271
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 22
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6819f3130fa178c4997a536877c40b2e
+      internalID: -1759657660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_272
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 23
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b09498a8cbae0764da6e1f7232033abe
+      internalID: -445737775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_273
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 9
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b01fe42884e43e64399bcc908256bb76
+      internalID: -1690642240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_274
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 9
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5ab2c01e92e0d14b910de634fe72883
+      internalID: 734684436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_275
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 9
+        width: 14
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 222f94270e0431b4f9e01c47bf827b3a
+      internalID: -1192923182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_276
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 15
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76f5094396fffac4699c80ad896b7454
+      internalID: -126882156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_277
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 15
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61259ee4cf3ab4b458ea834cf6174054
+      internalID: 2143788828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_278
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 15
+        width: 11
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ce17e28a0903b045a34a4fce0384794
+      internalID: 1279228213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_279
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 1
+        width: 25
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ee1a9c4f4fdcd14da3e70519ecbb5e0
+      internalID: -471710295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_280
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 15
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c7d9ffe36345724c924e41c51bee345
+      internalID: 1130172382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_281
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 15
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba1eb568e762cb047a24d1ebea036ce1
+      internalID: -624497572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_282
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 1
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd8bce8ecfcb1f5429ac0c34c19e5b89
+      internalID: 1119635233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_283
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 1
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63cee8894163e5a4c8abc170359b2a2e
+      internalID: 575593477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_284
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 1
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4da0e9e2c97f5084f9577264fffd78f0
+      internalID: 533165508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_285
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 1
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83eac035849dfb941ad33fd805e1dbd9
+      internalID: -487857939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_286
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 1
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b88c4e2d471c364d8416ba4af1ae010
+      internalID: -1786299292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_287
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 1
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 692484678dc18f54997bc1ca3bc8c611
+      internalID: 1941432344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_288
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 1
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 758614735978045459ad4bfd91ef87cd
+      internalID: 838192334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_289
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 1
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e32a74bf2c670e049baa8ea4dbce465e
+      internalID: -1440433036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_290
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 1
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec8a2a4b1c1fc5d4d8a7ad6d88f0c240
+      internalID: -492422138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_291
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 1
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d67a5d32512124547b0d139e177947fb
+      internalID: 1969336302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_292
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 9
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2329bb5bbc7321c48b05438326e204f9
+      internalID: 879556371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_293
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 9
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c07930bd74cd1f14aaae3c5c5ec37638
+      internalID: -804796204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_294
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 9
+        width: 11
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db9e81d937c661640b877b9097c67ea4
+      internalID: -851846189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_295
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c8abc9653ebcd741951f6d76c9ebc5e
+      internalID: -985744461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_296
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 1
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcbaea718285a5b4ca02fa393c463dea
+      internalID: 1664916270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_297
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1
+        width: 14
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ca0a7f90f922a047a55c7feba0c34f6
+      internalID: -755264932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_298
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 3
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b99f85be794a6da4796e25200fdbf1a7
+      internalID: 2091205827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_299
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 3
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18f03b8299f382547b2549a3e58748af
+      internalID: 1437570633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gdp_styles_300
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 43
+        width: 18
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3d4c2d8e1a493040a7d0db0cd008da5
+      internalID: 1127816245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      gdp_styles_0: 1068725535
+      gdp_styles_1: 389790981
+      gdp_styles_10: 241957052
+      gdp_styles_100: 1350150863
+      gdp_styles_101: -1603114131
+      gdp_styles_102: 1689551427
+      gdp_styles_103: -1909480771
+      gdp_styles_104: -1442878117
+      gdp_styles_105: 1761631421
+      gdp_styles_106: -795541204
+      gdp_styles_107: 1874356835
+      gdp_styles_108: 1195354715
+      gdp_styles_109: 648208270
+      gdp_styles_11: -173278702
+      gdp_styles_110: -1474051203
+      gdp_styles_111: 886897798
+      gdp_styles_112: -874193875
+      gdp_styles_113: 682790893
+      gdp_styles_114: -879935259
+      gdp_styles_115: 1172002626
+      gdp_styles_116: -1659640756
+      gdp_styles_117: -1701638401
+      gdp_styles_118: 2096289685
+      gdp_styles_119: -1914206916
+      gdp_styles_12: 128541306
+      gdp_styles_120: 1649451949
+      gdp_styles_121: 1167892233
+      gdp_styles_122: 607897896
+      gdp_styles_123: -1221361802
+      gdp_styles_124: 1624590369
+      gdp_styles_125: 1226976997
+      gdp_styles_126: -763941216
+      gdp_styles_127: 309567931
+      gdp_styles_128: 1587492885
+      gdp_styles_129: 1039436455
+      gdp_styles_13: -280177922
+      gdp_styles_130: -313601798
+      gdp_styles_131: 112728715
+      gdp_styles_132: 1099112476
+      gdp_styles_133: 1179639326
+      gdp_styles_134: -1461512915
+      gdp_styles_135: -160752910
+      gdp_styles_136: 836532811
+      gdp_styles_137: -1317099453
+      gdp_styles_138: -392117006
+      gdp_styles_139: -168930847
+      gdp_styles_14: -404121660
+      gdp_styles_140: -1747051569
+      gdp_styles_141: 405999323
+      gdp_styles_142: 1122000990
+      gdp_styles_143: -1255382558
+      gdp_styles_144: -2032336492
+      gdp_styles_145: 2020568469
+      gdp_styles_146: -400732111
+      gdp_styles_147: -1756433437
+      gdp_styles_148: 1900453855
+      gdp_styles_149: 619087137
+      gdp_styles_15: -298821418
+      gdp_styles_150: -1063766327
+      gdp_styles_151: 1452445249
+      gdp_styles_152: 325243822
+      gdp_styles_153: -1199507082
+      gdp_styles_154: 31409794
+      gdp_styles_155: -765706014
+      gdp_styles_156: -2135357950
+      gdp_styles_157: -258156102
+      gdp_styles_158: -70394900
+      gdp_styles_159: -197853018
+      gdp_styles_16: -606055197
+      gdp_styles_160: 1450173298
+      gdp_styles_161: -297057042
+      gdp_styles_162: 238870444
+      gdp_styles_163: 2050283644
+      gdp_styles_164: 1175121488
+      gdp_styles_165: 1119385148
+      gdp_styles_166: -808990331
+      gdp_styles_167: -1115944757
+      gdp_styles_168: 1775200164
+      gdp_styles_169: -1929463469
+      gdp_styles_17: -848249131
+      gdp_styles_170: 91325078
+      gdp_styles_171: 1510680509
+      gdp_styles_172: 1462090012
+      gdp_styles_173: 899657180
+      gdp_styles_174: 749900388
+      gdp_styles_175: 1327846092
+      gdp_styles_176: -1401442738
+      gdp_styles_177: -127870083
+      gdp_styles_178: 1196215885
+      gdp_styles_179: -656972037
+      gdp_styles_18: -991646419
+      gdp_styles_180: 628720638
+      gdp_styles_181: -1486667299
+      gdp_styles_182: -428970979
+      gdp_styles_183: -1203171926
+      gdp_styles_184: -144508323
+      gdp_styles_185: 718254141
+      gdp_styles_186: 366223722
+      gdp_styles_187: 1395158136
+      gdp_styles_188: -1330618903
+      gdp_styles_189: 898589178
+      gdp_styles_19: 1633915938
+      gdp_styles_190: 616617970
+      gdp_styles_191: 1180169333
+      gdp_styles_192: -717736656
+      gdp_styles_193: -406083894
+      gdp_styles_194: -748319676
+      gdp_styles_195: 2112743827
+      gdp_styles_196: -1442088510
+      gdp_styles_197: -1593475036
+      gdp_styles_198: -513914227
+      gdp_styles_199: 566838566
+      gdp_styles_2: -2041263877
+      gdp_styles_20: 651866178
+      gdp_styles_200: -584581630
+      gdp_styles_201: -550579953
+      gdp_styles_202: -762979754
+      gdp_styles_203: 170138828
+      gdp_styles_204: -298367364
+      gdp_styles_205: 794531826
+      gdp_styles_206: -627147999
+      gdp_styles_207: 688742387
+      gdp_styles_208: 15214726
+      gdp_styles_209: 1722992733
+      gdp_styles_21: -618774638
+      gdp_styles_210: 1171962751
+      gdp_styles_211: -1312892629
+      gdp_styles_212: -853470460
+      gdp_styles_213: -987107467
+      gdp_styles_214: 999490328
+      gdp_styles_215: -438244611
+      gdp_styles_216: -120169090
+      gdp_styles_217: -750870412
+      gdp_styles_218: 638437139
+      gdp_styles_219: -1337694803
+      gdp_styles_22: 87660685
+      gdp_styles_220: -1831448579
+      gdp_styles_221: -87486093
+      gdp_styles_222: 1255217500
+      gdp_styles_223: 1631342125
+      gdp_styles_224: 1862286371
+      gdp_styles_225: -303009620
+      gdp_styles_226: 248515684
+      gdp_styles_227: -684765719
+      gdp_styles_228: -1617305596
+      gdp_styles_229: 409958979
+      gdp_styles_23: 1724145454
+      gdp_styles_230: -1988680246
+      gdp_styles_231: -1766272814
+      gdp_styles_232: -667347658
+      gdp_styles_233: -2085027395
+      gdp_styles_234: 104245065
+      gdp_styles_235: -259557958
+      gdp_styles_236: 1482999663
+      gdp_styles_237: -776503368
+      gdp_styles_238: -1623682732
+      gdp_styles_239: 1835522497
+      gdp_styles_24: -330254399
+      gdp_styles_240: -145635799
+      gdp_styles_241: 1021368012
+      gdp_styles_242: -1705895269
+      gdp_styles_243: -997712934
+      gdp_styles_244: -1343910457
+      gdp_styles_245: -523356322
+      gdp_styles_246: -2123029777
+      gdp_styles_247: -24877520
+      gdp_styles_248: 1176095356
+      gdp_styles_249: -1296132413
+      gdp_styles_25: 342997210
+      gdp_styles_250: 194755431
+      gdp_styles_251: -659956837
+      gdp_styles_252: 579021551
+      gdp_styles_253: -1326027944
+      gdp_styles_254: 489759682
+      gdp_styles_255: 511590862
+      gdp_styles_256: -517160185
+      gdp_styles_257: -933099226
+      gdp_styles_258: -81933810
+      gdp_styles_259: -1046407016
+      gdp_styles_26: -2088145835
+      gdp_styles_260: -1419922210
+      gdp_styles_261: 1800443653
+      gdp_styles_262: 2939400
+      gdp_styles_263: 265785031
+      gdp_styles_264: 457411711
+      gdp_styles_265: -101773026
+      gdp_styles_266: 1177937218
+      gdp_styles_267: 589459950
+      gdp_styles_268: -105379719
+      gdp_styles_269: 2104405439
+      gdp_styles_27: -1380932687
+      gdp_styles_270: -2025525992
+      gdp_styles_271: -1759657660
+      gdp_styles_272: -445737775
+      gdp_styles_273: -1690642240
+      gdp_styles_274: 734684436
+      gdp_styles_275: -1192923182
+      gdp_styles_276: -126882156
+      gdp_styles_277: 2143788828
+      gdp_styles_278: 1279228213
+      gdp_styles_279: -471710295
+      gdp_styles_28: 2124179320
+      gdp_styles_280: 1130172382
+      gdp_styles_281: -624497572
+      gdp_styles_282: 1119635233
+      gdp_styles_283: 575593477
+      gdp_styles_284: 533165508
+      gdp_styles_285: -487857939
+      gdp_styles_286: -1786299292
+      gdp_styles_287: 1941432344
+      gdp_styles_288: 838192334
+      gdp_styles_289: -1440433036
+      gdp_styles_29: 1744839420
+      gdp_styles_290: -492422138
+      gdp_styles_291: 1969336302
+      gdp_styles_292: 879556371
+      gdp_styles_293: -804796204
+      gdp_styles_294: -851846189
+      gdp_styles_295: -985744461
+      gdp_styles_296: 1664916270
+      gdp_styles_297: -755264932
+      gdp_styles_298: 2091205827
+      gdp_styles_299: 1437570633
+      gdp_styles_3: 2094409452
+      gdp_styles_30: -464505791
+      gdp_styles_300: 1127816245
+      gdp_styles_301: 1881831539
+      gdp_styles_31: -317334795
+      gdp_styles_32: 1505412727
+      gdp_styles_33: -2048821819
+      gdp_styles_34: -1825769839
+      gdp_styles_35: -73958335
+      gdp_styles_36: -2075352826
+      gdp_styles_37: 638694594
+      gdp_styles_38: 1368512334
+      gdp_styles_39: -2050810456
+      gdp_styles_4: 1053190599
+      gdp_styles_40: -861553219
+      gdp_styles_41: -1552943906
+      gdp_styles_42: 1579322799
+      gdp_styles_43: 35429206
+      gdp_styles_44: -1437300459
+      gdp_styles_45: 308317220
+      gdp_styles_46: -790468414
+      gdp_styles_47: 668725767
+      gdp_styles_48: -808576453
+      gdp_styles_49: -343326949
+      gdp_styles_5: -22328634
+      gdp_styles_50: -1763049070
+      gdp_styles_51: 973228824
+      gdp_styles_52: 2096465816
+      gdp_styles_53: 1191451683
+      gdp_styles_54: -2102473063
+      gdp_styles_55: -1542717761
+      gdp_styles_56: 1085905862
+      gdp_styles_57: 1213470122
+      gdp_styles_58: 1251595131
+      gdp_styles_59: 1509653971
+      gdp_styles_6: 101804046
+      gdp_styles_60: 1810745724
+      gdp_styles_61: 1352008567
+      gdp_styles_62: -448609117
+      gdp_styles_63: 1895025718
+      gdp_styles_64: -1148884427
+      gdp_styles_65: -1675571758
+      gdp_styles_66: 1920417124
+      gdp_styles_67: -212762742
+      gdp_styles_68: 1732553433
+      gdp_styles_69: 1773637626
+      gdp_styles_7: 1795930500
+      gdp_styles_70: 265572324
+      gdp_styles_71: -1818040254
+      gdp_styles_72: 950179917
+      gdp_styles_73: 1193517153
+      gdp_styles_74: 931131605
+      gdp_styles_75: -753618171
+      gdp_styles_76: -714064458
+      gdp_styles_77: 1203514241
+      gdp_styles_78: 693215333
+      gdp_styles_79: -462261955
+      gdp_styles_8: -1765945922
+      gdp_styles_80: -301881377
+      gdp_styles_81: 788959004
+      gdp_styles_82: -1778158731
+      gdp_styles_83: -1199682310
+      gdp_styles_84: -812743815
+      gdp_styles_85: 1326552478
+      gdp_styles_86: -1033715489
+      gdp_styles_87: -1668497848
+      gdp_styles_88: 423766915
+      gdp_styles_89: -1042258970
+      gdp_styles_9: -242577836
+      gdp_styles_90: 937059580
+      gdp_styles_91: -305916518
+      gdp_styles_92: -1209267579
+      gdp_styles_93: -2105878544
+      gdp_styles_94: 1333718083
+      gdp_styles_95: 803756298
+      gdp_styles_96: -300293179
+      gdp_styles_97: -1320110015
+      gdp_styles_98: -1905514861
+      gdp_styles_99: -1994460280
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

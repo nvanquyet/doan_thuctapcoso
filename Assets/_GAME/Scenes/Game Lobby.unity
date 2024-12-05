@@ -2280,6 +2280,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 765283236}
+  - component: {fileID: 765283237}
   m_Layer: 5
   m_Name: ShopCanvas
   m_TagString: Untagged
@@ -2309,6 +2310,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!111 &765283237
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765283235}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: b3acb8b2256f6b94597e4cc3381966e6, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: b3acb8b2256f6b94597e4cc3381966e6, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &865535120
 GameObject:
   m_ObjectHideFlags: 0
@@ -3379,6 +3396,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1140235248}
+  - component: {fileID: 1140235249}
   m_Layer: 5
   m_Name: InventoryCanvas
   m_TagString: Untagged
@@ -3408,6 +3426,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!111 &1140235249
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140235247}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: b3acb8b2256f6b94597e4cc3381966e6, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: b3acb8b2256f6b94597e4cc3381966e6, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1145689621
 GameObject:
   m_ObjectHideFlags: 0
