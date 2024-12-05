@@ -31,6 +31,7 @@ namespace ShootingGame.Data
         public StatContainerData Stat => stat;
         public ItemAppearanceData Appearance => appearance;
         public MatrixData MatrixData => matrixData;
+        public RarityItem Rarity => rarity;
     }
 
 

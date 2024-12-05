@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using ShootingGame.Data;
 using UnityEngine;
 namespace ShootingGame
@@ -79,7 +80,7 @@ namespace ShootingGame
                             }
                         }
                         break;
-                        
+
                     }
                 case -180:
                     {
@@ -122,6 +123,60 @@ namespace ShootingGame
         {
             return angle % 180 == 0 ? baseSize : new Vector2(baseSize.y, baseSize.x);
         }
+
+
+
+        public static int RandomLevel()
+        {
+            int roll = UnityEngine.Random.Range(1, 101);
+            return roll <= 90 ? 1 : 2;
+        }
+
+        public static T RandomItem<T>(List<T> items) where T : ItemDataSO
+        {
+            if (items == null || items.Count == 0)
+            {
+                return null;
+            }
+            List<T> filteredItems;
+            if (items[0] is ItemEquiqmentData)
+            {
+                List<ItemEquiqmentData> equiqmentDatas = items.Cast<ItemEquiqmentData>().ToList();
+                int level = RandomLevel();
+                filteredItems = equiqmentDatas.Where(i => (i.Level == (LevelItem)level)).Cast<T>().ToList();
+
+            }
+            else
+            {
+                filteredItems = items;
+            }
+
+            var ratityRandom = UnityEngine.Random.Range(1, 101);
+            if (ratityRandom <= 80)
+            {
+                filteredItems = filteredItems.Where(i => i.Rarity == RarityItem.Common).ToList();
+            }
+            else if (ratityRandom <= 95)
+            {
+                filteredItems = filteredItems.Where(i => i.Rarity == RarityItem.Rare).ToList();
+            }
+            else if (ratityRandom <= 98)
+            {
+                filteredItems = filteredItems.Where(i => i.Rarity == RarityItem.Epic).ToList();
+            }
+            else 
+            {
+                filteredItems = filteredItems.Where(i => i.Rarity == RarityItem.Legendary).ToList();
+            }
+            if (filteredItems.Count > 0)
+            {
+                int index = UnityEngine.Random.Range(0, filteredItems.Count);
+                return filteredItems[index];
+            }
+
+            return null;
+        }
+
     }
 
 }

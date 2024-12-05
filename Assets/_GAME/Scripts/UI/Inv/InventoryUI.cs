@@ -1,8 +1,11 @@
 using ShootingGame;
 using ShootingGame.Data;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class InventoryUI : Frame
 {
@@ -24,6 +27,7 @@ public class InventoryUI : Frame
 
     public void OnButtonRandomItemClick()
     {
+        var randomAllItems = RandomItems(maxItem);
         //Remove all Item in Placeholder
         foreach (Transform child in placeHolder)
         {
@@ -34,9 +38,45 @@ public class InventoryUI : Frame
         for (int i = 0; i < maxItem; i++)
         {
             var item = Instantiate(inventoryItemUI, placeHolder);
-            //item.Initialized(allItems[UnityEngine.Random.Range(0, allItems.Length - 1)], OnItemClickedAction);
+            item.Initialized(randomAllItems[i], OnItemClickedAction);
             item.gameObject.SetActive(true);
         }
+    }
+    public List<ItemDataSO> RandomItems(int capacity)
+    {
+        capacity = Mathf.Max(capacity, 5);
+        var weapons = (GameData.Instance.ItemData.GetValue(Category.Weapon) as WeaponData).GetAllValue().ToList();
+        var equiqments = (GameData.Instance.ItemData.GetValue(Category.Equiqment) as EquiqmentData).GetAllValue().ToList();
+        var buffItems = (GameData.Instance.ItemData.GetValue(Category.BuffItem) as BuffItemData).GetAllValue().ToList();
+        List<ItemDataSO> result = new List<ItemDataSO>();
+
+        //Random amount of weapon, equipment, buff
+        int weaponCount = UnityEngine.Random.Range(1, 3);
+        int equipmentCount = UnityEngine.Random.Range(2, 4);
+        int buffCount = capacity - weaponCount - equipmentCount;
+
+        // Random weapon
+        for (int i = 0; i < weaponCount; i++)
+        {
+            var weapon = GameService.RandomItem(weapons);
+            if (weapon != null) result.Add(weapon);
+        }
+
+        // Random equiqment
+        for (int i = 0; i < equipmentCount; i++)
+        {
+            var equipment = GameService.RandomItem(equiqments);
+            if (equipment != null) result.Add(equipment);
+        }
+
+        // Random buff
+        for (int i = 0; i < buffCount; i++)
+        {
+            var buff = GameService.RandomItem(buffItems);
+            if (buff != null) result.Add(buff);
+        }
+
+        return result;
     }
 
     private void OnButtonTetrisInvClick() => OnButtonTetrisInvClickAction?.Invoke();
