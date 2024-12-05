@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f4b751f72b2b384daec11aecb785105, type: 3}
+  m_Name: Pistol 2
+  m_EditorClassIdentifier: 
+  category: 1
+  rarity: 0
+  stat:
+    stats:
+    - typeStat: 1
+      typeValueStat: 0
+      value: 7
+    - typeStat: 2
+      typeValueStat: 0
+      value: 4.2
+    - typeStat: 4
+      typeValueStat: 0
+      value: 2.8
+    - typeStat: 10
+      typeValueStat: 0
+      value: 14
+  appearance:
+    itemName: Pistol 2
+    icon: {fileID: 21300000, guid: d6886e01cb26db849aaa122600a5f44a, type: 3}
+  matrixData: {fileID: 11400000, guid: 33d08d87f2d72574ca96670f4361f905, type: 2}
+  prefab: {fileID: 3537812215717957531, guid: 109a9be53ee648c4aaba0feaa7614be4, type: 3}
+  level: 2
+  nextLevelAttribute: {fileID: 11400000, guid: 302d3109f13dc8249a7f8d438cf3f027, type: 2}

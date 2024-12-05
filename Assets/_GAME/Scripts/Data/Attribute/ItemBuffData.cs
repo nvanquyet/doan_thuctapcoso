@@ -15,7 +15,7 @@ public enum BuffType
     DamageReduction,
 }
 
-[CreateAssetMenu(fileName = "ItemBuffData", menuName = "Items/ItemBuffData")]
+[CreateAssetMenu(fileName = "ItemBuffData", menuName = "Items/Single/ItemBuffData")]
 public class ItemBuffData : ItemDataSO
 {
     [SerializeField] private Sprite icon;

@@ -2,9 +2,28 @@
 using UnityEngine;
 namespace ShootingGame.Data
 {
-    [CreateAssetMenu(fileName = "ItemData", menuName = "_GAME/ItemData")]
-    public class ItemData : BaseIntKeyData<ItemDataSO>
+    public enum Category
     {
-        protected override string Path => throw new System.NotImplementedException();
+        Weapon,
+        Equiqment,
+        BuffItem
+    }
+    [CreateAssetMenu(fileName = "ItemData", menuName = "_GAME/ItemData")]
+    public class ItemData : BaseData<Category, ScriptableObject>
+    {
+        public override void OnValidateData()
+        {
+            
+        }
+
+        public override void OnValidateKey()
+        {
+            
+        }
+
+        public override void OnValidateValue()
+        {
+            
+        }
     }
 }

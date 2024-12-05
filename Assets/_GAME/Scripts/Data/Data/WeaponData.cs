@@ -1,9 +1,9 @@
 using UnityEngine;
 namespace ShootingGame.Data
 {
-    [CreateAssetMenu(fileName = "WeaponData", menuName = "Items/Weapon/WeaponData")]
+    [CreateAssetMenu(fileName = "WeaponData", menuName = "Items/List/Weapons")]
     public class WeaponData : BaseIntKeyData<ItemWeaponData>
     {
-        protected override string Path => throw new System.NotImplementedException();
+        protected override string Path => "Assets/_GAME/Data/Item/Weapon";
     }
 }

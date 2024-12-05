@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f4b751f72b2b384daec11aecb785105, type: 3}
+  m_Name: Bazoka 1
+  m_EditorClassIdentifier: 
+  category: 0
+  rarity: 3
+  stat:
+    stats:
+    - typeStat: 1
+      typeValueStat: 0
+      value: 40
+    - typeStat: 2
+      typeValueStat: 0
+      value: 0.3
+    - typeStat: 4
+      typeValueStat: 1
+      value: 5
+    - typeStat: 9
+      typeValueStat: 0
+      value: 25
+    - typeStat: 10
+      typeValueStat: 0
+      value: 20
+  appearance:
+    itemName: Bazoka 1
+    icon: {fileID: 21300000, guid: 99f35524b4982354087c91dccd18542c, type: 3}
+  matrixData: {fileID: 11400000, guid: 0f838fe5b6a743643b8bbe8152b1aa34, type: 2}
+  prefab: {fileID: 3537812215717957531, guid: 2e1e5d0be4c154c4e886b22117f9b8bf, type: 3}
+  level: 1
+  nextLevelAttribute: {fileID: 11400000, guid: 1e48119c927fab54883ab7cbfccba8a0, type: 2}
