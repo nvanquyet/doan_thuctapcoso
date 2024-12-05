@@ -13,30 +13,24 @@ MonoBehaviour:
   m_Name: Sword 1
   m_EditorClassIdentifier: 
   category: 0
-  rarity: 0
+  rarity: 2
   stat:
     stats:
-    - typeStat: 1
+    - typeStat: 0
       typeValueStat: 0
-      value: 13
+      value: 15
     - typeStat: 2
       typeValueStat: 0
-      value: 1
+      value: 1.5
     - typeStat: 4
-      typeValueStat: 0
-      value: 1
-    - typeStat: 8
-      typeValueStat: 0
-      value: 0
-    - typeStat: 9
-      typeValueStat: 0
-      value: 0.2
+      typeValueStat: 1
+      value: 5
     - typeStat: 10
       typeValueStat: 0
-      value: 2.5
+      value: 2
   appearance:
-    itemName: BroadSword Lv1
-    icon: {fileID: 21300000, guid: 77dfde3949955c4478a648c331f35767, type: 3}
-  matrixData: {fileID: 11400000, guid: 0f838fe5b6a743643b8bbe8152b1aa34, type: 2}
-  prefab: {fileID: 890306653094463171, guid: e53b54648e50a91408d7b3f71ff3c33f, type: 3}
-  nextLevelAttribute: {fileID: 11400000, guid: ac87fa202d457bd41a3f999c4fe12799, type: 2}
+    itemName: Sword 1
+    icon: {fileID: 21300000, guid: 3d264f0be0985384181d9fa4392b7940, type: 3}
+  matrixData: {fileID: 11400000, guid: 152b995f7610fc54796c65049473f7bb, type: 2}
+  prefab: {fileID: 0}
+  nextLevelAttribute: {fileID: 11400000, guid: 7d29565e0963727499ce57a3f0a90d83, type: 2}
