@@ -5,6 +5,19 @@ namespace ShootingGame
 {
     public class PlayerStat : MonoBehaviour
     {
+
+        [SerializeField] private WeaponCtrl weaponCtrl;
+
+#if UNITY_EDITOR
+        [SerializeField] private TestStat testStat;
+        private void OnValidate()
+        {
+            weaponCtrl = GetComponentInChildren<WeaponCtrl>();
+            testStat = FindObjectOfType<TestStat>();
+        }
+#endif
+
+
         private StatContainerData baseData;
         public StatContainerData BaseData
         {
@@ -47,7 +60,26 @@ namespace ShootingGame
             }
             OnStatChanged?.Invoke(CurrentStat);
         }
-       #endregion
+
+        protected void Start()
+        {
+            this.AddListener<GameEvent.OnNextWave>(OnNextWave);
+        }
+
+        private void OnNextWave(GameEvent.OnNextWave param)
+        {
+            ResetStat();
+            foreach (var i in param.allEquiqments)
+            {
+                BuffStat(i.Stat);
+            }
+
+            weaponCtrl.InitWeapon(param.allWeapons, CurrentStat);
+#if UNITY_EDITOR
+            testStat.ShowStat(GetComponent<Player>());
+#endif
+        }
+        #endregion
     }
 
 }

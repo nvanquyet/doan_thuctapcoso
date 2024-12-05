@@ -11,7 +11,7 @@ public abstract class AShootAttack : AttackBehaviour
 
     private void Start()
     {
-        projectilePooling = new ObjectPooling<Projectile>(projectilePrefab, 10);
+        projectilePooling = new ObjectPooling<Projectile>(projectilePrefab, 10, transform);
         projectileActived = new List<Projectile>();
     }
 

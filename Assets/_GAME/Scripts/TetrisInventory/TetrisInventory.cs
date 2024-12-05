@@ -119,21 +119,16 @@ public class TetrisInventory : Frame
         for (int i = 0; i < tetrisSlot.ItemsInBag.Count; i++)
         {
             if (tetrisSlot.ItemsInBag[i].itemData == null) continue;
-
-            if (tetrisSlot.ItemsInBag[i].itemData is ItemWeaponData)
-            {
-                weapons.Add(tetrisSlot.ItemsInBag[i].itemData as ItemWeaponData);
-                continue;
-            }
             if (tetrisSlot.ItemsInBag[i].itemData is ItemBuffData)
             {
                 buffItems.Add(tetrisSlot.ItemsInBag[i].itemData as ItemBuffData);
-                continue;
             }
-            if (tetrisSlot.ItemsInBag[i].itemData is ItemEquiqmentData)
+            else if (tetrisSlot.ItemsInBag[i].itemData is ItemWeaponData)
+            {
+                weapons.Add(tetrisSlot.ItemsInBag[i].itemData as ItemWeaponData);
+            }else if (tetrisSlot.ItemsInBag[i].itemData is ItemEquiqmentData)
             {
                 equiqment.Add(tetrisSlot.ItemsInBag[i].itemData as ItemEquiqmentData);
-                continue;
             }
         }
         return true;

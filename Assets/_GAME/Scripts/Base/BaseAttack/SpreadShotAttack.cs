@@ -29,7 +29,7 @@ public class SpreadShotAttack : AShootAttack
         {
             var direction = ((target as MonoBehaviour).transform.position - transform.position).normalized;
             FocusPoint.position = transform.position + direction.normalized;
-            FocusPoint.right = direction;
+            FocusPoint.right = direction * (transform.GetChild(0).localScale.x < 0 ? -1 : 1);
         }
 
         foreach (var firePoint in FirePoints)

@@ -9,7 +9,6 @@ namespace ShootingGame
     {
         [SerializeField] private List<WeaponSpawnPos> _allPositionSpawnWeapon;
         [SerializeField] private List<AWeapon> _weapons;
-        [SerializeField] private Player _player;
 
         //Note: Vector3 is local Position of weapon in WeaponCtrl
         private Dictionary<AWeapon, Vector3> dictWeaponPos;
@@ -21,15 +20,12 @@ namespace ShootingGame
         private void OnValidate()
         {
             _allPositionSpawnWeapon = GetComponentsInChildren<WeaponSpawnPos>().ToList();
-            _player = GetComponentInParent<Player>();
-            testStat = FindObjectOfType<TestStat>();
         }
 
 #endif
 
         private void Start()
         {
-            this.AddListener<GameEvent.OnNextWave>(OnNextWave);
             this.AddListener<GameEvent.OnWaveClear>(OnWaveClear);
         }
 
@@ -49,20 +45,10 @@ namespace ShootingGame
             GameService.ClearList(ref _weapons);
         }
 
-        private void OnNextWave(GameEvent.OnNextWave param)
+        public void InitWeapon(List<ItemWeaponData> param, StatContainerData currentStat)
         {
-            if (dictWeaponPos == null) dictWeaponPos = new Dictionary<AWeapon, Vector3>();
-            else dictWeaponPos.Clear();
-
-            _player.Stat.ResetStat();
-
-            foreach (var i in param.allEquiqments)
-            {
-                _player.Stat.BuffStat(i.Stat);
-            }
-
             int index = 0;
-            foreach (var w in param.allWeapons)
+            foreach (var w in param)
             {
                 if (w.Prefab != null && (w.Prefab is AWeapon))
                 {
@@ -70,18 +56,12 @@ namespace ShootingGame
                     var clone = Instantiate(w.Prefab, tsWp);
                     clone.InitializeItem(w);
                     clone.gameObject.SetActive(true);
-                    if (clone is AWeapon)
-                    {
-                        _weapons.Add(clone as AWeapon);
-                        dictWeaponPos.Add(clone as AWeapon, tsWp.localPosition);
-                        clone.ApplyStat(_player.Stat.CurrentStat);
-                    }
+                    _weapons.Add(clone as AWeapon);
+                    dictWeaponPos.Add(clone as AWeapon, tsWp.localPosition);
+                    clone.ApplyStat(currentStat);
                     index++;
                 }
             }
-#if UNITY_EDITOR
-            testStat.ShowStat(_player);
-#endif
 
         }
 
