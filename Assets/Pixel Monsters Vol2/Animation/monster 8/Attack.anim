@@ -7,7 +7,7 @@ AnimationClip:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Attack
-  serializedVersion: 6
+  serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
   m_UseHighQualityCurve: 1
@@ -18,11 +18,10 @@ AnimationClip:
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves:
-  - curve:
-    - time: 0
-      value: {fileID: 5915670308809097296, guid: 80f527dcf16559f4485ee48edba4e766, type: 3}
+  - serializedVersion: 2
+    curve:
     - time: 0.041666668
-      value: {fileID: 2214547304677390562, guid: 80f527dcf16559f4485ee48edba4e766, type: 3}
+      value: {fileID: 5915670308809097296, guid: 80f527dcf16559f4485ee48edba4e766, type: 3}
     - time: 0.083333336
       value: {fileID: 2012025958538633680, guid: 80f527dcf16559f4485ee48edba4e766, type: 3}
     - time: 0.125
@@ -61,8 +60,6 @@ AnimationClip:
       value: {fileID: -8813032882129888832, guid: 80f527dcf16559f4485ee48edba4e766, type: 3}
     - time: 0.8333333
       value: {fileID: 108791838502808610, guid: 80f527dcf16559f4485ee48edba4e766, type: 3}
-    - time: 0.875
-      value: {fileID: -6480635514997328825, guid: 80f527dcf16559f4485ee48edba4e766, type: 3}
     - time: 0.9166667
       value: {fileID: -8194245753551009493, guid: 80f527dcf16559f4485ee48edba4e766, type: 3}
     - time: 0.9583333
@@ -70,7 +67,7 @@ AnimationClip:
     - time: 1
       value: {fileID: 909052876146956676, guid: 80f527dcf16559f4485ee48edba4e766, type: 3}
     - time: 1.0416666
-      value: {fileID: 5838967193953700803, guid: 80f527dcf16559f4485ee48edba4e766, type: 3}
+      value: {fileID: -6480635514997328825, guid: 80f527dcf16559f4485ee48edba4e766, type: 3}
     - time: 1.0833334
       value: {fileID: 7613733871650731199, guid: 80f527dcf16559f4485ee48edba4e766, type: 3}
     - time: 1.125
@@ -109,6 +106,7 @@ AnimationClip:
     path: 
     classID: 212
     script: {fileID: 0}
+    flags: 2
   m_SampleRate: 24
   m_WrapMode: 0
   m_Bounds:
@@ -123,9 +121,10 @@ AnimationClip:
       typeID: 212
       customType: 23
       isPPtrCurve: 1
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     pptrCurveMapping:
     - {fileID: 5915670308809097296, guid: 80f527dcf16559f4485ee48edba4e766, type: 3}
-    - {fileID: 2214547304677390562, guid: 80f527dcf16559f4485ee48edba4e766, type: 3}
     - {fileID: 2012025958538633680, guid: 80f527dcf16559f4485ee48edba4e766, type: 3}
     - {fileID: -8214621781004927050, guid: 80f527dcf16559f4485ee48edba4e766, type: 3}
     - {fileID: 8819497687808866323, guid: 80f527dcf16559f4485ee48edba4e766, type: 3}
@@ -145,11 +144,10 @@ AnimationClip:
     - {fileID: -6342959030347325709, guid: 80f527dcf16559f4485ee48edba4e766, type: 3}
     - {fileID: -8813032882129888832, guid: 80f527dcf16559f4485ee48edba4e766, type: 3}
     - {fileID: 108791838502808610, guid: 80f527dcf16559f4485ee48edba4e766, type: 3}
-    - {fileID: -6480635514997328825, guid: 80f527dcf16559f4485ee48edba4e766, type: 3}
     - {fileID: -8194245753551009493, guid: 80f527dcf16559f4485ee48edba4e766, type: 3}
     - {fileID: -8828219004686118825, guid: 80f527dcf16559f4485ee48edba4e766, type: 3}
     - {fileID: 909052876146956676, guid: 80f527dcf16559f4485ee48edba4e766, type: 3}
-    - {fileID: 5838967193953700803, guid: 80f527dcf16559f4485ee48edba4e766, type: 3}
+    - {fileID: -6480635514997328825, guid: 80f527dcf16559f4485ee48edba4e766, type: 3}
     - {fileID: 7613733871650731199, guid: 80f527dcf16559f4485ee48edba4e766, type: 3}
     - {fileID: -4223787524517784760, guid: 80f527dcf16559f4485ee48edba4e766, type: 3}
     - {fileID: -9023238915766604006, guid: 80f527dcf16559f4485ee48edba4e766, type: 3}
@@ -191,4 +189,235 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
