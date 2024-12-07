@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using ShootingGame;
 using ShootingGame.Data;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,8 +15,7 @@ public class TetrisInventory : Frame
     [SerializeField] private TetrisItemDescription tetrisDescription;
     [SerializeField] private TetrisRemoveItem tetrisRemoveItem;
 
-    [SerializeField] private Button btnPlay, btnBack;
-    public Action OnBtnPlayClick, OnBtnBackClick;
+    [SerializeField] private Button btnPlay;
 
 #if UNITY_EDITOR
     private void OnValidate()
@@ -36,8 +34,18 @@ public class TetrisInventory : Frame
     {
         SetNumberSlots(this.numberSlots);
         tetrisRemoveItem.SetAction(OnRemoveItem);
-        btnPlay.onClick.AddListener(() => OnBtnPlayClick?.Invoke());
-        btnBack.onClick.AddListener(() => OnBtnBackClick?.Invoke());
+        btnPlay.onClick.AddListener(() => OnBtnPlayClick());
+    }
+
+    private void OnBtnPlayClick()
+    {
+        UICtrl.Instance.Hide<TetrisInventory>(true, () => {
+            GameCtrl.Instance.NextWave();
+            if (GetTetrisItem(out var weapons, out var equiqment, out var buffItems))
+            {
+                this.Dispatch<GameEvent.OnNextWave>(new GameEvent.OnNextWave { allWeapons = weapons, allEquiqments = equiqment, allBuffItems = buffItems });
+            }
+        });
     }
 
     public void SetNumberSlots(int numberSlots)

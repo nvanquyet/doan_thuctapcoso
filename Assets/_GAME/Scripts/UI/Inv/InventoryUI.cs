@@ -5,24 +5,41 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class InventoryUI : Frame
 {
-    [SerializeField] private Button btnTetrisInv;
+    [SerializeField] private Button btnContinue;
     [SerializeField] private Button btnRandomItem;
 
     [SerializeField] private Transform placeHolder;
     [SerializeField] private InventoryItemUI inventoryItemUI;
     [SerializeField] private int maxItem = 5;
 
-    public Action OnButtonTetrisInvClickAction;
     public Action<ItemDataSO> OnItemClickedAction;
 
+    private bool hasShowed = false;
+    public Action OnFirstShowAction;
+
+    public void Initialized(Action OnFirstShow)
+    {
+        this.OnFirstShowAction = OnFirstShow;
+        hasShowed = false;
+        if(GameConfig.Instance.startGameBuyItem && !hasShowed)
+        {
+            UICtrl.Instance.Show<InventoryUI>(true, OnButtonRandomItemClick);
+        }
+    }
     private void Start()
     {
-        btnTetrisInv.onClick.AddListener(OnButtonTetrisInvClick);
+        btnContinue.onClick.AddListener(OnContinueButtonClicked);
         btnRandomItem.onClick.AddListener(OnButtonRandomItemClick);
+        this.AddListener<GameEvent.OnLevelUp>(OnLevelUp, false);
+    }
+
+    private void OnLevelUp(GameEvent.OnLevelUp param)
+    {
+        Time.timeScale = 0;
+        UICtrl.Instance.Show<InventoryUI>(true, OnButtonRandomItemClick, false);
     }
 
     public void OnButtonRandomItemClick()
@@ -42,7 +59,7 @@ public class InventoryUI : Frame
             item.gameObject.SetActive(true);
         }
     }
-    public List<ItemDataSO> RandomItems(int capacity)
+    private List<ItemDataSO> RandomItems(int capacity)
     {
         capacity = Mathf.Max(capacity, 5);
         var weapons = (GameData.Instance.ItemData.GetValue(Category.Weapon) as WeaponData).GetAllValue().ToList();
@@ -79,5 +96,13 @@ public class InventoryUI : Frame
         return result;
     }
 
-    private void OnButtonTetrisInvClick() => OnButtonTetrisInvClickAction?.Invoke();
+    private void OnContinueButtonClicked()
+    {
+        Time.timeScale = 1;
+        if (!hasShowed && GameConfig.Instance.startGameBuyItem) UICtrl.Instance.Show<TetrisInventory>(true, () =>
+        {
+            OnFirstShowAction?.Invoke();
+        });
+        hasShowed = true;
+    }
 }

@@ -52,6 +52,6 @@ namespace ShootingGame
             
         }
 
-
+        public override void GainExp(int exp) => expReceiver.GainExp(exp);
     }
 }

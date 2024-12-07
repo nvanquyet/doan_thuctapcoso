@@ -16,7 +16,9 @@ namespace ShootingGame
         private bool isCriticalHit;
         private float knockbackForce;
         private Rigidbody2D _rigidbody;
+
         protected IDefender originatingOwner;
+        protected IExpReceiver expReceiver;
         
         public Rigidbody2D Rigidbody
         {
@@ -82,21 +84,13 @@ namespace ShootingGame
         public void Move(Vector3 direction) => Rigidbody?.AddForce(direction, ForceMode2D.Impulse);
         public void Move(Vector2 direction) => Rigidbody?.AddForce(direction, ForceMode2D.Impulse);
 
-        public void Spawn()
-        {
-            isCriticalHit = false;
-            _canAttack = true; 
-            visualProjectile.gameObject.SetActive(true);
-            transform.rotation = Quaternion.identity;
-            Move(transform.right * projectileSpeed);
-            if (projectileTrail) projectileTrail.Play();
-            transform.SetParent(null);
-            Invoke(nameof(Recycle), 2f);
-        }
+        public void Spawn() { }
 
-        public void Spawn(Vector2 direction, ImpactData properties, IDefender owner = null)
+        public void Spawn(Vector2 direction, ImpactData properties,
+                IDefender owner = null, IExpReceiver expReceiver = null)
         {
             originatingOwner = owner;
+            this.expReceiver = expReceiver;
             _canAttack = true;
             isCriticalHit = properties.isCritical;
             knockbackForce = properties.pushForce;
@@ -123,5 +117,11 @@ namespace ShootingGame
         }
 
         private void DeactivateEffect(ParticleSystem effect) => effect?.gameObject.SetActive(false);
+
+        public override void GainExp(int exp)
+        {
+            if (expReceiver == null) return;
+            expReceiver.GainExp(exp);
+        }
     }
 }

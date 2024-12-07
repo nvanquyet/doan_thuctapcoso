@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using ShootingGame;
 using ShootingGame.Data;
 using UnityEngine;
@@ -8,13 +9,17 @@ using UnityEngine.UI;
 
 public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] private Image icon;
+    [SerializeField] private Image iconSmall;
+    [SerializeField] private Image iconLarge;
+    [SerializeField] private Image backGroundIcSmall;
+    [SerializeField] private RectTransform rectTetrisIcon;
+
     [SerializeField] private TetrisUpgradeItem tetrisUpgradeItem;
 #if UNITY_ANDROID
     private int currentClicked = 0;
 #endif
     public ItemDataSO itemData { get; private set; }
-#region Properties
+    #region Properties
     private TetrisSlot slots;
     private TetrisItemDescription tetrisDescription;
     private Vector2 startPosition, oldPosition, cellSize, distaceToMousePosition;
@@ -24,13 +29,13 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
     //Properties check item is in grid
     private bool IsInGrid = false;
 
-#endregion
+    #endregion
 
-#region  Action
+    #region  Action
     private Action<TetrisItemSlot> ActionReturnWaitingList, ActionAddToBag, ActionRemoveItem;
     private Action<int, int, int> ActionMarkItemInGrid;
     //private Action<Sprite, string, string> ActionPointerEnter;
-#endregion
+    #endregion
 
 #if UNITY_EDITOR
     private void OnValidate()
@@ -84,24 +89,56 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
         this.tetrisDescription = tetrisDescription;
         this.cellSize = cellSize;
 
-
         this.itemData = data;
-        this.icon.sprite = data.Appearance.Icon;
+        this.iconSmall.sprite = data.Appearance.Icon;
+        this.iconLarge.sprite = data.Appearance.Icon;
 
-        RescalingItem(RectTransform);
+        RescalingItem(rectTetrisIcon);
         RectTransform.anchorMin = new Vector2(0f, 1f);
         RectTransform.anchorMax = new Vector2(0f, 1f);
         RectTransform.pivot = new Vector2(0.5f, 0.5f);
-
+        ToggleIconSize(false, false);
         Invoke(nameof(ReScale), Time.deltaTime);
     }
+
+    public void ToggleIconSize(bool useTetrisIcon = false, bool usingAnimated = true)
+    {
+        backGroundIcSmall.enabled = !useTetrisIcon;
+        if (usingAnimated)
+        {
+            iconLarge.DOKill();
+            iconSmall.DOKill();
+            if (useTetrisIcon)
+            {
+                iconLarge.DOFade(0f, 0.5f).From(1).OnComplete(() => iconLarge.gameObject.SetActive(false));
+                iconSmall.gameObject.SetActive(true);
+                iconSmall.DOFade(1f, 0.5f).From(0);
+            }
+            else
+            {
+                iconSmall.DOFade(0f, 0.5f).From(1).OnComplete(() => iconSmall.gameObject.SetActive(false));
+                iconLarge.gameObject.SetActive(true);
+                iconLarge.DOFade(1f, 0.5f).From(0);
+            }
+        }
+        else
+        {
+            iconLarge.gameObject.SetActive(true);
+            iconSmall.gameObject.SetActive(false);
+            var color = iconLarge.color;
+            color.a = 1f;
+            iconLarge.color = color;
+            iconSmall.color = color;
+        }
+    }
+
     private void ReScale()
     {
         transform.localScale = Vector3.one;
     }
 
-    public void InitAction(Action<TetrisItemSlot> actionReturnWaitingList, Action<TetrisItemSlot> actionAddToBag, 
-                            Action<int, int, int> actionMarkItemInGrid, Action<TetrisItemSlot> actionUpgradeItem, 
+    public void InitAction(Action<TetrisItemSlot> actionReturnWaitingList, Action<TetrisItemSlot> actionAddToBag,
+                            Action<int, int, int> actionMarkItemInGrid, Action<TetrisItemSlot> actionUpgradeItem,
                             Action<TetrisItemSlot> actionRemoveItem)
     {
         ActionReturnWaitingList = actionReturnWaitingList;
@@ -114,18 +151,18 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
     private void ShowItemDescription(ItemDataSO data, bool show)
     {
         tetrisDescription.ActiveDescription(show);
-        if(show == false) return;
+        if (show == false) return;
         var stringStats = "";
         foreach (var stat in data.Stat.Stats)
         {
             stringStats += $"{stat.GetStatString()}\n";
         }
-        tetrisDescription.ModifyDescription(data.Appearance.Icon, data.Appearance.Name, stringStats);     
+        tetrisDescription.ModifyDescription(data.Appearance.Icon, data.Appearance.Name, stringStats);
     }
 
-#endregion
+    #endregion
 
-#region  PointerEvents
+    #region  PointerEvents
     public void OnPointerEnter(PointerEventData eventData) // shows item description
     {
         ShowItemDescription(itemData, true);
@@ -145,7 +182,8 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
         //Reset the grid to 0
         var itemSize = GameService.GetItemSize(itemData.MatrixData.ItemSize, currentRotation);
         var grid = GameService.GetMatrix(itemData.MatrixData.Matrix, currentRotation);
-        if(IsInGrid)  ResetGrid(itemSize, grid);
+        if (IsInGrid) ResetGrid(itemSize, grid);
+        ToggleIconSize(true);
         ActionAddToBag?.Invoke(this);
     }
 
@@ -165,9 +203,9 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
     }
 
     public void OnEndDrag(PointerEventData eventData) => OnEndDrag();
-#endregion
-   
-#region Grid
+    #endregion
+
+    #region Grid
     private Vector2 AnchorGrid(Vector2 anchorPos, Vector2 halfSize)
     {
         Vector2 finalSlot;
@@ -261,7 +299,7 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
 
     }
 
-#endregion
+    #endregion
 
     #region  Other
     private void RescalingItem(RectTransform rect)
@@ -269,7 +307,7 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
         rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, itemData.MatrixData.ItemSize.y * cellSize.y);
         rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, itemData.MatrixData.ItemSize.x * cellSize.x);
     }
-    
+
     private void ResetGrid(Vector2 itemSize, int[,] grid)
     {
 
@@ -306,6 +344,7 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
     private void ReturnToWaitingList()
     {
         IsInGrid = false;
+        ToggleIconSize(false);
         ActionReturnWaitingList?.Invoke(this);
     }
 

@@ -6,6 +6,7 @@ namespace ShootingGame
     public class PlayerDefender : ADefender
     {
         [SerializeField] private float _timeInvulnerability = 1f;
+        [SerializeField] private ProgressBar healthBar;
         private bool _invulnerability;
         private Action OnDefendAction;
         private float dodgeChance;
@@ -13,36 +14,35 @@ namespace ShootingGame
 
         private PlayerStat playerStat;
 
-        public override void Defend(int damage, bool isSuper = false,  (float, Transform) forceProp = default)
+        public override void Defend(Interface.IAttacker attacker, bool isSuper = false,  (float, Transform) forceProp = default)
         {
             if (_invulnerability) return;
             UpdateStatsFromEquipment();
             if (UnityEngine.Random.value < dodgeChance) return;
-
             _invulnerability = true;
             Invoke(nameof(ResetInvulnerability), _timeInvulnerability);
-            int damageAfterArmor = Mathf.Max(damage - armor, 0);
-            base.Defend(damageAfterArmor, isSuper, forceProp);
-
+            int damageAfterArmor = Mathf.Max(attacker.Damage - armor, 0);
+            Defend(damageAfterArmor);
             OnDefendAction?.Invoke();
-            Test();
         }
 
         private void ResetInvulnerability() => _invulnerability = false;
 
-        public override void OnDead() { 
+        public override void OnDead(Interface.IAttacker attacker) { 
             this.Dispatch<GameEvent.OnPlayerDead>();
         }
 
         internal void Init(PlayerStat playerStat, Action OnDefendAction = null)
         {
-            var sprite = GetComponentInChildren<SpriteRenderer>();
             this.playerStat = playerStat;
             SetHealth((int)playerStat.CurrentStat.GetStat(TypeStat.Hp).Value, true);
-            this.OnDefendAction = OnDefendAction;
-            Test();
+            this.OnDefendAction += () =>
+            {
+                OnDefendAction?.Invoke();
+                healthBar?.UpdateProgess(CurrentHealth, MaxHealth);
+            };
+            healthBar?.UpdateProgess(CurrentHealth, MaxHealth);
         }
-
 
 
         private void UpdateStatsFromEquipment()
@@ -58,18 +58,6 @@ namespace ShootingGame
                 armor = (armorStats.TypeStat == TypeStat.Armor) ? (int)armorStats.GetValue(armor) : 0;
 
                 //Debug.Log($"PlayerDefender: UpdateStatsFromEquipment dodgeChance: {dodgeChance} armor: {armor}");
-            }
-        }
-
-
-        /// <summary>
-        /// Remove this method after testing
-        /// </summary>
-        private void Test(){
-            var healthBar = FindObjectOfType<HealthBar>();
-            if (healthBar != null)
-            {
-                healthBar.UpdateHealth(CurrentHealth, MaxHealth);
             }
         }
 
