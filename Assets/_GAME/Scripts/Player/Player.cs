@@ -1,16 +1,15 @@
-using System;
 using UnityEngine;
-using ShootingGame;
 using ShootingGame.Data;
 namespace ShootingGame
 {
-    [RequireComponent(typeof(PlayerMovement), typeof(PlayerStat))]
-    public class Player : AInteractor
+    [RequireComponent(typeof(PlayerMovement), typeof(PlayerStat), typeof(LevelProgesstion))]
+    public class Player : AInteractor, Interface.IExpReceiver
     {
         [SerializeField] private PlayerMovement _playerMovement;
         [SerializeField] private PlayerSpawner _playerSpawner;
         [SerializeField] private PlayerDefender _playerDefender;
         [SerializeField] private PlayerStat _playerStat;
+        [SerializeField] private LevelProgesstion progesstion;
 
         public PlayerStat Stat => _playerStat;
         public PlayerDefender Defender => _playerDefender;
@@ -23,6 +22,7 @@ namespace ShootingGame
             _playerMovement = GetComponent<PlayerMovement>();
             _playerDefender = GetComponent<PlayerDefender>();
             _playerStat = GetComponent<PlayerStat>();
+            progesstion = GetComponent<LevelProgesstion>();
         }
 #endif
 
@@ -30,10 +30,21 @@ namespace ShootingGame
         void Start()
         {
             GameCtrl.Instance.AddPlayer(this);
-            _playerStat.OnStatChanged = OnStatChanged;
-            OnStatChanged(_playerStat.CurrentStat);
-            InitData();
+            progesstion.Initialized(OnLevelUp);
+            InitAction();
+            AddListener();
+        }
 
+
+        private void OnNextWave(GameEvent.OnNextWave param)
+        {
+            _playerStat.OnNextWave(param);
+        }
+
+        public void GainExp(int exp) => progesstion.AddEXP(exp);
+        private void OnLevelUp()
+        {
+            this.Dispatch<GameEvent.OnLevelUp>(new GameEvent.OnLevelUp { player = this });
         }
 
         private void OnStatChanged(StatContainerData CurrentStat)
@@ -43,8 +54,10 @@ namespace ShootingGame
             _playerMovement.SetSpeed(CurrentStat.GetStat(ShootingGame.Data.TypeStat.MoveSpeed).Value);
         }
 
-        private void InitData()
+
+        private void InitAction()
         {
+            _playerStat.Initialized(OnStatChanged);
             if (_playerSpawner != null && _playerMovement != null)
             {
                 _playerSpawner.Spawn();
@@ -55,6 +68,12 @@ namespace ShootingGame
             {
                 _playerSpawner.PlayerGraphic.OnHitAnimation();
             });
+        }
+
+        private void AddListener()
+        {
+            this.AddListener<GameEvent.OnNextWave>(OnNextWave, false);
+            this.AddListener<GameEvent.OnWaveClear>((_) => _playerMovement.PauseMovement(true), false);
         }
     }
 

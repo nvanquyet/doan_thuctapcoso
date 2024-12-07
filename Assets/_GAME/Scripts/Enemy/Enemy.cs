@@ -25,7 +25,7 @@ namespace ShootingGame
         [SerializeField] private EnemyAnimation _enemyAnimation;
         public bool IsDead => _enemyDefender.IsDead;
 
-        public Action OnDeadAction;
+        public Action<Interface.IAttacker> OnDeadAction;
 #if UNITY_EDITOR
         protected override void OnValidate()
         {
@@ -41,7 +41,7 @@ namespace ShootingGame
         {
             if (_enemyMovement != null && _enemyDefender != null)
             {
-                OnDeadAction += () =>
+                OnDeadAction += (_) =>
                 {
                     LevelSpawner.Instance.OnEnemyDeath(this);
                     _enemyMovement.PauseMovement(true);
@@ -86,15 +86,10 @@ namespace ShootingGame
         }
 
 
-        public override void OnInteract(Interface.IInteract target)
-        {
-            //if (target is FireRangePlayer) target.OnInteract(this);
-        }
+        public override void OnInteract(Interface.IInteract target) { }
+        
 
-        public override void ExitInteract(Interface.IInteract target)
-        {
-            //if (target is FireRangePlayer) target.OnInteract(this);
-        }
+        public override void ExitInteract(Interface.IInteract target) { }
 
         public virtual void GetTarget()
         {

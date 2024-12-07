@@ -142,5 +142,5 @@ public class AttackController : AAttacker, IAttackBehaviour
     public override void ExitInteract(Interface.IInteract target) { }
     public override void OnInteract(Interface.IInteract target) { }
 
-   
+    public override void GainExp(int exp) { }
 }

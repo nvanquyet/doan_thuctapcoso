@@ -5,7 +5,7 @@ public class Health : MonoBehaviour
     public int maxHealth;
     [HideInInspector] public int currentHealth;
 
-    public HealthBar healthBar;
+    public ProgressBar healthBar;
 
     private float safeTime;
     public float safeTimeDuration = 0f;
@@ -18,7 +18,7 @@ public class Health : MonoBehaviour
         currentHealth = maxHealth;
 
         if (healthBar != null)
-            healthBar.UpdateHealth(currentHealth, maxHealth);
+            healthBar.UpdateProgess(currentHealth, maxHealth);
     }
 
     public void TakeDam(int damage)
@@ -34,7 +34,7 @@ public class Health : MonoBehaviour
                 {
                     //WeaponCtrl.Instance.RemoveEnemyToFireRange(this.transform);
                     //FindObjectOfType<Killed>().UpdateKilled();
-                    FindObjectOfType<PlayerExp>().UpdateExperience(UnityEngine.Random.Range(1, 4));
+                    //FindObjectOfType<PlayerExp>().UpdateExperience(UnityEngine.Random.Range(1, 4));
                     Destroy(this.gameObject, 0.125f);
                 }
                 isDead = true;
@@ -42,7 +42,7 @@ public class Health : MonoBehaviour
 
             // If player then update health bar
             if (healthBar != null)
-                healthBar.UpdateHealth(currentHealth, maxHealth);
+                healthBar.UpdateProgess(currentHealth, maxHealth);
 
             safeTime = safeTimeDuration;
         }

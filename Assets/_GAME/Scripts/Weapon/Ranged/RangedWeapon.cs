@@ -137,7 +137,7 @@ namespace ShootingGame
             bulletClone.OnRecycle = () => RecycleBullet(bulletClone);
 
             Vector2 direction = (spawnPoint.position - _muzzuleSpawnPoint.position).normalized;
-            bulletClone.Spawn(direction, data, defendOwner);
+            bulletClone.Spawn(direction, data, defendOwner, expReceiver);
             projectileList.Add(bulletClone);
         }
 
@@ -168,6 +168,9 @@ namespace ShootingGame
                 projectileList.Clear();
             }
         }
+
+        public override void GainExp(int exp) { }
+
         public override int Damage => 0;
     }
 

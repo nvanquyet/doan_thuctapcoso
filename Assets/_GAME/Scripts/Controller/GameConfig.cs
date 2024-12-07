@@ -11,6 +11,8 @@ namespace ShootingGame
 
         public WaveProperties waveProperties;
 
+
+        public bool startGameBuyItem = true;
         protected override void Initialize()
         {
             

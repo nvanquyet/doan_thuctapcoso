@@ -1,10 +1,10 @@
 
 using System.Collections.Generic;
-using System.Linq;
 using ShootingGame;
 using ShootingGame.Data;
 using UnityEngine;
-public class InventorySystem : Frame
+
+public class InventorySystem : MonoBehaviour
 {
     [SerializeField] private TetrisInventory tetrisInventory;
     [SerializeField] private InventoryUI inventoryUI;
@@ -20,36 +20,14 @@ public class InventorySystem : Frame
     private void Start()
     {
         this.AddListener<GameEvent.OnWaveClear>(OnWaveClear, false);
+
         claimedItems = new List<ItemDataSO>();
         inventoryUI.OnItemClickedAction += OnItemClicked;
-        inventoryUI.OnButtonTetrisInvClickAction += () => {
-            OnShowTetrisUI();
-            inventoryUI.Hide();
-            tetrisInventory.Show();
-        };
-
-        tetrisInventory.OnBtnPlayClick += OnButtonPlayGameClick;
-        tetrisInventory.OnBtnBackClick += () => {
-            inventoryUI.Show();
-            tetrisInventory.Hide();
-        };
 
         inventoryUI.gameObject.SetActive(false);
-        inventoryUI.Show(true, () =>
-        {
-            inventoryUI.OnButtonRandomItemClick();
-        });
         tetrisInventory.gameObject.SetActive(false);
-    }
 
-
-    private void OnEnable()
-    {
-        inventoryUI.Show(true, () =>
-        {
-            inventoryUI.OnButtonRandomItemClick();
-        });
-        tetrisInventory.gameObject.SetActive(false);
+        inventoryUI.Initialized(OnWaveClear);
     }
 
     private void OnItemClicked(ItemDataSO data)
@@ -59,21 +37,11 @@ public class InventorySystem : Frame
         claimedItems.Add(data);
     }
 
-    private void OnButtonPlayGameClick()
-    {
-        //Call next wave
-        UICtrl.Instance.Hide<InventorySystem>(true, () => {
-            GameCtrl.Instance.NextWave();
-            if(tetrisInventory.GetTetrisItem(out var weapons, out var equiqment, out var buffItems))
-            {
-                this.Dispatch<GameEvent.OnNextWave>(new GameEvent.OnNextWave { allWeapons = weapons, allEquiqments = equiqment , allBuffItems = buffItems});
-            }
-        });
-    }
 
     private void OnWaveClear()
     {
-        UICtrl.Instance.Show<InventorySystem>();
+        OnShowTetrisUI();
+        UICtrl.Instance.Show<TetrisInventory>();
     }
 
     private void OnShowTetrisUI()

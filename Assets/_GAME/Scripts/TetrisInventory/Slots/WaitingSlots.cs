@@ -1,5 +1,8 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class WaitingSlots : MonoBehaviour
@@ -29,4 +32,5 @@ public class WaitingSlots : MonoBehaviour
         if(!items.Contains(item)) return;
         items.Remove(item);
     }
+
 }

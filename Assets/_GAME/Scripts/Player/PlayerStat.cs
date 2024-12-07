@@ -7,18 +7,16 @@ namespace ShootingGame
     {
 
         [SerializeField] private WeaponCtrl weaponCtrl;
-
+        private Action<StatContainerData> OnStatChanged;
 #if UNITY_EDITOR
-        [SerializeField] private TestStat testStat;
         private void OnValidate()
         {
             weaponCtrl = GetComponentInChildren<WeaponCtrl>();
-            testStat = FindObjectOfType<TestStat>();
         }
 #endif
-
-
         private StatContainerData baseData;
+        private StatContainerData currentStat;
+
         public StatContainerData BaseData
         {
             get
@@ -30,7 +28,7 @@ namespace ShootingGame
                 return baseData;
             }
         }
-        private StatContainerData currentStat;
+        
         public StatContainerData CurrentStat
         {
             get
@@ -43,7 +41,7 @@ namespace ShootingGame
             }
         }
 
-        public Action<StatContainerData> OnStatChanged;
+        
 
         #region Stat Ctrl
         public void ResetStat() => currentStat = new StatContainerData(BaseData);
@@ -61,23 +59,21 @@ namespace ShootingGame
             OnStatChanged?.Invoke(CurrentStat);
         }
 
-        protected void Start()
-        {
-            this.AddListener<GameEvent.OnNextWave>(OnNextWave);
-        }
 
-        private void OnNextWave(GameEvent.OnNextWave param)
+        public void Initialized(Action<StatContainerData> OnStatChanged)
+        {
+            this.OnStatChanged = OnStatChanged;
+            OnStatChanged?.Invoke(CurrentStat);
+        }
+        public void OnNextWave(GameEvent.OnNextWave param)
         {
             ResetStat();
             foreach (var i in param.allEquiqments)
             {
                 BuffStat(i.Stat);
             }
-
+            GameService.LogColor($"Size weapon: {param.allWeapons.Count}");
             weaponCtrl.InitWeapon(param.allWeapons, CurrentStat);
-#if UNITY_EDITOR
-            testStat.ShowStat(GetComponent<Player>());
-#endif
         }
         #endregion
     }
