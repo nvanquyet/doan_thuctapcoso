@@ -1,32 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class CharacterSwitcher : MonoBehaviour
 {
-    public TextMeshProUGUI characterNameText;
-    public Image characterImage;
-    public Sprite[] characterSprites;
-    public string[] characterNames;
-    private int currentIndex = 0;      
+    public Transform characterParent;          
+    public TMP_Text characterNameText;            
+    public GameObject[] characterPrefabs;    
+    public string[] characterNames;          
+    private GameObject currentCharacter;      
+    private int currentIndex = 0;             
 
     public void NextCharacter()
     {
-        currentIndex = (currentIndex + 1) % characterSprites.Length; 
-        UpdateCharacterImage();
+        currentIndex = (currentIndex + 1) % characterPrefabs.Length;
+        SwitchCharacter();
     }
 
     public void PreviousCharacter()
     {
-        currentIndex = (currentIndex - 1 + characterSprites.Length) % characterSprites.Length;
-        UpdateCharacterImage();
+        currentIndex = (currentIndex - 1 + characterPrefabs.Length) % characterPrefabs.Length;
+        SwitchCharacter();
     }
 
-    private void UpdateCharacterImage()
+    private void SwitchCharacter()
     {
-        characterImage.sprite = characterSprites[currentIndex];
-        characterNameText.text = characterNames[currentIndex];
+        if (currentCharacter != null)
+        {
+            Destroy(currentCharacter);
+        }
+
+
+        currentCharacter = Instantiate(characterPrefabs[currentIndex], characterParent);
+        currentCharacter.transform.localPosition = Vector3.zero;
+        characterNameText.text = characterNames[currentIndex]; 
     }
 }
