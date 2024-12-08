@@ -72,7 +72,6 @@ namespace ShootingGame
             {
                 BuffStat(i.Stat);
             }
-            GameService.LogColor($"Size weapon: {param.allWeapons.Count}");
             weaponCtrl.InitWeapon(param.allWeapons, CurrentStat);
         }
         #endregion
