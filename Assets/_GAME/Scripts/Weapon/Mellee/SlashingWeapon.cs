@@ -50,7 +50,6 @@ namespace ShootingGame
 
             attackSequence.Play();
         }
-
     }
 
 }

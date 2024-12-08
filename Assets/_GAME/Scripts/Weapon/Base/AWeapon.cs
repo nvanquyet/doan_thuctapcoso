@@ -1,5 +1,6 @@
 using UnityEngine;
 using ShootingGame.Data;
+using static ShootingGame.Interface;
 namespace ShootingGame
 {
     public abstract class AItem : AAttacker
@@ -45,8 +46,15 @@ namespace ShootingGame
     {
         protected float attackSpeed;
         protected bool isAttacking = false;
-
+        
         protected Transform target;
+
+        protected IExpReceiver expReceiver;
+
+        public void SetReceiver(IExpReceiver expReceiver)
+        {
+            if(expReceiver != null) this.expReceiver = expReceiver;
+        }
 
         public void SetTarget(Transform target) => this.target = target;
 
@@ -67,7 +75,7 @@ namespace ShootingGame
             //Multiple Damage if is critrate
             isSuper = IsCritRate();
             forcePushBack = CurrentEquiqmentStat.GetStat(TypeStat.WeaponForce).GetValue();
-            target.Defend(Damage * (isSuper ? 2 : 1), isSuper, (forcePushBack, this.transform));
+            target.Defend(this, isSuper, (forcePushBack, this.transform));
             return true;
         }
 

@@ -58,7 +58,7 @@ namespace ShootingGame {
             Hide<T>(toLeft, callback);
         }
 
-        public void Show<T>(bool anim = true, Action callback = null, bool hideCurrent = false) where T : Frame {
+        public void Show<T>(bool anim = true, Action callback = null, bool hideCurrent = true) where T : Frame {
             var frame = Get<T>();
             if (frame == null) {
                 callback?.Invoke();

@@ -18,8 +18,11 @@ namespace ShootingGame
         {
             void ExecuteAttack();
         }
-
-        public interface IAttacker : IInteract
+        public interface IExpReceiver
+        {
+            void GainExp(int exp);
+        }
+        public interface IAttacker : IInteract, IExpReceiver
         {
             int Damage { get; }
             bool CanAttack { get; }
@@ -32,10 +35,11 @@ namespace ShootingGame
         {
             int CurrentHealth { get; }
             bool IsDead { get; }
-            void Defend(int damage, bool isSuper = false, (float, Transform) forceProp = default);
-            void OnDead();
+            int ExpGiven { get; } 
+            void Defend(IAttacker attacker, bool isSuper = false, (float, Transform) forceProp = default);
+            void Defend(int damage);
+            void OnDead(IAttacker attacker);
             void SetHealth(int health, bool resetHealth  = true);
-
             void PushBack(float force, Transform target);
         }
 
@@ -194,7 +198,7 @@ namespace ShootingGame
         public virtual bool Attack(Interface.IDefender target, bool isSuper = false, float forcePushBack = 0)
         {
             if (!CanAttack && Damage <= 0) return false;
-            target.Defend(Damage * (isSuper ? 2 : 1), isSuper, (forcePushBack, this.transform));
+            target.Defend(this, isSuper, (forcePushBack, this.transform));
             return true;
         }
 
@@ -222,16 +226,20 @@ namespace ShootingGame
 
         public override void OnInteract(Interface.IInteract target) { }
         public override void ExitInteract(Interface.IInteract target) { }
+
+        public abstract void GainExp(int exp);
     }
 
     [RequireComponent(typeof(BoxCollider2D), typeof(Rigidbody2D))]
     public abstract class ADefender : AInteractable<BoxCollider2D>, Interface.IDefender
     {
         [SerializeField] private int maxHealth;
-        [SerializeField] private int _health;
 
+        [SerializeField] protected int baseExpGiven;
         [SerializeField] private Rigidbody2D rigid;
 
+        private int _health;
+        protected int expGiven;
         public Rigidbody2D Rigid {
             get {
                 if(!rigid) rigid = GetComponent<Rigidbody2D>();
@@ -243,27 +251,34 @@ namespace ShootingGame
 
         public int CurrentHealth => _health;
         public bool IsDead => CurrentHealth <= 0;
+        public int ExpGiven => expGiven;
 
 #if UNITY_EDITOR
         protected override void OnValidate()
         {
             base.OnValidate();
             rigid =  GetComponent<Rigidbody2D>();
-            _health = maxHealth;
         }
 #endif
 
-        public virtual void Defend(int damage, bool isSuper = false, (float, Transform) forceProp = default) {
+        public virtual void Defend(Interface.IAttacker attacker, bool isSuper = false, (float, Transform) forceProp = default) {
             if (IsDead) return;
-            _health -= damage;
-            if (IsDead) OnDead();
-            else if (forceProp != default)
+            var dmg = attacker.Damage * (isSuper ? 2 : 1);
+            Defend(dmg);
+            this.Dispatch<GameEvent.OnShowFloatingText>(new GameEvent.OnShowFloatingText
             {
-                PushBack(forceProp.Item1, forceProp.Item2);
-                this.Dispatch<GameEvent.OnShowFloatingText>(new GameEvent.OnShowFloatingText { text = $"-{damage}", worldPos = this.transform.position , color = isSuper ? Color.red : Color.white});
-            }
+                text = $"-{dmg}",
+                worldPos = this.transform.position,
+                color = isSuper ? Color.red : Color.white
+            });
+            if (IsDead) OnDead(attacker);
+            else if (forceProp != default) PushBack(forceProp.Item1, forceProp.Item2);
         }
-        public abstract void OnDead();
+
+        public virtual void OnDead(Interface.IAttacker attacker)
+        {
+            attacker.GainExp(ExpGiven);
+        }
 
         public void SetHealth(int health, bool resetHealth = true) {
             maxHealth = health;
@@ -280,6 +295,11 @@ namespace ShootingGame
             if (target == null) return;
             var direction = this.transform.position - target.position;
             Rigid.AddForce(direction.normalized * force, ForceMode2D.Impulse);
+        }
+
+        public void Defend(int damage)
+        {
+            _health -= damage;
         }
     }
 

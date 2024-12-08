@@ -21,12 +21,6 @@ namespace ShootingGame
         }
         #endregion
 
-
-        protected virtual string GetPlayerGraphicID()
-        {
-            return "Player1";
-        }
-
         internal void Init(Interface.IPlayerMovement playerMovement)
         {
             if(PlayerGraphic != null) PlayerGraphic.Init(playerMovement);
