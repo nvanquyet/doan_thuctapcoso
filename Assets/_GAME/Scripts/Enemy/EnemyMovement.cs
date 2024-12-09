@@ -121,7 +121,7 @@ namespace ShootingGame
         public void SetSpeed(float speed) => _moveSpeed = Mathf.Max(speed, 1);
 
         public void Move(Vector3 direction) { }
-        internal void Init(float growthRate, int currentWave)
+        internal void Init(float speed, float growthRate)
         {
             InvokeRepeating(nameof(CalculatePath), 0f, _repeatTimeUpdatePath);
             Continue();

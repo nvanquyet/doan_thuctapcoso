@@ -234,8 +234,6 @@ namespace ShootingGame
     public abstract class ADefender : AInteractable<BoxCollider2D>, Interface.IDefender
     {
         [SerializeField] private int maxHealth;
-
-        [SerializeField] protected int baseExpGiven;
         [SerializeField] private Rigidbody2D rigid;
 
         private int _health;
