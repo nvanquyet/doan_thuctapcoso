@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using UnityEngine;
 
@@ -19,11 +20,11 @@ namespace ShootingGame
     }
     public class Enemy : AInteractable<BoxCollider2D>
     {
+        [SerializeField] private int id;
         [SerializeField] private EnemyAttacker _enemyAttacker;
         [SerializeField] private EnemyDefender _enemyDefender;
         [SerializeField] private EnemyMovement _enemyMovement;
         [SerializeField] private EnemyAnimation _enemyAnimation;
-        [SerializeField] private float growthRate = 1f;
         public bool IsDead => _enemyDefender.IsDead;
 
         public Action<Interface.IAttacker> OnDeadAction;
@@ -35,6 +36,13 @@ namespace ShootingGame
             _enemyDefender = GetComponentInChildren<EnemyDefender>();
             _enemyMovement = GetComponentInChildren<EnemyMovement>();
             _enemyAnimation = GetComponentInChildren<EnemyAnimation>();
+
+            //split to get number of last string
+            var split = gameObject.name.Split(' ');
+            if (split.Length > 1)
+            {
+                id = int.Parse(split[split.Length - 1]);
+            }
         }
 #endif
 
@@ -73,9 +81,11 @@ namespace ShootingGame
 
         public void Init(int currentWave)
         {
-            _enemyDefender.Init(growthRate, currentWave);
-            _enemyAttacker.Init(growthRate, currentWave);
-            _enemyMovement.Init(growthRate, currentWave);
+            var enemyPropertiesData = GameData.Instance.EnemyProperties.GetValue(id);
+            var growthRate = Mathf.Pow(enemyPropertiesData.GrowthRate, currentWave - 1);
+            _enemyDefender.Init(enemyPropertiesData.BaseHealth, enemyPropertiesData.BaseEXP, growthRate);
+            _enemyAttacker.Init(enemyPropertiesData.BaseDamage, growthRate);
+            _enemyMovement.Init(enemyPropertiesData.BaseSpeed, growthRate);
         }
 
         public int GetStrength()

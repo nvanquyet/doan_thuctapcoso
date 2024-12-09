@@ -28,11 +28,10 @@ namespace ShootingGame
             OnDefendSuccess?.Invoke();
         }
 
-        internal void Init(float growthRate, int currentWave)
+        internal void Init(int health, int expGiven, float growthRate)
         {
-            growthRate = Mathf.Pow(growthRate, currentWave - 1);
-            SetHealth((int)(growthRate * MaxHealth), true);
-            this.expGiven = (int)(this.baseExpGiven * growthRate);
+            SetHealth((int)(growthRate * health), true);
+            this.expGiven = (int)(this.expGiven * growthRate);
         }
     }
 }
