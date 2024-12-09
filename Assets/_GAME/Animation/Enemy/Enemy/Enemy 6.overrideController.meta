@@ -1,12 +1,6 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/_GAME/Animation/Chacracter/Character_03.meta
-guid: 81409efa140aa1c49b9c33a2b5155fc5
-folderAsset: yes
-DefaultImporter:
-========
-guid: da057aed24200a44b8ba89b7fc3d64ac
+guid: ebfb93e946462124790193c255323169
 NativeFormatImporter:
->>>>>>>> origin/release/0.0.1.1:Assets/_GAME/Animation/Enemy/Enemy/Enemy 6.overrideController.meta
   externalObjects: {}
   mainObjectFileID: 22100000
   userData: 

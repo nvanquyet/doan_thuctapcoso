@@ -1,12 +1,6 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/_GAME/Animation/Chacracter/Character_02.meta
-guid: c777f1516f4a7fa41b6ca8df73973229
-folderAsset: yes
-DefaultImporter:
-========
-guid: c4abb8be6621cd94587b9373d0ad01dd
+guid: a2f5de37f65a5b949ae378a105d46228
 PrefabImporter:
->>>>>>>> origin/release/0.0.1.1:Assets/_GAME/Prefabs/Enemies/Enemy 6.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

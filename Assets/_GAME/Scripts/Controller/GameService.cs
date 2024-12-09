@@ -49,12 +49,21 @@ namespace ShootingGame
             };
         }
 
+        //public static T ApplyScaleFactorToValue<T>(T value, float scaleFactor)
+        //{
+        //    return (T)Convert.ChangeType(value, typeof(T)) switch
+        //    {
+        //        int intValue => (T)Convert.ChangeType(Mathf.Pow(intValue, scaleFactor), typeof(T)),
+        //        float floatValue => (T)Convert.ChangeType(Mathf.Pow(floatValue, scaleFactor), typeof(T)),
+        //        _ => value
+        //    };
+        //}
         public static T ApplyScaleFactorToValue<T>(T value, float scaleFactor)
         {
             return (T)Convert.ChangeType(value, typeof(T)) switch
             {
-                int intValue => (T)Convert.ChangeType(Mathf.Pow(intValue, scaleFactor), typeof(T)),
-                float floatValue => (T)Convert.ChangeType(Mathf.Pow(floatValue, scaleFactor), typeof(T)),
+                int intValue => (T)Convert.ChangeType(intValue * Mathf.Pow(1 + scaleFactor, 1), typeof(T)),
+                float floatValue => (T)Convert.ChangeType(floatValue * Mathf.Pow(1 + scaleFactor, 1), typeof(T)),
                 _ => value
             };
         }

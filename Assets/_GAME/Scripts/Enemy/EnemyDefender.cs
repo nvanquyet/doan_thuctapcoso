@@ -28,10 +28,10 @@ namespace ShootingGame
             OnDefendSuccess?.Invoke();
         }
 
-        internal void Init(float scaleFactor)
+        internal void Init(int health, int expGiven, float growthRate)
         {
-            SetHealth((int)(scaleFactor * MaxHealth), true);
-            this.expGiven = (int) (this.baseExpGiven * scaleFactor);
+            SetHealth((int)(growthRate * health), true);
+            this.expGiven = (int)(this.expGiven * growthRate);
         }
     }
 }

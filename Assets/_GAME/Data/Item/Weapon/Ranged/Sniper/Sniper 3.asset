@@ -31,7 +31,7 @@ MonoBehaviour:
   appearance:
     itemName: Sniper 3
     icon: {fileID: 21300000, guid: 72a27dd30433b294f8c0894a38c34856, type: 3}
-  matrixData: {fileID: 11400000, guid: 0f838fe5b6a743643b8bbe8152b1aa34, type: 2}
+  matrixData: {fileID: 11400000, guid: 79b119336430ac84e925248b9f81a5a6, type: 2}
   prefab: {fileID: 3537812215717957531, guid: 20d35a4afd1710c4cbfa169cdf54b91e, type: 3}
   level: 3
-  nextLevelAttribute: {fileID: 11400000, guid: ac87fa202d457bd41a3f999c4fe12799, type: 2}
+  nextLevelAttribute: {fileID: 0}

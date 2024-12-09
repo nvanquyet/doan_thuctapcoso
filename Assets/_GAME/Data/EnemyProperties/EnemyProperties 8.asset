@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a159ad7e4fef0d45b5c3d4c0ed07729, type: 3}
-  m_Name: Matrix3x3 Weapon Machine
+  m_Script: {fileID: 11500000, guid: 1ed8e3c0241ce4b469c12fe0064d1051, type: 3}
+  m_Name: EnemyProperties 8
   m_EditorClassIdentifier: 
-  itemSize: {x: 3, y: 3}
-  isUniformMatrix: 0
-  matrixStruct:
-  - values: 000000000000000001000000
-  - values: 010000000100000001000000
-  - values: 010000000100000000000000
+  baseHealth: 230
+  baseDamage: 45
+  baseSpeed: 7
+  baseEXP: 110
+  growthRate: 1.2

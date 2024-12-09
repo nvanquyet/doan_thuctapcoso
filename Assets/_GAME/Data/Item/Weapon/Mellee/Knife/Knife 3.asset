@@ -31,7 +31,7 @@ MonoBehaviour:
   appearance:
     itemName: Knife 3
     icon: {fileID: 21300000, guid: 7a7949484a96c5242ab7ab87b30c4a4f, type: 3}
-  matrixData: {fileID: 11400000, guid: 240c44e0b317f7647ad3dd83a0b0976a, type: 2}
-  prefab: {fileID: 0}
+  matrixData: {fileID: 11400000, guid: 248d0bc4e1dff224aaacbc0d6f4c3f64, type: 2}
+  prefab: {fileID: 6098454974081046693, guid: f0a42d71d5c44da48b02ff947926cd23, type: 3}
   level: 3
   nextLevelAttribute: {fileID: 0}

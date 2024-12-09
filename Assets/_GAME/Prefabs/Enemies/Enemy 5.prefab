@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
-  _health: 50
+  baseExpGiven: 0
   rigid: {fileID: 1926085311155766293}
 --- !u!114 &3737105127655994885
 MonoBehaviour:
@@ -277,7 +277,7 @@ PrefabInstance:
     - target: {fileID: 1451612905104338832, guid: c94c0501846bdc0419f44778876de36d, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 22100000, guid: 6b81c25143324f947ae2c52d4a6d7a71, type: 2}
+      objectReference: {fileID: 22100000, guid: ebfb93e946462124790193c255323169, type: 2}
     - target: {fileID: 6103321433490498504, guid: c94c0501846bdc0419f44778876de36d, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.5

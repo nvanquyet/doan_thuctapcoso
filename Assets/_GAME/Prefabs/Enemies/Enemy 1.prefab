@@ -171,9 +171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
-  _health: 50
+  baseExpGiven: 0
   rigid: {fileID: 1926085311155766293}
-  flash: {fileID: 0}
 --- !u!114 &3737105127655994885
 MonoBehaviour:
   m_ObjectHideFlags: 0

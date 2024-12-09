@@ -31,6 +31,7 @@ MonoBehaviour:
   appearance:
     itemName: Axe 2
     icon: {fileID: 21300000, guid: 0117eac5b1c6e7141a2209f3fb18a278, type: 3}
-  matrixData: {fileID: 11400000, guid: 152b995f7610fc54796c65049473f7bb, type: 2}
-  prefab: {fileID: 0}
+  matrixData: {fileID: 11400000, guid: 0f838fe5b6a743643b8bbe8152b1aa34, type: 2}
+  prefab: {fileID: 890306653094463171, guid: e53b54648e50a91408d7b3f71ff3c33f, type: 3}
+  level: 2
   nextLevelAttribute: {fileID: 11400000, guid: b89ab94a1382f6b41b722c7f82caf256, type: 2}
