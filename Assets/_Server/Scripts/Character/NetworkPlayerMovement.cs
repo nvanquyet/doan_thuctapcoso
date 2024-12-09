@@ -74,7 +74,7 @@ namespace Server
         }
 
         private void Movement()
-        {
+        { 
             Vector2 targetVelocity = movementInput.normalized * moveSpeed;
             currentVelocity = Vector2.Lerp(currentVelocity, targetVelocity, accelerationTime / Time.fixedDeltaTime);
             Vector2 newPosition = Rigid.position + currentVelocity * Time.fixedDeltaTime;
