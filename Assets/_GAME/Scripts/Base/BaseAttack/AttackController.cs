@@ -124,19 +124,15 @@ public class AttackController : AAttacker, IAttackBehaviour
 
     public override bool Attack(Interface.IDefender target, bool isSuper = false, float forcePushBack = 0)
     {
-        GameService.LogColor($"AttackController.Attack: {target.GetType().Name} isAttacking {_isAttacking}");
         if(!_isAttacking) return false;
         if (target == null || target.GetType().Equals(defenderOwner)) return false;
-        if(target is PlayerDefender)
-        {
-            Debug.Log("Attack Player");
-        }
         return base.Attack(target, isSuper, forcePushBack);
     }
 
-    public void Init(float scaleFactor)
+    internal void Init(float growthRate, int currentWave)
     {
-        SetDamage((int)(scaleFactor * Damage));
+        growthRate = Mathf.Pow(growthRate, currentWave - 1);
+        SetDamage((int)(growthRate * Damage));
     }
 
     public override void ExitInteract(Interface.IInteract target) { }

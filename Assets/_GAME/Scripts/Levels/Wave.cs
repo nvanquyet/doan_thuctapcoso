@@ -61,15 +61,15 @@ namespace ShootingGame
         //This method to set data wave
         public void Init(float scalingFactor, int currentWave)
         {
-            this.scalingFactor = GameService.ApplyScaleFactorToValue(scalingFactor, currentWave);
             this.isBossWave = currentWave % GameConfig.Instance.bossWaveDistance == 0;
+
             this.currentWave = currentWave;
 
             this.waveProperties = new WaveProperties
             {
-                timeThreshold = GameService.ApplyScaleFactorToValue(GameConfig.Instance.waveProperties.timeThreshold, scalingFactor),
-                spawnThreshold = GameService.ApplyScaleFactorToValue(GameConfig.Instance.waveProperties.spawnThreshold, scalingFactor),
-                strengthWave = GameService.ApplyWeightToValue(GameConfig.Instance.waveProperties.strengthWave , scalingFactor),
+                timeThreshold = GameConfig.Instance.waveProperties.timeThreshold * Mathf.Pow(this.scalingFactor, currentWave),
+                spawnThreshold = (int) (GameConfig.Instance.waveProperties.spawnThreshold * Mathf.Pow(this.scalingFactor, currentWave)),
+                strengthWave = (int) (GameConfig.Instance.waveProperties.strengthWave * Mathf.Pow(this.scalingFactor, currentWave)),
                 timeNormalSpawn = GameConfig.Instance.waveProperties.timeNormalSpawn
             };
 
@@ -105,36 +105,36 @@ namespace ShootingGame
 
             var allEnimies = GameData.Instance.Enemies.GetAllValue();
             var curEnemyCount = 0;
-            //while (waveProperties.strengthWave > 0)
-            //{
-            //    //Spawn Enemy from data
-            //    var enemy = allEnimies[Random.Range(0, Mathf.Min(currentWave, allEnimies.Length))];
-            //    //Init data enemy
-            //    if (enemy != null)
-            //    {
-            //        var enemyInstance = Instantiate(enemy,  spawnPositions[Random.Range(0, spawnPositions.Count)]);
-            //        //Init data enemy
-            //        if (enemyInstance)
-            //        {
-            //            enemyInstance.transform.localPosition = Vector3.zero;
-            //            enemyInstance.Init(scalingFactor);
-            //            AddEnemy(enemyInstance);
+            while (waveProperties.strengthWave > 0)
+            {
+                //Spawn Enemy from data
+                var enemy = allEnimies[Random.Range(0, Mathf.Min(currentWave, allEnimies.Length))];
+                //Init data enemy
+                if (enemy != null)
+                {
+                    var enemyInstance = Instantiate(enemy, spawnPositions[Random.Range(0, spawnPositions.Count)]);
+                    //Init data enemy
+                    if (enemyInstance)
+                    {
+                        enemyInstance.transform.localPosition = Vector3.zero;
+                        enemyInstance.Init(currentWave);
+                        AddEnemy(enemyInstance);
 
-            //            waveProperties.strengthWave -= enemyInstance.GetStrength();
-            //            curEnemyCount++;
-            //        }
-            //        yield return new WaitForSeconds(UnityEngine.Random.Range(0.1f, 0.3f));
-            //    }
+                        waveProperties.strengthWave -= enemyInstance.GetStrength();
+                        curEnemyCount++;
+                    }
+                    yield return new WaitForSeconds(UnityEngine.Random.Range(0.1f, 0.3f));
+                }
 
-            //    if (curEnemyCount % waveProperties.spawnThreshold == 0)
-            //    {
-            //        yield return new WaitForSeconds(waveProperties.timeThreshold);
-            //    }
-            //    else
-            //    {
-            //        yield return new WaitForSeconds(waveProperties.timeNormalSpawn);
-            //    }
-            //}
+                if (curEnemyCount % waveProperties.spawnThreshold == 0)
+                {
+                    yield return new WaitForSeconds(waveProperties.timeThreshold);
+                }
+                else
+                {
+                    yield return new WaitForSeconds(waveProperties.timeNormalSpawn);
+                }
+            }
 
             if (isBossWave)
             {
@@ -157,7 +157,7 @@ namespace ShootingGame
                 if (bossInstance)
                 {
                     bossInstance.transform.localPosition = Vector3.zero;
-                    bossInstance.Init(scalingFactor);
+                    bossInstance.Init(currentWave);
                     AddEnemy(bossInstance);
                 }
             }

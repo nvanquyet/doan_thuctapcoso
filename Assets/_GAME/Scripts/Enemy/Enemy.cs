@@ -23,6 +23,7 @@ namespace ShootingGame
         [SerializeField] private EnemyDefender _enemyDefender;
         [SerializeField] private EnemyMovement _enemyMovement;
         [SerializeField] private EnemyAnimation _enemyAnimation;
+        [SerializeField] private float growthRate = 1f;
         public bool IsDead => _enemyDefender.IsDead;
 
         public Action<Interface.IAttacker> OnDeadAction;
@@ -70,11 +71,11 @@ namespace ShootingGame
             }
         }
 
-        public void Init(float scaleFactor)
+        public void Init(int currentWave)
         {
-            _enemyDefender.Init(scaleFactor);
-            _enemyAttacker.Init(scaleFactor);
-            _enemyMovement.Init(scaleFactor);
+            _enemyDefender.Init(growthRate, currentWave);
+            _enemyAttacker.Init(growthRate, currentWave);
+            _enemyMovement.Init(growthRate, currentWave);
         }
 
         public int GetStrength()
