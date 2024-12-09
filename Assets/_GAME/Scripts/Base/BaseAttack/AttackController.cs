@@ -129,9 +129,10 @@ public class AttackController : AAttacker, IAttackBehaviour
         return base.Attack(target, isSuper, forcePushBack);
     }
 
-    public void Init(float scaleFactor)
+    internal void Init(float growthRate, int currentWave)
     {
-        SetDamage((int)(scaleFactor * Damage));
+        growthRate = Mathf.Pow(growthRate, currentWave - 1);
+        SetDamage((int)(growthRate * Damage));
     }
 
     public override void ExitInteract(Interface.IInteract target) { }

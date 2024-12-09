@@ -61,15 +61,15 @@ namespace ShootingGame
         //This method to set data wave
         public void Init(float scalingFactor, int currentWave)
         {
-            this.scalingFactor = GameService.ApplyScaleFactorToValue(scalingFactor, currentWave);
             this.isBossWave = currentWave % GameConfig.Instance.bossWaveDistance == 0;
+
             this.currentWave = currentWave;
 
             this.waveProperties = new WaveProperties
             {
-                timeThreshold = GameService.ApplyScaleFactorToValue(GameConfig.Instance.waveProperties.timeThreshold, scalingFactor),
-                spawnThreshold = GameService.ApplyScaleFactorToValue(GameConfig.Instance.waveProperties.spawnThreshold, scalingFactor),
-                strengthWave = GameService.ApplyWeightToValue(GameConfig.Instance.waveProperties.strengthWave , scalingFactor),
+                timeThreshold = GameConfig.Instance.waveProperties.timeThreshold * Mathf.Pow(this.scalingFactor, currentWave),
+                spawnThreshold = (int) (GameConfig.Instance.waveProperties.spawnThreshold * Mathf.Pow(this.scalingFactor, currentWave)),
+                strengthWave = (int) (GameConfig.Instance.waveProperties.strengthWave * Mathf.Pow(this.scalingFactor, currentWave)),
                 timeNormalSpawn = GameConfig.Instance.waveProperties.timeNormalSpawn
             };
 
@@ -117,7 +117,7 @@ namespace ShootingGame
                     if (enemyInstance)
                     {
                         enemyInstance.transform.localPosition = Vector3.zero;
-                        enemyInstance.Init(scalingFactor);
+                        enemyInstance.Init(currentWave);
                         AddEnemy(enemyInstance);
 
                         waveProperties.strengthWave -= enemyInstance.GetStrength();
@@ -157,7 +157,7 @@ namespace ShootingGame
                 if (bossInstance)
                 {
                     bossInstance.transform.localPosition = Vector3.zero;
-                    bossInstance.Init(scalingFactor);
+                    bossInstance.Init(currentWave);
                     AddEnemy(bossInstance);
                 }
             }
