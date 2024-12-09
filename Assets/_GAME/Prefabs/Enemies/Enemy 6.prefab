@@ -204,7 +204,7 @@ MonoBehaviour:
   _damage: 10
   attackBehaviours:
   - {fileID: -6784914736345168692}
-  triggerAnimation: {fileID: 0}
+  triggerAnimation: {fileID: 592505166677156355}
   timeChangeBehaviour: 5
 --- !u!114 &724029092634259062
 MonoBehaviour:
@@ -333,7 +333,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 487299542891443759, guid: e64bf266978d503489997fc9bce3db90, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 592505166677156355}
+    - targetCorrespondingSourceObject: {fileID: 487299542891443759, guid: e64bf266978d503489997fc9bce3db90, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2778823335985521225}
   m_SourcePrefab: {fileID: 100100000, guid: e64bf266978d503489997fc9bce3db90, type: 3}
 --- !u!4 &1607385813825528027 stripped
 Transform:
@@ -350,3 +356,57 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 5875359367690928257, guid: e64bf266978d503489997fc9bce3db90, type: 3}
   m_PrefabInstance: {fileID: 5571819336416982795}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5444896412377039140 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 487299542891443759, guid: e64bf266978d503489997fc9bce3db90, type: 3}
+  m_PrefabInstance: {fileID: 5571819336416982795}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &592505166677156355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5444896412377039140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fd13b1c9120a95498e9092bec413729, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2778823335985521225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5444896412377039140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e46ac8d61dc065848bd5a1aa7cd8c006, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_WithTag: 
+  m_WithoutTag: 
+  m_SkipFirst: 0
+  m_Repeating: 1
+  m_OnObjectEnter:
+    m_Action: 0
+    m_Target: {fileID: 0}
+    m_BoostAmount: 0
+    m_StartTime: 0
+    m_Mode: 0
+    m_Event:
+      m_PersistentCalls:
+        m_Calls: []
+  m_OnObjectExit:
+    m_Action: 0
+    m_Target: {fileID: 0}
+    m_BoostAmount: 0
+    m_StartTime: 0
+    m_Mode: 0
+    m_Event:
+      m_PersistentCalls:
+        m_Calls: []

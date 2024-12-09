@@ -34,7 +34,7 @@ MonoBehaviour:
   appearance:
     itemName: MachineGun 2
     icon: {fileID: 21300000, guid: bdc52157788aadc4a9cb6dce2b1884f2, type: 3}
-  matrixData: {fileID: 11400000, guid: 0f838fe5b6a743643b8bbe8152b1aa34, type: 2}
+  matrixData: {fileID: 11400000, guid: 79b119336430ac84e925248b9f81a5a6, type: 2}
   prefab: {fileID: 3537812215717957531, guid: f4891343d338ca84b96a459158f899dd, type: 3}
   level: 2
   nextLevelAttribute: {fileID: 11400000, guid: a02d375152d81754aa1a3cb109cd3e84, type: 2}
