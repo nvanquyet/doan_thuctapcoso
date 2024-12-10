@@ -28,6 +28,7 @@ MonoBehaviour:
   appearance:
     itemName: Scope 1
     icon: {fileID: 21300266, guid: cfe6f8a4764b6f9d439dbd3e1a1940a3, type: 3}
-  matrixData: {fileID: 11400000, guid: 240c44e0b317f7647ad3dd83a0b0976a, type: 2}
+  matrixData: {fileID: 11400000, guid: 2094a8427d8b56f41bdcbc574ce28628, type: 2}
   prefab: {fileID: 0}
+  level: 1
   nextLevelAttribute: {fileID: 11400000, guid: a545c103ce337eb4293fb92c0da5b21c, type: 2}
