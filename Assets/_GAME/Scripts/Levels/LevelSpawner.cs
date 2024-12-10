@@ -5,10 +5,6 @@ namespace ShootingGame
 {
     public class LevelSpawner : ShootingGame.SingletonBehaviour<LevelSpawner>
     {
-        /// <summary>
-        /// Scaling Factor
-        /// </summary>
-        [SerializeField] private float scalingFactor = 1.1f;
 
         /// <summary>
         /// Wave Prefab
