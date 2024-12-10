@@ -17,6 +17,13 @@ public sealed class GameEvent
 
     public struct OnPlayerDead : IEventParam { }
 
+    public struct OnEndGame : IEventParam 
+    {
+        public bool isWin;
+        public int enemiesDefeated;
+        public float timeLeft;
+        public int maxScore;
+    }
 
     public struct OnShowFloatingText : IEventParam
     {

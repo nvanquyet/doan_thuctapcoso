@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using ShootingGame;
 
-public class MoneyBar : MonoBehaviour
+public class MoneyBar : Frame
 {
     public Image moneyBarFill;            
     public TextMeshProUGUI moneyBarText;  

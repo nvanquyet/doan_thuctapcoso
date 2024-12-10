@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using ShootingGame;
 using UnityEngine;
 
-public class InventoryHomeGrid : MonoBehaviour
+public class InventoryHomeGrid : Frame
 {
     public GameObject slotPrefab;
     public int totalSlots = 20;  

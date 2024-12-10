@@ -17,29 +17,21 @@ public class InventoryUI : Frame
 
     public Action<ItemDataSO> OnItemClickedAction;
 
-    private bool hasShowed = false;
-    public Action OnFirstShowAction;
+    public Action OnContinueAction;
 
-    public void Initialized(Action OnFirstShow)
+    public void Initialized(bool levelUp = false)
     {
-        this.OnFirstShowAction = OnFirstShow;
-        hasShowed = false;
-        if(GameConfig.Instance.startGameBuyItem && !hasShowed)
+        if (levelUp)
         {
-            UICtrl.Instance.Show<InventoryUI>(true, OnButtonRandomItemClick);
+            OnButtonRandomItemClick();
+            UICtrl.Instance.Show<InventoryUI>();
         }
     }
+
     private void Start()
     {
         btnContinue.onClick.AddListener(OnContinueButtonClicked);
         btnRandomItem.onClick.AddListener(OnButtonRandomItemClick);
-        this.AddListener<GameEvent.OnLevelUp>(OnLevelUp, false);
-    }
-
-    private void OnLevelUp(GameEvent.OnLevelUp param)
-    {
-        Time.timeScale = 0;
-        UICtrl.Instance.Show<InventoryUI>(true, OnButtonRandomItemClick, false);
     }
 
     public void OnButtonRandomItemClick()
@@ -59,6 +51,7 @@ public class InventoryUI : Frame
             item.gameObject.SetActive(true);
         }
     }
+
     private List<ItemDataSO> RandomItems(int capacity)
     {
         capacity = Mathf.Max(capacity, 5);
@@ -98,11 +91,6 @@ public class InventoryUI : Frame
 
     private void OnContinueButtonClicked()
     {
-        Time.timeScale = 1;
-        if (!hasShowed && GameConfig.Instance.startGameBuyItem) UICtrl.Instance.Show<TetrisInventory>(true, () =>
-        {
-            OnFirstShowAction?.Invoke();
-        });
-        hasShowed = true;
+        OnContinueAction?.Invoke();
     }
 }

@@ -173,7 +173,7 @@ namespace ShootingGame
             {
                 filteredItems = filteredItems.Where(i => i.Rarity == RarityItem.Epic).ToList();
             }
-            else 
+            else
             {
                 filteredItems = filteredItems.Where(i => i.Rarity == RarityItem.Legendary).ToList();
             }
@@ -184,6 +184,27 @@ namespace ShootingGame
             }
 
             return null;
+        }
+        public static int CalculateScore(int enemiesDefeated, float timeLeft)
+        {
+            int baseScore = enemiesDefeated * 100;
+            int timeBonus = Mathf.FloorToInt(timeLeft * 50);
+            return baseScore + timeBonus + baseScore;
+        }
+        public static int CalculateStars(int score, int maxScore)
+        {
+            float percentage = (float)score / maxScore;
+            if (percentage >= 0.9f) return 3; 
+            else if (percentage >= 0.7f) return 2;
+            else if (percentage >= 0.5f) return 1;
+            else return 0;
+        }
+
+        public static int CalculateGold(int baseGold, float scalingFactor, int currentWave, float rarityBonus)
+        {
+            float scaledGold = baseGold * Mathf.Pow(scalingFactor, currentWave - 1);
+            float totalGold = scaledGold * (1 + rarityBonus);   
+            return Mathf.FloorToInt(totalGold);                                  
         }
 
     }

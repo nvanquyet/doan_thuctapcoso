@@ -73,7 +73,7 @@ namespace ShootingGame {
                 activings.Remove(frame);
             }
 
-            if (hideCurrent) HideCurrent(anim, restorePrevious: true);
+            if (hideCurrent) HideCurrent(false, restorePrevious: true);
 
             StartBusy();
             activings.Add(frame);
