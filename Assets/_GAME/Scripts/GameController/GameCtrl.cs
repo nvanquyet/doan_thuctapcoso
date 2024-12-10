@@ -50,7 +50,7 @@ namespace ShootingGame
         internal void OnCheckWaveClear()
         {
             if(LevelSpawner.Instance.IsWaveClear){
-                Invoke(nameof(OnWaveClear), 1f);
+                OnWaveClear();
             }
         }
         internal void NextWave()

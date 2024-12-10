@@ -31,7 +31,7 @@ namespace ShootingGame
         internal void Init(int health, int expGiven, float growthRate)
         {
             SetHealth((int)(growthRate * health), true);
-            this.expGiven = (int)(expGiven * growthRate);
+            this.expGiven = (int)(this.expGiven * growthRate);
         }
     }
 }

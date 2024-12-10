@@ -1,4 +1,3 @@
-using ShootingGame;
 using UnityEngine;
 [CreateAssetMenu(fileName = "EnemyProperties", menuName = "_GAME/Enemy Properties Data")]
 public class EnemyPropertiesData : ScriptableObject
@@ -15,9 +14,4 @@ public class EnemyPropertiesData : ScriptableObject
     public short BaseSpeed => baseSpeed;
     public int BaseEXP => baseEXP;
     public float GrowthRate => growthRate;
-
-    public override string ToString()
-    {
-        return $"Base Health: {baseHealth} - Base Damage: {baseDamage} - Base Speed: {baseSpeed} - Base EXP: {baseEXP} - Growth Rate: {growthRate}";
-    }
 }
