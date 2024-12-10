@@ -101,10 +101,8 @@ namespace ShootingGame
 
         private void FixedUpdate()
         {
-            if (IsMoving)
-            {
-                Move(movementInput);
-            }
+            if (IsMoving) Move(movementInput);
+            else Move(Vector3.zero);
         }
 
         public void Move(Vector3 direction)
@@ -113,8 +111,6 @@ namespace ShootingGame
             currentVelocity = Vector2.Lerp(currentVelocity, targetVelocity, accelerationTime / Time.fixedDeltaTime);
             Rigid.velocity = currentVelocity;
         }
-
-
 
         #endregion
     }

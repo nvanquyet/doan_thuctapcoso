@@ -1,5 +1,6 @@
 
 using System.Collections.Generic;
+using System.Linq;
 using ShootingGame;
 using ShootingGame.Data;
 using UnityEngine;
@@ -9,11 +10,13 @@ public class InventorySystem : MonoBehaviour
     [SerializeField] private TetrisInventory tetrisInventory;
     [SerializeField] private InventoryUI inventoryUI;
     [SerializeField] private List<ItemDataSO> claimedItems;
+    [SerializeField] private Player player;
 #if UNITY_EDITOR
     private void OnValidate()
     {
         tetrisInventory = GetComponentInChildren<TetrisInventory>();
         inventoryUI = GetComponentInChildren<InventoryUI>();
+        player = FindObjectOfType<Player>();
     }
     #endif
 
@@ -23,11 +26,31 @@ public class InventorySystem : MonoBehaviour
 
         claimedItems = new List<ItemDataSO>();
         inventoryUI.OnItemClickedAction += OnItemClicked;
+        tetrisInventory.OnBackAction += () =>
+        {
+            UICtrl.Instance.Show<InventoryUI>();
+        };
+        inventoryUI.OnContinueAction += () =>
+        {
+            OnShowTetrisUI();
+            UICtrl.Instance.Show<TetrisInventory>();
+        };
+
+
 
         inventoryUI.gameObject.SetActive(false);
         tetrisInventory.gameObject.SetActive(false);
+        var startBuyItem = GameConfig.Instance.startGameBuyItem;
+        if(!startBuyItem)
+        {
+            var weaponRandom = GameData.Instance.ItemData.GetValue(Category.Weapon) as WeaponData;
+            var item = GameService.RandomItem(weaponRandom.GetAllValue().ToList());
 
-        inventoryUI.Initialized(OnWaveClear);
+            OnItemClicked(item);
+            OnShowTetrisUI();
+        }
+        tetrisInventory.Initialized(startBuyItem); 
+        inventoryUI.Initialized(startBuyItem);
     }
 
     private void OnItemClicked(ItemDataSO data)
@@ -40,8 +63,9 @@ public class InventorySystem : MonoBehaviour
 
     private void OnWaveClear()
     {
-        OnShowTetrisUI();
-        UICtrl.Instance.Show<TetrisInventory>();
+        GameService.LogColor($"LevelUp : {player.IsLevelUp}");
+        inventoryUI.Initialized(player.IsLevelUp);
+        tetrisInventory.Initialized(player.IsLevelUp);
     }
 
     private void OnShowTetrisUI()

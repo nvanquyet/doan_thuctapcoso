@@ -30,8 +30,7 @@ namespace ShootingGame
         public bool IsWaveClear => !isSpawning && enemies.Count <= 0;
 
         private Coroutine spawnRoutine;
-        //This properties to spawn and set data enemy
-        private float scalingFactor;
+        //This properties to spawn and set data enemy=
         private int currentWave;
 
         //This properties is data of wave
@@ -67,9 +66,9 @@ namespace ShootingGame
 
             this.waveProperties = new WaveProperties
             {
-                timeThreshold = GameConfig.Instance.waveProperties.timeThreshold * Mathf.Pow(this.scalingFactor, currentWave),
-                spawnThreshold = (int) (GameConfig.Instance.waveProperties.spawnThreshold * Mathf.Pow(this.scalingFactor, currentWave)),
-                strengthWave = (int) (GameConfig.Instance.waveProperties.strengthWave * Mathf.Pow(this.scalingFactor, currentWave)),
+                timeThreshold = GameConfig.Instance.waveProperties.timeThreshold * Mathf.Pow(scalingFactor, currentWave),
+                spawnThreshold = (int) (GameConfig.Instance.waveProperties.spawnThreshold * Mathf.Pow(scalingFactor, currentWave)),
+                strengthWave = (int) (GameConfig.Instance.waveProperties.strengthWave * Mathf.Pow(scalingFactor, currentWave)),
                 timeNormalSpawn = GameConfig.Instance.waveProperties.timeNormalSpawn
             };
 
@@ -105,6 +104,7 @@ namespace ShootingGame
 
             var allEnimies = GameData.Instance.Enemies.GetAllValue();
             var curEnemyCount = 0;
+            GameService.LogColor($"Strength Wave: {waveProperties.strengthWave}");
             while (waveProperties.strengthWave > 0)
             {
                 //Spawn Enemy from data
@@ -121,6 +121,7 @@ namespace ShootingGame
                         AddEnemy(enemyInstance);
 
                         waveProperties.strengthWave -= enemyInstance.GetStrength();
+                        
                         curEnemyCount++;
                     }
                     yield return new WaitForSeconds(UnityEngine.Random.Range(0.1f, 0.3f));
@@ -134,6 +135,7 @@ namespace ShootingGame
                 {
                     yield return new WaitForSeconds(waveProperties.timeNormalSpawn);
                 }
+
             }
 
             if (isBossWave)

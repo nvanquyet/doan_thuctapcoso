@@ -9,13 +9,13 @@ public class LevelProgesstion : MonoBehaviour
     public int CurrentEXP { get; private set; } = 0;
     public int EXPToNextLevel => CalculateEXPForLevel(Level + 1);
 
-    public Action OnLevelUp;
+    public bool IsLevelUp;
 
-    public void Initialized(Action OnLevelUp = null)
+    public void Initialized()
     {
         Level = 1;
         CurrentEXP = 0;
-        this.OnLevelUp = OnLevelUp;
+        IsLevelUp = false;
         bar.UpdateProgess(CurrentEXP, EXPToNextLevel);
     }
 
@@ -27,17 +27,18 @@ public class LevelProgesstion : MonoBehaviour
             CurrentEXP -= EXPToNextLevel;
             LevelUp();
         }
+        GameService.LogColor("Current EXP: " + CurrentEXP + " EXP To Next Level: " + EXPToNextLevel);
         bar.UpdateProgess(CurrentEXP, EXPToNextLevel);
     }
 
     private int CalculateEXPForLevel(int level)
     {
-        return 100 * level * level;
+        return 50 * level * level;
     }
 
     private void LevelUp()
     {
         Level++;
-        OnLevelUp?.Invoke();
+        IsLevelUp = true;
     }
 }

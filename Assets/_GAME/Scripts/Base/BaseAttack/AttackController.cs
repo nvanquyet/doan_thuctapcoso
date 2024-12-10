@@ -13,12 +13,13 @@ public class AttackController : AAttacker, IAttackBehaviour
     [SerializeField] private TriggerAnimation triggerAnimation;
     [SerializeField] private int timeChangeBehaviour = 5;
 
-    private IDefender defenderOwner;
+    [SerializeField] private IDefender defenderOwner;
     private ADefender _target;
 
     private Coroutine attackRoutine;
 
     private float distanceAttack = -1;
+
     public float DistanceAttack
     {
         get
