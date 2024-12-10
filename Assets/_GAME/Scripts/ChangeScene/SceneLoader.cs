@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using ShootingGame;
 
-public class SceneLoader : MonoBehaviour
+public class SceneLoader : Frame
 {
     public GameObject loaderUI;
     public Slider progressSlider;
@@ -16,7 +17,7 @@ public class SceneLoader : MonoBehaviour
     public void LoadScene(int index)
     {
         RandomizeLoadingIcon();
-        StartCoroutine(LoadScene_Coroutine(index));
+        StartCoroutine(IELoadScene(index));
     }
     /*public IEnumerator LoadScene_Coroutine(int index)
     {
@@ -47,7 +48,7 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
-    public IEnumerator LoadScene_Coroutine(int index)
+    public IEnumerator IELoadScene(int index)
     {
         progressSlider.value = 0;
         loaderUI.SetActive(true);

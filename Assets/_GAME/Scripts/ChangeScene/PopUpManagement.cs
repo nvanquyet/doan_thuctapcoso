@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using ShootingGame;
 
-public class PopUpManagement : MonoBehaviour
+public class PopUpManagement : Frame
 {
     public GameObject popUpPrefab;
     public GameObject canvasObject;
