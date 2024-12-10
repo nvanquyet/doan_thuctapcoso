@@ -39,15 +39,6 @@ namespace ShootingGame
             Debug.Log($"<color=yellow>{v}</color>");
         }
 
-        public static T ApplyWeightToValue<T>(T value, float weight)
-        {
-            return (T)Convert.ChangeType(value, typeof(T)) switch
-            {
-                int intValue => (T)Convert.ChangeType(intValue * weight, typeof(T)),
-                float floatValue => (T)Convert.ChangeType(floatValue * weight, typeof(T)),
-                _ => value
-            };
-        }
 
         //public static T ApplyScaleFactorToValue<T>(T value, float scaleFactor)
         //{
@@ -205,6 +196,20 @@ namespace ShootingGame
             float scaledGold = baseGold * Mathf.Pow(scalingFactor, currentWave - 1);
             float totalGold = scaledGold * (1 + rarityBonus);   
             return Mathf.FloorToInt(totalGold);                                  
+        }
+
+        public static WaveProperties CalculateWaveProperties(int currentWave, float scaleFactor)
+        {
+            WaveProperties waveProperties = new WaveProperties
+            {
+                timeNormalSpawn = GameConfig.Instance.waveProperties.timeNormalSpawn / Mathf.Pow(scaleFactor, currentWave),
+                timeThreshold = GameConfig.Instance.waveProperties.timeThreshold * Mathf.Pow(scaleFactor, currentWave),
+                spawnThreshold = Mathf.RoundToInt(GameConfig.Instance.waveProperties.spawnThreshold * Mathf.Pow(scaleFactor, currentWave)),
+                strengthWave = Mathf.RoundToInt(GameConfig.Instance.waveProperties.strengthWave * Mathf.Pow(scaleFactor, currentWave)),
+                timeWave = Mathf.RoundToInt(GameConfig.Instance.waveProperties.timeWave / Mathf.Pow(scaleFactor, currentWave))
+            };
+
+            return waveProperties;
         }
 
     }

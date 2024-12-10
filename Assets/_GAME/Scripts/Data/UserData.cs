@@ -15,4 +15,16 @@ public partial class UserData
             PlayerPrefs.SetInt("CurrentCharacter", value);
         }
     }
+
+    public static int BestScore
+    {
+        get
+        {
+            return PlayerPrefs.GetInt("BestScore", 0);
+        }
+        set
+        {
+            PlayerPrefs.SetInt("BestScore", value);
+        }
+    }
 }

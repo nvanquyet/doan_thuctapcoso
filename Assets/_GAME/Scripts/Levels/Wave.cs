@@ -14,6 +14,7 @@ namespace ShootingGame
         public float timeThreshold;
         public int spawnThreshold;
         public int strengthWave;
+        public int timeWave;
     }
 
     public class Wave : MonoBehaviour, ICoroutineBehaviour
@@ -21,10 +22,13 @@ namespace ShootingGame
 
         [Header("All Position Spawn")]
         [SerializeField] private List<Transform> spawnPositions = new();
+        [SerializeField] private Timer timmer;
 
         [Header("Config")]
         [SerializeField] private float spawnRadius = 10f;
         [SerializeField] private float timeDelaySpawn = 2f;
+
+
         //This properties is base data of first wave
 
         public bool IsWaveClear => !isSpawning && enemies.Count <= 0;
@@ -45,6 +49,7 @@ namespace ShootingGame
 
         protected virtual void OnValidate()
         {
+            timmer = FindObjectOfType<Timer>();
             spawnPositions = GetComponentsInChildren<Transform>().ToList();
             spawnPositions.RemoveAt(0);
             foreach (Transform spawn in spawnPositions)
@@ -64,14 +69,12 @@ namespace ShootingGame
 
             this.currentWave = currentWave;
 
-            this.waveProperties = new WaveProperties
-            {
-                timeThreshold = GameConfig.Instance.waveProperties.timeThreshold * Mathf.Pow(scalingFactor, currentWave),
-                spawnThreshold = (int) (GameConfig.Instance.waveProperties.spawnThreshold * Mathf.Pow(scalingFactor, currentWave)),
-                strengthWave = (int) (GameConfig.Instance.waveProperties.strengthWave * Mathf.Pow(scalingFactor, currentWave)),
-                timeNormalSpawn = GameConfig.Instance.waveProperties.timeNormalSpawn
-            };
+            this.waveProperties = GameService.CalculateWaveProperties(currentWave, scalingFactor);
 
+            timmer.SetTimer(this.waveProperties.timeWave, () =>
+            {
+                GameCtrl.Instance.OnEndGame(false, 0);
+            });
             Invoke(nameof(StartSpawning), timeDelaySpawn);
         }
 
@@ -121,7 +124,7 @@ namespace ShootingGame
                         AddEnemy(enemyInstance);
 
                         waveProperties.strengthWave -= enemyInstance.GetStrength();
-                        
+                        GameCtrl.Instance.EnemySpawned();
                         curEnemyCount++;
                     }
                     yield return new WaitForSeconds(UnityEngine.Random.Range(0.1f, 0.3f));

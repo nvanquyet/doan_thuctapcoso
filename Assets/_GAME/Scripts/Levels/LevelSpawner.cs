@@ -10,7 +10,7 @@ namespace ShootingGame
         /// Wave Prefab
         /// </summary>
         [SerializeField] private Wave wave;
-    
+
         private int _currentWave;
 
         protected virtual void OnValidate() => wave = GetComponentInChildren<Wave>();
@@ -45,7 +45,7 @@ namespace ShootingGame
         {
             var isDeath = wave.OnEnemyDeath(enemy);
 
-            GameCtrl.Instance.OnCheckWaveClear();
+            GameCtrl.Instance.OnEnemyDeath();
 
             return isDeath;
         }

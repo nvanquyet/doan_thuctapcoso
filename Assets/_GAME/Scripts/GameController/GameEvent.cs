@@ -21,8 +21,8 @@ public sealed class GameEvent
     {
         public bool isWin;
         public int enemiesDefeated;
+        public int totalEnemies;
         public float timeLeft;
-        public int maxScore;
     }
 
     public struct OnShowFloatingText : IEventParam

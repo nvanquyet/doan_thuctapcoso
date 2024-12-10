@@ -8,6 +8,9 @@ namespace ShootingGame
     {
         private List<Player> _players;
 
+        private int enemiesDefeated = 0;
+        private int totalEnemies = 0;
+
         /// <summary>
         /// Add Player
         /// </summary>
@@ -40,28 +43,42 @@ namespace ShootingGame
         /// <summary>
         /// Start Game
         /// </summary>
-        public void OnStartGame() => this.Dispatch<GameEvent.OnWaveClear>(); 
+        public void OnGameStart()
+        {
+            enemiesDefeated = 0;
+            totalEnemies = 0;
+        }
+
+        /// <summary>
+        /// OnEndGame
+        /// </summary>
+        /// <param name="isWin"></param>
+        /// <param name="timeLeft"></param>
+        internal void OnEndGame(bool isWin, int timeLeft)
+        {
+            this.Dispatch<GameEvent.OnEndGame>(new GameEvent.OnEndGame() { enemiesDefeated = this.enemiesDefeated, timeLeft = timeLeft, totalEnemies = totalEnemies, isWin = isWin });
+        }
 
         /// <summary>
         /// Show Merge and Upgrade UI
         /// </summary>
         private void OnWaveClear() => this.Dispatch<GameEvent.OnWaveClear>(); 
 
-        internal void OnCheckWaveClear()
+        internal void NextWave() => LevelSpawner.Instance.NextWave();
+
+       
+        internal void OnEnemyDeath()
         {
-            if(LevelSpawner.Instance.IsWaveClear){
+            enemiesDefeated++;
+            if (LevelSpawner.Instance.IsWaveClear)
+            {
                 Invoke(nameof(OnWaveClear), 1f);
             }
         }
-        internal void NextWave()
-        {
-            LevelSpawner.Instance.NextWave();
-        }
 
-        internal void SpawnItem()
-        {
-            Debug.Log("Spawn Item");
-        }
+
+        
+        internal void EnemySpawned() => totalEnemies++;
     }
 
 }

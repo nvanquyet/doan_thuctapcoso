@@ -97,9 +97,9 @@ namespace ShootingGame
         public int GetStrength()
         {
             //Caculate strength of enemy
-            return (int) (GameService.ApplyWeightToValue(_enemyDefender.MaxHealth, GameConfig.Instance.enemyWeights.HpWeight) +
-                GameService.ApplyWeightToValue(_enemyAttacker.Damage, GameConfig.Instance.enemyWeights.DamageWeight) +
-                GameService.ApplyWeightToValue(_enemyMovement.Speed, GameConfig.Instance.enemyWeights.SpeedWeight));
+            return (int) (_enemyDefender.MaxHealth * GameConfig.Instance.enemyWeights.HpWeight + 
+                            _enemyAttacker.Damage * GameConfig.Instance.enemyWeights.DamageWeight + 
+                            _enemyMovement.Speed * GameConfig.Instance.enemyWeights.SpeedWeight);
         }
 
 

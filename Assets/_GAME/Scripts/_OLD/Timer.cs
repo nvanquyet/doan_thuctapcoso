@@ -1,46 +1,48 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using System;
+using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    public TextMeshProUGUI textTimer;
-    int gameMode = 0;
-    public int timer;
+    public Text textTimer;
 
-    private void Start()
+    private Coroutine coutdownRoutine;
+
+    public int TimeLeft { get; private set; }
+
+    public void SetTimer(int time, Action OnCompleted = null)
     {
-        gameMode = PlayerPrefs.GetInt("gameMode");
-        StartCoroutine(StartTimer());
+        if (coutdownRoutine != null)
+        {
+            StopCoroutine(coutdownRoutine);
+            coutdownRoutine = null;
+        }
+        coutdownRoutine = StartCoroutine(IEStartTimer(time, OnCompleted));
     }
 
-    IEnumerator StartTimer()
+    public void StopTimer()
     {
-        int showTimer = 0;
-        int maxTimer = 0;
-        if (gameMode == 0) maxTimer = 1800;
-        int second, minute;
-        while (true)
+        if (coutdownRoutine != null)
         {
-            timer++;
-            if (gameMode == 0)
-            {
-                showTimer = maxTimer - timer;
-                if (timer >= maxTimer)
-                {
-                    // win
-                }
-            }
-            else
-            {
-                showTimer = timer;
-            }
-            
-            second = showTimer % 60;
-            minute = (showTimer / 60) % 60;
+            StopCoroutine(coutdownRoutine);
+            coutdownRoutine = null;
+        }
+    }
+
+    private IEnumerator IEStartTimer(int totalTime, Action OnFinished = null)
+    {
+        TimeLeft = totalTime;
+
+        while (TimeLeft > 0)
+        {
+            var second = totalTime % 60;
+            var minute = (totalTime / 60) % 60;
             textTimer.text = minute.ToString() + ":" + second.ToString();
             yield return new WaitForSeconds(1f);
+            TimeLeft--;
         }
+
+        OnFinished?.Invoke();
     }
 }

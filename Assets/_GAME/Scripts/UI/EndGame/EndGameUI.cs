@@ -45,7 +45,8 @@ public class EndGameUI : Frame
     public void ShowEndgame(GameEvent.OnEndGame param)
     {
         int score = GameService.CalculateScore(param.enemiesDefeated, param.timeLeft);
-        int stars = param.isWin ? GameService.CalculateStars(score, param.maxScore) : 0;
+        int maxScore = GameService.CalculateScore(param.totalEnemies, param.timeLeft);
+        int stars = param.isWin ? GameService.CalculateStars(score, maxScore) : 0;
         if (score > UserData.BestScore) UserData.BestScore = score;
 
         titleText.text = param.isWin ? "VICTORY !!!" : "DEFEAT ...";
