@@ -46,12 +46,12 @@ public class EndGameUI : Frame
     {
         int score = GameService.CalculateScore(param.enemiesDefeated, param.timeLeft);
         int stars = param.isWin ? GameService.CalculateStars(score, param.maxScore) : 0;
-        if (score > UserData.BestScore) UserData.BestScore = score;
+      //  if (score > UserData.BestScore) UserData.BestScore = score;
 
         titleText.text = param.isWin ? "VICTORY !!!" : "DEFEAT ...";
         titleText.color = param.isWin ? colorWinTitleText : colorLoseTitleText;
         scoreText.text = score.ToString();
-        bestScoreText.text = $"Best Score: {UserData.BestScore}";
+      //  bestScoreText.text = $"Best Score: {UserData.BestScore}";
         textReward.text ="No Rewards.... :(";
         winPanel.SetActive(param.isWin);
         losePanel.SetActive(!param.isWin);

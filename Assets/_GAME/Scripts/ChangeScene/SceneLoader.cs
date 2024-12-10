@@ -18,6 +18,7 @@ public class SceneLoader : Frame
     {
         RandomizeLoadingIcon();
         StartCoroutine(IELoadScene(index));
+        
     }
     /*public IEnumerator LoadScene_Coroutine(int index)
     {
