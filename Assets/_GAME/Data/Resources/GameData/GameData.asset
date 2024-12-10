@@ -15,6 +15,4 @@ MonoBehaviour:
   Players: {fileID: 11400000, guid: d3b027f364fd32f409f562980631b7f0, type: 2}
   Enemies: {fileID: 11400000, guid: 5aceaa6d732dc8743bf94e3436d05c3f, type: 2}
   Bosses: {fileID: 11400000, guid: afc6631574e8c594fb9bcf36bd5bbe91, type: 2}
-  EnemyProperties: {fileID: 11400000, guid: b2d3139d5d16b524a92e9e9646fea0b3, type: 2}
-  BosssProperties: {fileID: 11400000, guid: b01c641b83cad6a4195734e51347d0f1, type: 2}
   ItemData: {fileID: 11400000, guid: 090b84f100823184daafce751a3186f8, type: 2}

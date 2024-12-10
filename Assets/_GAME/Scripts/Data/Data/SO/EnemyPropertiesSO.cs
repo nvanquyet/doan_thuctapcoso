@@ -4,5 +4,4 @@ using UnityEngine;
 public class EnemyPropertiesSO : BaseIntKeyData<EnemyPropertiesData>
 {
     protected override string Path => throw new System.NotImplementedException();
-
 }

@@ -52,10 +52,6 @@ namespace ShootingGame
             
         }
 
-        public override void GainExp(int exp)
-        {
-            GameService.LogColor("Gain Exp: " + exp);
-            expReceiver.GainExp(exp);
-        }
+        public override void GainExp(int exp) => expReceiver.GainExp(exp);
     }
 }

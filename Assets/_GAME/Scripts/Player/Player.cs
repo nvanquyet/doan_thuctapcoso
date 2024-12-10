@@ -11,8 +11,6 @@ namespace ShootingGame
         [SerializeField] private PlayerStat _playerStat;
         [SerializeField] private LevelProgesstion progesstion;
 
-        public bool IsLevelUp => progesstion.IsLevelUp;
-
         public PlayerStat Stat => _playerStat;
         public PlayerDefender Defender => _playerDefender;
 
@@ -32,7 +30,7 @@ namespace ShootingGame
         void Start()
         {
             GameCtrl.Instance.AddPlayer(this);
-            progesstion.Initialized();
+            progesstion.Initialized(OnLevelUp);
             InitAction();
             AddListener();
         }
@@ -41,16 +39,13 @@ namespace ShootingGame
         private void OnNextWave(GameEvent.OnNextWave param)
         {
             _playerStat.OnNextWave(param);
-            _playerMovement.PauseMovement(false);
-            progesstion.IsLevelUp = false;
-        }
-        private void OnWaveClear(GameEvent.OnWaveClear param)
-        {
-            _playerMovement.PauseMovement(true);
         }
 
         public void GainExp(int exp) => progesstion.AddEXP(exp);
-
+        private void OnLevelUp()
+        {
+            this.Dispatch<GameEvent.OnLevelUp>(new GameEvent.OnLevelUp { player = this });
+        }
 
         private void OnStatChanged(StatContainerData CurrentStat)
         {
@@ -78,7 +73,7 @@ namespace ShootingGame
         private void AddListener()
         {
             this.AddListener<GameEvent.OnNextWave>(OnNextWave, false);
-            this.AddListener<GameEvent.OnWaveClear>(OnWaveClear, false);
+            this.AddListener<GameEvent.OnWaveClear>((_) => _playerMovement.PauseMovement(true), false);
         }
     }
 
