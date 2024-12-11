@@ -23,7 +23,7 @@ MonoBehaviour:
       typeValueStat: 0
       value: 5.1
     - typeStat: 4
-      typeValueStat: 0
+      typeValueStat: 1
       value: 3.4
     - typeStat: 10
       typeValueStat: 0
