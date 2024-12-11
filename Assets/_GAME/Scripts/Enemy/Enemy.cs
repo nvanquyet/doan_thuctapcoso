@@ -52,9 +52,9 @@ namespace ShootingGame
         {
             if (_enemyMovement != null && _enemyDefender != null)
             {
-                OnDeadAction += (_) =>
+                OnDeadAction += (attacker) =>
                 {
-                    LevelSpawner.Instance.OnEnemyDeath(this);
+                    if(attacker != null) LevelSpawner.Instance.OnEnemyDeath(this);
                     _enemyMovement.PauseMovement(true);
                     _enemyAnimation.OnTriggerDead();
                     Destroy(gameObject, 0.32f);
@@ -109,6 +109,12 @@ namespace ShootingGame
             var _target = GameCtrl.Instance.GetRandomPlayer().Defender;
             _enemyAttacker.SetTarget(_target);
             _enemyMovement.SetTarget(_target.transform);
+        }
+
+        public void ForceDead()
+        {
+            _enemyDefender.Defend(_enemyDefender.MaxHealth);
+            if (IsDead) _enemyDefender.OnDead(null);
         }
     }
 }

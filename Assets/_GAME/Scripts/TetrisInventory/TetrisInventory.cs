@@ -14,8 +14,12 @@ public class TetrisInventory : Frame
     [SerializeField] private WaitingSlots waitingSlots;
     [SerializeField] private TetrisItemDescription tetrisDescription;
     [SerializeField] private TetrisRemoveItem tetrisRemoveItem;
+    [SerializeField] private Player playerOwner;
 
     [SerializeField] private Button btnPlay;
+    [SerializeField] private Button btnBack;
+
+    public Action OnBackAction;
 
 #if UNITY_EDITOR
     private void OnValidate()
@@ -27,23 +31,33 @@ public class TetrisInventory : Frame
         waitingSlots = GetComponentInChildren<WaitingSlots>();
         tetrisDescription = GetComponentInChildren<TetrisItemDescription>();
         tetrisRemoveItem = GetComponentInChildren<TetrisRemoveItem>();
+        playerOwner = FindObjectOfType<Player>();
     }
 #endif
-
+    public void Initialized(bool isLevelUp)
+    {
+        if(!isLevelUp) UICtrl.Instance.Show<TetrisInventory>();
+        btnBack.gameObject.SetActive(isLevelUp);
+    }
     private void Start()
     {
         SetNumberSlots(this.numberSlots);
         tetrisRemoveItem.SetAction(OnRemoveItem);
         btnPlay.onClick.AddListener(() => OnBtnPlayClick());
+        btnBack.onClick.AddListener(() => OnBtnBackClick());
+    }
+
+    private void OnBtnBackClick()
+    {
+        OnBackAction?.Invoke();
     }
 
     private void OnBtnPlayClick()
     {
         UICtrl.Instance.Hide<TetrisInventory>(true, () => {
-            GameCtrl.Instance.NextWave();
             if (GetTetrisItem(out var weapons, out var equiqment, out var buffItems))
             {
-                this.Dispatch<GameEvent.OnNextWave>(new GameEvent.OnNextWave { allWeapons = weapons, allEquiqments = equiqment, allBuffItems = buffItems });
+                GameCtrl.Instance.NextWave(new GameEvent.OnNextWave { allWeapons = weapons, allEquiqments = equiqment, allBuffItems = buffItems, player = playerOwner });
             }
         });
     }

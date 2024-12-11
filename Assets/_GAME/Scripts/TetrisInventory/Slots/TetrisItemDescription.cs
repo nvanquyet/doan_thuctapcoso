@@ -1,12 +1,13 @@
 using ShootingGame;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TetrisItemDescription : UIComponent
 {
-    [SerializeField] private Text textTitle;
+    [SerializeField] private TextMeshProUGUI textTitle;
     [SerializeField] private Image icon;
-    [SerializeField] private Text textDescription;
+    [SerializeField] private TextMeshProUGUI textDescription;
 
     [SerializeField] private GameObject placeHolder;
 

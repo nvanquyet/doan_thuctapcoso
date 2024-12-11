@@ -56,15 +56,27 @@ namespace ShootingGame
         /// <param name="timeLeft"></param>
         internal void OnEndGame(bool isWin, int timeLeft)
         {
+            LevelSpawner.Instance.OnEndGame();
             this.Dispatch<GameEvent.OnEndGame>(new GameEvent.OnEndGame() { enemiesDefeated = this.enemiesDefeated, timeLeft = timeLeft, totalEnemies = totalEnemies, isWin = isWin });
         }
 
         /// <summary>
         /// Show Merge and Upgrade UI
         /// </summary>
-        private void OnWaveClear() => this.Dispatch<GameEvent.OnWaveClear>(); 
+        private void OnWaveClear()
+        {
+            this.Dispatch<GameEvent.OnWaveClear>();
+        }
 
-        internal void NextWave() => LevelSpawner.Instance.NextWave();
+        internal void NextWave(GameEvent.OnNextWave param)
+        {
+            foreach (var player in _players)
+            {
+                if(player.Equals(param.player)) player.OnNextWave(param);
+            }
+            this.Dispatch<GameEvent.OnNextWave>(param);
+            LevelSpawner.Instance.NextWave();
+        }
 
        
         internal void OnEnemyDeath()
@@ -79,6 +91,15 @@ namespace ShootingGame
 
         
         internal void EnemySpawned() => totalEnemies++;
+
+        internal void OnPlayerDead(Player player)
+        {
+            RemovePlayer(player);
+            if (_players == null || _players.Count <= 0)
+            {
+                OnEndGame(false, LevelSpawner.Instance.Wave.Timmer.TimeLeft);
+            }
+        }
     }
 
 }

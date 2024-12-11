@@ -11,6 +11,8 @@ namespace ShootingGame
         [SerializeField] private PlayerStat _playerStat;
         [SerializeField] private LevelProgesstion progesstion;
 
+        public bool IsLevelUp => progesstion.IsLevelUp;
+
         public PlayerStat Stat => _playerStat;
         public PlayerDefender Defender => _playerDefender;
 
@@ -30,27 +32,26 @@ namespace ShootingGame
         void Start()
         {
             GameCtrl.Instance.AddPlayer(this);
-            progesstion.Initialized(OnLevelUp);
+            progesstion.Initialized();
             InitAction();
-            AddListener();
         }
 
 
-        private void OnNextWave(GameEvent.OnNextWave param)
+        public void OnNextWave(GameEvent.OnNextWave param)
         {
             _playerStat.OnNextWave(param);
+            progesstion.IsLevelUp = false;
         }
-
         public void GainExp(int exp) => progesstion.AddEXP(exp);
-        private void OnLevelUp()
-        {
-            this.Dispatch<GameEvent.OnLevelUp>(new GameEvent.OnLevelUp { player = this });
-        }
+
 
         private void OnStatChanged(StatContainerData CurrentStat)
         {
             if(CurrentStat == null) return;
-            _playerDefender.SetHealth((int)CurrentStat.GetStat(ShootingGame.Data.TypeStat.Hp).Value, false);
+            var maxHealth = (int)CurrentStat.GetStat(ShootingGame.Data.TypeStat.Hp).Value;
+            var healthBuff = Mathf.Max(maxHealth - _playerDefender.MaxHealth, 0);
+            _playerDefender.SetHealth(maxHealth, false);
+            _playerDefender.BuffHealth(healthBuff);
             _playerMovement.SetSpeed(CurrentStat.GetStat(ShootingGame.Data.TypeStat.MoveSpeed).Value);
         }
 
@@ -67,14 +68,12 @@ namespace ShootingGame
             _playerDefender.Init(_playerStat, () =>
             {
                 _playerSpawner.PlayerGraphic.OnHitAnimation();
+            }, () =>
+            {
+                GameCtrl.Instance.OnPlayerDead(this);
             });
         }
 
-        private void AddListener()
-        {
-            this.AddListener<GameEvent.OnNextWave>(OnNextWave, false);
-            this.AddListener<GameEvent.OnWaveClear>((_) => _playerMovement.PauseMovement(true), false);
-        }
     }
 
 

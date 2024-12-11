@@ -115,6 +115,7 @@ namespace ShootingGame
             var weaponPos = transform.position + DictWeaponPos[weapon];
             foreach (var e in enemies)
             {
+                if(e == null) continue;
                 if (Vector3.Distance(e.transform.position, weaponPos) <= distance)
                 {
                     nearestEnemy = e;

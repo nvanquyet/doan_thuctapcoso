@@ -79,7 +79,12 @@ namespace ShootingGame
             return true;
         }
 
-        protected bool IsCritRate() => UnityEngine.Random.value <= CurrentEquiqmentStat.GetStat(TypeStat.CritRate).GetValue();
+        protected bool IsCritRate()
+        {
+            var value = CurrentEquiqmentStat.GetStat(TypeStat.CritRate).GetValue();
+            if(CurrentEquiqmentStat.GetStat(TypeStat.CritRate).TypeValueStat == TypeValueStat.Percentage) value /= 100;
+            return UnityEngine.Random.value <= value;
+        }
 
 
         private void ResetAttack() => isAttacking = false;

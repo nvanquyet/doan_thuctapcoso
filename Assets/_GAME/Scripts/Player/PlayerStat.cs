@@ -65,6 +65,7 @@ namespace ShootingGame
             this.OnStatChanged = OnStatChanged;
             OnStatChanged?.Invoke(CurrentStat);
         }
+
         public void OnNextWave(GameEvent.OnNextWave param)
         {
             ResetStat();

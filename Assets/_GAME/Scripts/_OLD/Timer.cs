@@ -2,10 +2,12 @@ using System.Collections;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using TMPro;
+using ShootingGame;
 
 public class Timer : MonoBehaviour
 {
-    public Text textTimer;
+    public TextMeshProUGUI textTimer;
 
     private Coroutine coutdownRoutine;
 
@@ -34,15 +36,25 @@ public class Timer : MonoBehaviour
     {
         TimeLeft = totalTime;
 
-        while (TimeLeft > 0)
+        while (TimeLeft >= 0)
         {
-            var second = totalTime % 60;
-            var minute = (totalTime / 60) % 60;
-            textTimer.text = minute.ToString() + ":" + second.ToString();
-            yield return new WaitForSeconds(1f);
+            var second = TimeLeft % 60;
+            var minute = (TimeLeft / 60) % 60;
+            textTimer.text = $"{GetString(minute)}:{GetString(second)}";
+            if (second < 10)
+            {
+                textTimer.color = second % 2 == 0 ? Color.white : Color.red;
+            }
             TimeLeft--;
+            yield return new WaitForSeconds(1f);
         }
 
         OnFinished?.Invoke();
+    }
+
+    public string GetString(int value)
+    {
+        if(value < 10 && value >= 0) return "0" + value.ToString();
+        return value.ToString();
     }
 }

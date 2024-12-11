@@ -1,4 +1,5 @@
 using ShootingGame;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,10 +16,10 @@ public class EndGameUI : Frame
     public Button btnHome;
     public Button btnReplay;
     [Header("UI Elements - Text")]
-    public Text titleText;
-    public Text scoreText;
-    public Text bestScoreText;
-    public Text textReward;
+    public TextMeshProUGUI titleText;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI bestScoreText;
+    public TextMeshProUGUI textReward;
 
     [Header("UI Elements - Reward")]
     public GameObject rewardPanel;

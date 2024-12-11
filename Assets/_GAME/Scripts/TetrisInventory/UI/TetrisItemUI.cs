@@ -13,6 +13,6 @@ public class TetrisItemUI : MonoBehaviour
     {
         //itemText.SetText(mark ? "1" : "0");
         //itemText.gameObject.SetActive(false);
-        //image.color = mark ? colorMarked : colorUnmarked;
+        image.color = mark ? colorMarked : colorUnmarked;
     }
 }

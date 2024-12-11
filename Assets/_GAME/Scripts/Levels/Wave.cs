@@ -28,9 +28,8 @@ namespace ShootingGame
         [SerializeField] private float spawnRadius = 10f;
         [SerializeField] private float timeDelaySpawn = 2f;
 
-
+        public Timer Timmer => timmer;
         //This properties is base data of first wave
-
         public bool IsWaveClear => !isSpawning && enemies.Count <= 0;
 
         private Coroutine spawnRoutine;
@@ -42,10 +41,8 @@ namespace ShootingGame
         private WaveProperties waveProperties;
         //This properties is flag to check spawn done
         private bool isSpawning;
-        private List<Enemy> enemies = new();
-        private List<Transform> tsEnemies = new();
-
-        public List<Transform> TransformEnemies => tsEnemies;
+        public List<Enemy> enemies { get; private set; } = new();
+        public List<Transform> tsEnemies { get; private set; } = new();
 
         protected virtual void OnValidate()
         {
@@ -71,10 +68,6 @@ namespace ShootingGame
 
             this.waveProperties = GameService.CalculateWaveProperties(currentWave, scalingFactor);
 
-            timmer.SetTimer(this.waveProperties.timeWave, () =>
-            {
-                GameCtrl.Instance.OnEndGame(false, 0);
-            });
             Invoke(nameof(StartSpawning), timeDelaySpawn);
         }
 
@@ -91,6 +84,11 @@ namespace ShootingGame
         /// </summary>
         public void StartSpawning()
         {
+            timmer.SetTimer(this.waveProperties.timeWave, () =>
+            {
+                GameCtrl.Instance.OnEndGame(false, 0);
+            });
+
             spawnRoutine = StartRoutine(IESpawn());
         }
         public void StopSpawning() => StopRoutine(spawnRoutine);
@@ -102,8 +100,8 @@ namespace ShootingGame
         private IEnumerator IESpawn()
         {
             isSpawning = true;
-            GameService.ClearList(ref enemies);
-            GameService.ClearList(ref tsEnemies);
+            if(enemies != null && enemies.Count > 0) { enemies.Clear(); }
+            if(tsEnemies != null && tsEnemies.Count > 0) { tsEnemies.Clear(); }
 
             var allEnimies = GameData.Instance.Enemies.GetAllValue();
             var curEnemyCount = 0;

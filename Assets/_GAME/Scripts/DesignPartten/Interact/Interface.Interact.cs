@@ -275,13 +275,18 @@ namespace ShootingGame
 
         public virtual void OnDead(Interface.IAttacker attacker)
         {
-            attacker.GainExp(ExpGiven);
+            if(attacker != null) attacker.GainExp(ExpGiven);
         }
 
-        public void SetHealth(int health, bool resetHealth = true) {
+        public virtual void SetHealth(int health, bool resetHealth = true) {
             maxHealth = health;
             if(resetHealth)  _health = health;
         }
+
+        public virtual void BuffHealth(int value)
+        {
+            _health = Mathf.Min(_health + value, maxHealth);
+        } 
 
         public override void ExitInteract(Interface.IInteract target) { }
 

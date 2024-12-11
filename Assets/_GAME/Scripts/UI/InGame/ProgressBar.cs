@@ -1,11 +1,12 @@
 using DG.Tweening;
 using ShootingGame;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ProgressBar : Frame
 {
-    [SerializeField] private Text text;
+    [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private Image icon;
     [SerializeField] private Slider bar;
 
@@ -15,6 +16,7 @@ public class ProgressBar : Frame
     {
         bar = GetComponentInChildren<Slider>();
         icon = GetComponent<Image>();
+        text = GetComponentInChildren<TextMeshProUGUI>();
     }
 #endif
 

@@ -125,7 +125,7 @@ public class AttackController : AAttacker, IAttackBehaviour
     public override bool Attack(Interface.IDefender target, bool isSuper = false, float forcePushBack = 0)
     {
         if(!_isAttacking) return false;
-        if (target == null || target.GetType().Equals(defenderOwner)) return false;
+        if (target == null || target.GetType().Equals(defenderOwner.GetType())) return false;
         return base.Attack(target, isSuper, forcePushBack);
     }
 

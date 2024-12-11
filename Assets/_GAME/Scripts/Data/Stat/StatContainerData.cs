@@ -66,7 +66,7 @@ namespace ShootingGame.Data
 
         public StatContainerData(StatContainerData clone)
         {
-            if(clone == null) return;
+            if(clone == null || clone.Stats == null) return;
             stats = new Stat[clone.Stats.Length];
             for (int i = 0; i < clone.Stats.Length; i++)
             {

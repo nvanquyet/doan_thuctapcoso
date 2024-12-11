@@ -23,5 +23,5 @@ MonoBehaviour:
     timeThreshold: 5
     spawnThreshold: 20
     strengthWave: 100
-    timeWave: 0
+    timeWave: 30
   startGameBuyItem: 1
