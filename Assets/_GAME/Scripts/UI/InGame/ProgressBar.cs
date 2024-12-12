@@ -15,7 +15,7 @@ public class ProgressBar : Frame
     private void OnValidate()
     {
         bar = GetComponentInChildren<Slider>();
-        icon = GetComponent<Image>();
+        //icon = GetComponent<Image>();
         text = GetComponentInChildren<TextMeshProUGUI>();
     }
 #endif

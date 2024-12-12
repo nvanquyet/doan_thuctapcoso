@@ -20,7 +20,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/_GAME/Scenes/Login.unity
     guid: 23ab1f61458a3d546aa81bf21ef04240
-  - enabled: 1
+  - enabled: 0
     path: Assets/_GAME/Scenes/Home.unity
     guid: 6038edb5d63c20d498e67c40280bfd2a
   - enabled: 1

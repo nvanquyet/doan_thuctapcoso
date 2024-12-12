@@ -61,7 +61,6 @@ namespace ShootingGame
             _playerStat.Initialized(OnStatChanged);
             if (_playerSpawner != null && _playerMovement != null)
             {
-                _playerSpawner.Spawn();
                 _playerMovement.Init(_playerSpawner.transform);
                 _playerSpawner.Init(_playerMovement);
             }

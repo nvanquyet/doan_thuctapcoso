@@ -42,8 +42,10 @@ namespace ShootingGame.Data
         [SerializeField] private StatContainerData stat;
 
         [SerializeField] private RuntimeAnimatorController animator;
+        [SerializeField] private ItemAppearanceData appearance;
         [SerializeField] private RarityItem rarity;
         public RuntimeAnimatorController Animator => animator;
+        public ItemAppearanceData Appearance => appearance;
         public StatContainerData Stat => stat;
         public RarityItem Rarity => rarity;
     }

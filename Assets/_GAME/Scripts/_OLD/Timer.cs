@@ -35,7 +35,8 @@ public class Timer : MonoBehaviour
     private IEnumerator IEStartTimer(int totalTime, Action OnFinished = null)
     {
         TimeLeft = totalTime;
-
+        textTimer.color = Color.white;
+        textTimer.gameObject.SetActive(true);
         while (TimeLeft >= 0)
         {
             var second = TimeLeft % 60;
@@ -50,6 +51,7 @@ public class Timer : MonoBehaviour
         }
 
         OnFinished?.Invoke();
+        textTimer.gameObject.SetActive(false);
     }
 
     public string GetString(int value)

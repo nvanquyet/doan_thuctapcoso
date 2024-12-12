@@ -752,7 +752,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &335288015585199866
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1463,6 +1463,7 @@ MonoBehaviour:
   tetrisInventory: {fileID: 767189269798752383}
   inventoryUI: {fileID: 8067124755998508386}
   claimedItems: []
+  player: {fileID: 0}
 --- !u!1 &7077931697893625911
 GameObject:
   m_ObjectHideFlags: 0
@@ -1900,10 +1901,10 @@ RectTransform:
   - {fileID: 4691484353868008480}
   m_Father: {fileID: 335288015585199866}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 960, y: -280.8}
+  m_SizeDelta: {x: 300, y: 561.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6269936839328522226
 MonoBehaviour:
@@ -2202,6 +2203,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2849392203598180710}
     m_Modifications:
+    - target: {fileID: 813627866106384417, guid: 99a783601fbbc9041b1a4fe2e7162d10, type: 3}
+      propertyPath: itemUIPrefab
+      value: 
+      objectReference: {fileID: 7897785015610119805}
     - target: {fileID: 958231218842411994, guid: 99a783601fbbc9041b1a4fe2e7162d10, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -2214,6 +2219,30 @@ PrefabInstance:
       propertyPath: textDescription
       value: 
       objectReference: {fileID: 5336457282820967504}
+    - target: {fileID: 5997637530769546913, guid: 99a783601fbbc9041b1a4fe2e7162d10, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5997637530769546913, guid: 99a783601fbbc9041b1a4fe2e7162d10, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5997637530769546913, guid: 99a783601fbbc9041b1a4fe2e7162d10, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5997637530769546913, guid: 99a783601fbbc9041b1a4fe2e7162d10, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5997637530769546913, guid: 99a783601fbbc9041b1a4fe2e7162d10, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5997637530769546913, guid: 99a783601fbbc9041b1a4fe2e7162d10, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6643547895679668381, guid: 99a783601fbbc9041b1a4fe2e7162d10, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2294,6 +2323,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6841267087418190753, guid: 99a783601fbbc9041b1a4fe2e7162d10, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6928128782258146582, guid: 99a783601fbbc9041b1a4fe2e7162d10, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8657350193102398123, guid: 99a783601fbbc9041b1a4fe2e7162d10, type: 3}
       propertyPath: m_Name
       value: Inventory_Tetris
@@ -2343,5 +2380,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7897785015610119805 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3608441138613171779, guid: 99a783601fbbc9041b1a4fe2e7162d10, type: 3}
+  m_PrefabInstance: {fileID: 6884125557234704446}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca69ea8b3974ce441a835a87ca77eb4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

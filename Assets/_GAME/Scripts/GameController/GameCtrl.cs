@@ -82,6 +82,7 @@ namespace ShootingGame
         internal void OnEnemyDeath()
         {
             enemiesDefeated++;
+            UICtrl.Instance.Get<InGameUI>().SetEnemiesKilledText(enemiesDefeated);
             if (LevelSpawner.Instance.IsWaveClear)
             {
                 Invoke(nameof(OnWaveClear), 1f);

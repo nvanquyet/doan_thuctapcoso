@@ -67,7 +67,7 @@ namespace ShootingGame
             this.currentWave = currentWave;
 
             this.waveProperties = GameService.CalculateWaveProperties(currentWave, scalingFactor);
-
+            
             Invoke(nameof(StartSpawning), timeDelaySpawn);
         }
 
@@ -84,6 +84,8 @@ namespace ShootingGame
         /// </summary>
         public void StartSpawning()
         {
+            UICtrl.Instance.Get<InGameUI>().SetWaveText(currentWave);
+
             timmer.SetTimer(this.waveProperties.timeWave, () =>
             {
                 GameCtrl.Instance.OnEndGame(false, 0);
