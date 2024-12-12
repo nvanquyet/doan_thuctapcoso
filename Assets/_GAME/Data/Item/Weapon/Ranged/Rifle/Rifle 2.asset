@@ -31,7 +31,7 @@ MonoBehaviour:
   appearance:
     itemName: Rifle 2
     icon: {fileID: 21300000, guid: a90570212cf87224aa22db1aa79e9c28, type: 3}
-  matrixData: {fileID: 11400000, guid: ce88d3125cad9ba498308debc3f31d8e, type: 2}
+  matrixData: {fileID: 11400000, guid: 79b119336430ac84e925248b9f81a5a6, type: 2}
   prefab: {fileID: 3537812215717957531, guid: b2533ac7226809646ba9b2ff69af86f3, type: 3}
   level: 2
   nextLevelAttribute: {fileID: 11400000, guid: bd365554ab979d6429b4363211a60a32, type: 2}

@@ -34,7 +34,7 @@ MonoBehaviour:
   appearance:
     itemName: Bazoka 3
     icon: {fileID: 21300000, guid: 77dfde3949955c4478a648c331f35767, type: 3}
-  matrixData: {fileID: 11400000, guid: ce88d3125cad9ba498308debc3f31d8e, type: 2}
+  matrixData: {fileID: 11400000, guid: 79b119336430ac84e925248b9f81a5a6, type: 2}
   prefab: {fileID: 3537812215717957531, guid: 2e1e5d0be4c154c4e886b22117f9b8bf, type: 3}
   level: 3
   nextLevelAttribute: {fileID: 0}

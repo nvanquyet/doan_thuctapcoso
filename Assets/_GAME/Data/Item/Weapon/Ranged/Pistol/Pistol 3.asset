@@ -31,7 +31,7 @@ MonoBehaviour:
   appearance:
     itemName: Pistol 3
     icon: {fileID: 21300000, guid: a4b86f22654169e4a9ee44e436a800de, type: 3}
-  matrixData: {fileID: 11400000, guid: 9a297cb589887464f83d97c58dbbf4c6, type: 2}
+  matrixData: {fileID: 11400000, guid: 248d0bc4e1dff224aaacbc0d6f4c3f64, type: 2}
   prefab: {fileID: 3537812215717957531, guid: 109a9be53ee648c4aaba0feaa7614be4, type: 3}
   level: 3
   nextLevelAttribute: {fileID: 0}
