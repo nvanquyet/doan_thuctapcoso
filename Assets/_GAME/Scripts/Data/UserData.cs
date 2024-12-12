@@ -27,4 +27,16 @@ public partial class UserData
             PlayerPrefs.SetInt("BestScore", value);
         }
     }
+
+    public static int Coin
+    {
+        get
+        {
+            return PlayerPrefs.GetInt("Coin", 0);
+        }
+        set
+        {
+            PlayerPrefs.SetInt("Coin", value);
+        }
+    }
 }

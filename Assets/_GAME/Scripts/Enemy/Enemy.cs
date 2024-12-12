@@ -29,6 +29,7 @@ namespace ShootingGame
         public bool IsDead => _enemyDefender.IsDead;
 
         public Action<Interface.IAttacker> OnDeadAction;
+        public Action<float> OnDefendAction;
 #if UNITY_EDITOR
         protected override void OnValidate()
         {
@@ -61,10 +62,11 @@ namespace ShootingGame
                 };
                 _enemyMovement.OnRandomTarget = GetTarget;
                 _enemyMovement.OnMoveAction += _enemyAnimation.SetVelocity;
-                _enemyDefender.OnDefend += () =>
+                _enemyDefender.OnDefend += (healthPercent) =>
                 {
                     _enemyMovement.PauseMovement(true);
                     _enemyAnimation.OnTriggerDefend();
+                    OnDefendAction?.Invoke(healthPercent);
                 };
                 _enemyDefender.OnDefendSuccess += () => _enemyMovement.PauseMovement(false);
 
@@ -85,7 +87,7 @@ namespace ShootingGame
         {
             var enemyPropertiesData = isBoss ? GameData.Instance.BosssProperties.GetValue(id) : GameData.Instance.EnemyProperties.GetValue(id);
             var growthRate = Mathf.Pow(enemyPropertiesData.GrowthRate, currentWave - 1);
-            _enemyDefender.Init(enemyPropertiesData.BaseHealth, enemyPropertiesData.BaseEXP, growthRate);
+            _enemyDefender.Init(enemyPropertiesData.BaseHealth, enemyPropertiesData.BaseEXP, enemyPropertiesData.BaseCoin, growthRate);
             _enemyAttacker.Init(enemyPropertiesData.BaseDamage, growthRate);
             _enemyMovement.Init(enemyPropertiesData.BaseSpeed, growthRate);
         }

@@ -21,6 +21,8 @@ namespace ShootingGame
         public interface IExpReceiver
         {
             void GainExp(int exp);
+
+            void GainCoin(int coin);
         }
         public interface IAttacker : IInteract, IExpReceiver
         {
@@ -36,6 +38,7 @@ namespace ShootingGame
             int CurrentHealth { get; }
             bool IsDead { get; }
             int ExpGiven { get; } 
+            int CoinGiven { get; }
             void Defend(IAttacker attacker, bool isSuper = false, (float, Transform) forceProp = default);
             void Defend(int damage);
             void OnDead(IAttacker attacker);
@@ -228,6 +231,8 @@ namespace ShootingGame
         public override void ExitInteract(Interface.IInteract target) { }
 
         public abstract void GainExp(int exp);
+
+        public abstract void GainCoin(int coin);
     }
 
     [RequireComponent(typeof(BoxCollider2D), typeof(Rigidbody2D))]
@@ -238,6 +243,7 @@ namespace ShootingGame
 
         private int _health;
         protected int expGiven;
+        protected int coinGiven;
         public Rigidbody2D Rigid {
             get {
                 if(!rigid) rigid = GetComponent<Rigidbody2D>();
@@ -250,7 +256,7 @@ namespace ShootingGame
         public int CurrentHealth => _health;
         public bool IsDead => CurrentHealth <= 0;
         public int ExpGiven => expGiven;
-
+        public int CoinGiven => coinGiven;
 #if UNITY_EDITOR
         protected override void OnValidate()
         {
@@ -275,7 +281,11 @@ namespace ShootingGame
 
         public virtual void OnDead(Interface.IAttacker attacker)
         {
-            if(attacker != null) attacker.GainExp(ExpGiven);
+            if (attacker != null)
+            {
+                attacker.GainExp(ExpGiven);
+                attacker.GainCoin(CoinGiven);
+            }
         }
 
         public virtual void SetHealth(int health, bool resetHealth = true) {

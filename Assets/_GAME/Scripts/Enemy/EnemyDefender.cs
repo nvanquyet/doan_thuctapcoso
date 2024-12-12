@@ -5,7 +5,7 @@ namespace ShootingGame
 {
     public class EnemyDefender : ADefender
     {
-        public Action OnDefend;
+        public Action<float> OnDefend;
         public Action OnDefendSuccess;
         public Action<Interface.IAttacker> OnDeath;
 
@@ -18,7 +18,7 @@ namespace ShootingGame
         public override void Defend(Interface.IAttacker attacker, bool isSuper = false, (float, Transform) forceProp = default)
         {
             base.Defend(attacker, isSuper, forceProp);
-            OnDefend?.Invoke();
+            OnDefend?.Invoke((float) CurrentHealth * 1.0f/ MaxHealth);
             Invoke(nameof(DefendSuccess), .25f);
         }
 
@@ -28,10 +28,11 @@ namespace ShootingGame
             OnDefendSuccess?.Invoke();
         }
 
-        internal void Init(int health, int expGiven, float growthRate)
+        internal void Init(int health, int expGiven, int coinGiven, float growthRate)
         {
             SetHealth((int)(growthRate * health));
             this.expGiven = (int)(expGiven * growthRate);
+            this.coinGiven = (int)(coinGiven * growthRate);
         }
     }
 }

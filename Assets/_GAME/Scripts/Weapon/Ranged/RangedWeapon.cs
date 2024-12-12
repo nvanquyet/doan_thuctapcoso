@@ -171,6 +171,7 @@ namespace ShootingGame
         }
 
         public override void GainExp(int exp) { }
+        public override void GainCoin(int coin) { }
 
         public override int Damage => 0;
     }

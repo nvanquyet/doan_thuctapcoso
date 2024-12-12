@@ -15,7 +15,7 @@ public class MeleeAttack : AttackBehaviour, IAttacker
     {
         if (target is MonoBehaviour)
         {
-            if(Vector2.Distance((target as MonoBehaviour).transform.position, transform.position) <= (AttackRange * 1.5f))
+            if (Vector2.Distance((target as MonoBehaviour).transform.position, transform.position) <= (AttackRange * 1.5f))
             {
                 target.Defend(this, impactData.isCritical, (impactData.pushForce, transform));
             }
@@ -23,6 +23,8 @@ public class MeleeAttack : AttackBehaviour, IAttacker
     }
 
     public void ExitInteract(IInteract target) { }
+
+    public void GainCoin(int coin) { }
 
     public void GainExp(int exp) { }
 

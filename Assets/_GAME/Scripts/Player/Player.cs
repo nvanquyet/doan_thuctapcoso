@@ -15,6 +15,19 @@ namespace ShootingGame
 
         public PlayerStat Stat => _playerStat;
         public PlayerDefender Defender => _playerDefender;
+        private int coinClaimed;
+        public int CoinClaimed
+        {
+            get
+            {
+                return coinClaimed;
+            }
+            set
+            {
+                coinClaimed = Mathf.Max(0, value);
+                UICtrl.Instance.Get<InGameUI>().SetCoin(coinClaimed);
+            }
+        }
 
 #if UNITY_EDITOR
         protected override void OnValidate()
@@ -43,11 +56,11 @@ namespace ShootingGame
             progesstion.IsLevelUp = false;
         }
         public void GainExp(int exp) => progesstion.AddEXP(exp);
-
+        public void GainCoin(int coin) => CoinClaimed += coin;
 
         private void OnStatChanged(StatContainerData CurrentStat)
         {
-            if(CurrentStat == null) return;
+            if (CurrentStat == null) return;
             var maxHealth = (int)CurrentStat.GetStat(ShootingGame.Data.TypeStat.Hp).Value;
             var healthBuff = Mathf.Max(maxHealth - _playerDefender.MaxHealth, 0);
             _playerDefender.SetHealth(maxHealth, false);
@@ -72,6 +85,7 @@ namespace ShootingGame
                 GameCtrl.Instance.OnPlayerDead(this);
             });
         }
+
 
     }
 

@@ -107,7 +107,7 @@ namespace ShootingGame
 
             var allEnimies = GameData.Instance.Enemies.GetAllValue();
             var curEnemyCount = 0;
-            GameService.LogColor($"Strength Wave: {waveProperties.strengthWave}");
+
             while (waveProperties.strengthWave > 0)
             {
                 //Spawn Enemy from data
@@ -161,8 +161,14 @@ namespace ShootingGame
                 //Init data enemy
                 if (bossInstance)
                 {
+                    UICtrl.Instance.Get<InGameUI>().ActiveBossProgess(true, false);
                     bossInstance.transform.localPosition = Vector3.zero;
                     bossInstance.Init(currentWave);
+                    bossInstance.OnDeadAction += (_) =>
+                    {
+                        UICtrl.Instance.Get<InGameUI>().ActiveBossProgess(false);
+                    };
+                    bossInstance.OnDefendAction += UICtrl.Instance.Get<InGameUI>().SetBossProgess;
                     AddEnemy(bossInstance);
                 }
             }

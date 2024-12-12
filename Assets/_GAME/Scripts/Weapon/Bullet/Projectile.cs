@@ -19,7 +19,7 @@ namespace ShootingGame
 
         protected IDefender originatingOwner;
         protected IExpReceiver expReceiver;
-        
+
         public Rigidbody2D Rigidbody
         {
             get
@@ -122,6 +122,12 @@ namespace ShootingGame
         {
             if (expReceiver == null) return;
             expReceiver.GainExp(exp);
+        }
+
+        public override void GainCoin(int coin)
+        {
+            if (expReceiver == null) return;
+            expReceiver.GainCoin(coin);
         }
     }
 }

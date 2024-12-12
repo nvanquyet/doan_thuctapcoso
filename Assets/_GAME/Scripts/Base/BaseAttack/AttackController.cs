@@ -138,4 +138,6 @@ public class AttackController : AAttacker, IAttackBehaviour
     public override void OnInteract(Interface.IInteract target) { }
 
     public override void GainExp(int exp) { }
+
+    public override void GainCoin(int coin) { }
 }
