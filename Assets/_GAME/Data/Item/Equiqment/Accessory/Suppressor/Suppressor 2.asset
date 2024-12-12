@@ -28,6 +28,7 @@ MonoBehaviour:
   appearance:
     itemName: Suppressor 2
     icon: {fileID: 21300326, guid: cfe6f8a4764b6f9d439dbd3e1a1940a3, type: 3}
-  matrixData: {fileID: 11400000, guid: 33d08d87f2d72574ca96670f4361f905, type: 2}
+  matrixData: {fileID: 11400000, guid: 2094a8427d8b56f41bdcbc574ce28628, type: 2}
   prefab: {fileID: 0}
+  level: 2
   nextLevelAttribute: {fileID: 11400000, guid: d6ac98e0fbfbb0e41905f673effea93d, type: 2}

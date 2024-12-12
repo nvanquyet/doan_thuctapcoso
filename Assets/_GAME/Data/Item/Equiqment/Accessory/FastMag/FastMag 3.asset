@@ -28,6 +28,7 @@ MonoBehaviour:
   appearance:
     itemName: FastMag 3
     icon: {fileID: 21300300, guid: cfe6f8a4764b6f9d439dbd3e1a1940a3, type: 3}
-  matrixData: {fileID: 11400000, guid: 771f55026c037b94c9687036981e166f, type: 2}
+  matrixData: {fileID: 11400000, guid: 2094a8427d8b56f41bdcbc574ce28628, type: 2}
   prefab: {fileID: 0}
+  level: 3
   nextLevelAttribute: {fileID: 0}

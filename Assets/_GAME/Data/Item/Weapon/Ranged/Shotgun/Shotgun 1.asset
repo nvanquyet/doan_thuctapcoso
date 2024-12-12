@@ -34,7 +34,7 @@ MonoBehaviour:
   appearance:
     itemName: Shotgun 1
     icon: {fileID: 21300000, guid: d6886e01cb26db849aaa122600a5f44a, type: 3}
-  matrixData: {fileID: 11400000, guid: ce88d3125cad9ba498308debc3f31d8e, type: 2}
+  matrixData: {fileID: 11400000, guid: 240c44e0b317f7647ad3dd83a0b0976a, type: 2}
   prefab: {fileID: 3537812215717957531, guid: dd920d16f68ceb041b74f5762a35064b, type: 3}
   level: 1
   nextLevelAttribute: {fileID: 11400000, guid: 24221b6ba313ff547a4f0cac6f146413, type: 2}
