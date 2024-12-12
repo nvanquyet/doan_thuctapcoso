@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a159ad7e4fef0d45b5c3d4c0ed07729, type: 3}
-  m_Name: Matrix1x1
+  m_Name: Matrix3x3 MachineGun 011 111 110
   m_EditorClassIdentifier: 
-  itemSize: {x: 1, y: 1}
-  isUniformMatrix: 1
+  itemSize: {x: 3, y: 3}
+  isUniformMatrix: 0
   matrixStruct:
-  - values: 01000000
+  - values: 000000000100000001000000
+  - values: 010000000100000001000000
+  - values: 010000000100000000000000

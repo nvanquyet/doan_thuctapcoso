@@ -23,7 +23,7 @@ MonoBehaviour:
       typeValueStat: 0
       value: 4.2
     - typeStat: 4
-      typeValueStat: 1
+      typeValueStat: 0
       value: 2.8
     - typeStat: 10
       typeValueStat: 0
@@ -31,7 +31,7 @@ MonoBehaviour:
   appearance:
     itemName: Pistol 2
     icon: {fileID: 21300000, guid: d6886e01cb26db849aaa122600a5f44a, type: 3}
-  matrixData: {fileID: 11400000, guid: 2094a8427d8b56f41bdcbc574ce28628, type: 2}
+  matrixData: {fileID: 11400000, guid: 248d0bc4e1dff224aaacbc0d6f4c3f64, type: 2}
   prefab: {fileID: 3537812215717957531, guid: 109a9be53ee648c4aaba0feaa7614be4, type: 3}
   level: 2
   nextLevelAttribute: {fileID: 11400000, guid: 302d3109f13dc8249a7f8d438cf3f027, type: 2}
