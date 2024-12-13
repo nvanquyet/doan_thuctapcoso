@@ -20,10 +20,15 @@ namespace ShootingGame {
 
         private float backgroundAlpha = -1;
 
+#if UNITY_EDITOR
         private void OnValidate() {
-            BindAllFrame();
+            frames = GetComponentsInChildren<Frame>();
+            if (frames.Length == 0)
+            {
+                Debug.LogError($"{name} No one frame was assign!");
+            }
         }
-
+#endif
         [ContextMenu("BindAllFrame")]
         protected void ForceBind() {
             frames = GetComponentsInChildren<Frame>();
