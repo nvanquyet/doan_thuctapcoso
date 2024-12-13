@@ -46,6 +46,6 @@ MonoBehaviour:
       value: 0.1
   animator: {fileID: 22100000, guid: 082e8a5693fa0bc41b389f7e186304d8, type: 2}
   appearance:
-    itemName: 
-    icon: {fileID: 0}
+    itemName: Thuy
+    icon: {fileID: -746459314, guid: d7c59eba0412c1e418f49b39e4bd7b28, type: 3}
   rarity: 0

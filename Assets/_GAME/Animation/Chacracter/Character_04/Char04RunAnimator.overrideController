@@ -7,9 +7,9 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Char04RunAnimator
-  m_Controller: {fileID: 9100000, guid: ed81f96e5a76bf84bbc540c330ad4b33, type: 2}
+  m_Controller: {fileID: 9100000, guid: 34cab54e596c4eb4cb1c82c4223fd361, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: c62f4f544d73da54ca2c073eeefff194, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: d38ffc73cb94d374690073024fb22537, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: c62f4f544d73da54ca2c073eeefff194, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: c0fb82c04a9aefb4c8c30075ae68a13b, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: cf3c7211d294cbb41b15e157ba19f2b6, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: c0fb82c04a9aefb4c8c30075ae68a13b, type: 2}

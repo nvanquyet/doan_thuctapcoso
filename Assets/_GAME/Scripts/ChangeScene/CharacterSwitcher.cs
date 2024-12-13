@@ -1,3 +1,5 @@
+using ShootingGame;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -7,40 +9,70 @@ using UnityEngine.UI;
 public class CharacterSwitcher : MonoBehaviour
 {
     public Transform characterParent;          
-    public TMP_Text characterNameText;            
-    public GameObject[] characterPrefabs;    
-    public string[] characterNames;          
-    private GameObject currentCharacter;
-    public Sprite[] characterAvatars;
+    public TMP_Text characterNameText;
     public Image playerAvatarImage;
-    private int currentIndex = 0;             
+
+    public Button nextButton;
+    public Button preButton;
+
+    public Animator animator;         
+
+    private int index = 0;
+
+    private void Start()
+    {
+        nextButton.onClick.AddListener(NextCharacter);
+        preButton.onClick.AddListener(PreviousCharacter);
+    }
+
+    private void OnEnable()
+    {
+        SwitchCharacter();
+    }
+    public int CharacterIndex
+    {
+        get
+        {
+            var idx = Mathf.Clamp(UserData.CurrentCharacter + index, 0, GameData.Instance.Players.GetAllValue().Length - 1);
+            GameService.LogColor("CharacterIndex: " + idx);
+            if (idx <= 0)
+            {
+                preButton.interactable = false;
+                nextButton.interactable = true;
+            }
+            else if (idx >= GameData.Instance.Players.GetAllValue().Length - 1)
+            {
+                nextButton.interactable = false;
+                preButton.interactable = true;
+            }else
+            {
+                nextButton.interactable = true;
+                preButton.interactable = true;
+            }
+            return idx;
+        }
+    }
 
     public void NextCharacter()
     {
-        currentIndex = (currentIndex + 1) % characterPrefabs.Length;
+        index++;
         SwitchCharacter();
     }
 
     public void PreviousCharacter()
     {
-        currentIndex = (currentIndex - 1 + characterPrefabs.Length) % characterPrefabs.Length;
+        index--;
         SwitchCharacter();
     }
 
     private void SwitchCharacter()
     {
-        if (currentCharacter != null)
+        var c = GameData.Instance.Players.GetValue(CharacterIndex);
+        characterNameText.text = c.Appearance.Name;
+        if (playerAvatarImage != null)
         {
-            Destroy(currentCharacter);
-        }
-
-
-        currentCharacter = Instantiate(characterPrefabs[currentIndex], characterParent);
-        currentCharacter.transform.localPosition = Vector3.zero;
-        characterNameText.text = characterNames[currentIndex];
-        if (characterAvatars != null && currentIndex < characterAvatars.Length)
-        {
-            playerAvatarImage.sprite = characterAvatars[currentIndex];
+            playerAvatarImage.sprite = c.Appearance.Icon;
+            animator.runtimeAnimatorController = c.Animator;
         }
     }
 }
