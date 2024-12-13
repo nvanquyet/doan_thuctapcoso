@@ -12,6 +12,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75c4317c30d87784ba73aa9ac522b684, type: 3}
   m_Name: Character 3
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
-  stat: {fileID: 11400000, guid: 904610d100f086a4082c8cd520ffeec4, type: 2}
-  appearance: {fileID: 11400000, guid: 6a6884c6e7c4b7e4ca20c57bb9638f2d, type: 2}
+  stat:
+    stats:
+    - typeStat: 0
+      typeValueStat: 0
+      value: 80
+    - typeStat: 1
+      typeValueStat: 1
+      value: 1.5
+    - typeStat: 2
+      typeValueStat: 1
+      value: 0.4
+    - typeStat: 3
+      typeValueStat: 1
+      value: 0.1
+    - typeStat: 4
+      typeValueStat: 1
+      value: 0.2
+    - typeStat: 5
+      typeValueStat: 0
+      value: 3
+    - typeStat: 6
+      typeValueStat: 0
+      value: 5.5
+    - typeStat: 7
+      typeValueStat: 0
+      value: 2
+    - typeStat: 8
+      typeValueStat: 1
+      value: 0
+    - typeStat: 9
+      typeValueStat: 1
+      value: 0.3
+  animator: {fileID: 22100000, guid: a6d05087f167ab440a4c5fce0547d72f, type: 2}
+  appearance:
+    itemName: 
+    icon: {fileID: 0}
+  rarity: 0

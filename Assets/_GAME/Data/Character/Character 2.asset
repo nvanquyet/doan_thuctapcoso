@@ -13,6 +13,39 @@ MonoBehaviour:
   m_Name: Character 2
   m_EditorClassIdentifier: 
   stat:
-    stats: []
-  animator: {fileID: 22100000, guid: 5ae8078ebe58bb44196634f785e3fc32, type: 2}
+    stats:
+    - typeStat: 0
+      typeValueStat: 0
+      value: 150
+    - typeStat: 1
+      typeValueStat: 1
+      value: 0.8
+    - typeStat: 2
+      typeValueStat: 1
+      value: 0.2
+    - typeStat: 3
+      typeValueStat: 1
+      value: 0.03
+    - typeStat: 4
+      typeValueStat: 1
+      value: 0.05
+    - typeStat: 5
+      typeValueStat: 0
+      value: 10
+    - typeStat: 6
+      typeValueStat: 0
+      value: 4
+    - typeStat: 7
+      typeValueStat: 0
+      value: 0
+    - typeStat: 8
+      typeValueStat: 1
+      value: 0.1
+    - typeStat: 9
+      typeValueStat: 1
+      value: 0.1
+  animator: {fileID: 22100000, guid: 082e8a5693fa0bc41b389f7e186304d8, type: 2}
+  appearance:
+    itemName: 
+    icon: {fileID: 0}
   rarity: 0

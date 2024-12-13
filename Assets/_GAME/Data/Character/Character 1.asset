@@ -19,30 +19,33 @@ MonoBehaviour:
       value: 100
     - typeStat: 1
       typeValueStat: 1
-      value: 0
+      value: 1.2
     - typeStat: 2
       typeValueStat: 1
-      value: 0
+      value: 0.3
     - typeStat: 3
       typeValueStat: 1
-      value: 0
+      value: 0.05
     - typeStat: 4
       typeValueStat: 1
-      value: 0
+      value: 0.1
     - typeStat: 5
       typeValueStat: 0
-      value: 0
+      value: 5
     - typeStat: 6
       typeValueStat: 0
-      value: 4
+      value: 4.5
     - typeStat: 7
       typeValueStat: 0
-      value: 0
+      value: 1
     - typeStat: 8
       typeValueStat: 1
-      value: 0
+      value: 0.05
     - typeStat: 9
       typeValueStat: 1
-      value: 0
-  animator: {fileID: 22100000, guid: 5ae8078ebe58bb44196634f785e3fc32, type: 2}
+      value: 0.2
+  animator: {fileID: 22100000, guid: 7354148b544e7a741b11bb4c11acb612, type: 2}
+  appearance:
+    itemName: 
+    icon: {fileID: 0}
   rarity: 0
