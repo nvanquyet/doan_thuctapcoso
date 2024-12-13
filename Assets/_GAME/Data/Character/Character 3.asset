@@ -46,6 +46,6 @@ MonoBehaviour:
       value: 0.3
   animator: {fileID: 22100000, guid: a6d05087f167ab440a4c5fce0547d72f, type: 2}
   appearance:
-    itemName: 
-    icon: {fileID: 0}
+    itemName: Bao
+    icon: {fileID: 428511530, guid: a0271c332912d12458a6ad609446c896, type: 3}
   rarity: 0

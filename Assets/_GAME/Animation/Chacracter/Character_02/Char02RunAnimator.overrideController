@@ -9,7 +9,7 @@ AnimatorOverrideController:
   m_Name: Char02RunAnimator
   m_Controller: {fileID: 9100000, guid: 34cab54e596c4eb4cb1c82c4223fd361, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: d38ffc73cb94d374690073024fb22537, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 465924e75e670b846833cb6a1b2186f2, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: cf3c7211d294cbb41b15e157ba19f2b6, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 32958803a8e9358469a9747befc660df, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: d38ffc73cb94d374690073024fb22537, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 465924e75e670b846833cb6a1b2186f2, type: 2}

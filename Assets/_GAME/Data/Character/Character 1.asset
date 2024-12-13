@@ -46,6 +46,6 @@ MonoBehaviour:
       value: 0.2
   animator: {fileID: 22100000, guid: 7354148b544e7a741b11bb4c11acb612, type: 2}
   appearance:
-    itemName: 
-    icon: {fileID: 0}
+    itemName: Quyet
+    icon: {fileID: -1312084291, guid: 100c220d021404c4fb889892a7da5a09, type: 3}
   rarity: 0
