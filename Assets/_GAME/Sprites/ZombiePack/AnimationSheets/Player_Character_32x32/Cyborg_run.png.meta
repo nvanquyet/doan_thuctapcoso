@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 100c220d021404c4fb889892a7da5a09
+guid: d7c59eba0412c1e418f49b39e4bd7b28
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,11 +110,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Biker_run_0
+      name: Cyborg_run_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 21
+        x: 13
+        y: 22
         width: 11
         height: 11
       alignment: 0
@@ -124,40 +124,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 606532b798bf0aa4096871ff2b152de3
-      internalID: -1312084291
+      spriteID: 0d1bfd4ef509352428dcf2e9342ffafd
+      internalID: -746459314
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Biker_run_1
+      name: Cyborg_run_1
       rect:
         serializedVersion: 2
-        x: 56
+        x: 52
         y: 0
-        width: 18
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a2eb4d379baa37143b25d9ff288b1d50
-      internalID: -1755069314
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Biker_run_2
-      rect:
-        serializedVersion: 2
-        x: 99
-        y: 0
-        width: 29
+        width: 19
         height: 31
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -166,61 +145,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29acba64f659c9649bcb82ef04c0dbe8
-      internalID: 1388027480
+      spriteID: 374bb02d8bb15354aae413d71d52ba1b
+      internalID: 1188084516
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Biker_run_3
+      name: Cyborg_run_2
       rect:
         serializedVersion: 2
-        x: 146
+        x: 98
         y: 0
-        width: 33
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bd9e51cb03ca69143ac9ec7a50723ae7
-      internalID: 218356677
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Biker_run_4
-      rect:
-        serializedVersion: 2
-        x: 200
-        y: 0
-        width: 18
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2b455f5f4b074f843ba409d32e41ee93
-      internalID: -1567612813
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Biker_run_5
-      rect:
-        serializedVersion: 2
-        x: 243
-        y: 0
-        width: 24
+        width: 28
         height: 31
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -229,8 +166,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c85ebaa6d8987e440bb30823c31f4fbd
-      internalID: -1047284683
+      spriteID: 14e4537a6000ac14babd913fdfa8436e
+      internalID: 1772211433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cyborg_run_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca016b5ce3e32b649ac482cacdeabd91
+      internalID: -1617820981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cyborg_run_4
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 0
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d941ad1e12cae6442a6d633787ebbce3
+      internalID: 1195716970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cyborg_run_5
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 0
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a386cba91fc4b884790f0af922eca793
+      internalID: 887221586
       vertices: []
       indices: 
       edges: []
@@ -246,12 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Biker_run_0: -1312084291
-      Biker_run_1: -1755069314
-      Biker_run_2: 1388027480
-      Biker_run_3: 218356677
-      Biker_run_4: -1567612813
-      Biker_run_5: -1047284683
+      Cyborg_run_0: -746459314
+      Cyborg_run_1: 1188084516
+      Cyborg_run_2: 1772211433
+      Cyborg_run_3: -1617820981
+      Cyborg_run_4: 1195716970
+      Cyborg_run_5: 887221586
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

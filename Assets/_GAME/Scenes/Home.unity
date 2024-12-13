@@ -3920,13 +3920,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ad2dfe60d06734285c6193f363414c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterParent: {fileID: 0}
+  characterParent: {fileID: 1308472727}
   characterNameText: {fileID: 1141224223}
-  characterPrefabs: []
+  characterPrefabs:
+  - {fileID: 5558935993219358690, guid: 5f0b2204dcd8f18418e7cda372cabe45, type: 3}
+  - {fileID: 3568302881410208016, guid: 6e596a805a4d3284fb315e26cf2869a3, type: 3}
+  - {fileID: 758685999162800881, guid: 4a5e400dffd24f447850aa37136c6b42, type: 3}
   characterNames:
   - Quyet
   - Bao
   - Thuy
+  characterAvatars:
+  - {fileID: -1312084291, guid: 100c220d021404c4fb889892a7da5a09, type: 3}
+  - {fileID: -746459314, guid: d7c59eba0412c1e418f49b39e4bd7b28, type: 3}
+  - {fileID: 428511530, guid: a0271c332912d12458a6ad609446c896, type: 3}
+  playerAvatarImage: {fileID: 5904590004135939208}
 --- !u!1 &1064493939
 GameObject:
   m_ObjectHideFlags: 0

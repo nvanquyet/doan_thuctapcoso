@@ -10,7 +10,9 @@ public class CharacterSwitcher : MonoBehaviour
     public TMP_Text characterNameText;            
     public GameObject[] characterPrefabs;    
     public string[] characterNames;          
-    private GameObject currentCharacter;      
+    private GameObject currentCharacter;
+    public Sprite[] characterAvatars;
+    public Image playerAvatarImage;
     private int currentIndex = 0;             
 
     public void NextCharacter()
@@ -35,6 +37,10 @@ public class CharacterSwitcher : MonoBehaviour
 
         currentCharacter = Instantiate(characterPrefabs[currentIndex], characterParent);
         currentCharacter.transform.localPosition = Vector3.zero;
-        characterNameText.text = characterNames[currentIndex]; 
+        characterNameText.text = characterNames[currentIndex];
+        if (characterAvatars != null && currentIndex < characterAvatars.Length)
+        {
+            playerAvatarImage.sprite = characterAvatars[currentIndex];
+        }
     }
 }
