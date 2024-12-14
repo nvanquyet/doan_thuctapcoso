@@ -90,6 +90,7 @@ namespace ShootingGame
 
         public void UseItemBuff(ItemBuffData data)
         {
+            GameService.LogColor($"Buff: {data.BuffType} duration {data.Duration}");
             switch (data.BuffType)
             {
                 case BuffType.DamageBoost:
