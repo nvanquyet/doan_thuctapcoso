@@ -16,4 +16,5 @@ MonoBehaviour:
   baseDamage: 50
   baseSpeed: 3
   baseEXP: 130
+  baseCoin: 28
   growthRate: 1.1

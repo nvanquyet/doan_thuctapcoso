@@ -28,12 +28,15 @@ namespace ShootingGame.Data
         [SerializeField] private StatContainerData stat;
         [SerializeField] private ItemAppearanceData appearance;
         [SerializeField] private MatrixData matrixData;
+        [SerializeField] private int baseCoin;
 
         public StatContainerData Stat => stat;
         public ItemAppearanceData Appearance => appearance;
         public MatrixData MatrixData => matrixData;
         public RarityItem Rarity => rarity;
         public float CostTierMultiplier => costTierMultiplier;
+
+        public int BaseCoin => baseCoin;
     }
 
 
@@ -50,5 +53,7 @@ namespace ShootingGame.Data
         public ItemAppearanceData Appearance => appearance;
         public StatContainerData Stat => stat;
         public RarityItem Rarity => rarity;
+
+        
     }
 }

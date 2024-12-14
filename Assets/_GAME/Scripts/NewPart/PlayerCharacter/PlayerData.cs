@@ -9,4 +9,6 @@ public class PlayerData
     public int damage;
     public int currentHealth;
     public int maxHealth;
+    public int currentCoin;
+  
 }

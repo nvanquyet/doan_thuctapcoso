@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   category: 0
   rarity: 4
+  costTierMultiplier: 1
   stat:
     stats:
     - typeStat: 1
@@ -37,4 +38,5 @@ MonoBehaviour:
   matrixData: {fileID: 11400000, guid: 240c44e0b317f7647ad3dd83a0b0976a, type: 2}
   prefab: {fileID: 3537812215717957531, guid: f4891343d338ca84b96a459158f899dd, type: 3}
   level: 1
+  baseCoin: 1500
   nextLevelAttribute: {fileID: 11400000, guid: 32da0fd9da742dd4db1697a2a501a0dd, type: 2}

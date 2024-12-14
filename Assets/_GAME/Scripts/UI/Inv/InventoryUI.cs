@@ -1,4 +1,4 @@
-using ShootingGame;
+﻿using ShootingGame;
 using ShootingGame.Data;
 using System;
 using System.Collections.Generic;
@@ -14,6 +14,7 @@ public class InventoryUI : Frame
     [SerializeField] private Transform placeHolder;
     [SerializeField] private InventoryItemUI inventoryItemUI;
     [SerializeField] private int maxItem = 5;
+    
 
     public Action<ItemDataSO> OnItemClickedAction;
 

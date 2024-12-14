@@ -12,13 +12,14 @@ namespace ShootingGame.Data
     public class ItemEquiqmentData : ItemDataSO
     {
         [SerializeField] private AItem prefab;
-        [SerializeField] private LevelItem level;
-
+        [SerializeField] private LevelItem level;    
         [SerializeField] private ItemDataSO nextLevelAttribute;
 
         public AItem Prefab => prefab;
         public ItemDataSO NextLevelAttribute => nextLevelAttribute;
         public LevelItem Level => level;
+
+      
 
 #if UNITY_EDITOR
         private void OnValidate()

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   category: 2
   rarity: 2
+  costTierMultiplier: 1
   stat:
     stats:
     - typeStat: 0
@@ -29,6 +30,7 @@ MonoBehaviour:
     itemName: Light Armor 1
     icon: {fileID: 21300000, guid: 474d359e8a71f0d4394a449e519f4901, type: 3}
   matrixData: {fileID: 11400000, guid: 240c44e0b317f7647ad3dd83a0b0976a, type: 2}
+  baseCoin: 300
   prefab: {fileID: 0}
   level: 1
   nextLevelAttribute: {fileID: 11400000, guid: 6b3c447360e4d7f46b864b1b5cf99742, type: 2}

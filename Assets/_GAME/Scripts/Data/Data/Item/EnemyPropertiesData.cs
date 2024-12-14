@@ -8,6 +8,7 @@ public class EnemyPropertiesData : ScriptableObject
     [SerializeField] private int baseEXP;
     [SerializeField] private int baseCoin;
     [SerializeField] private float growthRate = 1.2f;
+    
 
 
     public short BaseHealth => baseHealth;
