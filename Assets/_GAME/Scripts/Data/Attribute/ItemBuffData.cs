@@ -18,11 +18,10 @@ public enum BuffType
 [CreateAssetMenu(fileName = "ItemBuffData", menuName = "Items/Single/ItemBuffData")]
 public class ItemBuffData : ItemDataSO
 {
-    [SerializeField] private Sprite icon;
     [SerializeField] private BuffType buffType;
     [SerializeField] private int amount;
     [SerializeField] private float duration;
-    public Sprite Icon => icon;
+
     public BuffType BuffType => buffType;
     public int Amount => amount;
     public float Duration => duration;

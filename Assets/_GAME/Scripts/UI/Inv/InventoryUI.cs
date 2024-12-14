@@ -97,31 +97,46 @@ public class InventoryUI : Frame
         var equiqments = (GameData.Instance.ItemData.GetValue(Category.Equiqment) as EquiqmentData).GetAllValue().ToList();
         var buffItems = (GameData.Instance.ItemData.GetValue(Category.BuffItem) as BuffItemData).GetAllValue().ToList();
         List<ItemDataSO> result = new List<ItemDataSO>();
-
         //Random amount of weapon, equipment, buff
         int weaponCount = UnityEngine.Random.Range(1, 3);
         int equipmentCount = UnityEngine.Random.Range(2, 4);
         int buffCount = capacity - weaponCount - equipmentCount;
+        GameService.LogColor($"RandomItems {weaponCount} {equipmentCount} {buffCount}");
+
         // Random weapon
-        for (int i = 0; i < weaponCount; i++)
+        if(weaponCount > 0)
         {
-            var weapon = GameService.RandomItem(weapons);
-            if (weapon != null) result.Add(weapon);
+            GameService.LogColor($"RandomItems Weapons");
+            for (int i = 0; i < weaponCount; i++)
+            {
+                var weapon = GameService.RandomItem(weapons);
+                if (weapon != null) result.Add(weapon);
+            }
+        } 
+        
+        if(equipmentCount > 0)
+        {
+            GameService.LogColor($"RandomItems Equiqment");
+            // Random equiqment
+            for (int i = 0; i < equipmentCount; i++)
+            {
+                var equipment = GameService.RandomItem(equiqments);
+                if (equipment != null) result.Add(equipment);
+            }
         }
+        if(buffCount > 0)
+        {
+            GameService.LogColor($"RandomItems Buff");
+            // Random buff
+            for (int i = 0; i < buffCount; i++)
+            {
+                var buff = GameService.RandomItem(buffItems);
+                if (buff != null) result.Add(buff);
+            }
+        }
+      
 
-        // Random equiqment
-        for (int i = 0; i < equipmentCount; i++)
-        {
-            var equipment = GameService.RandomItem(equiqments);
-            if (equipment != null) result.Add(equipment);
-        }
-
-        // Random buff
-        for (int i = 0; i < buffCount; i++)
-        {
-            var buff = GameService.RandomItem(buffItems);
-            if (buff != null) result.Add(buff);
-        }
+        
 
         return result;
     }

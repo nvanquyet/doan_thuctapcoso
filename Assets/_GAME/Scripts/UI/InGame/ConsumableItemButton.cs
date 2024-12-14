@@ -23,7 +23,8 @@ public class ConsumableItemButton : MonoBehaviour, IBooster
     {
         this.data = data;
 
-        this.icon.sprite = data.Icon;
+        this.icon.sprite = data.Appearance.Icon;
+        this.mask.sprite = data.Appearance.Icon;
         this.amount = data.Amount;
         this.target = target;
 
@@ -48,7 +49,7 @@ public class ConsumableItemButton : MonoBehaviour, IBooster
         while (timeCountDown <= duration)
         {
             timeCountDown += Time.deltaTime;
-            mask.fillAmount = timeCountDown / duration;
+            icon.fillAmount = timeCountDown / duration;
             yield return null;
         }
         btn.interactable = this.amount > 0;
