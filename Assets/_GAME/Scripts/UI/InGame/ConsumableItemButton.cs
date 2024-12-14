@@ -1,3 +1,6 @@
+using DG.Tweening;
+using ShootingGame;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,19 +11,22 @@ public interface IBooster
 
 public class ConsumableItemButton : MonoBehaviour, IBooster
 {
-    [SerializeField] private Image icon;
+    [SerializeField] private Image mask, icon;
     [SerializeField] private Button btn;
     [SerializeField] private TextMeshProUGUI countText;
-    private BuffType buffType;
     private float duration;
     private int amount;
+    private ItemBuffData data;
+    private Player target;
 
-    public void Initialized(ItemBuffData data)
+    public void Initialized(ItemBuffData data, Player target)
     {
+        this.data = data;
+
         this.icon.sprite = data.Icon;
-        this.buffType = data.BuffType;
         this.amount = data.Amount;
-        this.duration = data.Duration;
+        this.target = target;
+
         countText.text = amount.ToString();
         btn.onClick.AddListener(Use);
     }
@@ -29,29 +35,22 @@ public class ConsumableItemButton : MonoBehaviour, IBooster
     {
         this.amount--;
         countText.text = amount.ToString();
-        btn.interactable = this.amount > 0;
-        switch (buffType)
+        target.UseItemBuff(this.data);
+        StartCoroutine(IECountDownButton(5));
+    }
+
+
+    IEnumerator IECountDownButton(float duration)
+    {
+        btn.interactable = false;
+        var timeCountDown = 0f;
+        icon.fillAmount = 0;
+        while (timeCountDown <= duration)
         {
-            case BuffType.DamageBoost:
-                break;
-            case BuffType.SpeedBoost:
-                break;
-            case BuffType.Heal:
-                break;
-            case BuffType.ArmorBoost:
-                break;
-            case BuffType.CriticalChance:
-                break;
-            case BuffType.DodgeBoost:
-                break;
-            case BuffType.AttackSpeed:
-                break;
-            case BuffType.LifeSteal:
-                break;
-            case BuffType.PoisonImmunity:
-                break;
-            case BuffType.DamageReduction:
-                break;
+            timeCountDown += Time.deltaTime;
+            mask.fillAmount = timeCountDown / duration;
+            yield return null;
         }
+        btn.interactable = this.amount > 0;
     }
 }

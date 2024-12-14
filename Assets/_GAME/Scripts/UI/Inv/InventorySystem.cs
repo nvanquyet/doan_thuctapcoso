@@ -49,7 +49,8 @@ public class InventorySystem : MonoBehaviour
             OnShowTetrisUI();
         }
         tetrisInventory.Initialized(startBuyItem); 
-        inventoryUI.Initialized(startBuyItem);
+        inventoryUI.SetTarget(player);
+        inventoryUI.Initialized(0, startBuyItem);
     }
 
     private void OnItemClicked(ItemDataSO data)
@@ -60,10 +61,9 @@ public class InventorySystem : MonoBehaviour
     }
 
 
-    private void OnWaveClear()
+    private void OnWaveClear(GameEvent.OnWaveClear param)
     {
-        GameService.LogColor($"LevelUp : {player.IsLevelUp}");
-        inventoryUI.Initialized(player.IsLevelUp);
+        inventoryUI.Initialized(param.wave, player.IsLevelUp);
         tetrisInventory.Initialized(player.IsLevelUp);
     }
 

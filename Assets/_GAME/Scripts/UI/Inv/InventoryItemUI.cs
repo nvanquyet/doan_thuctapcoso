@@ -9,22 +9,27 @@ public class InventoryItemUI : UIComponent
 {
     [SerializeField] private Button btnBuy;
     [SerializeField] private Image icon;
-    [SerializeField] private TextMeshProUGUI txtName, txtDescription;
+    [SerializeField] private TextMeshProUGUI txtName, txtDescription, txtCost;
 
-    private Action<ItemDataSO> OnButtonBuyClickAction;
+    private Action<ItemDataSO, int> OnButtonBuyClickAction;
     private ItemDataSO itemData;
+
+    private int cost;
 
     private void Start()
     {
         btnBuy.onClick.AddListener(OnButtonBuyClick);
     }
 
-    public void Initialized(ItemDataSO data, Action<ItemDataSO> clickBuyAction)
+    public void Initialized(ItemDataSO data, int currentWave, Action<ItemDataSO, int> clickBuyAction)
     {
         OnButtonBuyClickAction = clickBuyAction;
-        itemData = data;
+        
+        this.itemData = data; 
+        this.cost = (int) (data.CostTierMultiplier * GameConfig.Instance.BaseCost * Mathf.Pow(GameConfig.Instance.ScalingFactor, currentWave));
         icon.sprite = data.Appearance.Icon;
         txtName.text = data.Appearance.Name;
+        txtCost.text = this.cost.ToString();
         var stringStats = "";
         foreach (var stat in data.Stat.Stats)
         {
@@ -36,7 +41,7 @@ public class InventoryItemUI : UIComponent
 
     private void OnButtonBuyClick()
     {
-        OnButtonBuyClickAction?.Invoke(itemData);
+        OnButtonBuyClickAction?.Invoke(this.itemData, this.cost);
         Destroy(gameObject);
     }
 }
