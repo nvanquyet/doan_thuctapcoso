@@ -33,7 +33,6 @@ public class AttackController : AAttacker, IAttackBehaviour
     {
         defenderOwner = GetComponentInParent<IDefender>();
         triggerAnimation.OnTriggerAction += OnTriggerAnimation;
-        SetTarget(_target);
     }
 
 

@@ -35,18 +35,17 @@ namespace ShootingGame
             Vector3 extendedWindUpAngle = tweenRotationStruct.windUpAngle * rangeMultiplier;
             Vector3 extendedSlashAngle = tweenRotationStruct.slashAngle * rangeMultiplier;
             Vector3 extendedRecoverAngle = tweenRotationStruct.recoverAngle * rangeMultiplier;
-
             // Wind-up
             attackSequence.Append(WeaponTs.DOLocalRotate(extendedWindUpAngle, slashingTime.Item1)
-                .SetEase(Ease.InOutQuad).From(tweenRotationStruct.recoverAngle));
+                .SetEase(Ease.OutQuad).From(tweenRotationStruct.recoverAngle));
 
             // Slash
-            attackSequence.Append(WeaponTs.DOLocalRotate(extendedSlashAngle, slashingTime.Item2)
-                .SetEase(Ease.Linear).From(tweenRotationStruct.windUpAngle));
+            attackSequence.Append(WeaponTs.DOLocalRotate(extendedSlashAngle, slashingTime.Item2 * 0.7f)
+                .SetEase(Ease.InQuad).From(tweenRotationStruct.windUpAngle));
 
             // Recover
             attackSequence.Append(WeaponTs.DOLocalRotate(extendedRecoverAngle, slashingTime.Item3)
-                .SetEase(Ease.OutQuad).From(tweenRotationStruct.slashAngle).OnComplete(() => EnableInteract(false)));
+                .SetEase(Ease.OutBack).From(tweenRotationStruct.slashAngle).OnComplete(() => EnableInteract(false)));
 
             attackSequence.Play();
         }

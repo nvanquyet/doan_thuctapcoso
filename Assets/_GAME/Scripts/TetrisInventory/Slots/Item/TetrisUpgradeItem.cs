@@ -42,8 +42,12 @@ public class TetrisUpgradeItem : AStayInteractor<BoxCollider2D>
                 continue;
             }
             if(i is TetrisRemoveItem removeItem){
-                removeItem.InvokeAction(slot);
-                return true;
+                var distance = Vector2.Distance(transform.position, removeItem.transform.position);
+                if(distance < 24)
+                {
+                    removeItem.InvokeAction(slot);
+                    return true;
+                }
             }
         }
         return false;

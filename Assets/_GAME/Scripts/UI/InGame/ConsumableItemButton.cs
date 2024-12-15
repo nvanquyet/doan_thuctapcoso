@@ -1,5 +1,6 @@
 using DG.Tweening;
 using ShootingGame;
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -52,6 +53,14 @@ public class ConsumableItemButton : MonoBehaviour, IBooster
             icon.fillAmount = timeCountDown / duration;
             yield return null;
         }
-        btn.interactable = this.amount > 0;
+        if(this.amount <= 0)
+        {
+            OnRemoveItem();
+        }
+    }
+
+    private void OnRemoveItem()
+    {
+        Destroy(gameObject);
     }
 }

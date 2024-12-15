@@ -30,5 +30,8 @@ public class ProgressBar : Frame
         bar.DOValue(Mathf.Clamp01(value), 0.25f);
     }
 
-    public void SetIcon(Sprite sprite) => icon.sprite = sprite;
+    public void SetIcon(Sprite sprite)
+    {
+        if (icon) icon.sprite = sprite;
+    }
 }

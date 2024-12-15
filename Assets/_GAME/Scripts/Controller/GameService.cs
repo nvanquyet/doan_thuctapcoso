@@ -125,11 +125,10 @@ namespace ShootingGame
         }
 
 
-
         public static int RandomLevel()
         {
             int roll = UnityEngine.Random.Range(1, 101);
-            return roll <= 90 ? 1 : 2;
+            return roll <= 90 ? 1 : 2; // 90% Level 1, 10% Level 2
         }
 
         public static T RandomItem<T>(List<T> items) where T : ItemDataSO
@@ -140,22 +139,18 @@ namespace ShootingGame
                 return null;
             }
 
-            List<T> filteredItems = items;
+            List<T> filteredItems = new List<T>();
 
-            if (typeof(T) == typeof(ItemEquiqmentData))
+            if (items.Any(i => i is ItemEquiqmentData))
             {
                 var equiqmentDatas = items.OfType<ItemEquiqmentData>().ToList();
                 int level = RandomLevel();
-
-                filteredItems = equiqmentDatas
+                items = equiqmentDatas
                                 .Where(i => i.Level == (LevelItem)level)
                                 .Cast<T>()
                                 .ToList();
             }
-            else
-            {
-                filteredItems = items;
-            }
+            filteredItems = items;
 
             var rarityRandom = UnityEngine.Random.Range(1, 101);
 
@@ -175,11 +170,10 @@ namespace ShootingGame
             {
                 filteredItems = filteredItems.Where(i => i.Rarity == RarityItem.Legendary).ToList();
             }
-
             if (filteredItems.Count == 0)
             {
-                int idx = UnityEngine.Random.Range(0, items.Count);
-                return items[idx];
+                int indexItems = UnityEngine.Random.Range(0, items.Count);
+                return items[indexItems];
             }
 
             int index = UnityEngine.Random.Range(0, filteredItems.Count);

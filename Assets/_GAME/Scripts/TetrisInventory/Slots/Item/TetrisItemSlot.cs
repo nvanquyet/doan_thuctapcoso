@@ -19,6 +19,8 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
     private int currentClicked = 0;
 #endif
     public ItemDataSO itemData { get; private set; }
+
+
     #region Properties
     private TetrisSlot slots;
     private TetrisItemDescription tetrisDescription;
@@ -27,7 +29,17 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
     private bool isHolding = false;
 
     //Properties check item is in grid
-    private bool IsInGrid = false;
+
+    private bool isInGrid;
+
+    public bool IsInGrid
+    {
+        get => isInGrid;
+        set {
+            isInGrid = value;
+            ToggleIconSize(value);
+        }
+    }
 
     #endregion
 
@@ -63,7 +75,7 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
             {
                 Invoke(nameof(ResetClick), 1f);
             }
-            else if (currentClicked == 2)
+            else if (currentClicked >= 2)
             {
                 RotateItem();
                 currentClicked = 0;
@@ -92,12 +104,11 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
         this.itemData = data;
         this.iconSmall.sprite = data.Appearance.Icon;
         this.iconLarge.sprite = data.Appearance.Icon;
-
+        IsInGrid = false;
         RescalingItem(rectTetrisIcon);
         RectTransform.anchorMin = new Vector2(0f, 1f);
         RectTransform.anchorMax = new Vector2(0f, 1f);
         RectTransform.pivot = new Vector2(0.5f, 0.5f);
-        ToggleIconSize(false, false);
         Invoke(nameof(ReScale), Time.deltaTime);
     }
 
@@ -266,6 +277,7 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
                 //Caclate the new position of the item
                 if (fit)
                 {
+                    IsInGrid = true;
                     MarkItemInGrid(newPosItem[0], itemSize, grid);
                     startPosition = newPosItem[0];
                     RectTransform.anchoredPosition = new Vector2((newPosItem[0].x + halfSize.x) * cellSize.x, -(newPosItem[0].y + halfSize.y) * cellSize.y);
@@ -275,14 +287,20 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
                 {
                     if (IsValidPosition(AnchorGrid(oldPosition, halfSize), itemSize))
                     {
+                        IsInGrid = true;
                         RectTransform.anchoredPosition = oldPosition;
                         MarkItemInGrid(AnchorGrid(oldPosition, halfSize), itemSize, grid);
                     }
-                    else ReturnToWaitingList();
+                    else
+                    {
+                        IsInGrid = false;
+                        ReturnToWaitingList();
+                    }
                 }
             }
             else
             {
+                IsInGrid = false;
                 ReturnToWaitingList();
                 return;
             }
@@ -291,10 +309,15 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
         {
             if (IsValidPosition(AnchorGrid(oldPosition, halfSize), itemSize))
             {
+                IsInGrid = true;
                 RectTransform.anchoredPosition = oldPosition;
                 MarkItemInGrid(AnchorGrid(oldPosition, halfSize), itemSize, grid);
             }
-            else ReturnToWaitingList();
+            else
+            {
+                IsInGrid = false;
+                ReturnToWaitingList();
+            }
         }
 
     }

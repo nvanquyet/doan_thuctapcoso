@@ -11,9 +11,9 @@ public class TetrisSlot : UIComponent
     public int maxGridX { get; private set; }
     public int maxGridY { get; private set; }
 
-    [SerializeField] private Vector2 cellSize;
     [SerializeField] private TetrisItemSlot prefabSlot;
     
+    private Vector2 cellSize;
     #endregion
 
     private List<TetrisItemSlot> itemsInBag = new List<TetrisItemSlot>();

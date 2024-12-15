@@ -186,6 +186,7 @@ namespace ShootingGame
 
         private void AddEnemy(Enemy target)
         {
+            GameService.LogColor($"Add Enemy {target.name}");
             if (!enemies.Contains(target)) enemies.Add(target);
             if (!tsEnemies.Contains(target.transform)) tsEnemies.Add(target.transform);
         }
