@@ -101,6 +101,11 @@ namespace ShootingGame
                 OnEndGame(false, LevelSpawner.Instance.Wave.Timmer.TimeLeft);
             }
         }
+
+        internal void RandomItem(Player player)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 
 }

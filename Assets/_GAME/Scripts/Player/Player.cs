@@ -46,6 +46,7 @@ namespace ShootingGame
         {
             GameCtrl.Instance.AddPlayer(this);
             progesstion.Initialized();
+            CoinClaimed = GameConfig.Instance.StartCoin;
             InitAction();
         }
 
@@ -84,6 +85,35 @@ namespace ShootingGame
             {
                 GameCtrl.Instance.OnPlayerDead(this);
             });
+        }
+
+
+        public void UseItemBuff(ItemBuffData data)
+        {
+            GameService.LogColor($"Buff: {data.BuffType} duration {data.Duration}");
+            switch (data.BuffType)
+            {
+                case BuffType.DamageBoost:
+                    break;
+                case BuffType.SpeedBoost:
+                    break;
+                case BuffType.Heal:
+                    break;
+                case BuffType.ArmorBoost:
+                    break;
+                case BuffType.CriticalChance:
+                    break;
+                case BuffType.DodgeBoost:
+                    break;
+                case BuffType.AttackSpeed:
+                    break;
+                case BuffType.LifeSteal:
+                    break;
+                case BuffType.PoisonImmunity:
+                    break;
+                case BuffType.DamageReduction:
+                    break;
+            }
         }
 
 

@@ -41,7 +41,7 @@ namespace ShootingGame
         public void OnStartWave()
         {
             if (wave == null) return;
-            wave.Init(GameConfig.Instance.scalingFactor, _currentWave);
+            wave.Init(GameConfig.Instance.ScalingFactor, _currentWave);
         }
 
         public List<Transform> GetActiveEnemies()

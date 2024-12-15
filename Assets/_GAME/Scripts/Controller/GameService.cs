@@ -136,31 +136,38 @@ namespace ShootingGame
         {
             if (items == null || items.Count == 0)
             {
+                Debug.LogWarning("Items list is null or empty.");
                 return null;
             }
-            List<T> filteredItems;
-            if (items[0] is ItemEquiqmentData)
-            {
-                List<ItemEquiqmentData> equiqmentDatas = items.Cast<ItemEquiqmentData>().ToList();
-                int level = RandomLevel();
-                filteredItems = equiqmentDatas.Where(i => (i.Level == (LevelItem)level)).Cast<T>().ToList();
 
+            List<T> filteredItems = items;
+
+            if (typeof(T) == typeof(ItemEquiqmentData))
+            {
+                var equiqmentDatas = items.OfType<ItemEquiqmentData>().ToList();
+                int level = RandomLevel();
+
+                filteredItems = equiqmentDatas
+                                .Where(i => i.Level == (LevelItem)level)
+                                .Cast<T>()
+                                .ToList();
             }
             else
             {
                 filteredItems = items;
             }
 
-            var ratityRandom = UnityEngine.Random.Range(1, 101);
-            if (ratityRandom <= 80)
+            var rarityRandom = UnityEngine.Random.Range(1, 101);
+
+            if (rarityRandom <= 80)
             {
                 filteredItems = filteredItems.Where(i => i.Rarity == RarityItem.Common).ToList();
             }
-            else if (ratityRandom <= 95)
+            else if (rarityRandom <= 95)
             {
                 filteredItems = filteredItems.Where(i => i.Rarity == RarityItem.Rare).ToList();
             }
-            else if (ratityRandom <= 98)
+            else if (rarityRandom <= 98)
             {
                 filteredItems = filteredItems.Where(i => i.Rarity == RarityItem.Epic).ToList();
             }
@@ -168,14 +175,17 @@ namespace ShootingGame
             {
                 filteredItems = filteredItems.Where(i => i.Rarity == RarityItem.Legendary).ToList();
             }
-            if (filteredItems.Count > 0)
+
+            if (filteredItems.Count == 0)
             {
-                int index = UnityEngine.Random.Range(0, filteredItems.Count);
-                return filteredItems[index];
+                int idx = UnityEngine.Random.Range(0, items.Count);
+                return items[idx];
             }
 
-            return null;
+            int index = UnityEngine.Random.Range(0, filteredItems.Count);
+            return filteredItems[index];
         }
+
         public static int CalculateScore(int enemiesDefeated, float timeLeft)
         {
             int baseScore = enemiesDefeated * 100;

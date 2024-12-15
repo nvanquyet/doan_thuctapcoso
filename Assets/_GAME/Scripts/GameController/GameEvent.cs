@@ -7,7 +7,11 @@ using UnityEngine;
 public sealed class GameEvent
 {
 
-    public struct OnWaveClear : IEventParam { }
+    public struct OnWaveClear : IEventParam
+    {
+        public int wave;
+    }
+
     public struct OnNextWave : IEventParam
     {
         public Player player;
@@ -19,7 +23,7 @@ public sealed class GameEvent
 
     public struct OnPlayerDead : IEventParam { }
 
-    public struct OnEndGame : IEventParam 
+    public struct OnEndGame : IEventParam
     {
         public bool isWin;
         public int enemiesDefeated;
