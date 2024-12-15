@@ -69,10 +69,10 @@ public class CharacterSwitcher : MonoBehaviour
     {
         var c = GameData.Instance.Players.GetValue(CharacterIndex);
         characterNameText.text = c.Appearance.Name;
+        animator.runtimeAnimatorController = c.Animator;
         //if (playerAvatarImage != null)
         //{
         //    playerAvatarImage.sprite = c.Appearance.Icon;
-        //    animator.runtimeAnimatorController = c.Animator;
         //}
     }
 }

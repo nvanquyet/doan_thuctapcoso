@@ -17,7 +17,6 @@ public class ProgressBar : Frame
         bar = GetComponentInChildren<Slider>();
         //icon = GetComponent<Image>();
         text = GetComponentInChildren<TextMeshProUGUI>();
-        gameObject.SetActive(false);
     }
 #endif
 

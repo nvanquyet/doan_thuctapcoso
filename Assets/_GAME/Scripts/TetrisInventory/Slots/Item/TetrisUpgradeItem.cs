@@ -30,10 +30,10 @@ public class TetrisUpgradeItem : AStayInteractor<BoxCollider2D>
                     {
                         if (item.slot.itemData == slot.itemData && Vector3.Distance(item.slot.transform.position, slot.transform.position) < 32f)
                         {
-                            OnUpgradeItem?.Invoke(item.slot);
-
                             if (item.slot) item.slot.OnDestroyItem();
                             if (slot) slot.OnDestroyItem();
+
+                            OnUpgradeItem?.Invoke(item.slot);
 
                             Destroy(item.gameObject); 
                             Destroy(gameObject);
