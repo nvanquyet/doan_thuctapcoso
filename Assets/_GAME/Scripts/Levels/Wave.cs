@@ -63,7 +63,6 @@ namespace ShootingGame
         public void Init(float scalingFactor, int currentWave)
         {
             this.isBossWave = currentWave % GameConfig.Instance.bossWaveDistance == 0;
-
             this.currentWave = currentWave;
 
             this.waveProperties = GameService.CalculateWaveProperties(currentWave, scalingFactor);
@@ -154,16 +153,17 @@ namespace ShootingGame
         private void SpawnBoss()
         {
             //Spawn Boss from data
-            var boss = GameData.Instance.Bosses.GetAllValue()[Mathf.Max((currentWave / GameConfig.Instance.bossWaveDistance) - 1, 0)];
-            if (boss != null)
+            var index = Mathf.Max((currentWave / GameConfig.Instance.bossWaveDistance) - 1, 0);
+            var boss = GameData.Instance.Bosses.GetValue(index);
+            if (boss)
             {
                 var bossInstance = Instantiate(boss, spawnPositions[Random.Range(0, spawnPositions.Count)]);
                 //Init data enemy
                 if (bossInstance)
                 {
-                    UICtrl.Instance.Get<InGameUI>().ActiveBossProgess(true, false);
+                    UICtrl.Instance.Get<InGameUI>().ActiveBossProgess(true, true);
                     bossInstance.transform.localPosition = Vector3.zero;
-                    bossInstance.Init(currentWave);
+                    bossInstance.Init(currentWave , UICtrl.Instance.Get<InGameUI>().SetIconBoss);
                     bossInstance.OnDeadAction += (_) =>
                     {
                         UICtrl.Instance.Get<InGameUI>().ActiveBossProgess(false);

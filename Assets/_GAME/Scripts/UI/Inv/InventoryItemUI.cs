@@ -11,9 +11,9 @@ public class InventoryItemUI : UIComponent
     [SerializeField] private Image icon;
     [SerializeField] private TextMeshProUGUI txtName, txtDescription, txtCost;
 
-    private Action<ItemDataSO, int> OnButtonBuyClickAction;
+    private Action<ItemDataSO, InventoryItemUI> OnButtonBuyClickAction;
     private ItemDataSO itemData;
-
+    private Player target;
     private int cost;
 
     private void Start()
@@ -21,12 +21,14 @@ public class InventoryItemUI : UIComponent
         btnBuy.onClick.AddListener(OnButtonBuyClick);
     }
 
-    public void Initialized(ItemDataSO data, int currentWave, Action<ItemDataSO, int> clickBuyAction)
+    public void Initialized(ItemDataSO data, int currentWave, Player target, Action<ItemDataSO, InventoryItemUI> clickBuyAction)
     {
         OnButtonBuyClickAction = clickBuyAction;
+        this.target = target;
         
         this.itemData = data; 
         this.cost = (int) (data.CostTierMultiplier * GameConfig.Instance.BaseCost * Mathf.Pow(GameConfig.Instance.ScalingFactor, currentWave));
+
         icon.sprite = data.Appearance.Icon;
         txtName.text = data.Appearance.Name;
         txtCost.text = this.cost.ToString();
@@ -36,12 +38,19 @@ public class InventoryItemUI : UIComponent
             stringStats += $"{stat.GetStatString()}\n";
         }
         txtDescription.text = stringStats;
+        btnBuy.interactable = target.CoinClaimed >= this.cost;
     }
 
+    public void CheckInteractable()
+    {
+        btnBuy.interactable = target.CoinClaimed >= this.cost;
+    }
 
     private void OnButtonBuyClick()
     {
-        OnButtonBuyClickAction?.Invoke(this.itemData, this.cost);
+        if (target.CoinClaimed < cost) return;
+        target.CoinClaimed -= cost;
+        OnButtonBuyClickAction?.Invoke(this.itemData, this);
         Destroy(gameObject);
     }
 }

@@ -2,6 +2,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EnemyProperties", menuName = "_GAME/Enemy Properties Data")]
 public class EnemyPropertiesData : ScriptableObject
 {
+    [SerializeField] private Sprite icon;
     [SerializeField] private short baseHealth;
     [SerializeField] private short baseDamage;
     [SerializeField] private short baseSpeed;
@@ -16,4 +17,5 @@ public class EnemyPropertiesData : ScriptableObject
     public int BaseEXP => baseEXP;
     public int BaseCoin => baseCoin;
     public float GrowthRate => growthRate;
+    public Sprite Icon => icon;
 }
