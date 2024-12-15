@@ -21,6 +21,11 @@ public class InGameUI : Frame
         if (resetProgess) bossProgessBar.UpdateProgess(1);
     }
 
+    public void SetIconBoss(Sprite sprite)
+    {
+        if (bossProgessBar) bossProgessBar.SetIcon(sprite);
+    }
+
     public void SetWaveText(int wave) => waveText.text = $"Wave {wave}";
     public void SetEnemiesKilledText(int killed)
     {
