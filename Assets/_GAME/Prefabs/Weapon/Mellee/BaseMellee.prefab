@@ -240,7 +240,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 10
-  _oneHitOnly: 0
   weaponSprite: {fileID: 6996159494452088301}
   weaponTransform: {fileID: 9163475137752130091}
   weaponTsRotate: {fileID: 0}
@@ -248,6 +247,6 @@ MonoBehaviour:
     windUpRatio: 0.15
     slashRatio: 0.4
     recoverRatio: 0.05
-    windUpAngle: {x: 0, y: 0, z: 90}
-    slashAngle: {x: 0, y: 0, z: -90}
+    windUpAngle: {x: 0, y: 0, z: -90}
+    slashAngle: {x: 0, y: 0, z: 90}
     recoverAngle: {x: 0, y: 0, z: 0}

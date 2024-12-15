@@ -85,13 +85,13 @@ namespace ShootingGame
 
         public void Init(int currentWave, Action<Sprite> OnCallback = null)
         {
+            GetTarget();
             var enemyPropertiesData = isBoss ? GameData.Instance.BosssProperties.GetValue(id) : GameData.Instance.EnemyProperties.GetValue(id);
             var growthRate = Mathf.Pow(enemyPropertiesData.GrowthRate, currentWave - 1);
             _enemyDefender.Init(enemyPropertiesData.BaseHealth, enemyPropertiesData.BaseEXP, enemyPropertiesData.BaseCoin, growthRate);
             _enemyAttacker.Init(enemyPropertiesData.BaseDamage, growthRate);
             _enemyMovement.Init(enemyPropertiesData.BaseSpeed, growthRate);
-
-            if(enemyPropertiesData.Icon) OnCallback?.Invoke(enemyPropertiesData.Icon);
+            if (enemyPropertiesData.Icon) OnCallback?.Invoke(enemyPropertiesData.Icon);
         }
 
         public int GetStrength()

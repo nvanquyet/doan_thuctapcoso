@@ -113,6 +113,7 @@ public class InventoryUI : Frame
                 {
                     if(i != null) i.CheckInteractable();
                 }
+                btnRandomItem.interactable = player.CoinClaimed >= coinPurchase;
                 OnItemClickedAction?.Invoke(data);
             });
 

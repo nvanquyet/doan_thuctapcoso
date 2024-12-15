@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   category: 2
   rarity: 3
+  costTierMultiplier: 1
   stat:
     stats:
     - typeStat: 6
@@ -28,6 +29,7 @@ MonoBehaviour:
   appearance:
     itemName: Strengthened Shoes 3
     icon: {fileID: 21300000, guid: c85f634f54b4a1b4da7109fe186c60fb, type: 3}
-  matrixData: {fileID: 11400000, guid: 33d08d87f2d72574ca96670f4361f905, type: 2}
+  matrixData: {fileID: 11400000, guid: 2094a8427d8b56f41bdcbc574ce28628, type: 2}
   prefab: {fileID: 0}
+  level: 3
   nextLevelAttribute: {fileID: 0}

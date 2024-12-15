@@ -17,6 +17,7 @@ public class ProgressBar : Frame
         bar = GetComponentInChildren<Slider>();
         //icon = GetComponent<Image>();
         text = GetComponentInChildren<TextMeshProUGUI>();
+        gameObject.SetActive(false);
     }
 #endif
 
@@ -30,5 +31,8 @@ public class ProgressBar : Frame
         bar.DOValue(Mathf.Clamp01(value), 0.25f);
     }
 
-    public void SetIcon(Sprite sprite) => icon.sprite = sprite;
+    public void SetIcon(Sprite sprite)
+    {
+        if (icon) icon.sprite = sprite;
+    }
 }

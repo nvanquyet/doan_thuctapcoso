@@ -20,30 +20,37 @@ public class TetrisUpgradeItem : AStayInteractor<BoxCollider2D>
 
     public bool CheckInteract()
     {
-       
         foreach(var i in _interactables){
             if(i is TetrisUpgradeItem item){
                 if(slot.itemData is ItemEquiqmentData)
                 {
                     var it = slot.itemData as ItemEquiqmentData;
                     if (it.NextLevelAttribute == null) continue;
-                    if (item.slot.itemData == slot.itemData)
+                    if(item.slot != null)
                     {
-                        item.slot.OnDestroyItem();
-                        slot.OnDestroyItem();
+                        if (item.slot.itemData == slot.itemData && Vector3.Distance(item.slot.transform.position, slot.transform.position) < 32f)
+                        {
+                            OnUpgradeItem?.Invoke(item.slot);
 
-                        OnUpgradeItem?.Invoke(item.slot);
+                            if (item.slot) item.slot.OnDestroyItem();
+                            if (slot) slot.OnDestroyItem();
 
-                        Destroy(item.gameObject);
-                        Destroy(gameObject);
-                        return true;
+                            Destroy(item.gameObject); 
+                            Destroy(gameObject);
+
+                            return true;
+                        }
                     }
                 }
                 continue;
             }
             if(i is TetrisRemoveItem removeItem){
-                removeItem.InvokeAction(slot);
-                return true;
+                var distance = Vector2.Distance(transform.position, removeItem.transform.position);
+                if(distance < 24)
+                {
+                    removeItem.InvokeAction(slot);
+                    return true;
+                }
             }
         }
         return false;

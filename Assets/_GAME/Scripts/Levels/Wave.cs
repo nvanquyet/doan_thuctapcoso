@@ -162,7 +162,7 @@ namespace ShootingGame
                 if (bossInstance)
                 {
                     UICtrl.Instance.Get<InGameUI>().ActiveBossProgess(true, true);
-                    bossInstance.transform.localPosition = Vector3.zero;
+                    bossInstance.transform.position = Vector3.zero;
                     bossInstance.Init(currentWave , UICtrl.Instance.Get<InGameUI>().SetIconBoss);
                     bossInstance.OnDeadAction += (_) =>
                     {

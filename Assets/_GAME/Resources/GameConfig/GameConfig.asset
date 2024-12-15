@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596865da4a325ce40ab56730bca8889b, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
-  scalingFactor: 1.1
+  ScalingFactor: 1.1
+  BaseCost: 10
   enemyWeights:
     HpWeight: 0.1
     DamageWeight: 0.15
     SpeedWeight: 0.005
-  bossWaveDistance: 5
+  bossWaveDistance: 1
   waveProperties:
     timeNormalSpawn: 0.2
     timeThreshold: 5
@@ -25,3 +26,4 @@ MonoBehaviour:
     strengthWave: 100
     timeWave: 30
   startGameBuyItem: 1
+  StartCoin: 100

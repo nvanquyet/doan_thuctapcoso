@@ -11,6 +11,8 @@ namespace ShootingGame {
         public EnemyPropertiesSO BosssProperties;
         //public PlayerStatData PlayerStatData;
         public ItemData ItemData;
+        public SFXData SFXData;
+
 
         protected override void Initialize() {
            

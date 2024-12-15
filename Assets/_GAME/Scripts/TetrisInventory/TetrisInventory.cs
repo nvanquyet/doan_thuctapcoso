@@ -113,15 +113,17 @@ public class TetrisInventory : Frame
             var newItem = CreateNewItem(it.NextLevelAttribute);
             newItem.transform.position = slot.transform.position;
             newItem.transform.SetParent(slot.transform.parent);
-            if (newItem.transform.parent.Equals(tetrisSlot.transform))
+            if (slot.IsInGrid)
             {
                 OnAddToTetrisSlot(newItem);
                 newItem.OnEndDrag();
+                newItem.IsInGrid = true;
             }
             else OnReturnToWaitingList(newItem);
         }
-        
     }
+
+
 
     public int[] GetTetrisItemsID()
     {
