@@ -10,7 +10,7 @@ public class CharacterSwitcher : MonoBehaviour
 {
     public Transform characterParent;          
     public TMP_Text characterNameText;
-    public Image playerAvatarImage;
+    //public Image playerAvatarImage;
 
     public Button nextButton;
     public Button preButton;
@@ -69,10 +69,10 @@ public class CharacterSwitcher : MonoBehaviour
     {
         var c = GameData.Instance.Players.GetValue(CharacterIndex);
         characterNameText.text = c.Appearance.Name;
-        if (playerAvatarImage != null)
-        {
-            playerAvatarImage.sprite = c.Appearance.Icon;
-            animator.runtimeAnimatorController = c.Animator;
-        }
+        //if (playerAvatarImage != null)
+        //{
+        //    playerAvatarImage.sprite = c.Appearance.Icon;
+        //    animator.runtimeAnimatorController = c.Animator;
+        //}
     }
 }

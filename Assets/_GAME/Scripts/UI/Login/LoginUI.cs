@@ -1,6 +1,8 @@
 using ShootingGame;
 using System;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LoginUI : Frame
@@ -22,11 +24,19 @@ public class LoginUI : Frame
     [SerializeField] private Text mainBtnText;
     [SerializeField] private Text secondBtnText;
     [SerializeField] private GameObject alreadyHaveAccountText;
+    [SerializeField] private SceneLoader sceneLoader;
 
     private void Start()
     {
-        InitLogin();
-        btnForgotPassword.onClick.AddListener(InitResetPassword);
+        if (UserData.IsLogin)
+        {
+            OnLogin();
+        }
+        else
+        {
+            InitLogin();
+            btnForgotPassword.onClick.AddListener(InitResetPassword);
+        }        
     }
 
     private void InitResetPassword()
@@ -85,7 +95,11 @@ public class LoginUI : Frame
 
     private void OnLogin()
     {
-        GameService.LogColor("Login");
+        UserData.IsLogin = true;
+        Hide(false, () =>
+        {
+            sceneLoader.LoadScene(1);
+        });
     }
 
     private void OnForgotPassword()

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -58,7 +57,7 @@ public class SceneLoader : Frame
         asyncOperation.allowSceneActivation = false;
 
         float elapsedTime = 0f; 
-        float duration = 10f;   
+        float duration = 2f;   
 
         while (elapsedTime < duration)
         {
