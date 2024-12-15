@@ -47,15 +47,18 @@ public class ConsumableItemButton : MonoBehaviour, IBooster
         btn.interactable = false;
         var timeCountDown = 0f;
         icon.fillAmount = 0;
-        while (timeCountDown <= duration)
-        {
-            timeCountDown += Time.deltaTime;
-            icon.fillAmount = timeCountDown / duration;
-            yield return null;
-        }
-        if(this.amount <= 0)
+        if (this.amount <= 0)
         {
             OnRemoveItem();
+        }
+        else
+        {
+            while (timeCountDown <= duration)
+            {
+                timeCountDown += Time.deltaTime;
+                icon.fillAmount = timeCountDown / duration;
+                yield return null;
+            }
         }
     }
 

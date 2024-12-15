@@ -162,7 +162,7 @@ namespace ShootingGame
                 if (bossInstance)
                 {
                     UICtrl.Instance.Get<InGameUI>().ActiveBossProgess(true, true);
-                    bossInstance.transform.localPosition = Vector3.zero;
+                    bossInstance.transform.position = Vector3.zero;
                     bossInstance.Init(currentWave , UICtrl.Instance.Get<InGameUI>().SetIconBoss);
                     bossInstance.OnDeadAction += (_) =>
                     {
@@ -186,7 +186,6 @@ namespace ShootingGame
 
         private void AddEnemy(Enemy target)
         {
-            GameService.LogColor($"Add Enemy {target.name}");
             if (!enemies.Contains(target)) enemies.Add(target);
             if (!tsEnemies.Contains(target.transform)) tsEnemies.Add(target.transform);
         }

@@ -23,7 +23,6 @@ public class ConsumableArea : MonoBehaviour
 
     private void OnNextWave(GameEvent.OnNextWave param)
     {
-        GameService.LogColor($"ConsumableArea OnNextWave {param.allBuffItems.Count}");
         if (param.allBuffItems != null && param.allBuffItems.Count > 0)
         {
             Initialized(param.allBuffItems, param.player);
