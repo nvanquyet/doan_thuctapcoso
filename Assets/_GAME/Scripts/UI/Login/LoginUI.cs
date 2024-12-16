@@ -1,5 +1,6 @@
 using ShootingGame;
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -20,11 +21,10 @@ public class LoginUI : Frame
 
     [Space(10)]
     [Header("Text")]
-    [SerializeField] private Text titleText;
-    [SerializeField] private Text mainBtnText;
-    [SerializeField] private Text secondBtnText;
+    [SerializeField] private TextMeshProUGUI titleText;
+    [SerializeField] private TextMeshProUGUI mainBtnText;
+    [SerializeField] private TextMeshProUGUI secondBtnText;
     [SerializeField] private GameObject alreadyHaveAccountText;
-    [SerializeField] private SceneLoader sceneLoader;
 
     private void Start()
     {
@@ -74,7 +74,7 @@ public class LoginUI : Frame
             SetTextButton("Register", "Login");
         }
 
-        titleText.text = login ? "Login" : "Register";
+        titleText.text = login ? "LOGIN TO CONTINUE" : "REGISTER NEW ACCOUNT";
 
         alreadyHaveAccountText.gameObject.SetActive(!login);
         confirmPassInput.gameObject.SetActive(!login);
@@ -90,15 +90,64 @@ public class LoginUI : Frame
 
     private void OnRegister()
     {
+        var email = usernameInput.Text;
+        var password = passwordInput.Text;
+        var confirmPass = confirmPassInput.Text;
+        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+        {
+            UIPopUpCtrl.Instance.Get<UINotice>().SetNotice($"Register Error", "Email or Password is empty");
+            return;
+        }
+        else if (!GameService.IsValidEmail(email))
+        {
+            UIPopUpCtrl.Instance.Get<UINotice>().SetNotice($"Register Error", "Email is invalid");
+            return;
+        }
+        else if (password.Length < 6)
+        {
+            UIPopUpCtrl.Instance.Get<UINotice>().SetNotice($"Register Error", "Password must be at least 6 characters");
+            return;
+        }
+        else if (mainBtnText.text == "Register")
+        {
+            if (string.IsNullOrEmpty(confirmPass))
+            {
+                UIPopUpCtrl.Instance.Get<UINotice>().SetNotice($"Register Error", "Confirm Password is empty");
+                return;
+            }
+            else if (confirmPass != password)
+            {
+                UIPopUpCtrl.Instance.Get<UINotice>().SetNotice($"Register Error", "Confirm Password is not match");
+                return;
+            }
+        }
         GameService.LogColor("Register");
     }
 
     private void OnLogin()
     {
+        var email = usernameInput.Text;
+        var password = passwordInput.Text;
+        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+        {
+            UIPopUpCtrl.Instance.Get<UINotice>().SetNotice($"Login Error", "Email or Password is empty");
+            return;
+        }
+        else if (!GameService.IsValidEmail(email))
+        {
+            UIPopUpCtrl.Instance.Get<UINotice>().SetNotice($"Login Error", "Email is invalid");
+            return;
+        }
+        else if (password.Length < 6)
+        {
+            UIPopUpCtrl.Instance.Get<UINotice>().SetNotice($"Login Error", "Password must be at least 6 characters");
+            return;
+        }
+        GameService.LogColor($"Login {email} {password}");
         UserData.IsLogin = true;
         Hide(false, () =>
         {
-            sceneLoader.LoadScene(1);
+            UIPopUpCtrl.Instance.Get<LoadScene>().LoadSceneAsync(1);
         });
     }
 

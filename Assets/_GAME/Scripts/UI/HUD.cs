@@ -63,7 +63,7 @@ namespace ShootingGame {
             Hide<T>(toLeft, callback);
         }
 
-        public void Show<T>(bool anim = true, Action callback = null, bool hideCurrent = true) where T : Frame {
+        public virtual void Show<T>(bool anim = true, Action callback = null, bool hideCurrent = true) where T : Frame {
             var frame = Get<T>();
             if (frame == null) {
                 callback?.Invoke();
@@ -104,7 +104,7 @@ namespace ShootingGame {
             else EndBusy();
         }
 
-        public void Hide<T>(bool anim = true, Action callback = null) where T: Frame {
+        public virtual void Hide<T>(bool anim = true, Action callback = null) where T: Frame {
             var frame = Get<T>();
             if (frame == null) {
                 callback?.Invoke();
