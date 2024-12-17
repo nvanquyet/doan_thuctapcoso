@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ed8e3c0241ce4b469c12fe0064d1051, type: 3}
   m_Name: EnemyProperties 13
   m_EditorClassIdentifier: 
+  icon: {fileID: 0}
   baseHealth: 320
   baseDamage: 50
   baseSpeed: 5
   baseEXP: 140
+  baseCoin: 82
   growthRate: 1.15
