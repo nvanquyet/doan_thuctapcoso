@@ -69,7 +69,7 @@ namespace ShootingGame
                     OnDefendAction?.Invoke(healthPercent);
                 };
                 _enemyDefender.OnDefendSuccess += () => _enemyMovement.PauseMovement(false);
-
+                _enemyMovement.SetAttackRange(_enemyAttacker.DistanceAttack);
                 _enemyAttacker.SetAttackAction(() =>
                 {
                     _enemyMovement.PauseMovement(true);

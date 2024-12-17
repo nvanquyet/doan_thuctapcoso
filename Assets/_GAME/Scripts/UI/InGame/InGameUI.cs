@@ -47,7 +47,7 @@ public class InGameUI : Frame
         }, false);
 
         SetEnemiesKilledText(0);
-        btnSetting.onClick.AddListener(() =>
+        btnSetting?.onClick.AddListener(() =>
         {
             SFX.Instance.PlaySound(AudioEvent.ButtonClick);
             UIPopUpCtrl.Instance.Show<UISetting>();

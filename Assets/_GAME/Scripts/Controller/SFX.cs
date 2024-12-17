@@ -133,7 +133,6 @@ public sealed class SFX : MonoBehaviour
     {
         if (clip && audioPlayerSource)
         {
-            GameService.LogColor("Play Player Movement");
             audioPlayerSource.clip = clip;
             audioPlayerSource.loop = true;
             audioPlayerSource.Play();
@@ -146,7 +145,6 @@ public sealed class SFX : MonoBehaviour
     {
         if (audioPlayerSource && audioPlayerSource.isPlaying)
         {
-            GameService.LogColor("Pause Player Movement");
             audioPlayerSource.loop = false;
             audioPlayerSource.DOKill();
             audioPlayerSource.DOFade(0, .24f).OnComplete(() => audioPlayerSource.Pause());
