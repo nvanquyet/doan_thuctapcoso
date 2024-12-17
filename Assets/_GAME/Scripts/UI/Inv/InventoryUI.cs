@@ -50,7 +50,11 @@ public class InventoryUI : Frame
         btnContinue.onClick.AddListener(OnContinueButtonClicked);
 
         btnRandomItem.onClick.RemoveAllListeners();
-        btnRandomItem.onClick.AddListener(OnButtonRandomItemClick);
+        btnRandomItem.onClick.AddListener(() =>
+        {
+            SFX.Instance.PlaySound(AudioEvent.ButtonClick);
+            OnButtonRandomItemClick();
+        });
     }
 
     public void OnButtonRandomItemClick()
@@ -199,6 +203,7 @@ public class InventoryUI : Frame
 
     private void OnContinueButtonClicked()
     {
+        SFX.Instance.PlaySound(AudioEvent.ButtonClick);
         OnContinueAction?.Invoke();
     }
 }

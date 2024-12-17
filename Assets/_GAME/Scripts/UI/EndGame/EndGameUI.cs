@@ -75,11 +75,13 @@ public class EndGameUI : Frame
 
     private void OnReplayBtnClicked()
     {
-
+        SFX.Instance.PlaySound(AudioEvent.ButtonClick);
+        UIPopUpCtrl.Instance.Get<LoadScene>().LoadSceneAsync((int)SceneIndex.InGame);
     }
 
     private void OnHomeBtnClicked()
     {
-
+        SFX.Instance.PlaySound(AudioEvent.ButtonClick);
+        UIPopUpCtrl.Instance.Get<LoadScene>().LoadSceneAsync((int)SceneIndex.Home);
     }
 }

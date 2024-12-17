@@ -1,9 +1,16 @@
 using UnityEngine;
 using ShootingGame;
+using DG.Tweening;
 
-public partial class SFX : MonoBehaviour
+public sealed class SFX : MonoBehaviour
 {
-
+    public enum SFXLayer
+    {
+        Background,
+        UI,
+        Player,
+        Other
+    }
 
     #region Singleton
     private static SFX instance;
@@ -44,15 +51,151 @@ public partial class SFX : MonoBehaviour
         Vibration.Init();
     }
 
+    private void Start()
+    {
+        PlaySound(AudioEvent.HomeMusic);
+    }
     #endregion
-    [SerializeField] AudioSource audioSource;
+
+    [SerializeField] AudioSource audioBackgroundSource;
+    [SerializeField] AudioSource audioUISource;
+    [SerializeField] AudioSource audioPlayerSource;
+    [SerializeField] AudioSource audioOtherSource;
+
     SFXData Data => GameData.Instance.SFXData;
 
+    #region Background Music
+    public bool MusicEnable
+    {
+        get => PlayerPrefs.GetInt("MusicEnable", 1) == 1;
+        set
+        {
+            PlayerPrefs.SetInt("MusicEnable", value ? 1 : 0);
+            if (value) ContinueBGM();
+            else PauseBGM();
+        }
+    }
+
+    public void PlayBGM(AudioEvent Event)
+    {
+        var audioClip = Data.GetAudioClip(Event);
+        if (!MusicEnable) return;
+
+        if (audioBackgroundSource.isPlaying)
+        {
+            if (audioBackgroundSource.clip == audioClip) return;
+            audioBackgroundSource.DOKill();
+            audioBackgroundSource.DOFade(0, 1).OnComplete(() => PlayBGM(audioClip));
+        }
+        else PlayBGM(audioClip);
+    }
+
+    public void PauseBGM()
+    {
+        if (audioBackgroundSource)
+        {
+            audioBackgroundSource.DOKill();
+            audioBackgroundSource.DOFade(0, 1).OnComplete(() => audioBackgroundSource.Pause());
+        }
+
+    }
+    public void ContinueBGM()
+    {
+        if (!audioBackgroundSource.clip) return;
+        PlayBGM(audioBackgroundSource.clip);
+    }
+
+    void PlayBGM(AudioClip clip)
+    {
+        if (clip && audioBackgroundSource)
+        {
+            audioBackgroundSource.clip = clip;
+            audioBackgroundSource.Play();
+            audioBackgroundSource.DOKill();
+            audioBackgroundSource.DOFade(1, 1);
+        }
+    }
+
+
+    #region Movement
+    public void PlayPlayerMovement()
+    {
+        var audioClip = Data.GetAudioClip(AudioEvent.PlayerMovement);
+        if (!MusicEnable) return;
+
+        if (!audioPlayerSource.isPlaying)
+        {
+            PlayPlayerMovement(audioClip);
+        }
+    }
+
+    void PlayPlayerMovement(AudioClip clip)
+    {
+        if (clip && audioPlayerSource)
+        {
+            GameService.LogColor("Play Player Movement");
+            audioPlayerSource.clip = clip;
+            audioPlayerSource.loop = true;
+            audioPlayerSource.Play();
+            audioPlayerSource.DOKill();
+            audioPlayerSource.DOFade(1, .24f);
+        }
+    }
+
+    public void PausePlayerMovement()
+    {
+        if (audioPlayerSource && audioPlayerSource.isPlaying)
+        {
+            GameService.LogColor("Pause Player Movement");
+            audioPlayerSource.loop = false;
+            audioPlayerSource.DOKill();
+            audioPlayerSource.DOFade(0, .24f).OnComplete(() => audioPlayerSource.Pause());
+        }
+    }
+    #endregion
+    #endregion
+
+
+    #region Sound
     public bool SoundEnable
     {
         get => PlayerPrefs.GetInt("SoundEnable", 1) == 1;
         set => PlayerPrefs.SetInt("SoundEnable", value ? 1 : 0);
     }
+
+    public void PlaySound(AudioClip clip, SFXLayer layer, float volume = 1)
+    {
+        var source = GetAudioSource(layer);
+        if (!SoundEnable || clip == null || !source) return;
+        source.PlayOneShot(clip, volume);
+    }
+
+    private void PlaySound(AudioEvent audioEvent, SFXLayer layer, float volume = 1)
+       => PlaySound(Data.GetAudioClip(audioEvent), layer, volume);
+
+    private void StopAudio(AudioSource aSource)
+    {
+        if (!aSource) return;
+
+        aSource.Stop();
+        aSource.clip = null;
+        aSource.loop = false;
+    }
+
+    private AudioSource GetAudioSource(SFXLayer layer)
+    {
+        switch (layer)
+        {
+            case SFXLayer.Background: return audioBackgroundSource;
+            case SFXLayer.UI: return audioUISource;
+            case SFXLayer.Player: return audioPlayerSource;
+            case SFXLayer.Other: return audioOtherSource;
+            default: return audioOtherSource;
+        }
+    }
+    #endregion
+
+    #region Vibration
 
     public bool VibrateEnable
     {
@@ -64,20 +207,21 @@ public partial class SFX : MonoBehaviour
     {
 #if UNITY_EDITOR
         return;
-#endif
+#else
         if (!VibrateEnable) return;
         try
         {
             Vibration.VibratePop();
         }
         catch { throw; }
+#endif
     }
 
     public void Vibrate(bool heavy = false)
     {
 #if UNITY_EDITOR
         return;
-#endif
+#else
         if (!VibrateEnable) return;
         try
         {
@@ -85,23 +229,31 @@ public partial class SFX : MonoBehaviour
             else Vibration.VibratePeek();
         }
         catch { throw; }
+#endif
     }
-
+    #endregion
     public void PlaySound(AudioEvent audioEvent, float volume = 1)
-        => PlaySound(Data.GetAudioClip(audioEvent), volume);
-
-    public void PlaySound(AudioClip clip, float volume = 1)
     {
-        if (!SoundEnable || clip == null || !audioSource) return;
-        audioSource.PlayOneShot(clip, volume);
-    }
-
-    public void StopAudio()
-    {
-        if (!audioSource) return;
-
-        audioSource.Stop();
-        audioSource.clip = null;
-        audioSource.loop = false;
+        switch (audioEvent)
+        {
+            case AudioEvent.ButtonClick:
+                PlaySound(audioEvent, SFXLayer.UI, volume);
+                break;
+            case AudioEvent.VictoryMusic:
+            case AudioEvent.LoseMusic:
+                PlaySound(audioEvent, SFXLayer.Other, volume);
+                break;
+            case AudioEvent.PlayerHit:
+            case AudioEvent.PlayerShoot:
+                PlaySound(audioEvent, SFXLayer.Other, volume);
+                break;
+            case AudioEvent.InGameMusic:
+            case AudioEvent.HomeMusic:
+                PlayBGM(audioEvent);
+                break;
+            default:
+                PlaySound(audioEvent, SFXLayer.Other, volume);
+                break;
+        }
     }
 }

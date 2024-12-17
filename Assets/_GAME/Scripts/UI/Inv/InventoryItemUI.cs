@@ -48,6 +48,7 @@ public class InventoryItemUI : UIComponent
 
     private void OnButtonBuyClick()
     {
+        SFX.Instance.PlaySound(AudioEvent.ButtonClick);
         if (target.CoinClaimed < cost) return;
         target.CoinClaimed -= cost;
         OnButtonBuyClickAction?.Invoke(this.itemData, this);

@@ -8,6 +8,10 @@ public class UIGuide : Frame
 
     private void Start()
     {
-        closeButton.onClick.AddListener(() => Hide());
+        closeButton.onClick.AddListener(() =>
+        {
+            SFX.Instance.PlaySound(AudioEvent.ButtonClick);
+            Hide();
+        });
     }
 }

@@ -28,6 +28,7 @@ public class UINotice : Frame
 
     private void HidePopUp()
     {
+        SFX.Instance.PlaySound(AudioEvent.ButtonClick);
         Hide(true, OnCallBack);
     }
 

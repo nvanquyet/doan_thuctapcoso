@@ -54,12 +54,14 @@ public class CharacterSwitcher : MonoBehaviour
 
     public void NextCharacter()
     {
+        SFX.Instance.PlaySound(AudioEvent.ButtonClick);
         index++;
         SwitchCharacter();
     }
 
     public void PreviousCharacter()
     {
+        SFX.Instance.PlaySound(AudioEvent.ButtonClick);
         index--;
         SwitchCharacter();
     }

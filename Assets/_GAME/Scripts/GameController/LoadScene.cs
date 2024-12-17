@@ -8,27 +8,28 @@ public class LoadScene : Frame
 {
     [SerializeField] private ProgressBar bar;
     [SerializeField] private CanvasGroup group;
-    [SerializeField] private int timeFirstLoading = 3;
-    private bool isFirstLoading = true;
+    [SerializeField] private int timeFirstLoading = 2;
 
-    private void Start()
+    public void Initialized()
     {
-        isFirstLoading = true;
+        Action callBack = () =>
+        {
+            Hide(group != null);
+        };
+        StartCoroutine(IELoadAsyncCoroutine(timeFirstLoading, callBack));
     }
 
-    public void LoadSceneAsync(string sceneName, Action<float> onProgess = null, System.Action onSuccess = null, Action onFailed = null)
+    public void LoadDirectScene(int buildIndex)
     {
-        var buildIndex = SceneUtility.GetBuildIndexByScenePath(sceneName);
-        LoadSceneAsync(buildIndex, onProgess, onSuccess, onFailed);
+        SceneManager.LoadScene(buildIndex);
     }
-
 
 
     public void LoadSceneAsync(int buildIndex, Action<float> onProgess = null, System.Action onSuccess = null, Action onFailed = null)
     {
         Action callBack = () =>
         {
-            Hide(group != null, () => isFirstLoading = false);
+            Hide(group != null);
         };
         onSuccess += callBack;
         onFailed += callBack;
@@ -46,7 +47,7 @@ public class LoadScene : Frame
         {
             if (!gameObject.activeSelf) return;
             group.DOKill();
-            group.DOFade(0, isFirstLoading ? 1f : animTime).SetUpdate(true).OnComplete(() =>
+            group.DOFade(0, animTime).SetUpdate(true).OnComplete(() =>
             {
                 gameObject.SetActive(false);
                 if (callback != null) callback.Invoke();
@@ -67,44 +68,32 @@ public class LoadScene : Frame
         bar?.gameObject.SetActive(true);
         bar?.UpdateProgess(0);
         // Wait until the asynchronous scene fully loads
-        if (!isFirstLoading)
+        while (!asyncOperation.isDone)
         {
-            while (!asyncOperation.isDone)
+            onProgess?.Invoke(asyncOperation.progress);
+            if (bar != null) bar.UpdateProgess(asyncOperation.progress);
+            if (asyncOperation.progress >= 0.9f)
             {
-                onProgess?.Invoke(asyncOperation.progress);
-                if (bar != null) bar.UpdateProgess(asyncOperation.progress);
-                if (asyncOperation.progress >= 0.9f)
-                {
-                    asyncOperation.allowSceneActivation = true;
-                    onSuccess?.Invoke();
-                    yield break;
-                }
-                yield return null;
+                asyncOperation.allowSceneActivation = true;
+                onSuccess?.Invoke();
+                yield break;
             }
+            yield return null;
         }
-        else
-        {
-            float progess = 0f;
-            while (progess <= timeFirstLoading)
-            {
-                progess += Time.deltaTime;
-                onProgess?.Invoke(progess / timeFirstLoading);
-                if (bar != null) bar.UpdateProgess(progess / timeFirstLoading);
-                yield return null;
-            }
-            while (!asyncOperation.isDone)
-            {
-                if (asyncOperation.progress >= 0.9f)
-                {
-                    break;
-                }
-                yield return null;
-            }
-            asyncOperation.allowSceneActivation = true;
-            onSuccess?.Invoke();
-            yield break;
-        }
-
         onFailed?.Invoke();
+    }
+
+    private IEnumerator IELoadAsyncCoroutine(int timeLoad, Action onSuccess)
+    {
+        float time = 0f;
+        bar?.gameObject.SetActive(true);
+        bar?.UpdateProgess(time);
+        while (time < timeLoad)
+        {
+            time += Time.deltaTime;
+            if (bar != null) bar.UpdateProgess(time/timeLoad);
+            yield return null;
+        }
+        onSuccess?.Invoke();
     }
 }

@@ -18,3 +18,4 @@ MonoBehaviour:
   EnemyProperties: {fileID: 11400000, guid: 0e7d18879d229cc47b4fbe799e08c107, type: 2}
   BosssProperties: {fileID: 11400000, guid: b01c641b83cad6a4195734e51347d0f1, type: 2}
   ItemData: {fileID: 11400000, guid: 090b84f100823184daafce751a3186f8, type: 2}
+  SFXData: {fileID: 11400000, guid: aff46f30b00dfee4cb9bb312d0064643, type: 2}

@@ -30,14 +30,13 @@ public class LoginUI : Frame
     {
         if (UserData.IsLogin)
         {
-            UIPopUpCtrl.Instance.Get<LoadScene>().LoadSceneAsync((int) SceneIndex.Home);
-            Hide(false);
+            UIPopUpCtrl.Instance.Get<LoadScene>().LoadDirectScene((int)SceneIndex.Home);
         }
         else
         {
             InitLogin();
             btnForgotPassword.onClick.AddListener(InitResetPassword);
-        }        
+        }
     }
 
     private void InitResetPassword()
@@ -62,6 +61,7 @@ public class LoginUI : Frame
     {
         mainBtn.onClick.RemoveAllListeners();
         secondBtn.onClick.RemoveAllListeners();
+        passwordInput.gameObject.SetActive(true);
         if (login)
         {
             mainBtn.onClick.AddListener(OnLogin);
@@ -91,6 +91,7 @@ public class LoginUI : Frame
 
     private void OnRegister()
     {
+        SFX.Instance.PlaySound(AudioEvent.ButtonClick);
         var email = usernameInput.Text;
         var password = passwordInput.Text;
         var confirmPass = confirmPassInput.Text;
@@ -129,6 +130,7 @@ public class LoginUI : Frame
 
     private void OnLogin()
     {
+        SFX.Instance.PlaySound(AudioEvent.ButtonClick);
         var email = usernameInput.Text;
         var password = passwordInput.Text;
         if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
@@ -156,6 +158,7 @@ public class LoginUI : Frame
 
     private void OnForgotPassword()
     {
+        SFX.Instance.PlaySound(AudioEvent.ButtonClick);
         GameService.LogColor("Forgot Password");
         //Send email to user to reset password
     }

@@ -18,7 +18,7 @@ MonoBehaviour:
     HpWeight: 0.1
     DamageWeight: 0.15
     SpeedWeight: 0.005
-  bossWaveDistance: 1
+  bossWaveDistance: 5
   waveProperties:
     timeNormalSpawn: 0.2
     timeThreshold: 5

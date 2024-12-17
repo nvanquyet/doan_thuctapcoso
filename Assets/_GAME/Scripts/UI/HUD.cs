@@ -11,9 +11,9 @@ namespace ShootingGame {
         [Tooltip("The master background also a button, this allow user click to background to hide popup")]
         [SerializeField] Button mainBackground;
         [Tooltip("Change this size to 0 will reload all frames childs automaticaly")]
-        [SerializeField] Frame[] frames;
+        [SerializeField] protected Frame[] frames;
 
-        List<Frame> activings = new List<Frame>();
+        protected List<Frame> activings = new List<Frame>();
 
         public bool HasActiving => activings.Count > 0;
         public bool IsBusy { get; private set; }
@@ -50,8 +50,8 @@ namespace ShootingGame {
             OnStart();
         }
 
-        private void StartBusy() => IsBusy = true;
-        private void EndBusy() => IsBusy = false;
+        protected void StartBusy() => IsBusy = true;
+        protected void EndBusy() => IsBusy = false;
 
         protected virtual void OnStart() { }
 

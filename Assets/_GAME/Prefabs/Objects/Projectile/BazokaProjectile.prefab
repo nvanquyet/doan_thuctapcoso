@@ -159,7 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 0
   impactEffect: {fileID: 2507771684740434960}
-  projectileTrail: {fileID: 1817030128694752504}
+  projectileTrail: {fileID: 0}
   visualProjectile: {fileID: 6895031726145855758}
   projectileSpeed: 20
   explosionRadius: 1
@@ -177,7 +177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 185524, guid: 7ef15b3b75916c044aa8aa197b362208, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 494686, guid: 7ef15b3b75916c044aa8aa197b362208, type: 3}
       propertyPath: m_LocalPosition.x
@@ -229,11 +229,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 494686, guid: 7ef15b3b75916c044aa8aa197b362208, type: 3}
   m_PrefabInstance: {fileID: 1817030128679975774}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &1817030128694752504 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 19828646, guid: 7ef15b3b75916c044aa8aa197b362208, type: 3}
-  m_PrefabInstance: {fileID: 1817030128679975774}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2507771684754423890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -248,7 +243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 115286, guid: ec1c5863f61e8ff4a84dbdb8a282a7ac, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 405762, guid: ec1c5863f61e8ff4a84dbdb8a282a7ac, type: 3}
       propertyPath: m_LocalScale.x

@@ -26,8 +26,11 @@ public class TetrisInventory : Frame
     {
         tetrisUI = GetComponentInChildren<TetrisUI>();
         tetrisSlot = GetComponentInChildren<TetrisSlot>();
-        tetrisSlot.SetCellSize(cellSize);
-        tetrisUI.SetCellSize(cellSize);
+
+
+        tetrisSlot?.SetCellSize(cellSize);
+        tetrisUI?.SetCellSize(cellSize);
+
         waitingSlots = GetComponentInChildren<WaitingSlots>();
         tetrisDescription = GetComponentInChildren<TetrisItemDescription>();
         tetrisRemoveItem = GetComponentInChildren<TetrisRemoveItem>();
@@ -49,11 +52,13 @@ public class TetrisInventory : Frame
 
     private void OnBtnBackClick()
     {
+        SFX.Instance.PlaySound(AudioEvent.ButtonClick);
         OnBackAction?.Invoke();
     }
 
     private void OnBtnPlayClick()
     {
+        SFX.Instance.PlaySound(AudioEvent.ButtonClick);
         UICtrl.Instance.Hide<TetrisInventory>(true, () => {
             if (GetTetrisItem(out var weapons, out var equiqment, out var buffItems))
             {

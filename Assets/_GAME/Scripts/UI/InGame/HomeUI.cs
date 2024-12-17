@@ -16,22 +16,27 @@ public class HomeUI : Frame
         userTxt?.SetText(UserData.UserName);
         btnPlay?.onClick.AddListener(() =>
         {
+            SFX.Instance.PlaySound(AudioEvent.ButtonClick);
             UIPopUpCtrl.Instance.Get<LoadScene>().LoadSceneAsync((int)SceneIndex.InGame);
         });
         btnShop?.onClick.AddListener(() =>
         {
+            SFX.Instance.PlaySound(AudioEvent.ButtonClick);
             UIPopUpCtrl.Instance.Show<UIInventory>();
         });
         btnHelp?.onClick.AddListener(() =>
         {
+            SFX.Instance.PlaySound(AudioEvent.ButtonClick);
             UIPopUpCtrl.Instance.Show<UIGuide>();
         });
         btnInventory?.onClick.AddListener(() =>
         {
+            SFX.Instance.PlaySound(AudioEvent.ButtonClick);
             UIPopUpCtrl.Instance.Show<UIInventory>();
         });
         btnSetting?.onClick.AddListener(() =>
         {
+            SFX.Instance.PlaySound(AudioEvent.ButtonClick);
             UIPopUpCtrl.Instance.Show<UISetting>();
         });
     }
