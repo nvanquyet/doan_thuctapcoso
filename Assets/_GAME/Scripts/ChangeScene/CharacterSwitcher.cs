@@ -34,7 +34,6 @@ public class CharacterSwitcher : MonoBehaviour
         get
         {
             var idx = Mathf.Clamp(UserData.CurrentCharacter + index, 0, GameData.Instance.Players.GetAllValue().Length - 1);
-            GameService.LogColor("CharacterIndex: " + idx);
             if (idx <= 0)
             {
                 preButton.interactable = false;

@@ -66,8 +66,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 9eba597d30b7a114ea7924c3748871ed, type: 3}
-  m_Type: 1
-  m_PreserveAspect: 0
+  m_Type: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -260,9 +260,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1150141584652105347}
   - {fileID: 1217889394525461049}
   - {fileID: 4277705469639490694}
-  - {fileID: 1150141584652105347}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -285,7 +285,6 @@ MonoBehaviour:
   iconSmall: {fileID: 1094882263311940971}
   iconLarge: {fileID: 3560720319626694275}
   backGroundIcSmall: {fileID: 4977991735032040051}
-  backGroundTetrisIcon: {fileID: 1217889394525461046}
   rectTetrisIcon: {fileID: 1217889394525461049}
   tetrisUpgradeItem: {fileID: 9152707984727286730}
 --- !u!225 &3975765703074061496
@@ -571,8 +570,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 9eba597d30b7a114ea7924c3748871ed, type: 3}
-  m_Type: 1
-  m_PreserveAspect: 0
+  m_Type: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1

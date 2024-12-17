@@ -30,7 +30,8 @@ public class LoginUI : Frame
     {
         if (UserData.IsLogin)
         {
-            LoadToHome();
+            UIPopUpCtrl.Instance.Get<LoadScene>().LoadSceneAsync((int) SceneIndex.Home);
+            Hide(false);
         }
         else
         {
@@ -147,15 +148,9 @@ public class LoginUI : Frame
         }
         GameService.LogColor($"Login {email} {password}");
         UserData.IsLogin = true;
-        LoadToHome();
-    }
-
-
-    private void LoadToHome()
-    {
         Hide(false, () =>
         {
-            UIPopUpCtrl.Instance.Get<LoadScene>().LoadSceneAsync(1);
+            UIPopUpCtrl.Instance.Get<LoadScene>().LoadSceneAsync((int)SceneIndex.Home);
         });
     }
 
@@ -163,7 +158,5 @@ public class LoginUI : Frame
     {
         GameService.LogColor("Forgot Password");
         //Send email to user to reset password
-
-
     }
 }

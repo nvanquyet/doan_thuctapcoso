@@ -367,7 +367,6 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
     private void ReturnToWaitingList()
     {
         IsInGrid = false;
-        ToggleIconSize(false);
         ActionReturnWaitingList?.Invoke(this);
     }
 
