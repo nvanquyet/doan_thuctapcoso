@@ -30,7 +30,7 @@ public class LoginUI : Frame
     {
         if (UserData.IsLogin)
         {
-            OnLogin();
+            LoadToHome();
         }
         else
         {
@@ -122,6 +122,8 @@ public class LoginUI : Frame
             }
         }
         GameService.LogColor("Register");
+        UIPopUpCtrl.Instance.Get<UINotice>().SetNotice($"Register Success", "Please login to continue");
+        InitLogin(true);
     }
 
     private void OnLogin()
@@ -145,6 +147,12 @@ public class LoginUI : Frame
         }
         GameService.LogColor($"Login {email} {password}");
         UserData.IsLogin = true;
+        LoadToHome();
+    }
+
+
+    private void LoadToHome()
+    {
         Hide(false, () =>
         {
             UIPopUpCtrl.Instance.Get<LoadScene>().LoadSceneAsync(1);
@@ -153,7 +161,9 @@ public class LoginUI : Frame
 
     private void OnForgotPassword()
     {
-        //Send email to user to reset password
         GameService.LogColor("Forgot Password");
+        //Send email to user to reset password
+
+
     }
 }
