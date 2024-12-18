@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   category: 1
   rarity: 3
+  costTierMultiplier: 1
   stat:
     stats:
     - typeStat: 1
@@ -30,8 +31,8 @@ MonoBehaviour:
       value: 42
   appearance:
     itemName: Sniper 2
-    icon: {fileID: 21300000, guid: 45a9774db24e7f147bd1f8a58cd6ca5d, type: 3}
-  matrixData: {fileID: 11400000, guid: 0f838fe5b6a743643b8bbe8152b1aa34, type: 2}
+    icon: {fileID: 21300000, guid: 2416f97c4242a8c4db546bae232e10cd, type: 3}
+  matrixData: {fileID: 11400000, guid: 36095a57c1b75b743841f56c5fe39d32, type: 2}
   prefab: {fileID: 3537812215717957531, guid: 20d35a4afd1710c4cbfa169cdf54b91e, type: 3}
   level: 2
   nextLevelAttribute: {fileID: 11400000, guid: 717f5858f7edded46aa40a7cb0bab135, type: 2}
