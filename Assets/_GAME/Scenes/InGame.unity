@@ -329,6 +329,7 @@ MonoBehaviour:
   waveText: {fileID: 1628229729}
   coinText: {fileID: 1333624253}
   bossProgessBar: {fileID: 765182385}
+  btnSetting: {fileID: 0}
 --- !u!1001 &34674111
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7476,10 +7477,6 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 235177621579619627}
-    - target: {fileID: 75539873049486964, guid: be7a55b89ea82cf4a8470987bbd82634, type: 3}
-      propertyPath: testStat
-      value: 
-      objectReference: {fileID: 1580703585}
     - target: {fileID: 1183864882581297659, guid: be7a55b89ea82cf4a8470987bbd82634, type: 3}
       propertyPath: m_Controller
       value: 
