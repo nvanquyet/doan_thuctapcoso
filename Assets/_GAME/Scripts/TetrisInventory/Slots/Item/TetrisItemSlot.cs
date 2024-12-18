@@ -371,7 +371,7 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
 
     internal void OnDestroyItem()
     {
-        if (slots != null && transform.parent.Equals(slots.transform))
+        if (IsInGrid)
         {
             ActionRemoveItem?.Invoke(this);
             var itemSize = GameService.GetItemSize(itemData.MatrixData.ItemSize, currentRotation);

@@ -122,9 +122,7 @@ public class TetrisInventory : Frame
             {
                 OnAddToTetrisSlot(newItem);
                 newItem.OnEndDrag();
-                newItem.IsInGrid = true;
             }
-            else OnReturnToWaitingList(newItem);
         }
     }
 
