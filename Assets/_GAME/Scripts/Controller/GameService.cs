@@ -229,6 +229,11 @@ namespace ShootingGame
                 return false;
             }
         }
+
+        public static void SetRuntimeAnimator(Animator animator, RuntimeAnimatorController animatorController)
+        {
+            animator.runtimeAnimatorController = animatorController;
+        }
     }
 
 }

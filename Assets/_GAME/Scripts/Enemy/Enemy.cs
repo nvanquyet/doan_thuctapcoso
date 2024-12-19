@@ -20,12 +20,10 @@ namespace ShootingGame
     }
     public class Enemy : AInteractable<BoxCollider2D>
     {
-        [SerializeField] private int id;
         [SerializeField] private EnemyAttacker _enemyAttacker;
         [SerializeField] private EnemyDefender _enemyDefender;
         [SerializeField] private EnemyMovement _enemyMovement;
         [SerializeField] private EnemyAnimation _enemyAnimation;
-        [SerializeField] private bool isBoss;
         public bool IsDead => _enemyDefender.IsDead;
 
         public Action<Interface.IAttacker> OnDeadAction;
@@ -38,14 +36,6 @@ namespace ShootingGame
             _enemyDefender = GetComponentInChildren<EnemyDefender>();
             _enemyMovement = GetComponentInChildren<EnemyMovement>();
             _enemyAnimation = GetComponentInChildren<EnemyAnimation>();
-
-            //split to get number of last string
-            var split = gameObject.name.Split(' ');
-            if (split.Length > 1)
-            {
-                id = int.Parse(split[split.Length - 1]) - 1;
-            }
-            isBoss = gameObject.name.Contains("Boss");
         }
 #endif
 
@@ -55,7 +45,7 @@ namespace ShootingGame
             {
                 OnDeadAction += (attacker) =>
                 {
-                    if(attacker != null) LevelSpawner.Instance.OnEnemyDeath(this);
+                    if (attacker != null) LevelSpawner.Instance.OnEnemyDeath(this);
                     _enemyMovement.PauseMovement(true);
                     _enemyAnimation.OnTriggerDead();
                     Destroy(gameObject, 0.32f);
@@ -82,28 +72,35 @@ namespace ShootingGame
             }
         }
 
-        public void Init(int currentWave, Action<Sprite> OnCallback = null)
+        public void Init(EnemyPropData data, int currentWave, bool isBoss, Action<Sprite> OnCallback = null)
         {
             GetTarget();
-            var enemyPropertiesData = isBoss ? GameData.Instance.BosssProperties.GetValue(id) : GameData.Instance.EnemyProperties.GetValue(id);
-            var growthRate = Mathf.Pow(enemyPropertiesData.GrowthRate, currentWave - 1);
-            _enemyDefender.Init(enemyPropertiesData.BaseHealth, enemyPropertiesData.BaseEXP, enemyPropertiesData.BaseCoin, growthRate);
-            _enemyAttacker.Init(enemyPropertiesData.BaseDamage, growthRate);
-            _enemyMovement.Init(enemyPropertiesData.BaseSpeed, growthRate);
-            if (enemyPropertiesData.Icon) OnCallback?.Invoke(enemyPropertiesData.Icon);
+            var growthRate = Mathf.Pow(data.Properties.GrowthRate, currentWave - 1);
+            _enemyDefender.Init(data.Properties.BaseHealth, data.Properties.BaseEXP, data.Properties.BaseCoin, growthRate);
+           
+            _enemyAttacker.Init(data.Properties.BaseDamage, growthRate);
+            _enemyMovement.Init(data.Properties.BaseSpeed, growthRate);
+            if (data.Icon) OnCallback?.Invoke(data.Icon);
+            if (Collider is BoxCollider2D boxCollider2D)
+            {
+                boxCollider2D.size = _enemyAnimation.SpriteRenderer.bounds.size;
+                Vector2 spriteCenter = new Vector2(_enemyAnimation.SpriteRenderer.bounds.center.x,
+                                                    _enemyAnimation.SpriteRenderer.bounds.center.y);
+                boxCollider2D.offset = spriteCenter - (Vector2)transform.position;
+            }
         }
 
         public int GetStrength()
         {
             //Caculate strength of enemy
-            return (int) (_enemyDefender.MaxHealth * GameConfig.Instance.enemyWeights.HpWeight + 
-                            _enemyAttacker.Damage * GameConfig.Instance.enemyWeights.DamageWeight + 
+            return (int)(_enemyDefender.MaxHealth * GameConfig.Instance.enemyWeights.HpWeight +
+                            _enemyAttacker.Damage * GameConfig.Instance.enemyWeights.DamageWeight +
                             _enemyMovement.Speed * GameConfig.Instance.enemyWeights.SpeedWeight);
         }
 
 
         public override void OnInteract(Interface.IInteract target) { }
-        
+
 
         public override void ExitInteract(Interface.IInteract target) { }
 

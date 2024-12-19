@@ -132,7 +132,7 @@ public class AttackController : AAttacker, IAttackBehaviour
     {
         SetDamage((int)(growthRate * damage));
     }
-
+    
     public override void ExitInteract(Interface.IInteract target) { }
     public override void OnInteract(Interface.IInteract target) { }
 

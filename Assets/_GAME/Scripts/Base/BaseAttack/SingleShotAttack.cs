@@ -48,7 +48,6 @@ public class SingleShotAttack : AShootAttack
 {
     [SerializeField] private Transform firePoint;
 
-    
     public Transform FirePoint
     {
         get

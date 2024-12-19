@@ -103,23 +103,22 @@ namespace ShootingGame
             isSpawning = true;
             if(enemies != null && enemies.Count > 0) { enemies.Clear(); }
             if(tsEnemies != null && tsEnemies.Count > 0) { tsEnemies.Clear(); }
-
             var allEnimies = GameData.Instance.Enemies.GetAllValue();
             var curEnemyCount = 0;
 
             while (waveProperties.strengthWave > 0)
             {
                 //Spawn Enemy from data
-                var enemy = allEnimies[Random.Range(0, Mathf.Min(currentWave, allEnimies.Length))];
+                var enemyData = allEnimies[Random.Range(0, Mathf.Min(currentWave, allEnimies.Length))];
                 //Init data enemy
-                if (enemy != null)
+                if (enemyData != null && enemyData.Prefabs != null)
                 {
-                    var enemyInstance = Instantiate(enemy, spawnPositions[Random.Range(0, spawnPositions.Count)]);
+                    var enemyInstance = Instantiate(enemyData.Prefabs, spawnPositions[Random.Range(0, spawnPositions.Count)]);
                     //Init data enemy
                     if (enemyInstance)
                     {
                         enemyInstance.transform.localPosition = Vector3.zero;
-                        enemyInstance.Init(currentWave);
+                        enemyInstance.Init(enemyData, currentWave, false);
                         AddEnemy(enemyInstance);
 
                         waveProperties.strengthWave -= enemyInstance.GetStrength();
@@ -154,16 +153,16 @@ namespace ShootingGame
         {
             //Spawn Boss from data
             var index = Mathf.Max((currentWave / GameConfig.Instance.bossWaveDistance) - 1, 0);
-            var boss = GameData.Instance.Bosses.GetValue(index);
-            if (boss)
+            var bossData = GameData.Instance.Bosses.GetValue(index);
+            if (bossData && bossData.Prefabs)
             {
-                var bossInstance = Instantiate(boss, spawnPositions[Random.Range(0, spawnPositions.Count)]);
+                var bossInstance = Instantiate(bossData.Prefabs, spawnPositions[Random.Range(0, spawnPositions.Count)]);
                 //Init data enemy
                 if (bossInstance)
                 {
                     UICtrl.Instance.Get<InGameUI>().ActiveBossProgess(true, true);
                     bossInstance.transform.position = Vector3.zero;
-                    bossInstance.Init(currentWave , UICtrl.Instance.Get<InGameUI>().SetIconBoss);
+                    bossInstance.Init(bossData, currentWave, true, UICtrl.Instance.Get<InGameUI>().SetIconBoss);
                     bossInstance.OnDeadAction += (_) =>
                     {
                         UICtrl.Instance.Get<InGameUI>().ActiveBossProgess(false);
