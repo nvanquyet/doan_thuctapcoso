@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ed8e3c0241ce4b469c12fe0064d1051, type: 3}
   m_Name: BigDragon
   m_EditorClassIdentifier: 
+  icon: {fileID: 0}
   baseHealth: 5000
-  baseDamage: 150
+  baseDamage: 20
   baseSpeed: 5
   baseEXP: 1000
+  baseCoin: 0
   growthRate: 1.3
