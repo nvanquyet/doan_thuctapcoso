@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ed8e3c0241ce4b469c12fe0064d1051, type: 3}
   m_Name: StormDragon
   m_EditorClassIdentifier: 
-  baseHealth: 6000
-  baseDamage: 180
-  baseSpeed: 4
-  baseEXP: 1200
-  growthRate: 1.3
+  icon: {fileID: 0}
+  properties:
+    BaseHealth: 6000
+    BaseDamage: 180
+    BaseSpeed: 4
+    BaseEXP: 1200
+    BaseCoin: 0
+    GrowthRate: 1.3
+  prefabs: {fileID: 0}

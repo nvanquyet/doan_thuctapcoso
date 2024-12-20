@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ed8e3c0241ce4b469c12fe0064d1051, type: 3}
   m_Name: SoulEater
   m_EditorClassIdentifier: 
-  baseHealth: 4000
-  baseDamage: 120
-  baseSpeed: 4
-  baseEXP: 900
-  growthRate: 1.1
+  icon: {fileID: 0}
+  properties:
+    BaseHealth: 4000
+    BaseDamage: 120
+    BaseSpeed: 5
+    BaseEXP: 900
+    BaseCoin: 0
+    GrowthRate: 1.1
+  prefabs: {fileID: 0}

@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ed8e3c0241ce4b469c12fe0064d1051, type: 3}
   m_Name: CaveKraken
   m_EditorClassIdentifier: 
-  baseHealth: 5500
-  baseDamage: 160
-  baseSpeed: 3
-  baseEXP: 1100
-  growthRate: 1.2
+  icon: {fileID: 0}
+  properties:
+    BaseHealth: 5500
+    BaseDamage: 160
+    BaseSpeed: 3
+    BaseEXP: 1100
+    BaseCoin: 0
+    GrowthRate: 1.2
+  prefabs: {fileID: 0}
