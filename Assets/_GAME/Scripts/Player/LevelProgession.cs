@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelProgesstion : MonoBehaviour
 {
     [SerializeField] private ProgressBar bar;
+    [SerializeField] private ParticleSystem levelUpEffect;
     public int Level { get; private set; } = 1;
     public int CurrentEXP { get; private set; } = 0;
     public int EXPToNextLevel => CalculateEXPForLevel(Level + 1);
@@ -39,5 +40,6 @@ public class LevelProgesstion : MonoBehaviour
     {
         Level++;
         IsLevelUp = true;
+        levelUpEffect?.Play();
     }
 }

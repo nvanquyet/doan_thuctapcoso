@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ed8e3c0241ce4b469c12fe0064d1051, type: 3}
   m_Name: VampireLord
   m_EditorClassIdentifier: 
-  baseHealth: 4500
-  baseDamage: 140
-  baseSpeed: 4
-  baseEXP: 1000
-  growthRate: 1.2
+  icon: {fileID: 0}
+  properties:
+    BaseHealth: 5000
+    BaseDamage: 150
+    BaseSpeed: 5
+    BaseEXP: 1000
+    BaseCoin: 200
+    GrowthRate: 1.3
+  prefabs: {fileID: 3486293495546998591, guid: c4dcc57b282c8a9408eb9ecc21570082, type: 3}
