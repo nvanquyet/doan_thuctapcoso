@@ -57,12 +57,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf2d431a210c7e64aa43f32d9dcac138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 1
   _enemyAttacker: {fileID: 5195548636648846595}
   _enemyDefender: {fileID: 724029092634259062}
   _enemyMovement: {fileID: 3737105127655994885}
   _enemyAnimation: {fileID: -8395272762796244704}
-  isBoss: 1
 --- !u!114 &3731585282483701307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,7 +148,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.07908821, y: -0.12199551}
+  m_Offset: {x: 0.010970235, y: -0.023114592}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -161,7 +159,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5278246, y: 0.6570239}
+  m_Size: {x: 0.32806933, y: 0.30105245}
   m_EdgeRadius: 0
 --- !u!114 &5195548636648846595
 MonoBehaviour:
@@ -226,7 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 8996479797903136413}
-  _spriteRenderer: {fileID: 8034995335027219041}
+  spriteRenderer: {fileID: 8034995335027219041}
 --- !u!114 &-6784914736345168692
 MonoBehaviour:
   m_ObjectHideFlags: 0

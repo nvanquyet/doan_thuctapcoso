@@ -20,4 +20,4 @@ MonoBehaviour:
     BaseEXP: 80
     BaseCoin: 57
     GrowthRate: 1.15
-  prefabs: {fileID: 0}
+  prefabs: {fileID: 3486293495546998591, guid: d1fc73f87dca75d4583383828b4b8ae4, type: 3}
