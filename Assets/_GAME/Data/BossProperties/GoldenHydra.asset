@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ed8e3c0241ce4b469c12fe0064d1051, type: 3}
   m_Name: GoldenHydra
   m_EditorClassIdentifier: 
-  baseHealth: 7000
-  baseDamage: 200
-  baseSpeed: 3
-  baseEXP: 1500
-  growthRate: 1.4
+  icon: {fileID: 0}
+  properties:
+    BaseHealth: 7000
+    BaseDamage: 200
+    BaseSpeed: 4
+    BaseEXP: 1500
+    BaseCoin: 0
+    GrowthRate: 1.4
+  prefabs: {fileID: 0}

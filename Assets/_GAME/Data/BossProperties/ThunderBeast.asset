@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ed8e3c0241ce4b469c12fe0064d1051, type: 3}
   m_Name: ThunderBeast
   m_EditorClassIdentifier: 
-  baseHealth: 4500
-  baseDamage: 140
-  baseSpeed: 5
-  baseEXP: 0
-  growthRate: 1.1
+  icon: {fileID: 0}
+  properties:
+    BaseHealth: 4500
+    BaseDamage: 120
+    BaseSpeed: 5
+    BaseEXP: 1100
+    BaseCoin: 0
+    GrowthRate: 1.1
+  prefabs: {fileID: 0}

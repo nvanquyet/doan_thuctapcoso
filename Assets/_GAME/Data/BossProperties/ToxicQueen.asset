@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ed8e3c0241ce4b469c12fe0064d1051, type: 3}
   m_Name: ToxicQueen
   m_EditorClassIdentifier: 
-  baseHealth: 2500
-  baseDamage: 90
-  baseSpeed: 4
-  baseEXP: 700
-  growthRate: 1.1
+  icon: {fileID: 0}
+  properties:
+    BaseHealth: 2500
+    BaseDamage: 90
+    BaseSpeed: 4
+    BaseEXP: 700
+    BaseCoin: 0
+    GrowthRate: 1.1
+  prefabs: {fileID: 0}

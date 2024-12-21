@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ed8e3c0241ce4b469c12fe0064d1051, type: 3}
   m_Name: DreadDemon
   m_EditorClassIdentifier: 
-  baseHealth: 5000
-  baseDamage: 150
-  baseSpeed: 4
-  baseEXP: 1100
-  growthRate: 1.1
+  icon: {fileID: 0}
+  properties:
+    BaseHealth: 5000
+    BaseDamage: 150
+    BaseSpeed: 4
+    BaseEXP: 1100
+    BaseCoin: 0
+    GrowthRate: 1.1
+  prefabs: {fileID: 0}
