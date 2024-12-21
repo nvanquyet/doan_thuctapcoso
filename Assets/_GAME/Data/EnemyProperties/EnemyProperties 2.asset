@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: EnemyProperties 2
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
-  baseHealth: 120
-  baseDamage: 22
-  baseSpeed: 6
-  baseEXP: 60
-  baseCoin: 12
-  growthRate: 1.2
+  properties:
+    BaseHealth: 120
+    BaseDamage: 22
+    BaseSpeed: 6
+    BaseEXP: 60
+    BaseCoin: 12
+    GrowthRate: 1.2
+  prefabs: {fileID: 3486293495546998591, guid: b42004d9fa2d80d45a8074fd87e793ea, type: 3}
