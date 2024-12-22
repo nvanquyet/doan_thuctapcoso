@@ -5,6 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 1
+    path: Assets/_GAME/Scenes/Login.unity
+    guid: 23ab1f61458a3d546aa81bf21ef04240
+  - enabled: 1
+    path: Assets/_GAME/Scenes/Home.unity
+    guid: 6038edb5d63c20d498e67c40280bfd2a
+  - enabled: 1
+    path: Assets/_GAME/Scenes/InGame.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 0
     path: Assets/_Server/Scene/FirstLoadingNetworkScene.unity
     guid: 2ac661cd60fa4c5409591922d335b186
@@ -17,13 +26,4 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/_GAME/Scenes/OLD/Game Lobby.unity
     guid: 71dc62d1f2a8ae54d86d338b7b55769e
-  - enabled: 1
-    path: Assets/_GAME/Scenes/Login.unity
-    guid: 23ab1f61458a3d546aa81bf21ef04240
-  - enabled: 1
-    path: Assets/_GAME/Scenes/Home.unity
-    guid: 6038edb5d63c20d498e67c40280bfd2a
-  - enabled: 1
-    path: Assets/_GAME/Scenes/InGame.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}

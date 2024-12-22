@@ -1,12 +1,27 @@
+using ShootingGame;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 namespace UnityEngine
 {
 
     public static class Extension
     {
 
+#if UNITY_EDITOR
+        [UnityEditor.MenuItem("GAME/PLAY")]
+        private static void PlayGame()
+        {
+            if (UnityEditor.SceneManagement.EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+            {
+                string firstScenePath = EditorBuildSettings.scenes[0].path;
+                UnityEditor.SceneManagement.EditorSceneManager.OpenScene(firstScenePath);
+
+                EditorApplication.isPlaying = true;
+            }
+        }
+#endif
         public static Color SetAlpha(this Color color, float alpha)
         {
             return new Color(color.r, color.g, color.b, alpha);

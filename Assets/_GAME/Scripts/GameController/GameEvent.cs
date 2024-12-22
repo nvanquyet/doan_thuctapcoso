@@ -42,4 +42,5 @@ public sealed class GameEvent
     {
         public Player player;
     }
+
 }

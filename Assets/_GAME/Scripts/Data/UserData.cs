@@ -1,5 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using ShootingGame;
+using System;
 using UnityEngine;
 
 public partial class UserData
@@ -73,6 +73,30 @@ public partial class UserData
         set
         {
             PlayerPrefs.SetInt("Coin", value);
+        }
+    }
+
+    public static int CurrentEnergy
+    {
+        get
+        {
+            return PlayerPrefs.GetInt("Energy", GameConfig.Instance.MaxEnergy);
+        }
+        set
+        {
+            PlayerPrefs.SetInt("Energy", value >= 0 ? (value >= GameConfig.Instance.MaxEnergy ? GameConfig.Instance.MaxEnergy : value) : 0);
+        }
+    }
+
+    public static DateTime LastTimePlayed
+    {
+        get
+        {
+            return DateTime.Parse(PlayerPrefs.GetString("LastTimePlayed", DateTime.Now.ToString()));
+        }
+        set
+        {
+            PlayerPrefs.SetString("LastTimePlayed", value.ToString());
         }
     }
 }

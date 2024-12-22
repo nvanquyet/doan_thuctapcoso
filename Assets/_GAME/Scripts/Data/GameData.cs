@@ -22,5 +22,6 @@ namespace ShootingGame {
             UnityEditor.Selection.activeObject = GameData.Instance;
         }
 #endif
+
     }
 }
