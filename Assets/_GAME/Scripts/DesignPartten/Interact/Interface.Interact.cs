@@ -267,7 +267,7 @@ namespace ShootingGame
 
         public virtual void Defend(Interface.IAttacker attacker, bool isSuper = false, (float, Transform) forceProp = default) {
             if (IsDead) return;
-            var dmg = attacker.Damage * (isSuper ? 2 : 1);
+            var dmg = (int) (attacker.Damage * (isSuper ? 2 : 1) * UnityEngine.Random.Range(0.8f, 1.1f));
             Defend(dmg);
             this.Dispatch<GameEvent.OnShowFloatingText>(new GameEvent.OnShowFloatingText
             {

@@ -1,5 +1,6 @@
 using UnityEngine;
 using ShootingGame.Data;
+using System.Collections;
 namespace ShootingGame
 {
     [RequireComponent(typeof(PlayerMovement), typeof(PlayerStat), typeof(LevelProgesstion))]
@@ -11,8 +12,9 @@ namespace ShootingGame
         [SerializeField] private PlayerStat _playerStat;
         [SerializeField] private LevelProgesstion progesstion;
 
+        [Header("Effect")]
+        [SerializeField] private ParticleSystem buffItemEffect;
         public bool IsLevelUp => progesstion.IsLevelUp;
-
         public PlayerStat Stat => _playerStat;
         public PlayerDefender Defender => _playerDefender;
         private int coinClaimed;
@@ -90,32 +92,36 @@ namespace ShootingGame
 
         public void UseItemBuff(ItemBuffData data)
         {
-            GameService.LogColor($"Buff: {data.BuffType} duration {data.Duration}");
-            switch (data.BuffType)
-            {
-                case BuffType.DamageBoost:
-                    break;
-                case BuffType.SpeedBoost:
-                    break;
-                case BuffType.Heal:
-                    break;
-                case BuffType.ArmorBoost:
-                    break;
-                case BuffType.CriticalChance:
-                    break;
-                case BuffType.DodgeBoost:
-                    break;
-                case BuffType.AttackSpeed:
-                    break;
-                case BuffType.LifeSteal:
-                    break;
-                case BuffType.PoisonImmunity:
-                    break;
-                case BuffType.DamageReduction:
-                    break;
-            }
+            StartCoroutine(RemoveBuffAfterDuration(data));
+            
         }
+        private IEnumerator RemoveBuffAfterDuration(ItemBuffData itemBuffData)
+        {
+            var container = new StatContainerData(itemBuffData.Stat);
+            if (itemBuffData.Duration > 0)
+            {
+                _playerStat.BuffStat(container);
 
+            }
+            else
+            {
+                switch (itemBuffData.BuffType)
+                {
+                    case BuffType.Heal:
+                        _playerDefender.BuffHealth((int)container.Stats[0].Value);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            buffItemEffect?.Play();
+            yield return new WaitForSeconds(itemBuffData.Duration);
+            for(int i = 0; i < container.Stats.Length; i++)
+            {
+                container.Stats[i].SetValue(-1 * container.Stats[i].Value);
+            }
+            _playerStat.BuffStat(container);
+        }
 
     }
 

@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   category: 3
   rarity: 0
-  stat:
-    stats:
-    - typeStat: 2
-      typeValueStat: 0
-      value: 0.05
+  costTierMultiplier: 1
   appearance:
     itemName: Power Boost
     icon: {fileID: 21300000, guid: 7f4421fee21cf574ea2d872a6a0d239f, type: 3}
   matrixData: {fileID: 11400000, guid: 2094a8427d8b56f41bdcbc574ce28628, type: 2}
-  icon: {fileID: 0}
+  stat:
+    stats:
+    - typeStat: 2
+      typeValueStat: 0
+      value: 1
   buffType: 6
   amount: 1
   duration: 10
