@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 8488780647853429835}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.25, y: -2.4, z: 0}
+  m_LocalPosition: {x: 0.211, y: -2.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -158,7 +158,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 0
-  _oneHitOnly: 1
   impactEffect: {fileID: 2507771684740434960}
   projectileTrail: {fileID: 0}
   visualProjectile: {fileID: 6895031726145855758}
@@ -182,7 +181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 494686, guid: 7ef15b3b75916c044aa8aa197b362208, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.15
+      value: -0.23
       objectReference: {fileID: 0}
     - target: {fileID: 494686, guid: 7ef15b3b75916c044aa8aa197b362208, type: 3}
       propertyPath: m_LocalPosition.y

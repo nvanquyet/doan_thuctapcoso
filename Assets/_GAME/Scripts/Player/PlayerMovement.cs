@@ -83,18 +83,21 @@ namespace ShootingGame
                         newScale.x = -1 * Mathf.Abs(newScale.x);
                     _characterGraphic.localScale = newScale;
                 }
-
                 if (movementInput.magnitude > 0)
                 {
+                    SFX.Instance.PlayPlayerMovement();
                     _locomotionState = PlayerLocoMotionState.Run;
+                   
                 }
                 else
                 {
+                    SFX.Instance.PausePlayerMovement();
                     _locomotionState = PlayerLocoMotionState.Idle;
                 }
             }
             else
             {
+                SFX.Instance.PausePlayerMovement();
                 _locomotionState = PlayerLocoMotionState.Idle;
             }
         }
@@ -104,7 +107,7 @@ namespace ShootingGame
             if (IsMoving)
             {
                 Move(movementInput);
-            }
+            } 
         }
 
         public void Move(Vector3 direction)

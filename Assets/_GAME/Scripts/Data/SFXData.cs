@@ -4,6 +4,16 @@ using UnityEngine;
 public enum AudioEvent
 {
     //Define audio type
+    ButtonClick,
+    VictoryMusic,
+    LoseMusic,
+
+    HomeMusic,
+    InGameMusic,
+
+    PlayerMovement,
+    PlayerShoot,
+    PlayerHit,
 }
 [System.Serializable]
 public struct SoundData

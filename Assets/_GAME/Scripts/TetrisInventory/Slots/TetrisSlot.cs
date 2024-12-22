@@ -12,8 +12,8 @@ public class TetrisSlot : UIComponent
     public int maxGridY { get; private set; }
 
     [SerializeField] private TetrisItemSlot prefabSlot;
-    
-    private Vector2 cellSize;
+
+    [SerializeField] private Vector2 cellSize;
     #endregion
 
     private List<TetrisItemSlot> itemsInBag = new List<TetrisItemSlot>();
@@ -41,7 +41,7 @@ public class TetrisSlot : UIComponent
             maxGridY = (int)Mathf.Sqrt(numberSlots);
             grid = newGrid;
         } 
-        Debug.Log("SetGrid: " + maxGridX + "x" + maxGridY);
+        GameService.LogColor($"SetGrid: {maxGridX}x{maxGridY}");
     }
 
     public TetrisItemSlot CreateItem(TetrisItemDescription tetrisDescription, ItemDataSO item)

@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ProgressBar : Frame
+public class ProgressBar : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private Image icon;
@@ -17,7 +17,6 @@ public class ProgressBar : Frame
         bar = GetComponentInChildren<Slider>();
         //icon = GetComponent<Image>();
         text = GetComponentInChildren<TextMeshProUGUI>();
-        gameObject.SetActive(false);
     }
 #endif
 

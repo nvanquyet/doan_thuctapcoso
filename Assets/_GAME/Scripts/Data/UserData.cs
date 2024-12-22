@@ -44,7 +44,7 @@ public partial class UserData
     {
         get
         {
-            return PlayerPrefs.GetInt("IsLogin", 1) == 0;
+            return PlayerPrefs.GetInt("IsLogin", 0) == 1;
         }
         set
         {

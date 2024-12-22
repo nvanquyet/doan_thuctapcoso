@@ -2,6 +2,13 @@ using UnityEngine;
 
 namespace ShootingGame
 {
+    public enum SceneIndex
+    {
+        Login = 0,
+        Home = 1,
+        InGame = 2
+    }
+
     [CreateAssetMenu(fileName = "GameConfig", menuName = "_GAME/GameConfig")]
     public class GameConfig : SingletonResourcesScriptable<GameConfig>
     {

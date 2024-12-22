@@ -1,0 +1,395 @@
+fileFormatVersion: 2
+guid: 3bf2331af3a57674883dfa96d8e6fbe7
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: safeimagekit-pixel-art_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 640
+        width: 341
+        height: 384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e8cb5fe66319e241ae725b290c2e24e
+      internalID: 993781589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: safeimagekit-pixel-art_3
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 640
+        width: 342
+        height: 384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1859449d0632934a830f3d551f0c4a9
+      internalID: 264282883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: safeimagekit-pixel-art_5
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 640
+        width: 341
+        height: 384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69a1cfd778a5c894c8b209d0aef7f835
+      internalID: 560416223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: safeimagekit-pixel-art_16
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 256
+        width: 490
+        height: 384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d482e3d94a2b2b4398ddb75850e76d7
+      internalID: 76932727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: safeimagekit-pixel-art_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 278
+        height: 384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8017329b7777f24da90af321209134f
+      internalID: -777995959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: safeimagekit-pixel-art_22
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42daadf801f2a13489bcc75b6d25cba5
+      internalID: 987692714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: safeimagekit-pixel-art_29
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96104e392a3027642bc0110c77cc5a48
+      internalID: 814758930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: safeimagekit-pixel-art_31
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 512
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3a21b9484b31204183e7137717e315e
+      internalID: 1155194453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: safeimagekit-pixel-art_34
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 2
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcf4a6a6f177af74788863c3fb3d19ae
+      internalID: 1671982100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: safeimagekit-pixel-art_43
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 12
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51d51629a6f64da429e49ca008111592
+      internalID: 1812800713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      safeimagekit-pixel-art_0: 993781589
+      safeimagekit-pixel-art_1: 1420268828
+      safeimagekit-pixel-art_10: 792384496
+      safeimagekit-pixel-art_11: 312458455
+      safeimagekit-pixel-art_12: -783946997
+      safeimagekit-pixel-art_13: 90156878
+      safeimagekit-pixel-art_14: 1221061096
+      safeimagekit-pixel-art_15: 1055754690
+      safeimagekit-pixel-art_16: 76932727
+      safeimagekit-pixel-art_17: -2053525696
+      safeimagekit-pixel-art_18: -1317303973
+      safeimagekit-pixel-art_19: 808913279
+      safeimagekit-pixel-art_2: 562925879
+      safeimagekit-pixel-art_20: -777995959
+      safeimagekit-pixel-art_21: -610874840
+      safeimagekit-pixel-art_22: 987692714
+      safeimagekit-pixel-art_23: 179215419
+      safeimagekit-pixel-art_24: 656651149
+      safeimagekit-pixel-art_25: 1346995193
+      safeimagekit-pixel-art_26: -1805551234
+      safeimagekit-pixel-art_27: 2092198800
+      safeimagekit-pixel-art_28: -848311156
+      safeimagekit-pixel-art_29: 814758930
+      safeimagekit-pixel-art_3: 264282883
+      safeimagekit-pixel-art_30: -1248198724
+      safeimagekit-pixel-art_31: 1155194453
+      safeimagekit-pixel-art_32: 1266406671
+      safeimagekit-pixel-art_33: 740059374
+      safeimagekit-pixel-art_34: 1671982100
+      safeimagekit-pixel-art_35: 2055509154
+      safeimagekit-pixel-art_36: 122916878
+      safeimagekit-pixel-art_37: 657738429
+      safeimagekit-pixel-art_38: -1157058650
+      safeimagekit-pixel-art_39: 75771974
+      safeimagekit-pixel-art_4: 1114231392
+      safeimagekit-pixel-art_40: -1278306303
+      safeimagekit-pixel-art_41: 596048253
+      safeimagekit-pixel-art_42: 782937395
+      safeimagekit-pixel-art_43: 1812800713
+      safeimagekit-pixel-art_44: 1242386460
+      safeimagekit-pixel-art_5: 560416223
+      safeimagekit-pixel-art_6: 1215228669
+      safeimagekit-pixel-art_7: 1580192660
+      safeimagekit-pixel-art_8: -1218561468
+      safeimagekit-pixel-art_9: 535239805
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

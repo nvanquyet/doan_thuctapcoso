@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ed8e3c0241ce4b469c12fe0064d1051, type: 3}
   m_Name: NecroWizard
   m_EditorClassIdentifier: 
-  baseHealth: 3000
-  baseDamage: 80
-  baseSpeed: 4
-  baseEXP: 750
-  growthRate: 1.15
+  icon: {fileID: 0}
+  properties:
+    BaseHealth: 3000
+    BaseDamage: 80
+    BaseSpeed: 4
+    BaseEXP: 750
+    BaseCoin: 0
+    GrowthRate: 1.15
+  prefabs: {fileID: 0}

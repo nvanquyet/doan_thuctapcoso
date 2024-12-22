@@ -2,6 +2,7 @@ using ShootingGame;
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InGameUI : Frame
 {
@@ -9,6 +10,8 @@ public class InGameUI : Frame
     [SerializeField] private TextMeshProUGUI waveText;
     [SerializeField] private TextMeshProUGUI coinText;
     [SerializeField] private ProgressBar bossProgessBar;
+
+    [SerializeField] private Button btnSetting;
 
     public void SetBossProgess(float value)
     {
@@ -44,7 +47,11 @@ public class InGameUI : Frame
         }, false);
 
         SetEnemiesKilledText(0);
-
+        btnSetting?.onClick.AddListener(() =>
+        {
+            SFX.Instance.PlaySound(AudioEvent.ButtonClick);
+            UIPopUpCtrl.Instance.Show<UISetting>();
+        });
         gameObject.SetActive(false);
     }
 

@@ -34,7 +34,6 @@ public class CharacterSwitcher : MonoBehaviour
         get
         {
             var idx = Mathf.Clamp(UserData.CurrentCharacter + index, 0, GameData.Instance.Players.GetAllValue().Length - 1);
-            GameService.LogColor("CharacterIndex: " + idx);
             if (idx <= 0)
             {
                 preButton.interactable = false;
@@ -55,12 +54,14 @@ public class CharacterSwitcher : MonoBehaviour
 
     public void NextCharacter()
     {
+        SFX.Instance.PlaySound(AudioEvent.ButtonClick);
         index++;
         SwitchCharacter();
     }
 
     public void PreviousCharacter()
     {
+        SFX.Instance.PlaySound(AudioEvent.ButtonClick);
         index--;
         SwitchCharacter();
     }
@@ -69,10 +70,10 @@ public class CharacterSwitcher : MonoBehaviour
     {
         var c = GameData.Instance.Players.GetValue(CharacterIndex);
         characterNameText.text = c.Appearance.Name;
+        animator.runtimeAnimatorController = c.Animator;
         //if (playerAvatarImage != null)
         //{
         //    playerAvatarImage.sprite = c.Appearance.Icon;
-        //    animator.runtimeAnimatorController = c.Animator;
         //}
     }
 }

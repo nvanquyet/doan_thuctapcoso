@@ -12,4 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8bf8d7d15dd51241b3c454d2d35a6cc, type: 3}
   m_Name: SFX Data
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - Event: 0
+    Clip: {fileID: 8300000, guid: 76148c99366ccfc4b98f8806d485e230, type: 3}
+  - Event: 1
+    Clip: {fileID: 8300000, guid: d23937399d4c2514685ea11d9d2a0f0c, type: 3}
+  - Event: 2
+    Clip: {fileID: 8300000, guid: 3f8cc14c0a0a43145b3a4801faa4d9e1, type: 3}
+  - Event: 3
+    Clip: {fileID: 0}
+  - Event: 4
+    Clip: {fileID: 8300000, guid: 0ff54c96029190d498ad4031d27e1496, type: 3}
+  - Event: 5
+    Clip: {fileID: 8300000, guid: 346baa04043bb9a468f7a70ec5088295, type: 3}
+  - Event: 6
+    Clip: {fileID: 0}
+  - Event: 7
+    Clip: {fileID: 8300000, guid: 2e12f0cc41dd33c46abae06471fd66da, type: 3}

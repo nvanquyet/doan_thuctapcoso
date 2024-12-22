@@ -100,7 +100,6 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
         this.slots = slots;
         this.tetrisDescription = tetrisDescription;
         this.cellSize = cellSize;
-
         this.itemData = data;
         this.iconSmall.sprite = data.Appearance.Icon;
         this.iconLarge.sprite = data.Appearance.Icon;
@@ -112,14 +111,14 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
         Invoke(nameof(ReScale), Time.deltaTime);
     }
 
-    public void ToggleIconSize(bool useTetrisIcon = false, bool usingAnimated = true)
+    public void ToggleIconSize(bool useTetrisIcon = false, bool usingAnimated = false)
     {
         backGroundIcSmall.enabled = !useTetrisIcon;
         if (usingAnimated)
         {
             iconLarge.DOKill();
             iconSmall.DOKill();
-            if (useTetrisIcon)
+            if (!useTetrisIcon)
             {
                 iconLarge.DOFade(0f, 0.5f).From(1).OnComplete(() => iconLarge.gameObject.SetActive(false));
                 iconSmall.gameObject.SetActive(true);
@@ -134,8 +133,8 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
         }
         else
         {
-            iconLarge.gameObject.SetActive(true);
-            iconSmall.gameObject.SetActive(false);
+            iconLarge.gameObject.SetActive(useTetrisIcon);
+            iconSmall.gameObject.SetActive(!useTetrisIcon);
             var color = iconLarge.color;
             color.a = 1f;
             iconLarge.color = color;
@@ -261,10 +260,10 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
         Vector2 finalSlot = AnchorGrid(RectTransform.anchoredPosition, halfSize); //position that the item was dropped on canvas
 
         if (!itemData.MatrixData.IsUniformMatrix) this.transform.SetAsFirstSibling();
-#if UNITY_EDITOR
-        if (EventSystem.current.IsPointerOverGameObject())
-#elif UNITY_ANDROID
+#if UNITY_ANDROID
         if (Input.touchCount > 0 && EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+#else
+        if (EventSystem.current.IsPointerOverGameObject())
 #endif
         {
             //Check if the item is upgradeable
@@ -367,13 +366,12 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
     private void ReturnToWaitingList()
     {
         IsInGrid = false;
-        ToggleIconSize(false);
         ActionReturnWaitingList?.Invoke(this);
     }
 
     internal void OnDestroyItem()
     {
-        if (slots != null && transform.parent.Equals(slots.transform))
+        if (IsInGrid)
         {
             ActionRemoveItem?.Invoke(this);
             var itemSize = GameService.GetItemSize(itemData.MatrixData.ItemSize, currentRotation);
