@@ -99,4 +99,14 @@ public partial class UserData
             PlayerPrefs.SetString("LastTimePlayed", value.ToString());
         }
     }
+
+    public static void SetGunProjectile(int idGun, int index)
+    {
+        PlayerPrefs.SetInt($"GunProjectile_{idGun}", Mathf.Max(0, index));
+    }
+
+    public static int GetGunProjectile(int idGun)
+    {
+        return PlayerPrefs.GetInt($"GunProjectile_{idGun}", -1);
+    }
 }

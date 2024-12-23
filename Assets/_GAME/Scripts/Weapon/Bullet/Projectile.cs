@@ -7,9 +7,10 @@ namespace ShootingGame
     [RequireComponent(typeof(Rigidbody2D))]
     public class Projectile : AAttacker, Interface.IMoveable, ISpawner
     {
-        [SerializeField] protected ParticleSystem impactEffect;
-        [SerializeField] private ParticleSystem projectileTrail;
-        [SerializeField] private GameObject visualProjectile;
+        [SerializeField] protected GameObject hitFX;
+        [SerializeField] protected GameObject muzzleFX;
+        [SerializeField] private GameObject trailFX;
+        [SerializeField] private GameObject projectileFX;
         [SerializeField] private byte projectileSpeed = 20;
 
         public Action OnRecycle;
@@ -44,7 +45,7 @@ namespace ShootingGame
 
                     Attack(defender);
 
-                    ActivateEffect(impactEffect);
+                    ActivateEffect(hitFX);
 
                     Rigidbody.velocity = Vector2.zero;
 
@@ -61,7 +62,7 @@ namespace ShootingGame
 
             if (base.Attack(target, isCritical, knockback))
             {
-                visualProjectile?.SetActive(false);
+                projectileFX?.SetActive(false);
                 Invoke(nameof(Recycle), 0.32f);
                 return true;
             }
@@ -89,35 +90,58 @@ namespace ShootingGame
         public void Spawn(Vector2 direction, ImpactData properties,
                 IDefender owner = null, IExpReceiver expReceiver = null)
         {
-            originatingOwner = owner;
+            this.originatingOwner = owner;
             this.expReceiver = expReceiver;
-            _canAttack = true;
-            isCriticalHit = properties.isCritical;
-            knockbackForce = properties.pushForce;
-            visualProjectile.gameObject.SetActive(true);
+            this._canAttack = true;
+            this.isCriticalHit = properties.isCritical;
+            this.knockbackForce = properties.pushForce;
+
             Move(direction.normalized * projectileSpeed);
             SetDamage(properties.damage);
-            if (projectileTrail) projectileTrail.Play();
+
             transform.right = direction;
             transform.SetParent(null);
+
+            hitFX?.gameObject.SetActive(false);
+
+            projectileFX?.gameObject.SetActive(true);
+            muzzleFX?.gameObject.SetActive(true);
+            trailFX?.gameObject.SetActive(true);
+
+            //Set muzzle direction
+            if(muzzleFX) muzzleFX.transform.right = direction;
+            muzzleFX?.transform.SetParent(null);
+
             Invoke(nameof(Recycle), 2f);
         }
         #endregion
 
-        protected void ActivateEffect(ParticleSystem effect)
+
+        #region Effect
+        protected void ActivateEffect(GameObject effect, bool isGlobalTransform = true)
         {
-            DeactivateAllEffects();
-            if (effect) effect.gameObject.SetActive(true);
+            if (effect)
+            {
+                effect.gameObject.SetActive(true);
+                effect.transform.SetParent(isGlobalTransform ? null : transform);
+            }
         }
 
         private void DeactivateAllEffects()
         {
-            if (impactEffect) DeactivateEffect(impactEffect);
-            if (projectileTrail) DeactivateEffect(projectileTrail);
+            DeactivateEffect(hitFX);
+            DeactivateEffect(muzzleFX);
+            DeactivateEffect(projectileFX);
+            DeactivateEffect(trailFX);
+
+            muzzleFX?.transform.SetParent(transform);
+            hitFX?.transform.SetParent(transform);
         }
 
-        private void DeactivateEffect(ParticleSystem effect) => effect?.gameObject.SetActive(false);
+        private void DeactivateEffect(GameObject effect) => effect?.gameObject.SetActive(false);
+        #endregion
 
+        #region Exp and Coin
         public override void GainExp(int exp)
         {
             if (expReceiver == null) return;
@@ -129,5 +153,6 @@ namespace ShootingGame
             if (expReceiver == null) return;
             expReceiver.GainCoin(coin);
         }
+        #endregion
     }
 }

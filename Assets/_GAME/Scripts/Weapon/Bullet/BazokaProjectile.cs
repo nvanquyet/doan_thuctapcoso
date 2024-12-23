@@ -22,7 +22,7 @@ public class BazokaProjectile : Projectile
                 }
             }
             
-            ActivateEffect(impactEffect);
+            ActivateEffect(hitFX);
             Rigidbody.velocity = Vector2.zero;
 
         }
