@@ -12,6 +12,9 @@ public sealed class GameEvent
         public int wave;
     }
 
+    public struct CoinChange : IEventParam { }
+
+
     public struct OnNextWave : IEventParam
     {
         public Player player;

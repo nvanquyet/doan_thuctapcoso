@@ -180,7 +180,7 @@ namespace ShootingGame
             }
             else
             {
-                var p = GameData.Instance.ProjectileData.GetValue(projectileIndex);
+                var p = GameData.Instance.ProjectileData.GetValue(projectileIndex).Prefab;
                 if (p == null) projectilePool = new ObjectPooling<Projectile>(_bulletPrefab, amountBulletPooling, transform);
                 else projectilePool = new ObjectPooling<Projectile>(_bulletPrefab, amountBulletPooling, transform);
             }

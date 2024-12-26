@@ -45,7 +45,8 @@ namespace ShootingGame
 
                     Attack(defender);
 
-                    ActivateEffect(hitFX);
+                    if (defender is MonoBehaviour behaviour) ActivateEffect(hitFX, behaviour.transform);
+                    else ActivateEffect(hitFX);
 
                     Rigidbody.velocity = Vector2.zero;
 
@@ -110,6 +111,7 @@ namespace ShootingGame
 
             //Set muzzle direction
             if(muzzleFX) muzzleFX.transform.right = direction;
+            muzzleFX.transform.localPosition = Vector3.zero;
             muzzleFX?.transform.SetParent(null);
 
             Invoke(nameof(Recycle), 2f);
@@ -118,12 +120,13 @@ namespace ShootingGame
 
 
         #region Effect
-        protected void ActivateEffect(GameObject effect, bool isGlobalTransform = true)
+        protected void ActivateEffect(GameObject effect, Transform hitTs = null, bool isGlobalTransform = true)
         {
             if (effect)
             {
                 effect.gameObject.SetActive(true);
                 effect.transform.SetParent(isGlobalTransform ? null : transform);
+                if (hitTs) effect.transform.position = hitTs.position;
             }
         }
 
@@ -132,7 +135,7 @@ namespace ShootingGame
             DeactivateEffect(hitFX);
             DeactivateEffect(muzzleFX);
             DeactivateEffect(projectileFX);
-            DeactivateEffect(trailFX);
+            if(trailFX) DeactivateEffect(trailFX);
 
             muzzleFX?.transform.SetParent(transform);
             hitFX?.transform.SetParent(transform);

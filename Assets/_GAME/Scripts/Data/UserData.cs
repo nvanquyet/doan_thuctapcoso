@@ -1,3 +1,4 @@
+using Mono.CSharp;
 using ShootingGame;
 using System;
 using UnityEngine;
@@ -25,6 +26,7 @@ public partial class UserData
         set
         {
             PlayerPrefs.SetInt("CurrentCoin", value);
+            EventDispatcher.Instance.Dispatch<GameEvent.CoinChange>();
         }
     }
 
