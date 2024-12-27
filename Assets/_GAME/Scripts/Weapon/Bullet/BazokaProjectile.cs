@@ -21,8 +21,13 @@ public class BazokaProjectile : Projectile
                     Attack(defend);
                 }
             }
-            
-            ActivateEffect(impactEffect);
+            if(defender is MonoBehaviour behaviour)
+            {
+                ActivateEffect(hitFX, behaviour.transform);
+            }else
+            {
+                ActivateEffect(hitFX);
+            }
             Rigidbody.velocity = Vector2.zero;
 
         }

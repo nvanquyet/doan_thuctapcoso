@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 724029092634259062}
   - component: {fileID: 3737105127655994885}
   - component: {fileID: -8395272762796244704}
+  - component: {fileID: 341560217210951686}
   m_Layer: 0
   m_Name: Enemy 14
   m_TagString: Enemy
@@ -88,7 +89,6 @@ MonoBehaviour:
   _enemyDefender: {fileID: 724029092634259062}
   _enemyMovement: {fileID: 3737105127655994885}
   _enemyAnimation: {fileID: -8395272762796244704}
-  growthRate: 1
 --- !u!114 &3731585282483701307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,7 +202,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 10
-  attackBehaviours: []
+  attackBehaviours:
+  - {fileID: 341560217210951686}
   triggerAnimation: {fileID: 1373581539303176672}
   timeChangeBehaviour: 5
 --- !u!114 &724029092634259062
@@ -218,7 +219,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
-  baseExpGiven: 0
   rigid: {fileID: 1926085311155766293}
 --- !u!114 &3737105127655994885
 MonoBehaviour:
@@ -248,7 +248,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 2442480033688113510}
-  _spriteRenderer: {fileID: 3666598425727560737}
+  spriteRenderer: {fileID: 3666598425727560737}
+--- !u!114 &341560217210951686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926085311155766288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9450f36a70ce6d45929878720efe12e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerAnimation: Attack
+  attackRange: 0.75
 --- !u!1001 &2849978433660035588
 PrefabInstance:
   m_ObjectHideFlags: 0

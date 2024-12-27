@@ -7,6 +7,7 @@ public class ConsumableArea : MonoBehaviour
 {
     [SerializeField] private ConsumableItemButton consumableItemButtonPrefab;
     [SerializeField] private Player target;
+    [SerializeField] private Transform placeHolder;
 
 #if UNITY_EDITOR
     private void OnValidate()
@@ -23,6 +24,10 @@ public class ConsumableArea : MonoBehaviour
 
     private void OnNextWave(GameEvent.OnNextWave param)
     {
+        foreach (Transform child in placeHolder)
+        {
+            Destroy(child.gameObject);
+        }
         if (param.allBuffItems != null && param.allBuffItems.Count > 0)
         {
             Initialized(param.allBuffItems, param.player);
@@ -33,7 +38,7 @@ public class ConsumableArea : MonoBehaviour
     {
         foreach (var item in consumableItems)
         {
-            var consumableItemButton = Instantiate(consumableItemButtonPrefab, transform);
+            var consumableItemButton = Instantiate(consumableItemButtonPrefab, placeHolder);
             consumableItemButton.Initialized(item, target);
             consumableItemButton.gameObject.SetActive(true);
         }

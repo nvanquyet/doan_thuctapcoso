@@ -67,10 +67,10 @@ public sealed class SFX : MonoBehaviour
     #region Background Music
     public bool MusicEnable
     {
-        get => PlayerPrefs.GetInt("MusicEnable", 1) == 1;
+        get => UserData.MusicEnable;
         set
         {
-            PlayerPrefs.SetInt("MusicEnable", value ? 1 : 0);
+            UserData.MusicEnable = value;
             if (value) ContinueBGM();
             else PauseBGM();
         }
@@ -112,7 +112,7 @@ public sealed class SFX : MonoBehaviour
             audioBackgroundSource.clip = clip;
             audioBackgroundSource.Play();
             audioBackgroundSource.DOKill();
-            audioBackgroundSource.DOFade(1, 1);
+            audioBackgroundSource.DOFade(UserData.MusicVolume, 1);
         }
     }
 
@@ -137,7 +137,7 @@ public sealed class SFX : MonoBehaviour
             audioPlayerSource.loop = true;
             audioPlayerSource.Play();
             audioPlayerSource.DOKill();
-            audioPlayerSource.DOFade(1, .24f);
+            audioPlayerSource.DOFade(UserData.SoundVolume, .24f);
         }
     }
 
@@ -157,19 +157,19 @@ public sealed class SFX : MonoBehaviour
     #region Sound
     public bool SoundEnable
     {
-        get => PlayerPrefs.GetInt("SoundEnable", 1) == 1;
-        set => PlayerPrefs.SetInt("SoundEnable", value ? 1 : 0);
+        get => UserData.SoundEnable;
+        set => UserData.SoundEnable = value;
     }
 
-    public void PlaySound(AudioClip clip, SFXLayer layer, float volume = 1)
+    public void PlaySound(AudioClip clip, SFXLayer layer)
     {
         var source = GetAudioSource(layer);
         if (!SoundEnable || clip == null || !source) return;
-        source.PlayOneShot(clip, volume);
+        source.PlayOneShot(clip, UserData.SoundVolume);
     }
 
-    private void PlaySound(AudioEvent audioEvent, SFXLayer layer, float volume = 1)
-       => PlaySound(Data.GetAudioClip(audioEvent), layer, volume);
+    private void PlaySound(AudioEvent audioEvent, SFXLayer layer)
+       => PlaySound(Data.GetAudioClip(audioEvent), layer);
 
     private void StopAudio(AudioSource aSource)
     {
@@ -230,27 +230,27 @@ public sealed class SFX : MonoBehaviour
 #endif
     }
     #endregion
-    public void PlaySound(AudioEvent audioEvent, float volume = 1)
+    public void PlaySound(AudioEvent audioEvent)
     {
         switch (audioEvent)
         {
             case AudioEvent.ButtonClick:
-                PlaySound(audioEvent, SFXLayer.UI, volume);
+                PlaySound(audioEvent, SFXLayer.UI);
                 break;
             case AudioEvent.VictoryMusic:
             case AudioEvent.LoseMusic:
-                PlaySound(audioEvent, SFXLayer.Other, volume);
+                PlaySound(audioEvent, SFXLayer.Other);
                 break;
             case AudioEvent.PlayerHit:
             case AudioEvent.PlayerShoot:
-                PlaySound(audioEvent, SFXLayer.Other, volume);
+                PlaySound(audioEvent, SFXLayer.Other);
                 break;
             case AudioEvent.InGameMusic:
             case AudioEvent.HomeMusic:
                 PlayBGM(audioEvent);
                 break;
             default:
-                PlaySound(audioEvent, SFXLayer.Other, volume);
+                PlaySound(audioEvent, SFXLayer.Other);
                 break;
         }
     }

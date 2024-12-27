@@ -55,18 +55,25 @@ namespace ShootingGame
         public void InitWeapon(List<ItemWeaponData> param, StatContainerData currentStat)
         {
             int index = 0;
+            var data = GameData.Instance.ItemData.GetValue(Category.Weapon) as WeaponData;
             foreach (var w in param)
             {
-                if (w.Prefab != null && (w.Prefab is AWeapon))
+                if (w.Prefab != null && (w.Prefab is AWeapon weapon))
                 {
                     var tsWp = _allPositionSpawnWeapon[index].transform;
-                    var clone = Instantiate(w.Prefab, tsWp) as AWeapon;
+                    var clone = Instantiate(weapon, tsWp);
                     clone.InitializeItem(w);
                     clone.gameObject.SetActive(true);
                     clone.ApplyStat(currentStat);
                     clone.SetReceiver(_player);
                     _weapons.Add(clone);
                     DictWeaponPos.Add(clone, tsWp.localPosition);
+
+                    if(data != null && clone is RangedWeapon rangedWeapon)
+                    {
+                        rangedWeapon.InitProjectile(data.GetIndexOfValue(w));
+                    }
+
                     index++;
                 }
             }

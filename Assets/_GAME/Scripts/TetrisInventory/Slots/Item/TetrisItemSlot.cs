@@ -371,14 +371,13 @@ public class TetrisItemSlot : UIComponent, IBeginDragHandler, IDragHandler, IEnd
 
     internal void OnDestroyItem()
     {
+        ActionRemoveItem?.Invoke(this);
         if (IsInGrid)
         {
-            ActionRemoveItem?.Invoke(this);
             var itemSize = GameService.GetItemSize(itemData.MatrixData.ItemSize, currentRotation);
             var grid = GameService.GetMatrix(itemData.MatrixData.Matrix, currentRotation);
             ResetGrid(itemSize, grid);
         }
-        //Remove from bag
     }
 
     #endregion

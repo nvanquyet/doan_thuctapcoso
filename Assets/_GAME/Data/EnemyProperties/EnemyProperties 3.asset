@@ -16,7 +16,7 @@ MonoBehaviour:
   properties:
     BaseHealth: 150
     BaseDamage: 25
-    BaseSpeed: 5
+    BaseSpeed: 8
     BaseEXP: 70
     BaseCoin: 14
     GrowthRate: 1.15

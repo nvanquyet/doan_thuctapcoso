@@ -1,5 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+using Mono.CSharp;
+using ShootingGame;
+using System;
 using UnityEngine;
 
 public partial class UserData
@@ -25,6 +26,7 @@ public partial class UserData
         set
         {
             PlayerPrefs.SetInt("CurrentCoin", value);
+            EventDispatcher.Instance.Dispatch<GameEvent.CoinChange>();
         }
     }
 
@@ -74,5 +76,39 @@ public partial class UserData
         {
             PlayerPrefs.SetInt("Coin", value);
         }
+    }
+
+    public static int CurrentEnergy
+    {
+        get
+        {
+            return PlayerPrefs.GetInt("Energy", GameConfig.Instance.MaxEnergy);
+        }
+        set
+        {
+            PlayerPrefs.SetInt("Energy", value >= 0 ? (value >= GameConfig.Instance.MaxEnergy ? GameConfig.Instance.MaxEnergy : value) : 0);
+        }
+    }
+
+    public static DateTime LastTimePlayed
+    {
+        get
+        {
+            return DateTime.Parse(PlayerPrefs.GetString("LastTimePlayed", DateTime.Now.ToString()));
+        }
+        set
+        {
+            PlayerPrefs.SetString("LastTimePlayed", value.ToString());
+        }
+    }
+
+    public static void SetGunProjectile(int idGun, int index)
+    {
+        PlayerPrefs.SetInt($"GunProjectile_{idGun}", Mathf.Max(0, index));
+    }
+
+    public static int GetGunProjectile(int idGun)
+    {
+        return PlayerPrefs.GetInt($"GunProjectile_{idGun}", -1);
     }
 }

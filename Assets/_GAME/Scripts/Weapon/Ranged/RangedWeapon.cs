@@ -18,7 +18,6 @@ namespace ShootingGame
     public class RangedWeapon : AWeapon
     {
         [SerializeField] private Projectile _bulletPrefab;
-        [SerializeField] private Transform _muzzlePrefab;
         [SerializeField] private Transform[] _bulletSpawnPoint;
         [SerializeField] private Transform _muzzuleSpawnPoint;
         [SerializeField] private ShootingType shootingType = ShootingType.SingleShot;
@@ -28,7 +27,6 @@ namespace ShootingGame
         [SerializeField] private int burstCount = 5;
 
         private ObjectPooling<Projectile> projectilePool;
-        private ObjectPooling<Transform> muzzlePool;
 
         private IDefender defendOwner;
 
@@ -37,13 +35,11 @@ namespace ShootingGame
         protected override void OnValidate()
         {
             base.OnValidate();
-            if(!shootingType.Equals(ShootingType.BurstFire) && !shootingType.Equals(ShootingType.Shotgun)) burstCount = 1;
+            if (!shootingType.Equals(ShootingType.BurstFire) && !shootingType.Equals(ShootingType.Shotgun)) burstCount = 1;
         }
 #endif
         private void Start()
         {
-            muzzlePool = new ObjectPooling<Transform>(_muzzlePrefab, amountBulletPooling, transform);
-            projectilePool = new ObjectPooling<Projectile>(_bulletPrefab, amountBulletPooling, transform);
             defendOwner = GetComponentInParent<IDefender>();
         }
         public override bool Attack(Interface.IDefender target, bool isSuper = false, float forcePushBack = 0)
@@ -72,14 +68,14 @@ namespace ShootingGame
                         StartCoroutine(ShootMachineGun());
                         break;
                     case ShootingType.BurstFire:
-                        StartCoroutine(ShootBurstFire(burstCount)); 
+                        StartCoroutine(ShootBurstFire(burstCount));
                         break;
                 }
                 return true;
             }
             return false;
         }
-        
+
         private ImpactData GetData(bool isPowerful = false)
         {
             var statData = CurrentEquiqmentStat;
@@ -104,7 +100,7 @@ namespace ShootingGame
 
         private void ShootSniper()
         {
-            FireBullet(_bulletSpawnPoint[0], GetData(true)); 
+            FireBullet(_bulletSpawnPoint[0], GetData(true));
         }
 
         private void ShootBazoka()
@@ -118,7 +114,7 @@ namespace ShootingGame
             while (true)
             {
                 FireBullet(_bulletSpawnPoint[0], GetData());
-                yield return new WaitForSeconds(0.2f);  
+                yield return new WaitForSeconds(0.2f);
             }
         }
 
@@ -160,7 +156,7 @@ namespace ShootingGame
 
         private void OnDestroy()
         {
-            if(projectileList.Count > 0)
+            if (projectileList.Count > 0)
             {
                 foreach (var projectile in projectileList)
                 {
@@ -174,6 +170,21 @@ namespace ShootingGame
         public override void GainCoin(int coin) { }
 
         public override int Damage => 0;
+
+        public void InitProjectile(int idWeapon)
+        {
+            var projectileIndex = UserData.GetGunProjectile(idWeapon);
+            if (projectileIndex < 0)
+            {
+                projectilePool = new ObjectPooling<Projectile>(_bulletPrefab, amountBulletPooling, transform);
+            }
+            else
+            {
+                var p = GameData.Instance.ProjectileData.GetValue(projectileIndex).Prefab;
+                if (p == null) projectilePool = new ObjectPooling<Projectile>(_bulletPrefab, amountBulletPooling, transform);
+                else projectilePool = new ObjectPooling<Projectile>(_bulletPrefab, amountBulletPooling, transform);
+            }
+        }
     }
 
 }

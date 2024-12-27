@@ -25,9 +25,9 @@ namespace ShootingGame.Data
         [SerializeField] private RarityItem rarity;
 
         [SerializeField] private float costTierMultiplier = 1f;
-        [SerializeField] private StatContainerData stat;
         [SerializeField] private ItemAppearanceData appearance;
         [SerializeField] private MatrixData matrixData;
+        [SerializeField] private StatContainerData stat;
 
         public StatContainerData Stat => stat;
         public ItemAppearanceData Appearance => appearance;
@@ -45,9 +45,16 @@ namespace ShootingGame.Data
         [SerializeField] private RuntimeAnimatorController animator;
         [SerializeField] private ItemAppearanceData appearance;
         [SerializeField] private RarityItem rarity;
+        [SerializeField] private bool isOwner;
         public RuntimeAnimatorController Animator => animator;
         public ItemAppearanceData Appearance => appearance;
         public StatContainerData Stat => stat;
         public RarityItem Rarity => rarity;
+        public bool IsOwn
+        {
+            get => isOwner;
+            set => isOwner = value;
+        }
+
     }
 }

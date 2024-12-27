@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   category: 3
   rarity: 4
-  stat:
-    stats:
-    - typeStat: 0
-      typeValueStat: 0
-      value: 10
+  costTierMultiplier: 1
   appearance:
     itemName: Healing Potion
     icon: {fileID: 21300000, guid: 369ae187d8d6f4e47a5b1e08ec1f5723, type: 3}
   matrixData: {fileID: 11400000, guid: 2094a8427d8b56f41bdcbc574ce28628, type: 2}
-  icon: {fileID: 0}
+  stat:
+    stats:
+    - typeStat: 0
+      typeValueStat: 0
+      value: 25
   buffType: 2
   amount: 1
   duration: 0

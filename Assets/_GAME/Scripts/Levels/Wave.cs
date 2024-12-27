@@ -109,7 +109,7 @@ namespace ShootingGame
             while (waveProperties.strengthWave > 0)
             {
                 //Spawn Enemy from data
-                var enemyData = allEnimies[Random.Range(0, Mathf.Min(currentWave, allEnimies.Length))];
+                var enemyData = allEnimies[Random.Range(0, Mathf.Min(currentWave, allEnimies.Length) - 1)];
                 //Init data enemy
                 if (enemyData != null && enemyData.Prefabs != null)
                 {

@@ -53,6 +53,15 @@ namespace ShootingGame.Data
             return default;
         }
 
+        public int GetIndexOfValue(V value)
+        {
+           for (int i = 0; i < _data.Length; i++)
+            {
+                if (_data[i].value.Equals(value)) return i;
+            }
+            return -1;
+        }
+
         public abstract void OnValidateKey();
         public abstract void OnValidateValue();
         public abstract void OnValidateData();
