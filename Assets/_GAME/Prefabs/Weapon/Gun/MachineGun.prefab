@@ -240,10 +240,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 0
-  _oneHitOnly: 1
   weaponSprite: {fileID: 9163475136738846238}
-  _bulletPrefab: {fileID: -6031142928564043692, guid: fea7cf601e56a4a46b8a554854776927, type: 3}
-  _muzzlePrefab: {fileID: 6987829488301963158, guid: 4cddeea29ee8f4675b5af572c76d3215, type: 3}
+  _bulletPrefab: {fileID: 4318666252703170317, guid: d7b1e0d3588736a419363e2905afacfa, type: 3}
   _bulletSpawnPoint:
   - {fileID: 9163475137039164302}
   _muzzuleSpawnPoint: {fileID: 577203009588991018}
