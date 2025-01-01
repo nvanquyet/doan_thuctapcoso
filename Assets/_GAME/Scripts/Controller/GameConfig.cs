@@ -18,7 +18,7 @@ namespace ShootingGame
 
         public EnemyWeights enemyWeights;
 
-        public int bossWaveDistance = 5;
+        public int BossWaveDistance = 5;
 
         public WaveProperties waveProperties;
 

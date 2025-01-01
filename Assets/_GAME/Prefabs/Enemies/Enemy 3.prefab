@@ -219,7 +219,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
-  _health: 50
   rigid: {fileID: 1926085311155766293}
 --- !u!114 &3737105127655994885
 MonoBehaviour:
@@ -249,7 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 2209816425500499152}
-  _spriteRenderer: {fileID: 3588171738617869084}
+  spriteRenderer: {fileID: 3588171738617869084}
 --- !u!114 &8818488284858066791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,7 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerAnimation: Attack
   attackRange: 5
-  projectilePrefab: {fileID: -6031142928564043692, guid: fea7cf601e56a4a46b8a554854776927, type: 3}
+  projectilePrefab: {fileID: -6031142928564043692, guid: 11b85ce67223f6248ba490fe6fad1c6b, type: 3}
   firePoints:
   - {fileID: 6794907674376243613}
   - {fileID: 4006279913842201685}

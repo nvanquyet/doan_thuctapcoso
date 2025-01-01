@@ -162,7 +162,6 @@ MonoBehaviour:
   muzzleFX: {fileID: 8788123765626343177}
   trailFX: {fileID: 0}
   projectileFX: {fileID: 1632993506684053670}
-  projectileSpeed: 15
 --- !u!1001 &1286406469876865644
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -524,6 +523,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114012790586252362, guid: 6914c451adebee04785d9413a7e3f24b, type: 3}
+    - {fileID: 136757934063241816, guid: 6914c451adebee04785d9413a7e3f24b, type: 3}
+    - {fileID: 54813845547034192, guid: 6914c451adebee04785d9413a7e3f24b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
