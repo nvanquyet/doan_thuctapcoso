@@ -11,7 +11,6 @@ namespace ShootingGame
         [SerializeField] protected GameObject muzzleFX;
         [SerializeField] private GameObject trailFX;
         [SerializeField] private GameObject projectileFX;
-        [SerializeField] private byte projectileSpeed = 20;
 
         public Action OnRecycle;
         private bool isCriticalHit;
@@ -89,7 +88,7 @@ namespace ShootingGame
         public void Spawn() { }
 
         public void Spawn(Vector2 direction, ImpactData properties,
-                IDefender owner = null, IExpReceiver expReceiver = null)
+                IDefender owner = null, IExpReceiver expReceiver = null, float speed = 10f)
         {
             this.originatingOwner = owner;
             this.expReceiver = expReceiver;
@@ -97,7 +96,7 @@ namespace ShootingGame
             this.isCriticalHit = properties.isCritical;
             this.knockbackForce = properties.pushForce;
 
-            Move(direction.normalized * projectileSpeed);
+            Move(direction.normalized * speed);
             SetDamage(properties.damage);
 
             transform.right = direction;
