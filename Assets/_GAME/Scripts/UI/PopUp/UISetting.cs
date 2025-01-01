@@ -1,6 +1,6 @@
 using ShootingGame;
-using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 public enum QualityLevel
 {
@@ -10,94 +10,107 @@ public enum QualityLevel
 }
 public class UISetting : Frame
 {
-    [SerializeField] private Button closeButton;
-    [SerializeField] private Button btnSave;
-    [SerializeField] private Button btnCancel;
+    [SerializeField] private Button closeButton, btnLogout;
     [SerializeField] private Slider musicSlider, soundSlider;
-    [SerializeField] private ToggleButton btnSoundEnable;
-    [SerializeField] private ToggleButton btnMusicEnable;
+    [SerializeField] private ToggleButton btnSoundEnable, btnMusicEnable;
     [SerializeField] private Toggle[] btnQuality;
 
     private void Start()
     {
-        closeButton.onClick.AddListener(() =>
+        AssignButtonEvent(closeButton, () =>
         {
             SFX.Instance.PlaySound(AudioEvent.ButtonClick);
             Hide();
         });
 
-        btnSoundEnable.Initialize(UserData.SoundEnable, (isOn) =>
+        AssignButtonEvent(btnLogout, () =>
         {
             SFX.Instance.PlaySound(AudioEvent.ButtonClick);
+            UserData.IsLogin = false;
+            UIPopUpCtrl.Instance.Get<LoadScene>().LoadSceneAsync((int)SceneIndex.Login);
+        });
+
+        AssignToggleButtonEvent(btnSoundEnable, UserData.SoundEnable, (isOn) =>
+        {
             UserData.SoundEnable = isOn;
             soundSlider.interactable = isOn;
         });
 
-        btnMusicEnable.Initialize(UserData.MusicEnable, (isOn) =>
+        AssignToggleButtonEvent(btnMusicEnable, UserData.MusicEnable, (isOn) =>
         {
-            SFX.Instance.PlaySound(AudioEvent.ButtonClick);
             UserData.MusicEnable = isOn;
             musicSlider.interactable = isOn;
         });
 
-        musicSlider.value = UserData.MusicVolume;
-        musicSlider.onValueChanged.AddListener((value) =>
-        {
-            UserData.MusicVolume = value;
-        });
-
-        soundSlider.value = UserData.SoundVolume;
-        soundSlider.onValueChanged.AddListener((value) =>
-        {
-            UserData.SoundVolume = value;
-        });
-
+        AssignSliderEvent(musicSlider, UserData.MusicVolume, (value) => UserData.MusicVolume = value);
+        AssignSliderEvent(soundSlider, UserData.SoundVolume, (value) => UserData.SoundVolume = value);
 
         for (int i = 0; i < btnQuality.Length; i++)
         {
-            var btn = btnQuality[i];
-            btn.onValueChanged.AddListener((isOn) =>
-            {
-                if (isOn)
-                {
-                    var index = Array.IndexOf(btnQuality, btn);
-                    QualitySettings.SetQualityLevel((int)(GetQualityLevelFromIndex(index)));
-                }
-            });
-            if (i == GetIndexFromQuality((QualityLevel) QualitySettings.GetQualityLevel()))
-            {
-                btnQuality[i].Select();
-            }
+            AssignQualityToggle(btnQuality[i], i);
         }
     }
 
+    private void AssignButtonEvent(Button button, UnityAction action)
+    {
+        button.onClick.AddListener(() =>
+        {
+            SFX.Instance.PlaySound(AudioEvent.ButtonClick);
+            action?.Invoke();
+        });
+    }
+
+    private void AssignToggleButtonEvent(ToggleButton toggleButton, bool initialValue, UnityAction<bool> onToggle)
+    {
+        toggleButton.Initialize(initialValue, (isOn) =>
+        {
+            SFX.Instance.PlaySound(AudioEvent.ButtonClick);
+            onToggle?.Invoke(isOn);
+        });
+    }
+
+    private void AssignSliderEvent(Slider slider, float initialValue, UnityAction<float> onValueChange)
+    {
+        slider.value = initialValue;
+        slider.onValueChanged.AddListener(onValueChange);
+    }
+
+    private void AssignQualityToggle(Toggle toggle, int index)
+    {
+        toggle.onValueChanged.AddListener((isOn) =>
+        {
+            if (isOn)
+            {
+                QualitySettings.SetQualityLevel((int)GetQualityLevelFromIndex(index));
+            }
+        });
+
+        if (index == GetIndexFromQuality((QualityLevel)QualitySettings.GetQualityLevel()))
+        {
+            toggle.Select();
+        }
+    }
+
+
     public static int GetIndexFromQuality(QualityLevel quality)
     {
-        switch (quality)
+        return quality switch
         {
-           case QualityLevel.Low:
-                return 0;
-            case QualityLevel.Medium:
-                return 1;
-            case QualityLevel.High:
-                return 2;
-            default:
-                return 0;
-        }
+            QualityLevel.Low => 0,
+            QualityLevel.Medium => 1,
+            QualityLevel.High => 2,
+            _ => 0,
+        };
     }
 
     public static QualityLevel GetQualityLevelFromIndex(int index)
     {
-        switch (index)
+        return index switch
         {
-            case 0:
-                return QualityLevel.Low;
-            case 1:
-                return QualityLevel.Medium;
-            case 2:
-                return QualityLevel.High;
-            default:
-                return QualityLevel.Low;
-        }
+            0 => QualityLevel.Low,
+            1 => QualityLevel.Medium,
+            2 => QualityLevel.High,
+            _ => QualityLevel.Low,
+        };
     }
 }

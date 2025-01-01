@@ -66,7 +66,7 @@ public partial class UserData
         }
     }
 
-    public static int Coin
+    public static int MainCoin
     {
         get
         {
