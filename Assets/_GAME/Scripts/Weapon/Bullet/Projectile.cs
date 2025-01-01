@@ -96,22 +96,22 @@ namespace ShootingGame
             this.isCriticalHit = properties.isCritical;
             this.knockbackForce = properties.pushForce;
 
+            hitFX?.gameObject.SetActive(false);
+            projectileFX?.gameObject.SetActive(true);
+            muzzleFX?.gameObject.SetActive(true);
+            if(trailFX != null) trailFX.gameObject.SetActive(true);
+
+            //Set muzzle direction
+            if(muzzleFX) muzzleFX.transform.right = direction;
+            muzzleFX.transform.localPosition = Vector3.zero;
+            muzzleFX?.transform.SetParent(transform.parent);
+
+
             Move(direction.normalized * speed);
             SetDamage(properties.damage);
 
             transform.right = direction;
             transform.SetParent(null);
-
-            hitFX?.gameObject.SetActive(false);
-
-            projectileFX?.gameObject.SetActive(true);
-            muzzleFX?.gameObject.SetActive(true);
-            trailFX?.gameObject.SetActive(true);
-
-            //Set muzzle direction
-            if(muzzleFX) muzzleFX.transform.right = direction;
-            muzzleFX.transform.localPosition = Vector3.zero;
-            muzzleFX?.transform.SetParent(null);
 
             Invoke(nameof(Recycle), 2f);
         }

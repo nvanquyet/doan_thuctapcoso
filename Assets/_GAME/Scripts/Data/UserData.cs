@@ -87,6 +87,7 @@ public partial class UserData
         set
         {
             PlayerPrefs.SetInt("Energy", value >= 0 ? (value >= GameConfig.Instance.MaxEnergy ? GameConfig.Instance.MaxEnergy : value) : 0);
+            EventDispatcher.Instance.Dispatch<GameEvent.EnergyChange>();
         }
     }
 

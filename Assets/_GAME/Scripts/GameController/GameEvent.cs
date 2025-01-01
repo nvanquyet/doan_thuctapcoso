@@ -13,6 +13,7 @@ public sealed class GameEvent
     }
 
     public struct CoinChange : IEventParam { }
+    public struct EnergyChange : IEventParam { }
 
 
     public struct OnNextWave : IEventParam

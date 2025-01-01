@@ -10,6 +10,7 @@ public class UIShop : Frame
     [SerializeField] private Button closeButton;
     [SerializeField] private Button characterButton;
     [SerializeField] private Button projectileButton;
+    [SerializeField] private Button itemsButton;
 
     [Header("Tab")]
     [SerializeField] private ScrollRect[] tabs;
@@ -28,10 +29,17 @@ public class UIShop : Frame
         });
         characterButton.onClick.AddListener(OnClickTabCharacter);
         projectileButton.onClick.AddListener(OnClickTabProjectile);
+        itemsButton.onClick.AddListener(OnClickTabItem);
 
 
         InitData();
         infoItem.gameObject.SetActive(false);
+    }
+
+    private void OnClickTabItem()
+    {
+        SFX.Instance.PlaySound(AudioEvent.ButtonClick);
+        ActiveTab(2);
     }
 
     private void InitData()

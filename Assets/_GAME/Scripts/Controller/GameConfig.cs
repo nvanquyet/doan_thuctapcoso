@@ -29,6 +29,7 @@ namespace ShootingGame
 
         public float EnergyGainInterval = 7200;
         public int MaxEnergy = 5;
+        public int PriceEnergy = 50;
 
         protected override void Initialize()
         {
