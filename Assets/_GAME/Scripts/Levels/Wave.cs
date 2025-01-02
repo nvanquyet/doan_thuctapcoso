@@ -1,3 +1,4 @@
+using ShootingGame.Data;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -136,9 +137,7 @@ namespace ShootingGame
                 {
                     yield return new WaitForSeconds(waveProperties.timeNormalSpawn);
                 }
-
             }
-
             if (isBossWave) SpawnBoss();
 
             isSpawning = false;
@@ -149,7 +148,6 @@ namespace ShootingGame
         {
             //Spawn Boss from data
             var index = Mathf.Max((currentWave / GameConfig.Instance.BossWaveDistance) - 1, 0);
-            GameService.LogColor($"Spawn Boss {index}");
             var bossData = GameData.Instance.Bosses.GetValue(index);
             if (bossData && bossData.Prefabs)
             {
