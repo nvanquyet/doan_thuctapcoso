@@ -263,7 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerAnimation: Attack
   attackRange: 5
-  projectilePrefab: {fileID: -6031142928564043692, guid: fea7cf601e56a4a46b8a554854776927, type: 3}
+  projectilePrefab: {fileID: -6031142928564043692, guid: 07c6ea7b173dfda4d8703df7e326f13f, type: 3}
   firePoint: {fileID: 660664657825297035}
 --- !u!1001 &5571819336416982795
 PrefabInstance:

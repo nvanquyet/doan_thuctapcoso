@@ -116,7 +116,6 @@ MonoBehaviour:
   muzzleFX: {fileID: 0}
   trailFX: {fileID: 0}
   projectileFX: {fileID: 6895031726145855758}
-  projectileSpeed: 10
 --- !u!61 &411114611003256357
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -303,6 +302,10 @@ PrefabInstance:
     - target: {fileID: 19927082, guid: baf45fcc725d71e47ad7c6944cf0bd31, type: 3}
       propertyPath: m_SortingOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 19945852, guid: baf45fcc725d71e47ad7c6944cf0bd31, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19945852, guid: baf45fcc725d71e47ad7c6944cf0bd31, type: 3}
       propertyPath: m_SortingOrder

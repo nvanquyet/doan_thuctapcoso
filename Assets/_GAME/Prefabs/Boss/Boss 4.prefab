@@ -35,7 +35,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2892715586376485202}
@@ -144,7 +144,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 4.1953793, y: 1.313929}
+  m_Offset: {x: 4.091373, y: 1.0539138}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -155,7 +155,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.4834323, y: 2.7420971}
+  m_Size: {x: 1.8940659, y: 2.2220669}
   m_EdgeRadius: 0
 --- !u!114 &5195548636648846595
 MonoBehaviour:
@@ -229,8 +229,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9450f36a70ce6d45929878720efe12e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerAnimation: Attack
-  attackRange: 1
+  triggerAnimation: Melee
+  attackRange: 3
 --- !u!1001 &2991743471180963184
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -241,11 +241,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 117150394333481501, guid: 882efb70f3ba0194cad0695302ae5810, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.57
+      value: -1.33
       objectReference: {fileID: 0}
     - target: {fileID: 117150394333481501, guid: 882efb70f3ba0194cad0695302ae5810, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.3
+      value: -0.08
       objectReference: {fileID: 0}
     - target: {fileID: 117150395161187362, guid: 882efb70f3ba0194cad0695302ae5810, type: 3}
       propertyPath: m_LocalPosition.x
@@ -253,7 +253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 117150395161187362, guid: 882efb70f3ba0194cad0695302ae5810, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 117150395161187362, guid: 882efb70f3ba0194cad0695302ae5810, type: 3}
       propertyPath: m_LocalPosition.z
@@ -303,7 +303,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.88
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 563940067125343201, guid: 882efb70f3ba0194cad0695302ae5810, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

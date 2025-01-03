@@ -48,7 +48,6 @@ GameObject:
   - component: {fileID: 724029092634259062}
   - component: {fileID: 3737105127655994885}
   - component: {fileID: -8395272762796244704}
-  - component: {fileID: 8818488284858066791}
   m_Layer: 0
   m_Name: Enemy 3
   m_TagString: Enemy
@@ -202,8 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 20
-  attackBehaviours:
-  - {fileID: 8818488284858066791}
+  attackBehaviours: []
   triggerAnimation: {fileID: 314606667588004858}
   timeChangeBehaviour: 5
 --- !u!114 &724029092634259062
@@ -249,26 +247,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 2209816425500499152}
   spriteRenderer: {fileID: 3588171738617869084}
---- !u!114 &8818488284858066791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1926085311155766288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb060a1031f3ffe43a525ddd863b389f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerAnimation: Attack
-  attackRange: 5
-  projectilePrefab: {fileID: -6031142928564043692, guid: 11b85ce67223f6248ba490fe6fad1c6b, type: 3}
-  firePoints:
-  - {fileID: 6794907674376243613}
-  - {fileID: 4006279913842201685}
-  - {fileID: 7904890406376064110}
-  focusPoint: {fileID: 9028691908482006146}
 --- !u!1 &2246993263437877346
 GameObject:
   m_ObjectHideFlags: 0
