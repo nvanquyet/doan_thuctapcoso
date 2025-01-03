@@ -307,7 +307,7 @@ namespace ShootingGame
             if(Rigid == null) return;
             if (target == null) return;
             var direction = this.transform.position - target.position;
-            Rigid.AddForce(direction.normalized * force, ForceMode2D.Impulse);
+            Rigid.AddForce(direction.normalized * (force * 1.0f / 100), ForceMode2D.Impulse);
         }
 
         public void Defend(int damage)

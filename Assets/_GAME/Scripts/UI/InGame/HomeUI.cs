@@ -38,7 +38,7 @@ public class HomeUI : Frame
         btnShop?.onClick.AddListener(() =>
         {
             SFX.Instance.PlaySound(AudioEvent.ButtonClick);
-            UIPopUpCtrl.Instance.Show<UIInventory>();
+            UIPopUpCtrl.Instance.Show<UIShop>();
         });
         btnHelp?.onClick.AddListener(() =>
         {

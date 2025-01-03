@@ -21,8 +21,10 @@ namespace ShootingGame
         [SerializeField] private Transform[] _bulletSpawnPoint;
         [SerializeField] private Transform _muzzuleSpawnPoint;
         [SerializeField] private ShootingType shootingType = ShootingType.SingleShot;
+        [Header("Config")]
         [SerializeField] private float burstDelay = 0.1f;
         [SerializeField] private int amountBulletPooling = 10;
+        [SerializeField] private float projectileSpeed = 10;
 
         [SerializeField] private int burstCount = 5;
 
@@ -134,7 +136,7 @@ namespace ShootingGame
             bulletClone.OnRecycle = () => RecycleBullet(bulletClone);
 
             Vector2 direction = (spawnPoint.position - _muzzuleSpawnPoint.position).normalized;
-            bulletClone.Spawn(direction, data, defendOwner, expReceiver);
+            bulletClone.Spawn(direction, data, defendOwner, expReceiver, projectileSpeed);
             projectileList.Add(bulletClone);
         }
 

@@ -33,21 +33,9 @@ public class CharacterSwitcher : MonoBehaviour
     {
         get
         {
-            var idx = Mathf.Clamp(UserData.CurrentCharacter + index, 0, GameData.Instance.Players.GetAllValue().Length - 1);
-            if (idx <= 0)
-            {
-                preButton.interactable = false;
-                nextButton.interactable = true;
-            }
-            else if (idx >= GameData.Instance.Players.GetAllValue().Length - 1)
-            {
-                nextButton.interactable = false;
-                preButton.interactable = true;
-            }else
-            {
-                nextButton.interactable = true;
-                preButton.interactable = true;
-            }
+            var idx = UserData.CurrentCharacter + index;
+            if (idx < 0) idx = GameData.Instance.Players.GetAllValue().Length - 1;
+            if (idx >= GameData.Instance.Players.GetAllValue().Length) idx = 0;
             return idx;
         }
     }
@@ -56,21 +44,40 @@ public class CharacterSwitcher : MonoBehaviour
     {
         SFX.Instance.PlaySound(AudioEvent.ButtonClick);
         index++;
-        SwitchCharacter();
+        SwitchCharacter(true);
     }
 
     public void PreviousCharacter()
     {
         SFX.Instance.PlaySound(AudioEvent.ButtonClick);
         index--;
-        SwitchCharacter();
+        SwitchCharacter(false);
     }
 
-    private void SwitchCharacter()
+    private void SwitchCharacter(bool increase = true)
     {
         var c = GameData.Instance.Players.GetValue(CharacterIndex);
-        characterNameText.text = c.Appearance.Name;
-        animator.runtimeAnimatorController = c.Animator;
+        if(c.IsOwn || UserData.GetOwnerCharacter(CharacterIndex))
+        {
+            characterNameText.text = c.Appearance.Name;
+            animator.runtimeAnimatorController = c.Animator;
+        }
+        else
+        {
+            if(increase) index++;
+            else index--;
+            if(index >= GameData.Instance.Players.GetAllValue().Length)
+            {
+                index = 0;
+            }
+            else if(index < 0)
+            {
+                index = GameData.Instance.Players.GetAllValue().Length - 1;
+            }
+            SwitchCharacter(increase);
+            return;
+        }
+       
         //if (playerAvatarImage != null)
         //{
         //    playerAvatarImage.sprite = c.Appearance.Icon;

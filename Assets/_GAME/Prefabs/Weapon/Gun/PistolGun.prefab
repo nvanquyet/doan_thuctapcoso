@@ -104,15 +104,15 @@ SpriteRenderer:
   m_SortingLayerID: -195207519
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: dbb81db3ebe4db749a63c4186da0654c, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 20.48, y: 20.48}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &9163475137039164303
@@ -241,7 +241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 0
   weaponSprite: {fileID: 9163475136738846238}
-  _bulletPrefab: {fileID: 4318666252703170317, guid: d7b1e0d3588736a419363e2905afacfa, type: 3}
+  _bulletPrefab: {fileID: 4318666252703170317, guid: 8cc91a05ee389204398994ae1c1f90d4, type: 3}
   _bulletSpawnPoint:
   - {fileID: 9163475137039164302}
   _muzzuleSpawnPoint: {fileID: 577203009588991018}

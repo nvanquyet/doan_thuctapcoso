@@ -8,9 +8,25 @@ public class EnergySystem : MonoBehaviour
     [SerializeField] private ProgressBar slider;
     [SerializeField] private TMPro.TextMeshProUGUI txtTime;
     public bool HasEnergy => UserData.CurrentEnergy > 0;
+    private Coroutine updateEnergyCoroutine;
     private void OnEnable()
     {
-        StartCoroutine(UpdateEnergy(true));
+        CheckEnergy();
+    }
+    private void Start()
+    {
+        this.AddListener<GameEvent.EnergyChange>(OnEnergyChange, false);
+    }
+
+    private void OnEnergyChange(GameEvent.EnergyChange change)
+    {
+        if(updateEnergyCoroutine != null) StopCoroutine(updateEnergyCoroutine);
+        CheckEnergy();
+    }
+
+    private void CheckEnergy()
+    {
+        updateEnergyCoroutine = StartCoroutine(UpdateEnergy(true));
     }
 
     private IEnumerator UpdateEnergy(bool checkEnergyGain = false)

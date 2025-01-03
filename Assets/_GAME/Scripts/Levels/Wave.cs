@@ -62,7 +62,7 @@ namespace ShootingGame
         //This method to set data wave
         public void Init(float scalingFactor, int currentWave)
         {
-            this.isBossWave = currentWave % GameConfig.Instance.bossWaveDistance == 0;
+            this.isBossWave = currentWave % GameConfig.Instance.BossWaveDistance == 0;
             this.currentWave = currentWave;
 
             this.waveProperties = GameService.CalculateWaveProperties(currentWave, scalingFactor);
@@ -139,11 +139,7 @@ namespace ShootingGame
 
             }
 
-            if (isBossWave)
-            {
-                //Spawn Boss
-                SpawnBoss();
-            }
+            if (isBossWave) SpawnBoss();
 
             isSpawning = false;
             yield break;
@@ -152,7 +148,8 @@ namespace ShootingGame
         private void SpawnBoss()
         {
             //Spawn Boss from data
-            var index = Mathf.Max((currentWave / GameConfig.Instance.bossWaveDistance) - 1, 0);
+            var index = Mathf.Max((currentWave / GameConfig.Instance.BossWaveDistance) - 1, 0);
+            GameService.LogColor($"Spawn Boss {index}");
             var bossData = GameData.Instance.Bosses.GetValue(index);
             if (bossData && bossData.Prefabs)
             {

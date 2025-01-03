@@ -29,7 +29,7 @@ public class TetrisSlot : UIComponent
         }
         else {
             if(maxGridX * maxGridY >= numberSlots) return;
-            int[,] newGrid = new int[maxGridY, maxGridX];
+            var newGrid = new int[maxGridY, maxGridX];
             for (int i = 0; i < maxGridY; i++)
             {
                 for (int j = 0; j < maxGridX; j++)

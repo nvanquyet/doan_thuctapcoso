@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: BossData
   m_EditorClassIdentifier: 
   _data:
-  - key: 0
-    value: {fileID: 11400000, guid: 2178081b9dabcc1449d3c533cab66803, type: 2}
   - key: 1
     value: {fileID: 11400000, guid: 095d43dd17b1b8242b990c4c6cfa06fa, type: 2}
   - key: 2
