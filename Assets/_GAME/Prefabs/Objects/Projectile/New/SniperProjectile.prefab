@@ -97,9 +97,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00085713714, y: 0.0008571483}
+  m_Offset: {x: 0.0007927567, y: 0.0038569868}
   serializedVersion: 2
-  m_Radius: 0.04428616
+  m_Radius: 0.11539593
 --- !u!61 &411114611003256357
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -132,7 +132,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.001285702, y: -0.000000007450581}
+  m_Offset: {x: 0.0023542494, y: 0.008716911}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -143,7 +143,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.09290463, y: 0.0900778}
+  m_Size: {x: 0.27932987, y: 0.26174408}
   m_EdgeRadius: 0
 --- !u!114 &4318666252703170317
 MonoBehaviour:
@@ -162,7 +162,6 @@ MonoBehaviour:
   muzzleFX: {fileID: 1288596399916965635}
   trailFX: {fileID: 0}
   projectileFX: {fileID: 7320943794547477679}
-  projectileSpeed: 15
 --- !u!1001 &1290054198314308805
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -233,11 +232,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198702686265357404, guid: a8aaad6bacc642a4c825e7b1f91a175e, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.25
+      value: 0.625
       objectReference: {fileID: 0}
     - target: {fileID: 198702686265357404, guid: a8aaad6bacc642a4c825e7b1f91a175e, type: 3}
       propertyPath: InitialModule.startSize.minScalar
-      value: 0.1875
+      value: 0.46875
       objectReference: {fileID: 0}
     - target: {fileID: 199109132740603894, guid: a8aaad6bacc642a4c825e7b1f91a175e, type: 3}
       propertyPath: m_Materials.Array.size
@@ -487,11 +486,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 96805598431632590, guid: 413b180ebab02d349a31789fab789ef6, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].time
-      value: 0.40960693
+      value: 0.71751404
       objectReference: {fileID: 0}
     - target: {fileID: 96805598431632590, guid: 413b180ebab02d349a31789fab789ef6, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
-      value: 0.484079
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 96805598431632590, guid: 413b180ebab02d349a31789fab789ef6, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].value
+      value: 0.025482178
       objectReference: {fileID: 0}
     - target: {fileID: 96805598431632590, guid: 413b180ebab02d349a31789fab789ef6, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].inSlope
@@ -511,7 +514,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198638885496516166, guid: 413b180ebab02d349a31789fab789ef6, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.225
+      value: 0.5625
       objectReference: {fileID: 0}
     - target: {fileID: 199081142237376256, guid: 413b180ebab02d349a31789fab789ef6, type: 3}
       propertyPath: m_SortingOrder

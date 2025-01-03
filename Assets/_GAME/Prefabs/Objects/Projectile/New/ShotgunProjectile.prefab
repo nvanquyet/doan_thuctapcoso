@@ -162,7 +162,6 @@ MonoBehaviour:
   muzzleFX: {fileID: 2569696449745230643}
   trailFX: {fileID: 0}
   projectileFX: {fileID: 2967983783248254084}
-  projectileSpeed: 15
 --- !u!1001 &2570717161575611247
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -297,27 +296,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198123516601626210, guid: 4eeb51a79b674084887bce37aa7713b3, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.13333334
+      value: 0.39999
       objectReference: {fileID: 0}
     - target: {fileID: 198123516601626210, guid: 4eeb51a79b674084887bce37aa7713b3, type: 3}
       propertyPath: InitialModule.startSize.minScalar
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 198494522266682486, guid: 4eeb51a79b674084887bce37aa7713b3, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.2
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 198494522266682486, guid: 4eeb51a79b674084887bce37aa7713b3, type: 3}
       propertyPath: InitialModule.startSize.minScalar
-      value: 0.13333334
+      value: 0.39999
       objectReference: {fileID: 0}
     - target: {fileID: 198669652565348346, guid: 4eeb51a79b674084887bce37aa7713b3, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.33333334
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198669652565348346, guid: 4eeb51a79b674084887bce37aa7713b3, type: 3}
       propertyPath: InitialModule.startSize.minScalar
-      value: 0.26666668
+      value: 0.80001
       objectReference: {fileID: 0}
     - target: {fileID: 199357243069698730, guid: 4eeb51a79b674084887bce37aa7713b3, type: 3}
       propertyPath: m_Materials.Array.size
@@ -516,7 +515,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198713039109322386, guid: 5727f3393f270a34ca8464323e8247f3, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.26666668
+      value: 0.40000004
       objectReference: {fileID: 0}
     - target: {fileID: 198713039109322386, guid: 5727f3393f270a34ca8464323e8247f3, type: 3}
       propertyPath: InitialModule.startColor.maxColor.a
@@ -528,23 +527,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198748462937176054, guid: 5727f3393f270a34ca8464323e8247f3, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 198748462937176054, guid: 5727f3393f270a34ca8464323e8247f3, type: 3}
       propertyPath: InitialModule.startSizeY.scalar
-      value: 0.1
+      value: 0.175
       objectReference: {fileID: 0}
     - target: {fileID: 198748462937176054, guid: 5727f3393f270a34ca8464323e8247f3, type: 3}
       propertyPath: InitialModule.startSizeZ.scalar
-      value: 0.06666667
+      value: 0.033333335
       objectReference: {fileID: 0}
     - target: {fileID: 198799257433740906, guid: 5727f3393f270a34ca8464323e8247f3, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.04
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 198799257433740906, guid: 5727f3393f270a34ca8464323e8247f3, type: 3}
       propertyPath: InitialModule.startSizeY.scalar
-      value: 0.04
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 198799257433740906, guid: 5727f3393f270a34ca8464323e8247f3, type: 3}
       propertyPath: InitialModule.startSizeZ.scalar
@@ -575,8 +574,12 @@ PrefabInstance:
       value: 0.06666667
       objectReference: {fileID: 0}
     - target: {fileID: 198969432181178134, guid: 5727f3393f270a34ca8464323e8247f3, type: 3}
+      propertyPath: InitialModule.size3D
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198969432181178134, guid: 5727f3393f270a34ca8464323e8247f3, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.2
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 198969432181178134, guid: 5727f3393f270a34ca8464323e8247f3, type: 3}
       propertyPath: InitialModule.startSizeY.scalar

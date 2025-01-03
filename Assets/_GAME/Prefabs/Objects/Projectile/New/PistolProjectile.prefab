@@ -312,11 +312,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198014546144313552, guid: e15736201e1cc83448e0cdbe4b705dd1, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 2.5
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 198014546144313552, guid: e15736201e1cc83448e0cdbe4b705dd1, type: 3}
       propertyPath: InitialModule.startSize.minScalar
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 198034949565064108, guid: e15736201e1cc83448e0cdbe4b705dd1, type: 3}
       propertyPath: InitialModule.size3D
@@ -324,11 +324,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198034949565064108, guid: e15736201e1cc83448e0cdbe4b705dd1, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 2.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 198034949565064108, guid: e15736201e1cc83448e0cdbe4b705dd1, type: 3}
       propertyPath: InitialModule.startSize.minScalar
-      value: 1.25
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 199004416308130514, guid: e15736201e1cc83448e0cdbe4b705dd1, type: 3}
       propertyPath: m_Materials.Array.size
