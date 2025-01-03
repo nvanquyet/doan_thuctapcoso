@@ -18,7 +18,7 @@ MonoBehaviour:
     HpWeight: 0.1
     DamageWeight: 0.15
     SpeedWeight: 0.005
-  bossWaveDistance: 5
+  bossWaveDistance: 10
   waveProperties:
     timeNormalSpawn: 0.2
     timeThreshold: 5
@@ -27,3 +27,5 @@ MonoBehaviour:
     timeWave: 30
   startGameBuyItem: 1
   StartCoin: 100
+  EnergyGainInterval: 7200
+  MaxEnergy: 5

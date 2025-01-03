@@ -17,10 +17,6 @@ GameObject:
   - component: {fileID: 724029092634259062}
   - component: {fileID: 3737105127655994885}
   - component: {fileID: -8395272762796244704}
-  - component: {fileID: -6784914736345168692}
-  - component: {fileID: 6606874794719049286}
-  - component: {fileID: 898062650599654142}
-  - component: {fileID: 2507489750015451517}
   - component: {fileID: 8469620239519864242}
   m_Layer: 0
   m_Name: Boss 4
@@ -175,10 +171,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 10
   attackBehaviours:
-  - {fileID: -6784914736345168692}
-  - {fileID: 6606874794719049286}
-  - {fileID: 898062650599654142}
-  - {fileID: 2507489750015451517}
   - {fileID: 8469620239519864242}
   triggerAnimation: {fileID: 3271589004636653977}
   timeChangeBehaviour: 5
@@ -225,76 +217,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 2892715586376485205}
   spriteRenderer: {fileID: 2892715585204051845}
---- !u!114 &-6784914736345168692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1926085311155766288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0dc407073cf66542adf4649ea9d81a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerAnimation: Single
-  attackRange: 5
-  projectilePrefab: {fileID: -8053909183671182864, guid: 289ea4ebac1566a47b02f514afa987db, type: 3}
-  firePoint: {fileID: 0}
---- !u!114 &6606874794719049286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1926085311155766288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5492fbb041381954384efafa2d531eb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerAnimation: Roll
-  attackRange: 5
-  distanceRoll: 10
---- !u!114 &898062650599654142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1926085311155766288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb060a1031f3ffe43a525ddd863b389f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerAnimation: Spread
-  attackRange: 5
-  projectilePrefab: {fileID: -6031142928564043692, guid: fea7cf601e56a4a46b8a554854776927, type: 3}
-  firePoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  focusPoint: {fileID: 0}
---- !u!114 &2507489750015451517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1926085311155766288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96693be585eab364e9534170b2a8ba65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerAnimation: Radial
-  attackRange: 5
-  projectilePrefab: {fileID: -6031142928564043692, guid: fea7cf601e56a4a46b8a554854776927, type: 3}
-  projectileCount: 10
-  distanceFromObject: 1
 --- !u!114 &8469620239519864242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,7 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerAnimation: Attack
-  attackRange: 1.5
+  attackRange: 1
 --- !u!1001 &2991743471180963184
 PrefabInstance:
   m_ObjectHideFlags: 0

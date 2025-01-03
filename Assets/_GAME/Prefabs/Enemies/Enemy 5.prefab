@@ -66,7 +66,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8678221961870985967}
@@ -263,7 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerAnimation: Attack
   attackRange: 5
-  projectilePrefab: {fileID: -6031142928564043692, guid: fea7cf601e56a4a46b8a554854776927, type: 3}
+  projectilePrefab: {fileID: 4318666252703170317, guid: 4dfa299ef3646ee4c9f1269bc1d5a0bf, type: 3}
   firePoint: {fileID: 660664657825297035}
 --- !u!1001 &3232571216227920167
 PrefabInstance:
