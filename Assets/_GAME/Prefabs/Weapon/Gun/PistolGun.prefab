@@ -248,4 +248,5 @@ MonoBehaviour:
   shootingType: 0
   burstDelay: 0.1
   amountBulletPooling: 10
+  projectileSpeed: 10
   burstCount: 1

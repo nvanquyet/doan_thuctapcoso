@@ -85,12 +85,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf2d431a210c7e64aa43f32d9dcac138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 11
   _enemyAttacker: {fileID: 5195548636648846595}
   _enemyDefender: {fileID: 724029092634259062}
   _enemyMovement: {fileID: 3737105127655994885}
   _enemyAnimation: {fileID: -8395272762796244704}
-  isBoss: 0
 --- !u!114 &3731585282483701307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,6 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 3780701283283744581}
+  spriteRenderer: {fileID: 3446020745269451999}
 --- !u!114 &-6784914736345168692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,7 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerAnimation: Attack
   attackRange: 5
-  projectilePrefab: {fileID: -6031142928564043692, guid: fea7cf601e56a4a46b8a554854776927, type: 3}
+  projectilePrefab: {fileID: -6031142928564043692, guid: ce1c3e27e74752841910df2ebf0a4e5e, type: 3}
   firePoint: {fileID: 660664657825297035}
 --- !u!1001 &6255472316361167703
 PrefabInstance:
@@ -347,6 +346,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fd13b1c9120a95498e9092bec413729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!212 &3446020745269451999 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8727236595819138952, guid: 3ffadb14c2b6d2749b7b4df5dc68d2a6, type: 3}
+  m_PrefabInstance: {fileID: 6255472316361167703}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &3780701283283744581 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7113533626763109394, guid: 3ffadb14c2b6d2749b7b4df5dc68d2a6, type: 3}

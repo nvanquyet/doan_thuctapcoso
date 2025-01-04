@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -6031142928564043692}
   - component: {fileID: 411114611003256357}
   m_Layer: 0
-  m_Name: Projectile Default
+  m_Name: M8Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.25, y: -2.4, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1817030128679614208}
@@ -96,9 +96,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.020693466, y: 0.0074495897}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.07185694
+  m_Radius: 0.1
 --- !u!114 &-6031142928564043692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +115,7 @@ MonoBehaviour:
   hitFX: {fileID: 0}
   muzzleFX: {fileID: 0}
   trailFX: {fileID: 0}
-  projectileFX: {fileID: 6895031726145855758}
+  projectileFX: {fileID: 0}
 --- !u!61 &411114611003256357
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -148,7 +148,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.026073784, y: 0.007449746}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -159,7 +159,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3057481, y: 0.14248681}
+  m_Size: {x: 0.2651889, y: 0.26664782}
   m_EdgeRadius: 0
 --- !u!1001 &1817030128679975774
 PrefabInstance:
@@ -245,7 +245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 454532, guid: baf45fcc725d71e47ad7c6944cf0bd31, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 454532, guid: baf45fcc725d71e47ad7c6944cf0bd31, type: 3}
       propertyPath: m_LocalScale.z
@@ -295,6 +295,18 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19834160, guid: baf45fcc725d71e47ad7c6944cf0bd31, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19834160, guid: baf45fcc725d71e47ad7c6944cf0bd31, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.8279877
+      objectReference: {fileID: 0}
+    - target: {fileID: 19834160, guid: baf45fcc725d71e47ad7c6944cf0bd31, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 19916784, guid: baf45fcc725d71e47ad7c6944cf0bd31, type: 3}
       propertyPath: m_SortingOrder
       value: 2
@@ -302,10 +314,6 @@ PrefabInstance:
     - target: {fileID: 19927082, guid: baf45fcc725d71e47ad7c6944cf0bd31, type: 3}
       propertyPath: m_SortingOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 19945852, guid: baf45fcc725d71e47ad7c6944cf0bd31, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19945852, guid: baf45fcc725d71e47ad7c6944cf0bd31, type: 3}
       propertyPath: m_SortingOrder
@@ -317,11 +325,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: baf45fcc725d71e47ad7c6944cf0bd31, type: 3}
---- !u!1 &6895031726145855758 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 135146, guid: baf45fcc725d71e47ad7c6944cf0bd31, type: 3}
-  m_PrefabInstance: {fileID: 6895031726145990372}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6895031726146060640 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 454532, guid: baf45fcc725d71e47ad7c6944cf0bd31, type: 3}
