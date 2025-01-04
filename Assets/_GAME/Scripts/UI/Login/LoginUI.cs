@@ -1,9 +1,6 @@
 using ShootingGame;
-using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LoginUI : Frame
@@ -26,8 +23,17 @@ public class LoginUI : Frame
     [SerializeField] private TextMeshProUGUI secondBtnText;
     [SerializeField] private GameObject alreadyHaveAccountText;
 
+
+    private void Awake()
+    {
+        Session.gI().Connect(GameConfig.Instance.ServerAddress, GameConfig.Instance.ServerPort);
+        Session.gI().SetHandler(Controller.gI());
+    }
+
     private void Start()
     {
+        this.AddListener<GameEvent.OnLogin>(OnLoginCallBack, false);
+        this.AddListener<GameEvent.OnResgister>(OnRegisterCallBack, false);
         if (UserData.IsLogin)
         {
             UIPopUpCtrl.Instance.Get<LoadScene>().LoadDirectScene((int)SceneIndex.Home);
@@ -36,6 +42,33 @@ public class LoginUI : Frame
         {
             InitLogin();
             btnForgotPassword.onClick.AddListener(InitResetPassword);
+        }
+    }
+
+    private void OnLoginCallBack(GameEvent.OnLogin login)
+    {
+        GameService.LogColor($"Login : {login.success}");
+        UserData.IsLogin = login.success;
+        if(!login.success)
+        {
+            if(!string.IsNullOrEmpty(login.message)) UIPopUpCtrl.Instance.Get<UINotice>().SetNotice("Login Error", login.message);
+            return;
+        }else Hide(false, () =>
+        {
+            UIPopUpCtrl.Instance.Get<LoadScene>().LoadSceneAsync((int)SceneIndex.Home);
+        });
+    }
+
+    private void OnRegisterCallBack(GameEvent.OnResgister resgister)
+    {
+        if(resgister.success)
+        {
+            UIPopUpCtrl.Instance.Get<UINotice>().SetNotice($"Register Success", "Please login to continue");
+            InitLogin(true);
+        }
+        else
+        {
+            UIPopUpCtrl.Instance.Get<UINotice>().SetNotice("Register Error", resgister.message);
         }
     }
 
@@ -124,36 +157,33 @@ public class LoginUI : Frame
             }
         }
         GameService.LogColor("Register");
-        UIPopUpCtrl.Instance.Get<UINotice>().SetNotice($"Register Success", "Please login to continue");
-        InitLogin(true);
+        Service.gI().register("duy", password);
     }
 
     private void OnLogin()
     {
-        SFX.Instance.PlaySound(AudioEvent.ButtonClick);
-        var email = usernameInput.Text;
-        var password = passwordInput.Text;
-        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
-        {
-            UIPopUpCtrl.Instance.Get<UINotice>().SetNotice($"Login Error", "Email or Password is empty");
-            return;
-        }
-        else if (!GameService.IsValidEmail(email))
-        {
-            UIPopUpCtrl.Instance.Get<UINotice>().SetNotice($"Login Error", "Email is invalid");
-            return;
-        }
-        else if (password.Length < 6)
-        {
-            UIPopUpCtrl.Instance.Get<UINotice>().SetNotice($"Login Error", "Password must be at least 6 characters");
-            return;
-        }
-        GameService.LogColor($"Login {email} {password}");
-        UserData.IsLogin = true;
-        Hide(false, () =>
-        {
-            UIPopUpCtrl.Instance.Get<LoadScene>().LoadSceneAsync((int)SceneIndex.Home);
-        });
+        UIPopUpCtrl.Instance.Get<LoadScene>().LoadSceneAsync((int)SceneIndex.Home);
+        //
+        // SFX.Instance.PlaySound(AudioEvent.ButtonClick);
+        // var email = usernameInput.Text;
+        // var password = passwordInput.Text;
+        // if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+        // {
+        //     UIPopUpCtrl.Instance.Get<UINotice>().SetNotice($"Login Error", "Email or Password is empty");
+        //     return;
+        // }
+        // else if (!GameService.IsValidEmail(email))
+        // {
+        //     UIPopUpCtrl.Instance.Get<UINotice>().SetNotice($"Login Error", "Email is invalid");
+        //     return;
+        // }
+        // else if (password.Length < 6)
+        // {
+        //     UIPopUpCtrl.Instance.Get<UINotice>().SetNotice($"Login Error", "Password must be at least 6 characters");
+        //     return;
+        // }
+        // GameService.LogColor($"Login {email} {password}");
+        // Service.gI().login("duy", password, "0.0.1");
     }
 
     private void OnForgotPassword()

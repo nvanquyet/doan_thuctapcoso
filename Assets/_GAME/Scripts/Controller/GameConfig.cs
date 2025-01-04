@@ -31,6 +31,11 @@ namespace ShootingGame
         public int MaxEnergy = 5;
         public int PriceEnergy = 50;
 
+
+        [Header("Server Config")]
+        public string ServerAddress = "localhost";
+        public int ServerPort = 1609;
+
         protected override void Initialize()
         {
             

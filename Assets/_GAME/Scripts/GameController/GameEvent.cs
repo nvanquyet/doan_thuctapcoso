@@ -47,4 +47,15 @@ public sealed class GameEvent
         public Player player;
     }
 
+    public struct OnLogin : IEventParam
+    {
+        public bool success;
+        public string message;
+    }
+    public struct OnResgister : IEventParam
+    {
+        public bool success;
+        public string message;
+    }
+
 }

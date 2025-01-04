@@ -30,3 +30,5 @@ MonoBehaviour:
   EnergyGainInterval: 7200
   MaxEnergy: 5
   PriceEnergy: 50
+  ServerAddress: 188.166.177.199
+  ServerPort: 1609
