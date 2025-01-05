@@ -2436,7 +2436,7 @@ AnimationClip:
     messageOptions: 0
   - time: 0.25
     functionName: TriggerAnimaiton
-    data: Attack
+    data: Melee
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 1
@@ -2444,13 +2444,6 @@ AnimationClip:
   - time: 0.76666665
     functionName: Event
     data: Complete
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.78333336
-    functionName: SetHead
-    data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

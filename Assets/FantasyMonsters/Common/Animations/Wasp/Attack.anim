@@ -1712,7 +1712,7 @@ AnimationClip:
     messageOptions: 0
   - time: 0.33333334
     functionName: TriggerAnimaiton
-    data: Attack
+    data: Single
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

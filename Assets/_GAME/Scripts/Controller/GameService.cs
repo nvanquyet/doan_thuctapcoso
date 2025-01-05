@@ -234,6 +234,7 @@ namespace ShootingGame
         {
             animator.runtimeAnimatorController = animatorController;
         }
+
     }
 
 }

@@ -12,6 +12,10 @@ public sealed class GameEvent
         public int wave;
     }
 
+    public struct CoinChange : IEventParam { }
+    public struct EnergyChange : IEventParam { }
+
+
     public struct OnNextWave : IEventParam
     {
         public Player player;
@@ -42,4 +46,21 @@ public sealed class GameEvent
     {
         public Player player;
     }
+
+    public struct OnLogin : IEventParam
+    {
+        public bool success;
+        public string message;
+    }
+    public struct OnResgister : IEventParam
+    {
+        public bool success;
+        public string message;
+    }
+
+    public struct OnReceiveNotice : IEventParam
+    {
+        public string message;
+    }
+
 }

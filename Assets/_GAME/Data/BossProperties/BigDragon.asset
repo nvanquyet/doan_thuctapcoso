@@ -15,9 +15,9 @@ MonoBehaviour:
   icon: {fileID: 0}
   properties:
     BaseHealth: 5000
-    BaseDamage: 150
+    BaseDamage: 1
     BaseSpeed: 5
     BaseEXP: 1000
     BaseCoin: 0
     GrowthRate: 1.3
-  prefabs: {fileID: 0}
+  prefabs: {fileID: 3486293495546998591, guid: c4dcc57b282c8a9408eb9ecc21570082, type: 3}

@@ -1,4 +1,5 @@
 using ShootingGame;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,18 +12,33 @@ public class HomeUI : Frame
     [SerializeField] private Button btnHelp;
     [SerializeField] private Button btnShop;
     [SerializeField] private Button btnInventory;
+
+    [SerializeField] private EnergySystem energySystem;
+
+
     private void Start()
     {
         userTxt?.SetText(UserData.UserName);
         btnPlay?.onClick.AddListener(() =>
         {
+            if(energySystem.HasEnergy)
+            {
+                energySystem.UsingEnergy();
+                UIPopUpCtrl.Instance.Get<LoadScene>().LoadSceneAsync((int)SceneIndex.InGame);
+            }else
+            {
+                UIPopUpCtrl.Instance.Get<UINotice>().SetNotice("Out of Energy", "Out of Energy" , () =>
+                {
+                    UIPopUpCtrl.Instance.Show<UIShop>();
+                });
+            }
             SFX.Instance.PlaySound(AudioEvent.ButtonClick);
-            UIPopUpCtrl.Instance.Get<LoadScene>().LoadSceneAsync((int)SceneIndex.InGame);
+           
         });
         btnShop?.onClick.AddListener(() =>
         {
             SFX.Instance.PlaySound(AudioEvent.ButtonClick);
-            UIPopUpCtrl.Instance.Show<UIInventory>();
+            UIPopUpCtrl.Instance.Show<UIShop>();
         });
         btnHelp?.onClick.AddListener(() =>
         {
@@ -39,5 +55,7 @@ public class HomeUI : Frame
             SFX.Instance.PlaySound(AudioEvent.ButtonClick);
             UIPopUpCtrl.Instance.Show<UISetting>();
         });
+
     }
+
 }

@@ -7,10 +7,10 @@ namespace ShootingGame
     [RequireComponent(typeof(Rigidbody2D))]
     public class Projectile : AAttacker, Interface.IMoveable, ISpawner
     {
-        [SerializeField] protected ParticleSystem impactEffect;
-        [SerializeField] private ParticleSystem projectileTrail;
-        [SerializeField] private GameObject visualProjectile;
-        [SerializeField] private byte projectileSpeed = 20;
+        [SerializeField] protected GameObject hitFX;
+        [SerializeField] protected GameObject muzzleFX;
+        [SerializeField] private GameObject trailFX;
+        [SerializeField] private GameObject projectileFX;
 
         public Action OnRecycle;
         private bool isCriticalHit;
@@ -44,7 +44,8 @@ namespace ShootingGame
 
                     Attack(defender);
 
-                    ActivateEffect(impactEffect);
+                    if (defender is MonoBehaviour behaviour) ActivateEffect(hitFX, behaviour.transform);
+                    else ActivateEffect(hitFX);
 
                     Rigidbody.velocity = Vector2.zero;
 
@@ -61,7 +62,7 @@ namespace ShootingGame
 
             if (base.Attack(target, isCritical, knockback))
             {
-                visualProjectile?.SetActive(false);
+                projectileFX?.SetActive(false);
                 Invoke(nameof(Recycle), 0.32f);
                 return true;
             }
@@ -87,37 +88,62 @@ namespace ShootingGame
         public void Spawn() { }
 
         public void Spawn(Vector2 direction, ImpactData properties,
-                IDefender owner = null, IExpReceiver expReceiver = null)
+                IDefender owner = null, IExpReceiver expReceiver = null, float speed = 10f)
         {
-            originatingOwner = owner;
+            this.originatingOwner = owner;
             this.expReceiver = expReceiver;
-            _canAttack = true;
-            isCriticalHit = properties.isCritical;
-            knockbackForce = properties.pushForce;
-            visualProjectile.gameObject.SetActive(true);
-            Move(direction.normalized * projectileSpeed);
+            this._canAttack = true;
+            this.isCriticalHit = properties.isCritical;
+            this.knockbackForce = properties.pushForce;
+
+            if (hitFX != null) hitFX.gameObject.SetActive(false);
+            if (projectileFX != null) projectileFX.gameObject.SetActive(true);
+            if (muzzleFX != null) muzzleFX.gameObject.SetActive(true);
+            if(trailFX != null) trailFX.gameObject.SetActive(true);
+
+            var oldTs = transform.parent;
+
+            Move(direction.normalized * speed);
             SetDamage(properties.damage);
-            if (projectileTrail) projectileTrail.Play();
+
             transform.right = direction;
             transform.SetParent(null);
+
+            //Set muzzle direction
+            if (muzzleFX) muzzleFX.transform.right = direction;
+            muzzleFX.transform.localPosition = Vector3.zero;
+            muzzleFX?.transform.SetParent(oldTs);
             Invoke(nameof(Recycle), 2f);
         }
         #endregion
 
-        protected void ActivateEffect(ParticleSystem effect)
+
+        #region Effect
+        protected void ActivateEffect(GameObject effect, Transform hitTs = null, bool isGlobalTransform = true)
         {
-            DeactivateAllEffects();
-            if (effect) effect.gameObject.SetActive(true);
+            if (effect)
+            {
+                effect.gameObject.SetActive(true);
+                effect.transform.SetParent(isGlobalTransform ? null : transform);
+                if (hitTs) effect.transform.position = hitTs.position;
+            }
         }
 
         private void DeactivateAllEffects()
         {
-            if (impactEffect) DeactivateEffect(impactEffect);
-            if (projectileTrail) DeactivateEffect(projectileTrail);
+            DeactivateEffect(hitFX);
+            DeactivateEffect(muzzleFX);
+            DeactivateEffect(projectileFX);
+            if(trailFX) DeactivateEffect(trailFX);
+
+            muzzleFX?.transform.SetParent(transform);
+            hitFX?.transform.SetParent(transform);
         }
 
-        private void DeactivateEffect(ParticleSystem effect) => effect?.gameObject.SetActive(false);
+        private void DeactivateEffect(GameObject effect) => effect?.gameObject.SetActive(false);
+        #endregion
 
+        #region Exp and Coin
         public override void GainExp(int exp)
         {
             if (expReceiver == null) return;
@@ -129,5 +155,6 @@ namespace ShootingGame
             if (expReceiver == null) return;
             expReceiver.GainCoin(coin);
         }
+        #endregion
     }
 }

@@ -10,6 +10,7 @@ namespace ShootingGame {
         //public PlayerStatData PlayerStatData;
         public ItemData ItemData;
         public SFXData SFXData;
+        public ProjectileData ProjectileData;
 
 
         protected override void Initialize() {
@@ -22,5 +23,6 @@ namespace ShootingGame {
             UnityEditor.Selection.activeObject = GameData.Instance;
         }
 #endif
+
     }
 }

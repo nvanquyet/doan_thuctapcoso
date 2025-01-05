@@ -19,7 +19,15 @@ namespace ShootingGame.Data
         Epic = 3,
         Legendary = 4,
     }
-    public class ItemDataSO : ScriptableObject
+
+
+    public abstract class ITetrisItem : ScriptableObject
+    {
+        public abstract RarityItem Rarity { get; }
+        public abstract StatContainerData Stat { get; }
+    }
+
+    public class ItemDataSO : ITetrisItem
     {
         [SerializeField] private CategoryItem category;
         [SerializeField] private RarityItem rarity;
@@ -29,25 +37,32 @@ namespace ShootingGame.Data
         [SerializeField] private MatrixData matrixData;
         [SerializeField] private StatContainerData stat;
 
-        public StatContainerData Stat => stat;
+        public override StatContainerData Stat => stat;
         public ItemAppearanceData Appearance => appearance;
         public MatrixData MatrixData => matrixData;
-        public RarityItem Rarity => rarity;
+        public override RarityItem Rarity => rarity;
         public float CostTierMultiplier => costTierMultiplier;
     }
 
 
     [CreateAssetMenu(fileName = "CharacterAttributeData", menuName = "Character/CharacterAttributeData")]
-    public class CharacterAttributeData : ScriptableObject
+    public class CharacterAttributeData : ITetrisItem
     {
 
         [SerializeField] private StatContainerData stat;
         [SerializeField] private RuntimeAnimatorController animator;
         [SerializeField] private ItemAppearanceData appearance;
         [SerializeField] private RarityItem rarity;
+        [SerializeField] private bool isOwner;
         public RuntimeAnimatorController Animator => animator;
         public ItemAppearanceData Appearance => appearance;
-        public StatContainerData Stat => stat;
-        public RarityItem Rarity => rarity;
+        public override StatContainerData Stat => stat;
+        public override RarityItem Rarity => rarity;
+        public bool IsOwn
+        {
+            get => isOwner;
+            set => isOwner = value;
+        }
+
     }
 }

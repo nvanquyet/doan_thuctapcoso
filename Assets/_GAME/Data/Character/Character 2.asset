@@ -35,17 +35,10 @@ MonoBehaviour:
     - typeStat: 6
       typeValueStat: 0
       value: 4
-    - typeStat: 7
-      typeValueStat: 0
-      value: 0
-    - typeStat: 8
-      typeValueStat: 1
-      value: 0.1
-    - typeStat: 9
-      typeValueStat: 1
-      value: 0.1
   animator: {fileID: 22100000, guid: 082e8a5693fa0bc41b389f7e186304d8, type: 2}
   appearance:
     itemName: Thuy
     icon: {fileID: -746459314, guid: d7c59eba0412c1e418f49b39e4bd7b28, type: 3}
+    price: 75
   rarity: 0
+  isOwner: 0

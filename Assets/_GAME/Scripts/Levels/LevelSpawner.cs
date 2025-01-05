@@ -6,11 +6,6 @@ namespace ShootingGame
     public class LevelSpawner : ShootingGame.SingletonBehaviour<LevelSpawner>
     {
         /// <summary>
-        /// Scaling Factor
-        /// </summary>
-        [SerializeField] private float scalingFactor = 1.1f;
-
-        /// <summary>
         /// Wave Prefab
         /// </summary>
         [SerializeField] private Wave wave;
@@ -21,10 +16,7 @@ namespace ShootingGame
 
         protected virtual void OnValidate() => wave = GetComponentInChildren<Wave>();
 
-        void Start()
-        {
-            _currentWave = 0;
-        }
+        void Start() => _currentWave = 0;
 
         /// <summary>
         /// Start Wave
@@ -38,17 +30,9 @@ namespace ShootingGame
         /// <summary>
         /// Call Event Start Wave
         /// </summary>
-        public void OnStartWave()
-        {
-            if (wave == null) return;
-            wave.Init(GameConfig.Instance.ScalingFactor, _currentWave);
-        }
+        public void OnStartWave() => wave?.Init(GameConfig.Instance.ScalingFactor, _currentWave);
 
-        public List<Transform> GetActiveEnemies()
-        {
-            if (wave == null) return null;
-            return wave.tsEnemies;
-        }
+        public List<Transform> GetActiveEnemies() => wave?.tsEnemies;
 
         public bool OnEnemyDeath(Enemy enemy)
         {
@@ -71,14 +55,7 @@ namespace ShootingGame
             wave.tsEnemies.Clear();
         }
 
-        internal bool IsWaveClear
-        {
-            get
-            {
-                if (wave == null) return false;
-                return wave.IsWaveClear;
-            }
-        }
+        internal bool IsWaveClear =>  wave? wave.IsWaveClear : false;
     }
 
 }

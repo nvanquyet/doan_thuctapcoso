@@ -18,7 +18,7 @@ namespace ShootingGame
 
         public EnemyWeights enemyWeights;
 
-        public int bossWaveDistance = 5;
+        public int BossWaveDistance = 5;
 
         public WaveProperties waveProperties;
 
@@ -26,6 +26,15 @@ namespace ShootingGame
         public bool startGameBuyItem = true;
 
         public int StartCoin = 100;
+
+        public float EnergyGainInterval = 7200;
+        public int MaxEnergy = 5;
+        public int PriceEnergy = 50;
+
+
+        [Header("Server Config")]
+        public string ServerAddress = "localhost";
+        public int ServerPort = 1609;
 
         protected override void Initialize()
         {
