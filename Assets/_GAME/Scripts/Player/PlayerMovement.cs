@@ -28,6 +28,11 @@ namespace ShootingGame
         public void Init(Transform characterGraphic)
         {
             _characterGraphic = characterGraphic;
+#if UNITY_EDITOR
+            joystick.gameObject.SetActive(false);
+#else
+            joystick.gameObject.SetActive(true);    
+#endif
         }
 
 #if UNITY_EDITOR
@@ -72,8 +77,11 @@ namespace ShootingGame
         {
             if (IsMoving)
             {
-                //movementInput = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
+#if UNITY_EDITOR
+                movementInput = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
+#else
                 movementInput = new Vector3(joystick.Horizontal, joystick.Vertical, 0).normalized;
+#endif
                 if (movementInput.x != 0)
                 {
                     Vector3 newScale = _characterGraphic.localScale;
@@ -119,7 +127,7 @@ namespace ShootingGame
 
 
 
-        #endregion
+#endregion
     }
 
 }
