@@ -42,6 +42,19 @@ public partial class UserData
         }
     }
 
+    public static (string, string) EmailPassword
+    {
+        get
+        {
+            return (PlayerPrefs.GetString("UserEmail", ""), PlayerPrefs.GetString("UserPassword", ""));
+        }
+        set
+        {
+            PlayerPrefs.SetString("UserEmail", value.Item1);
+            PlayerPrefs.SetString("UserPassword", value.Item2);
+        }
+    }
+
     public static bool IsLogin
     {
         get
@@ -112,4 +125,21 @@ public partial class UserData
     {
         return PlayerPrefs.GetInt($"GunProjectile_{idGun}", -1);
     }
+
+    public static void LoadPlayerData(Server.Player player)
+    {
+        GameService.LogColor($"Load AllData");
+        CurrentCoin = (int) player.coin;
+        UserName = player.name;
+        CurrentEnergy = player.energy;
+        GameConfig.Instance.MaxEnergy = player.maxEnergy;
+    }
+
+    public static void Logout()
+    {
+        IsLogin = false;
+        EmailPassword = ("", "");
+        UserName = "";
+    }
+
 }

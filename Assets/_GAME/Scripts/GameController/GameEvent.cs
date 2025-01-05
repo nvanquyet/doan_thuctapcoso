@@ -58,4 +58,9 @@ public sealed class GameEvent
         public string message;
     }
 
+    public struct OnReceiveNotice : IEventParam
+    {
+        public string message;
+    }
+
 }

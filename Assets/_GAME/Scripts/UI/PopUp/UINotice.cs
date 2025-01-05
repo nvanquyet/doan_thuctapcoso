@@ -15,18 +15,25 @@ public class UINotice : Frame
     private void Start()
     {
         closeButton.onClick.AddListener(HidePopUp);
+        this.AddListener<GameEvent.OnReceiveNotice>(OnReceiveNotice, false);
+    }
+
+    private void OnReceiveNotice(GameEvent.OnReceiveNotice notice)
+    {
+        SetNotice("Notice", notice.message);
     }
 
     public void SetNotice(string title, string description, Action callBack = null)
     {
-        this.title.text = title;
-        this.description.text = description;
+        if(!this.title || !this.description) return;
+        if(this.title) this.title.text = title;
+        if(this.description) this.description.text = description;
         Show();
         Invoke(nameof(HidePopUp), 3f);
         OnCallBack = callBack;
     }
-
-    private void HidePopUp()
+ 
+    private void HidePopUp() 
     {
         SFX.Instance.PlaySound(AudioEvent.ButtonClick);
         Hide(true, OnCallBack);

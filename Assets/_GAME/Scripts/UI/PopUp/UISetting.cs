@@ -26,7 +26,7 @@ public class UISetting : Frame
         AssignButtonEvent(btnLogout, () =>
         {
             SFX.Instance.PlaySound(AudioEvent.ButtonClick);
-            UserData.IsLogin = false;
+            UserData.Logout();
             UIPopUpCtrl.Instance.Get<LoadScene>().LoadSceneAsync((int)SceneIndex.Login);
         });
 
