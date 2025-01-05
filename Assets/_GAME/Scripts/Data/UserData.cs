@@ -21,7 +21,7 @@ public partial class UserData
     {
         get
         {
-            return PlayerPrefs.GetInt("CurrentCoin", 120);
+            return PlayerPrefs.GetInt("CurrentCoin", 0);
         }
         set
         {
@@ -29,6 +29,7 @@ public partial class UserData
             EventDispatcher.Instance.Dispatch<GameEvent.CoinChange>();
         }
     }
+
 
     public static string UserName
     {
@@ -39,6 +40,7 @@ public partial class UserData
         set
         {
             PlayerPrefs.SetString("UserName", value);
+            EventDispatcher.Instance.Dispatch<GameEvent.OnUserNameChanged>();
         }
     }
 
@@ -79,18 +81,6 @@ public partial class UserData
         }
     }
 
-    public static int MainCoin
-    {
-        get
-        {
-            return PlayerPrefs.GetInt("Coin", 0);
-        }
-        set
-        {
-            PlayerPrefs.SetInt("Coin", value);
-        }
-    }
-
     public static int CurrentEnergy
     {
         get
@@ -104,7 +94,35 @@ public partial class UserData
         }
     }
 
-    public static DateTime LastTimePlayed
+    public static void UseEnergy(DateTime lastTimeUpdate)
+    {
+        CurrentEnergy -= GameConfig.Instance.EnergyCost;
+        Service.gI().UseEnergy(GameConfig.Instance.EnergyCost);
+
+        //Set Time
+        LastTimeUpdate = lastTimeUpdate;
+        var e = GameConfig.Instance.MaxEnergy - CurrentEnergy;
+        GameService.LogColor($"UseEnergy {e}");
+        TimeFillMaxEnergy = new DateTime(LastTimeUpdate.Ticks).AddSeconds(e * GameConfig.Instance.EnergyGainInterval);
+    }
+
+    public static void SetTimeEnergy(long lastTimeUpdate)
+    {
+        var timeUpdate = new DateTime(lastTimeUpdate);
+        LastTimeUpdate = timeUpdate;
+        var e = GameConfig.Instance.MaxEnergy - CurrentEnergy;
+        GameService.LogColor($"UseEnergy {e}");
+        TimeFillMaxEnergy = new DateTime(LastTimeUpdate.Ticks).AddSeconds(e * GameConfig.Instance.EnergyGainInterval);
+    }
+    public static void SetTimeEnergy(DateTime timeUpdate)
+    {
+        LastTimeUpdate = timeUpdate;
+        var e = GameConfig.Instance.MaxEnergy - CurrentEnergy;
+        GameService.LogColor($"UseEnergy {e}");
+        TimeFillMaxEnergy = new DateTime(LastTimeUpdate.Ticks).AddSeconds(e * GameConfig.Instance.EnergyGainInterval);
+    }
+
+    public static DateTime LastTimeUpdate
     {
         get
         {
@@ -113,6 +131,18 @@ public partial class UserData
         set
         {
             PlayerPrefs.SetString("LastTimePlayed", value.ToString());
+        }
+    }
+
+    public static DateTime TimeFillMaxEnergy
+    {
+        get
+        {
+            return DateTime.Parse(PlayerPrefs.GetString("TimeFillMaxEnergy", DateTime.Now.ToString()));
+        }
+        set
+        {
+            PlayerPrefs.SetString("TimeFillMaxEnergy", value.ToString());
         }
     }
 
@@ -126,20 +156,26 @@ public partial class UserData
         return PlayerPrefs.GetInt($"GunProjectile_{idGun}", -1);
     }
 
-    public static void LoadPlayerData(Server.Player player)
+    public static void LoadPlayerData(Server.Player player, string[] characterOwn)
     {
         GameService.LogColor($"Load AllData");
         CurrentCoin = (int) player.coin;
         UserName = player.name;
-        CurrentEnergy = player.energy;
         GameConfig.Instance.MaxEnergy = player.maxEnergy;
+        CurrentEnergy = player.energy;
+        UserData.SetTimeEnergy(DateTime.Now);
+        for (int i = 0; i < characterOwn.Length; i++)
+        {
+            var id = Int32.Parse(characterOwn[i]);
+            SetOwnerCharacter(id);
+        }
     }
 
     public static void Logout()
     {
         IsLogin = false;
-        EmailPassword = ("", "");
-        UserName = "";
+        PlayerPrefs.DeleteAll();
+        Service.gI().Logout();
     }
 
 }

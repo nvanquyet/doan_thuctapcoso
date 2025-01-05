@@ -20,7 +20,7 @@ public class UINotice : Frame
 
     private void OnReceiveNotice(GameEvent.OnReceiveNotice notice)
     {
-        SetNotice("Notice", notice.message);
+        SetNotice("Notice", notice.message, notice.callBack);
     }
 
     public void SetNotice(string title, string description, Action callBack = null)

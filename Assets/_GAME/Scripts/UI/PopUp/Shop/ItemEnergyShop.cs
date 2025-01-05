@@ -1,11 +1,6 @@
-using Google.MiniJSON;
 using ShootingGame;
-using ShootingGame.Data;
-using System;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class ItemEnergyShop : MonoBehaviour
 {
@@ -19,11 +14,17 @@ public class ItemEnergyShop : MonoBehaviour
         this.AddListener<GameEvent.EnergyChange>(OnEnergyChange, false);
         btnBuy.onClick.AddListener(() =>
         {
-            SFX.Instance.PlaySound(AudioEvent.ButtonClick);
             if(UserData.CurrentEnergy < GameConfig.Instance.MaxEnergy)
             {
-                UserData.CurrentCoin -= GameConfig.Instance.PriceEnergy;
+                SFX.Instance.PlaySound(AudioEvent.ButtonClick);
+
+                //Increase energy
                 UserData.CurrentEnergy++;
+                Service.gI().UseEnergy(-1);
+                
+                //Reduce coin
+                UserData.CurrentCoin -= GameConfig.Instance.PriceEnergy;
+                Service.gI().AddCoin(-GameConfig.Instance.PriceEnergy);  
             }
         });
 

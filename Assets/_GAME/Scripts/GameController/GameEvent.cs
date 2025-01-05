@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Mono.CSharp;
 using ShootingGame;
@@ -61,6 +62,12 @@ public sealed class GameEvent
     public struct OnReceiveNotice : IEventParam
     {
         public string message;
+        public Action callBack;
     }
 
+    public struct OnLoadPlayer : IEventParam
+    {
+        public bool success;
+    }
+    public struct OnUserNameChanged : IEventParam { }
 }

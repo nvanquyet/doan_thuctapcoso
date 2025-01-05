@@ -3,6 +3,7 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static GameEvent;
 
 public class HomeUI : Frame
 {
@@ -55,7 +56,12 @@ public class HomeUI : Frame
             SFX.Instance.PlaySound(AudioEvent.ButtonClick);
             UIPopUpCtrl.Instance.Show<UISetting>();
         });
+        this.AddListener<GameEvent.OnUserNameChanged>(OnUserNameChanged, false);
+    }
 
+    private void OnUserNameChanged(OnUserNameChanged change)
+    {
+        userTxt?.SetText(UserData.UserName);
     }
 
 }

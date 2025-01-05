@@ -27,8 +27,9 @@ MonoBehaviour:
     timeWave: 30
   startGameBuyItem: 1
   StartCoin: 100
-  EnergyGainInterval: 7200
+  EnergyGainInterval: 60
   MaxEnergy: 5
+  EnergyCost: 10
   PriceEnergy: 50
   ServerAddress: 188.166.177.199
   ServerPort: 1609

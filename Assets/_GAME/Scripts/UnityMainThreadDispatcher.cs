@@ -2,13 +2,10 @@ using ShootingGame;
 using System.Collections.Concurrent;
 using UnityEngine;
 
-public class UnityMainThreadDispatcher : MonoBehaviour
+public class UnityMainThreadDispatcher : SingletonBehaviourDontDestroy<UnityMainThreadDispatcher>
 {
     private static readonly ConcurrentQueue<System.Action> _actions = new ConcurrentQueue<System.Action>();
-    private void Start()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
+
     public static void Enqueue(System.Action action = null)
     {
         if(action != null) _actions.Enqueue(action);

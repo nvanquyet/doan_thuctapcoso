@@ -49,11 +49,14 @@ public class ItemShop : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         }
     }
 
-
     private void Start()
     {
-        this.AddListener<GameEvent.CoinChange>(OnCoinChange, false);
-        
+        this.AddListener<GameEvent.CoinChange>(OnCoinChange, false);   
+    }
+
+    private void OnEnable()
+    {
+        Invoke(nameof(OnCheckBtnBuy), .5f);
     }
 
     private void OnCoinChange(GameEvent.CoinChange param)

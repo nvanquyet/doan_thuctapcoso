@@ -81,6 +81,8 @@ public class UIShop : Frame
             item.InitData(character, () =>
             {
                 GameService.LogColor($"Buy Character {character.Appearance.Name} Index {idCharacter} Success");
+                Service.gI().AddCoin(-character.Appearance.Price);
+                Service.gI().AddItem(1, idCharacter.ToString());
             });
             item.OnHover += OnHoverItem;
             item.OnCancelHover += OnCancelHover;
