@@ -1,21 +1,18 @@
 using ShootingGame;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CharacterSwitcher : MonoBehaviour
 {
-    public Transform characterParent;          
+    public Transform characterParent;
     public TMP_Text characterNameText;
     //public Image playerAvatarImage;
 
     public Button nextButton;
     public Button preButton;
 
-    public Animator animator;         
+    public Animator animator;
 
     private int index = 0;
 
@@ -57,30 +54,18 @@ public class CharacterSwitcher : MonoBehaviour
     private void SwitchCharacter(bool increase = true)
     {
         var c = GameData.Instance.Players.GetValue(CharacterIndex);
-        if(c.IsOwn || UserData.GetOwnerCharacter(CharacterIndex))
+        if (c == null) return;
+        if (c.IsOwn || UserData.GetOwnerCharacter(CharacterIndex))
         {
             characterNameText.text = c.Appearance.Name;
             animator.runtimeAnimatorController = c.Animator;
-        }
-        else
-        {
-            if(increase) index++;
-            else index--;
-            if(index >= GameData.Instance.Players.GetAllValue().Length)
-            {
-                index = 0;
-            }
-            else if(index < 0)
-            {
-                index = GameData.Instance.Players.GetAllValue().Length - 1;
-            }
-            SwitchCharacter(increase);
+            UserData.CurrentCharacter = CharacterIndex;
+            index = 0;
             return;
         }
-       
-        //if (playerAvatarImage != null)
-        //{
-        //    playerAvatarImage.sprite = c.Appearance.Icon;
-        //}
+        if (increase) index++;
+        else index--;
+        SwitchCharacter(increase);
+
     }
 }
