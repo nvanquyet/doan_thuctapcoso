@@ -1,6 +1,8 @@
 using ShootingGame;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public enum QualityLevel
 {
@@ -15,6 +17,8 @@ public class UISetting : Frame
     [SerializeField] private ToggleButton btnSoundEnable, btnMusicEnable;
     [SerializeField] private Toggle[] btnQuality;
 
+    [SerializeField] private TextMeshProUGUI textLogout;
+
     private void Start()
     {
         AssignButtonEvent(closeButton, () =>
@@ -26,8 +30,15 @@ public class UISetting : Frame
         AssignButtonEvent(btnLogout, () =>
         {
             SFX.Instance.PlaySound(AudioEvent.ButtonClick);
-            UserData.Logout();
-            UIPopUpCtrl.Instance.Get<LoadScene>().LoadSceneAsync((int)SceneIndex.Login);
+            if (SceneManager.GetActiveScene().buildIndex == (int)SceneIndex.InGame)
+            {
+                UIPopUpCtrl.Instance.Get<LoadScene>().LoadSceneAsync((int)SceneIndex.Home);
+            }
+            else
+            {
+                UserData.Logout();
+                UIPopUpCtrl.Instance.Get<LoadScene>().LoadSceneAsync((int)SceneIndex.Login);
+            }
         });
 
         AssignToggleButtonEvent(btnSoundEnable, UserData.SoundEnable, (isOn) =>
@@ -48,6 +59,18 @@ public class UISetting : Frame
         for (int i = 0; i < btnQuality.Length; i++)
         {
             AssignQualityToggle(btnQuality[i], i);
+        }
+    }
+
+    private void OnEnable()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == (int)SceneIndex.InGame)
+        {
+            textLogout.SetText("Quit Game");
+        }
+        else
+        {
+            textLogout.SetText("Logout");
         }
     }
 
