@@ -98,27 +98,23 @@ public partial class UserData
     {
         CurrentEnergy -= GameConfig.Instance.EnergyCost;
         Service.gI().UseEnergy(GameConfig.Instance.EnergyCost);
-
         //Set Time
         LastTimeUpdate = lastTimeUpdate;
         var e = GameConfig.Instance.MaxEnergy - CurrentEnergy;
-        GameService.LogColor($"UseEnergy {e}");
         TimeFillMaxEnergy = new DateTime(LastTimeUpdate.Ticks).AddSeconds(e * GameConfig.Instance.EnergyGainInterval);
     }
 
     public static void SetTimeEnergy(long lastTimeUpdate)
     {
-        var timeUpdate = new DateTime(lastTimeUpdate);
-        LastTimeUpdate = timeUpdate;
-        var e = GameConfig.Instance.MaxEnergy - CurrentEnergy;
-        GameService.LogColor($"UseEnergy {e}");
-        TimeFillMaxEnergy = new DateTime(LastTimeUpdate.Ticks).AddSeconds(e * GameConfig.Instance.EnergyGainInterval);
+        DateTime timeUpdate;
+        if(lastTimeUpdate <= 0) timeUpdate = DateTime.Now;
+        else timeUpdate = DateTimeOffset.FromUnixTimeMilliseconds(lastTimeUpdate).UtcDateTime.ToLocalTime();
+        SetTimeEnergy(timeUpdate);
     }
     public static void SetTimeEnergy(DateTime timeUpdate)
     {
         LastTimeUpdate = timeUpdate;
         var e = GameConfig.Instance.MaxEnergy - CurrentEnergy;
-        GameService.LogColor($"UseEnergy {e}");
         TimeFillMaxEnergy = new DateTime(LastTimeUpdate.Ticks).AddSeconds(e * GameConfig.Instance.EnergyGainInterval);
     }
 
@@ -130,7 +126,7 @@ public partial class UserData
         }
         set
         {
-            PlayerPrefs.SetString("LastTimePlayed", value.ToString());
+            PlayerPrefs.SetString("LastTimePlayed", value.ToString("o"));
         }
     }
 
@@ -142,7 +138,7 @@ public partial class UserData
         }
         set
         {
-            PlayerPrefs.SetString("TimeFillMaxEnergy", value.ToString());
+            PlayerPrefs.SetString("TimeFillMaxEnergy", value.ToString("o"));
         }
     }
 
@@ -163,7 +159,7 @@ public partial class UserData
         UserName = player.name;
         GameConfig.Instance.MaxEnergy = player.maxEnergy;
         CurrentEnergy = player.energy;
-        UserData.SetTimeEnergy(DateTime.Now);
+        SetTimeEnergy(player.lastUpdateEnergy);
         for (int i = 0; i < characterOwn.Length; i++)
         {
             var id = Int32.Parse(characterOwn[i]);

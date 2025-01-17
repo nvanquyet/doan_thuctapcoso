@@ -10,6 +10,7 @@ public class EnergySystem : MonoBehaviour
     public bool HasEnergy => UserData.CurrentEnergy > 0;
     private Coroutine updateEnergyCoroutine;
 
+
     private void Awake()
     {
         this.AddListener<GameEvent.OnLoadPlayer>(OnLoadPlayer, false);
@@ -18,55 +19,61 @@ public class EnergySystem : MonoBehaviour
     {
         Invoke(nameof(CheckEnergy),.5f);
     }
-    private void OnLoadPlayer(GameEvent.OnLoadPlayer param)
-    {
-        if(updateEnergyCoroutine != null) StopCoroutine(updateEnergyCoroutine);
-        CheckEnergy();
-    }
+    private void OnLoadPlayer(GameEvent.OnLoadPlayer param) => CheckEnergy();
 
     private void CheckEnergy()
     {
+
+        if (updateEnergyCoroutine != null)
+        {
+            StopCoroutine(updateEnergyCoroutine);
+        }
+
         updateEnergyCoroutine = StartCoroutine(UpdateEnergy(true));
     }
 
     private IEnumerator UpdateEnergy(bool checkEnergyGain = false)
-    {
-        // If the player has reached the maximum energy
+    { 
         if (UserData.CurrentEnergy >= GameConfig.Instance.MaxEnergy)
         {
-            // Hide the time text
             txtTime.gameObject.SetActive(false);
+            UpdateSlider();
             yield break;
         }
-        // Show the time text
+
         txtTime.gameObject.SetActive(true);
-        // Calculate the time until the player gains the next energy
-        TimeSpan timeUntilFullEnergy = UserData.TimeFillMaxEnergy - DateTime.Now;
         UpdateSlider();
-        //Using while loop to update the time text every second
-        while (timeUntilFullEnergy.TotalSeconds > 0)
+        while (UserData.CurrentEnergy < GameConfig.Instance.MaxEnergy)
         {
-            // Update the time text
+            TimeSpan timeUntilFullEnergy = UserData.TimeFillMaxEnergy - DateTime.Now;
+            if (timeUntilFullEnergy.TotalSeconds <= 0)
+            {
+                txtTime.gameObject.SetActive(false);
+                UpdateSlider();
+                yield break;
+            }
             txtTime.text = $"{timeUntilFullEnergy.Hours:D2}:{timeUntilFullEnergy.Minutes:D2}:{timeUntilFullEnergy.Seconds:D2}";
-            // Wait for 1 second
+            
             yield return new WaitForSeconds(1);
-            UpdateSlider();
-            // Update the time difference
-            timeUntilFullEnergy -= TimeSpan.FromSeconds(1);
         }
     }
 
     public bool UsingEnergy()
     {
-        // If the player has energy
         if (UserData.CurrentEnergy > 0)
         {
-            // Decrease the player's energy
             UserData.UseEnergy(DateTime.Now);
-            StartCoroutine(UpdateEnergy());
+
+            UserData.TimeFillMaxEnergy = DateTime.Now.AddSeconds(GameConfig.Instance.EnergyGainInterval);
+
+            if (updateEnergyCoroutine != null)
+            {
+                StopCoroutine(updateEnergyCoroutine);
+            }
+            updateEnergyCoroutine = StartCoroutine(UpdateEnergy());
+
             UpdateSlider();
 
-            // Return true to indicate that the player has used energy
             return true;
         }
         return false;
@@ -74,18 +81,7 @@ public class EnergySystem : MonoBehaviour
 
     private void UpdateSlider()
     {
-        // Update the energy slider
         slider.UpdateProgess(UserData.CurrentEnergy * 1.0f / GameConfig.Instance.MaxEnergy);
-        // Update the energy text
     }
 
-    private void CheckEnergyStatus(TimeSpan timeDifference)
-    {
-        // Calculate the energy the player should have gained
-        int energyGained = (int)(timeDifference.TotalSeconds / GameConfig.Instance.EnergyGainInterval);
-
-        // If the player has gained energy
-        if (energyGained > 0) UserData.CurrentEnergy += energyGained;
-        UpdateSlider();
-    }
 }
