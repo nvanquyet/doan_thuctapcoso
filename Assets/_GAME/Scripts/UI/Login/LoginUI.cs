@@ -16,6 +16,7 @@ public class LoginUI : Frame
 
     [SerializeField] private Button secondBtn;
     [SerializeField] private Button btnForgotPassword;
+    [SerializeField] private Button btnClearData;
 
     [Space(10)] [Header("Text")] [SerializeField]
     private TextMeshProUGUI titleText;
@@ -35,6 +36,7 @@ public class LoginUI : Frame
     {
         this.AddListener<GameEvent.OnLogin>(OnLoginCallBack, false);
         this.AddListener<GameEvent.OnResgister>(OnRegisterCallBack, false);
+        btnClearData.onClick.AddListener(() => PlayerPrefs.DeleteAll());    
         if (UserData.IsLogin) ForceLogin();
         else
         {

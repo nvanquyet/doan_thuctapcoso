@@ -9,15 +9,15 @@ public class EnergySystem : MonoBehaviour
     [SerializeField] private TMPro.TextMeshProUGUI txtTime;
     public bool HasEnergy => UserData.CurrentEnergy > 0;
     private Coroutine updateEnergyCoroutine;
-    private void OnEnable()
-    {
-        CheckEnergy();
-    }
-    private void Start()
+
+    private void Awake()
     {
         this.AddListener<GameEvent.OnLoadPlayer>(OnLoadPlayer, false);
     }
-
+    private void OnEnable()
+    {
+        Invoke(nameof(CheckEnergy),.5f);
+    }
     private void OnLoadPlayer(GameEvent.OnLoadPlayer param)
     {
         if(updateEnergyCoroutine != null) StopCoroutine(updateEnergyCoroutine);
